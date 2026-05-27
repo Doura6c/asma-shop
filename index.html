@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#C8536B">
+
+<!-- Security headers -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net; frame-ancestors 'none'; form-action 'self' https://wa.me; base-uri 'self'; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- SEO -->
+<meta name="description" content="ASMA SHOP AFRIQUE — Cosmétiques, parfums et mode féminine livrés chez vous en Guinée. Produits 100% authentiques. Paiement à la livraison.">
+<meta name="keywords" content="ASMA SHOP, cosmétiques Guinée, parfums femme Conakry, beauté africaine, livraison Conakry, soins peau noire, maquillage Guinée">
+<meta name="author" content="ASMA SHOP AFRIQUE">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://asmashop.gn/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_GN">
+<meta property="og:site_name" content="ASMA SHOP AFRIQUE">
+<meta property="og:title" content="ASMA SHOP AFRIQUE — La beauté africaine, livrée chez vous 🌸">
+<meta property="og:description" content="Cosmétiques premium, parfums & mode féminine. Livraison rapide en Guinée. Paiement à la livraison.">
+<meta property="og:url" content="https://asmashop.gn/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ASMA SHOP AFRIQUE — La beauté africaine 🌸">
+<meta name="twitter:description" content="Cosmétiques & parfums authentiques, livrés chez vous en Guinée.">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ASMA SHOP">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23C8536B'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='Georgia' font-weight='900'%3EA%3C/text%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","@id":"https://asmashop.gn/#org","name":"ASMA SHOP AFRIQUE","url":"https://asmashop.gn/","slogan":"La beauté africaine, livrée chez vous"},
+    {"@type":"OnlineStore","@id":"https://asmashop.gn/#store","name":"ASMA SHOP AFRIQUE","url":"https://asmashop.gn/","telephone":"+224621000000","priceRange":"65 000 - 450 000 GNF","currenciesAccepted":"GNF","paymentAccepted":"Cash, Orange Money","address":{"@type":"PostalAddress","addressLocality":"Conakry","addressCountry":"GN"},"areaServed":{"@type":"Country","name":"Guinée"}}
+  ]
+}
+</script>
+
+<title>ASMA SHOP AFRIQUE — La beauté africaine, livrée chez vous 🌸</title>
+<style>
+:root {
+  --rose:    #C8536B;
+  --rose-dk: #A03050;
+  --rose-lt: #FFE4ED;
+  --gold:    #D4AF37;
+  --gold-lt: #FDF3D0;
+  --cream:   #FDF6F0;
+  --cream2:  #FFF0F3;
+  --choco:   #2C1810;
+  --muted:   #7A6670;
+  --muted2:  #B09AA0;
+  --border:  #EDD8DE;
+  --wa:      #25D366;
+  --shadow:  0 2px 20px rgba(200,83,107,0.08);
+  --shadow-lg: 0 8px 40px rgba(200,83,107,0.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--choco);overflow-x:hidden;}
+
+/* ═══════════════════════════════════════
+   TICKER
+═══════════════════════════════════════ */
+.ticker-wrap{background:linear-gradient(90deg,var(--rose),#E8839A,var(--gold),var(--rose));padding:9px 0;overflow:hidden;white-space:nowrap;position:sticky;top:0;z-index:300;}
+.ticker-inner{display:inline-flex;animation:tick 30s linear infinite;}
+.ticker-inner span{font-family:'Playfair Display',serif;font-size:.82rem;font-weight:600;letter-spacing:2px;color:#fff;padding:0 2.5rem;}
+.ticker-inner span::after{content:'✦';margin-left:2.5rem;opacity:.5;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav{background:#fff;border-bottom:1.5px solid var(--border);padding:0 5%;height:76px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:40px;z-index:290;box-shadow:var(--shadow);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-mark{width:46px;height:46px;background:linear-gradient(135deg,var(--rose),var(--rose-dk));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#fff;box-shadow:0 4px 15px rgba(200,83,107,.3);}
+.nav-brand-text{line-height:1.1;}
+.nav-brand-text strong{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;color:var(--choco);display:block;letter-spacing:.5px;}
+.nav-brand-text small{font-size:.62rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--rose);}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.3px;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-cart-btn{position:relative;background:var(--rose);color:#fff;border:none;padding:10px 22px;border-radius:30px;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .3s;}
+.nav-cart-btn:hover{background:var(--rose-dk);transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,83,107,.35);}
+.cart-badge{background:var(--gold);color:var(--choco);font-size:.6rem;font-weight:800;min-width:18px;height:18px;border-radius:30px;display:inline-flex;align-items:center;justify-content:center;margin-left:.2rem;}
+.nav-ham{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--choco);}
+@media(max-width:768px){.nav-links{display:none;}.nav-ham{display:block;}}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{min-height:90vh;background:linear-gradient(150deg,#fff 0%,var(--cream) 40%,#FFF0F5 100%);display:flex;align-items:center;padding:5rem 6%;position:relative;overflow:hidden;}
+.hero-blob1{position:absolute;top:-150px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,83,107,.08),transparent 70%);pointer-events:none;}
+.hero-blob2{position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.1),transparent 70%);pointer-events:none;}
+.hero-petals{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(200,83,107,.04) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(212,175,55,.05) 0%,transparent 50%);pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:620px;}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--rose-lt);border:1.5px solid rgba(200,83,107,.3);color:var(--rose);font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:30px;margin-bottom:1.8rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,5.5rem);line-height:1.05;color:var(--choco);margin-bottom:1.5rem;}
+.hero h1 .accent{color:var(--rose);}
+.hero h1 .gold{color:var(--gold);}
+.hero-sub{font-size:.95rem;line-height:1.8;color:var(--muted);max-width:480px;margin-bottom:2.5rem;font-weight:400;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-rose{background:linear-gradient(135deg,var(--rose),var(--rose-dk));color:#fff;padding:14px 30px;border-radius:30px;font-weight:700;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(200,83,107,.3);}
+.btn-rose:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,83,107,.4);}
+.btn-outline{background:#fff;color:var(--rose);padding:14px 30px;border-radius:30px;font-weight:700;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;border:2px solid var(--rose);transition:all .3s;cursor:pointer;}
+.btn-outline:hover{background:var(--rose-lt);}
+.btn-wa{background:var(--wa);color:#fff;padding:14px 28px;border-radius:30px;font-weight:700;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;}
+.btn-wa:hover{background:#1da851;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.3);}
+.hero-stats{display:flex;gap:1.5rem;margin-top:3rem;flex-wrap:wrap;}
+.stat{text-align:center;padding:1.2rem 1.5rem;background:#fff;border-radius:16px;border:1.5px solid var(--border);box-shadow:var(--shadow);}
+.stat-n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--rose);display:block;line-height:1;}
+.stat-l{font-size:.62rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);display:block;margin-top:.3rem;}
+.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1rem;opacity:.15;font-size:4rem;}
+@media(max-width:768px){.hero-visual{display:none;}.hero{padding:4rem 5%;min-height:auto;}}
+
+/* ═══════════════════════════════════════
+   TRUST STRIP
+═══════════════════════════════════════ */
+.strip{background:var(--choco);padding:1.2rem 5%;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;}
+.strip-item{display:flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:600;color:#fff;}
+.strip-item strong{color:var(--gold);}
+
+/* ═══════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════ */
+section{padding:5rem 6%;}
+.alt{background:var(--cream2);}
+.white{background:#fff;}
+.s-head{margin-bottom:3rem;}
+.s-label{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;}
+.s-label::before,.s-label::after{content:'';width:20px;height:1.5px;background:var(--rose);display:inline-block;}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--choco);margin-bottom:.7rem;line-height:1.2;}
+.s-title .accent{color:var(--rose);}
+.s-sub{font-size:.88rem;color:var(--muted);max-width:500px;line-height:1.75;}
+
+/* ═══════════════════════════════════════
+   CATEGORY CARDS
+═══════════════════════════════════════ */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem;margin-bottom:3rem;}
+.cat-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:1.2rem .8rem;text-align:center;cursor:pointer;transition:all .3s;box-shadow:var(--shadow);}
+.cat-card:hover,.cat-card.active{background:linear-gradient(135deg,var(--rose),var(--rose-dk));border-color:var(--rose);color:#fff;transform:translateY(-4px);box-shadow:0 10px 25px rgba(200,83,107,.25);}
+.cat-card:hover .cat-emoji,.cat-card.active .cat-emoji{transform:scale(1.15);}
+.cat-emoji{font-size:1.8rem;display:block;margin-bottom:.4rem;transition:transform .3s;}
+.cat-name{font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);}
+.cat-card.active .cat-name,.cat-card:hover .cat-name{color:rgba(255,255,255,.9);}
+
+/* ═══════════════════════════════════════
+   PRODUCT GRID
+═══════════════════════════════════════ */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.3rem;}
+.prod-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .35s;position:relative;box-shadow:var(--shadow);}
+.prod-card:hover{transform:translateY(-6px);border-color:var(--rose);box-shadow:0 16px 40px rgba(200,83,107,.18);}
+.prod-badge{position:absolute;top:.7rem;left:.7rem;font-size:.58rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:30px;z-index:2;}
+.badge-hot{background:linear-gradient(135deg,var(--rose),var(--rose-dk));color:#fff;}
+.badge-new{background:linear-gradient(135deg,var(--gold),#B8941F);color:#fff;}
+.badge-top{background:linear-gradient(135deg,#8E44AD,#6C3483);color:#fff;}
+.badge-promo{background:linear-gradient(135deg,#E74C3C,#C0392B);color:#fff;}
+.prod-img{height:160px;background:linear-gradient(135deg,var(--cream),var(--cream2));display:flex;align-items:center;justify-content:center;font-size:3.8rem;position:relative;overflow:hidden;}
+.prod-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(200,83,107,.04));pointer-events:none;}
+.stock-dot{position:absolute;top:.7rem;right:.7rem;width:8px;height:8px;border-radius:50%;}
+.stock-ok{background:#2ECC71;box-shadow:0 0 6px rgba(46,204,113,.6);}
+.stock-no{background:#E74C3C;}
+.prod-body{padding:1rem;}
+.prod-cat{font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.prod-name{font-size:.83rem;font-weight:700;color:var(--choco);margin-bottom:.4rem;line-height:1.35;}
+.prod-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--rose);}
+.prod-old{font-size:.66rem;color:var(--muted2);text-decoration:line-through;margin-left:.3rem;}
+.prod-add{width:100%;margin-top:.7rem;padding:9px;background:linear-gradient(135deg,var(--rose),var(--rose-dk));color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.4rem;}
+.prod-add:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(200,83,107,.3);}
+
+/* ═══════════════════════════════════════
+   PRODUCT DETAIL OVERLAY
+═══════════════════════════════════════ */
+.pd-overlay{display:none;position:fixed;inset:0;background:rgba(44,24,16,0.6);z-index:500;overflow-y:auto;padding:2rem;backdrop-filter:blur(6px);}
+.pd-overlay.show{display:block;}
+.pd-container{max-width:920px;margin:0 auto;position:relative;}
+.pd-close{position:absolute;top:-15px;right:-15px;background:var(--rose);border:none;color:#fff;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 15px rgba(200,83,107,.4);transition:background .3s;}
+.pd-close:hover{background:var(--rose-dk);}
+.pd-box{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 25px 80px rgba(44,24,16,.25);}
+.pd-top{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:680px){.pd-top{grid-template-columns:1fr;}}
+.pd-media{background:linear-gradient(135deg,var(--cream),var(--cream2));min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;}
+.pd-emoji{font-size:7rem;filter:drop-shadow(0 8px 20px rgba(200,83,107,0.2));}
+.pd-info{padding:2.5rem;}
+.pd-cat-tag{display:inline-block;background:var(--rose-lt);color:var(--rose);font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:30px;margin-bottom:.8rem;}
+.pd-name{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--choco);margin-bottom:.6rem;line-height:1.15;}
+.pd-stars{color:var(--gold);font-size:.9rem;margin-bottom:.8rem;}
+.pd-desc{font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;}
+.pd-price-row{display:flex;align-items:baseline;gap:.8rem;margin-bottom:.5rem;}
+.pd-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--rose);}
+.pd-old-price{font-size:.9rem;color:var(--muted2);text-decoration:line-through;}
+.pd-saving{font-size:.72rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--rose),var(--rose-dk));padding:3px 10px;border-radius:30px;}
+.pd-delivery{background:#F0FDF4;border:1.5px solid rgba(46,204,113,.3);border-radius:10px;padding:.8rem 1rem;font-size:.8rem;color:#1a7a2e;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+.pd-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
+.pd-feat{background:var(--rose-lt);color:var(--rose);font-size:.65rem;font-weight:600;padding:4px 10px;border-radius:20px;border:1px solid rgba(200,83,107,.2);}
+.pd-form-section{background:var(--cream);border-top:2px solid var(--border);padding:2.5rem;}
+.pd-form-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--choco);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;}
+.fg input,.fg select{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--choco);font-family:'Poppins',sans-serif;font-size:.88rem;outline:none;transition:all .3s;}
+.fg input:focus,.fg select:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(200,83,107,.1);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.pay-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.5rem;}
+.pay-opt{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:.8rem .5rem;text-align:center;cursor:pointer;transition:all .3s;font-size:.64rem;font-weight:700;color:var(--muted);}
+.pay-opt.on,.pay-opt:hover{border-color:var(--rose);background:var(--rose-lt);color:var(--rose);}
+.pay-icon{font-size:1.3rem;display:block;margin-bottom:.2rem;}
+.order-summary{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.5rem;}
+.order-summary-row{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);padding:.3rem 0;}
+.order-summary-row.total{font-weight:800;color:var(--choco);font-size:.95rem;border-top:1.5px solid var(--border);margin-top:.4rem;padding-top:.7rem;}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--rose),var(--rose-dk));color:#fff;border:none;padding:16px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 4px 20px rgba(200,83,107,.3);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,83,107,.4);}
+.submit-btn:disabled{opacity:.7;cursor:not-allowed;transform:none;}
+.mandatory-check{background:rgba(200,83,107,.05);border:1.5px solid rgba(200,83,107,.25);border-radius:10px;padding:.9rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:.8rem;}
+.mandatory-check input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--rose);flex-shrink:0;margin-top:2px;}
+.mandatory-check p{font-size:.78rem;color:var(--muted);line-height:1.5;}
+.mandatory-check strong{color:var(--rose);}
+.whatsapp-msg-preview{background:#E7FDE7;border:1.5px solid #b2dfb2;border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.76rem;color:#2a5e2a;display:none;}
+.whatsapp-msg-preview.show{display:block;}
+.warn-unread{background:rgba(200,83,107,.08);border:1.5px solid rgba(200,83,107,.3);border-radius:10px;padding:.7rem 1rem;font-size:.78rem;color:var(--rose);margin-bottom:1rem;display:none;font-weight:600;}
+.warn-unread.show{display:block;}
+
+/* ═══════════════════════════════════════
+   CART DRAWER
+═══════════════════════════════════════ */
+.cart-overlay{display:none;position:fixed;inset:0;background:rgba(44,24,16,.55);z-index:600;backdrop-filter:blur(4px);}
+.cart-overlay.show{display:block;}
+.cart-drawer{position:fixed;top:0;right:-420px;width:420px;max-width:100vw;height:100%;background:#fff;z-index:700;box-shadow:-10px 0 40px rgba(44,24,16,.15);transition:right .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.cart-drawer.open{right:0;}
+.cart-head{padding:1.5rem;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cart-head h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--choco);}
+.cart-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .3s;}
+.cart-close:hover{color:var(--rose);}
+.cart-items{flex:1;overflow-y:auto;padding:1.2rem;}
+.cart-empty{text-align:center;padding:3rem 1rem;color:var(--muted2);}
+.cart-empty-ico{font-size:3rem;display:block;margin-bottom:.8rem;opacity:.4;}
+.cart-item{display:flex;align-items:center;gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--border);}
+.ci-emoji{font-size:2rem;flex-shrink:0;width:48px;height:48px;background:var(--cream);border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.ci-info{flex:1;min-width:0;}
+.ci-name{font-size:.82rem;font-weight:700;color:var(--choco);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ci-price{font-size:.78rem;color:var(--rose);font-weight:700;margin-top:.1rem;}
+.ci-qty{display:flex;align-items:center;gap:.4rem;flex-shrink:0;}
+.qty-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:.8rem;font-weight:800;color:var(--choco);transition:all .3s;display:flex;align-items:center;justify-content:center;}
+.qty-btn:hover{background:var(--rose);border-color:var(--rose);color:#fff;}
+.qty-n{font-size:.82rem;font-weight:800;min-width:18px;text-align:center;}
+.ci-del{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:.9rem;margin-left:.2rem;transition:color .3s;}
+.ci-del:hover{color:var(--rose);}
+.cart-foot{padding:1.2rem;border-top:1.5px solid var(--border);flex-shrink:0;}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.ct-label{font-size:.82rem;color:var(--muted);}
+.ct-amount{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--rose);}
+.cart-checkout-btn{width:100%;background:linear-gradient(135deg,var(--rose),var(--rose-dk));color:#fff;border:none;padding:14px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 15px rgba(200,83,107,.3);}
+.cart-checkout-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,83,107,.4);}
+
+/* ═══════════════════════════════════════
+   FEATURES SECTION
+═══════════════════════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;}
+.feat-card{background:#fff;border-radius:16px;padding:2rem 1.5rem;text-align:center;border:1.5px solid var(--border);box-shadow:var(--shadow);transition:all .3s;}
+.feat-card:hover{border-color:var(--rose);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.feat-ico{width:60px;height:60px;background:var(--rose-lt);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1rem;}
+.feat-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--choco);margin-bottom:.5rem;}
+.feat-text{font-size:.8rem;color:var(--muted);line-height:1.65;}
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.3rem;}
+.testi-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow);transition:all .3s;}
+.testi-card:hover{border-color:var(--rose);transform:translateY(-3px);}
+.testi-stars{color:var(--gold);font-size:.85rem;margin-bottom:.7rem;}
+.testi-text{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:.7rem;}
+.testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--rose-dk));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:.9rem;flex-shrink:0;}
+.testi-name{font-size:.82rem;font-weight:700;color:var(--choco);}
+.testi-loc{font-size:.7rem;color:var(--muted2);}
+
+/* ═══════════════════════════════════════
+   CTA BANNER
+═══════════════════════════════════════ */
+.cta-band{background:linear-gradient(135deg,var(--rose) 0%,var(--rose-dk) 50%,#7B1F35 100%);padding:4rem 6%;text-align:center;position:relative;overflow:hidden;}
+.cta-band::before{content:'✦';position:absolute;top:1rem;left:5%;font-size:3rem;opacity:.1;color:#fff;}
+.cta-band::after{content:'✦';position:absolute;bottom:1rem;right:5%;font-size:5rem;opacity:.08;color:var(--gold);}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);color:#fff;margin-bottom:.8rem;}
+.cta-band p{font-size:.95rem;color:rgba(255,255,255,.8);max-width:500px;margin:0 auto 2rem;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#B8941F);color:var(--choco);padding:14px 30px;border-radius:30px;font-weight:800;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(212,175,55,.4);}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{background:var(--choco);color:#fff;padding:4rem 6% 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:2rem;}}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:#fff;display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;}
+.footer-brand span{background:linear-gradient(135deg,var(--rose),var(--rose-dk));padding:4px 12px;border-radius:6px;font-size:.85rem;}
+.footer-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.5rem;}
+.footer-social{display:flex;gap:.7rem;}
+.social-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.9rem;transition:all .3s;}
+.social-btn:hover{background:var(--rose);}
+.footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .3s;}
+.footer-links a:hover{color:#fff;}
+.footer-contact{font-size:.82rem;color:rgba(255,255,255,.5);line-height:2;}
+.footer-contact strong{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:.75rem;color:rgba(255,255,255,.3);}
+.footer-badge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;}
+
+/* ═══════════════════════════════════════
+   SUCCESS MODAL
+═══════════════════════════════════════ */
+.success-modal{display:none;position:fixed;inset:0;background:rgba(44,24,16,.7);z-index:800;backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.success-modal.show{display:flex;}
+.success-box{background:#fff;border-radius:24px;padding:3rem 2.5rem;max-width:460px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(44,24,16,.3);animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+.success-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--rose),var(--rose-dk));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 1.5rem;box-shadow:0 10px 30px rgba(200,83,107,.35);}
+.success-box h3{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--choco);margin-bottom:.7rem;}
+.success-box p{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;}
+.success-code{background:var(--rose-lt);border:1.5px solid rgba(200,83,107,.3);border-radius:10px;padding:.7rem 1rem;font-size:.85rem;font-weight:700;color:var(--rose);margin-bottom:2rem;}
+
+/* ═══════════════════════════════════════
+   UTILS
+═══════════════════════════════════════ */
+.spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hidden{display:none!important;}
+.loading-overlay{display:none;position:fixed;inset:0;background:rgba(44,24,16,.5);z-index:900;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.loading-overlay.show{display:flex;}
+.loader-box{background:#fff;border-radius:16px;padding:2rem;text-align:center;box-shadow:0 20px 60px rgba(44,24,16,.3);}
+.loader-rose{width:48px;height:48px;border:4px solid var(--rose-lt);border-top-color:var(--rose);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem;}
+.loader-box p{font-size:.85rem;color:var(--muted);font-weight:600;}
+@media(max-width:600px){
+  .frow{grid-template-columns:1fr;}
+  .pay-opts{grid-template-columns:repeat(3,1fr);}
+  section{padding:3.5rem 5%;}
+  nav{top:37px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TICKER ══════════════ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>✨ Livraison offerte à Conakry</span>
+    <span>🌸 Produits 100% Authentiques</span>
+    <span>💳 Paiement à la livraison</span>
+    <span>📦 Livraison sous 24-48h</span>
+    <span>🌺 +500 Clientes Satisfaites</span>
+    <span>💄 Cosmétiques Premium</span>
+    <span>🛍️ Retour facile sous 48h</span>
+    <span>✨ Livraison offerte à Conakry</span>
+    <span>🌸 Produits 100% Authentiques</span>
+    <span>💳 Paiement à la livraison</span>
+    <span>📦 Livraison sous 24-48h</span>
+    <span>🌺 +500 Clientes Satisfaites</span>
+    <span>💄 Cosmétiques Premium</span>
+    <span>🛍️ Retour facile sous 48h</span>
+  </div>
+</div>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="main-nav" role="navigation">
+  <a href="#" class="nav-brand" aria-label="ASMA SHOP AFRIQUE — Accueil">
+    <div class="nav-logo-mark" aria-hidden="true">A</div>
+    <div class="nav-brand-text">
+      <strong>ASMA SHOP</strong>
+      <small>AFRIQUE</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#produits">Boutique</a></li>
+    <li><a href="#beaute">Beauté</a></li>
+    <li><a href="#pourquoi">À propos</a></li>
+    <li><a href="#temoignages">Avis</a></li>
+  </ul>
+  <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Panier">
+    🛍️ Panier
+    <span class="cart-badge" id="cart-count">0</span>
+  </button>
+  <button class="nav-ham" onclick="toggleMobileMenu()" aria-label="Menu">☰</button>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" aria-label="En-tête principal">
+  <div class="hero-blob1" aria-hidden="true"></div>
+  <div class="hero-blob2" aria-hidden="true"></div>
+  <div class="hero-petals" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🌸 Beauté Africaine · Premium</div>
+    <h1>
+      La <span class="accent">Beauté</span><br>
+      au <span class="gold">Féminin</span><br>
+      Livrée Chez Vous
+    </h1>
+    <p class="hero-sub">
+      Cosmétiques, parfums et mode féminine sélectionnés pour la femme africaine moderne.
+      Produits authentiques, livraison rapide partout en Guinée.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-rose" onclick="document.getElementById('produits').scrollIntoView({behavior:'smooth'})">
+        💄 Voir la Boutique
+      </button>
+      <a href="https://wa.me/224621000000?text=Bonjour%20ASMA%20SHOP,%20je%20voudrais%20des%20informations%20sur%20vos%20produits" class="btn-wa" target="_blank" rel="noopener">
+        <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Nous Contacter
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Clientes Heureuses</span></div>
+      <div class="stat"><span class="stat-n">24h</span><span class="stat-l">Livraison Rapide</span></div>
+      <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Authentique</span></div>
+      <div class="stat"><span class="stat-n">4.9★</span><span class="stat-l">Note Moyenne</span></div>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <span>💄</span><span>🌸</span><span>✨</span><span>💍</span><span>🌺</span>
+  </div>
+</section>
+
+<!-- ══════════════ TRUST STRIP ══════════════ -->
+<div class="strip" role="complementary">
+  <div class="strip-item"><span>🚚</span><span>Livraison <strong>OFFERTE</strong> à Conakry</span></div>
+  <div class="strip-item"><span>✅</span><span>Produits <strong>Authentiques</strong> Garantis</span></div>
+  <div class="strip-item"><span>💳</span><span>Paiement <strong>À la Livraison</strong></span></div>
+  <div class="strip-item"><span>🔄</span><span>Retour <strong>Sous 48h</strong></span></div>
+  <div class="strip-item"><span>🌸</span><span>Service <strong>Client 7j/7</strong></span></div>
+</div>
+
+<!-- ══════════════ BOUTIQUE ══════════════ -->
+<section id="produits" aria-label="Catalogue produits">
+  <div class="s-head">
+    <div class="s-label">Notre Sélection</div>
+    <h2 class="s-title">La <span class="accent">Boutique</span> ASMA SHOP</h2>
+    <p class="s-sub">Des produits soigneusement sélectionnés pour sublimer la beauté de la femme africaine.</p>
+  </div>
+
+  <!-- Catégories -->
+  <div class="cat-grid" id="cat-filter" role="tablist">
+    <div class="cat-card active" onclick="filterCat('all')" role="tab" aria-selected="true">
+      <span class="cat-emoji">🛍️</span>
+      <div class="cat-name">Tout voir</div>
+    </div>
+    <div class="cat-card" onclick="filterCat('maquillage')" role="tab">
+      <span class="cat-emoji">💄</span>
+      <div class="cat-name">Maquillage</div>
+    </div>
+    <div class="cat-card" onclick="filterCat('soins-visage')" role="tab">
+      <span class="cat-emoji">🌸</span>
+      <div class="cat-name">Soins Visage</div>
+    </div>
+    <div class="cat-card" onclick="filterCat('soins-corps')" role="tab">
+      <span class="cat-emoji">💆</span>
+      <div class="cat-name">Soins Corps</div>
+    </div>
+    <div class="cat-card" onclick="filterCat('parfums')" role="tab">
+      <span class="cat-emoji">🌺</span>
+      <div class="cat-name">Parfums</div>
+    </div>
+    <div class="cat-card" onclick="filterCat('mode')" role="tab">
+      <span class="cat-emoji">👗</span>
+      <div class="cat-name">Mode Femme</div>
+    </div>
+    <div class="cat-card" onclick="filterCat('bijoux')" role="tab">
+      <span class="cat-emoji">💍</span>
+      <div class="cat-name">Bijoux</div>
+    </div>
+  </div>
+
+  <div class="prod-grid" id="prod-grid" role="list"></div>
+</section>
+
+<!-- ══════════════ PRODUCT DETAIL ══════════════ -->
+<div class="pd-overlay" id="pd-overlay" role="dialog" aria-modal="true" aria-label="Détail produit">
+  <div class="pd-container">
+    <button class="pd-close" onclick="closePD()" aria-label="Fermer">✕</button>
+    <div class="pd-box">
+      <div class="pd-top">
+        <div class="pd-media">
+          <div class="pd-emoji" id="pd-emoji">💄</div>
+        </div>
+        <div class="pd-info">
+          <div class="pd-cat-tag" id="pd-cat">Maquillage</div>
+          <h2 class="pd-name" id="pd-name">Produit</h2>
+          <div class="pd-stars">★★★★★ <span style="color:var(--muted);font-size:.78rem">(124 avis)</span></div>
+          <p class="pd-desc" id="pd-desc">Description du produit.</p>
+          <div class="pd-features" id="pd-features"></div>
+          <div class="pd-price-row">
+            <span class="pd-price" id="pd-price">0 GNF</span>
+            <span class="pd-old-price hidden" id="pd-old"></span>
+            <span class="pd-saving hidden" id="pd-saving"></span>
+          </div>
+          <div class="pd-delivery">🚚 Livraison offerte à Conakry · 24-48h en province</div>
+          <p class="pd-stock-status" id="pd-stock"></p>
+        </div>
+      </div>
+
+      <!-- Formulaire commande -->
+      <div class="pd-form-section">
+        <div class="pd-form-title">🛍️ Commander ce produit</div>
+        <form id="order-form" onsubmit="submitOrder(event)">
+          <input type="hidden" id="f-product-id">
+          <input type="hidden" id="f-product-name">
+          <input type="hidden" id="f-product-price">
+
+          <div class="frow">
+            <div class="fg">
+              <label for="f-fname">Prénom *</label>
+              <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name">
+            </div>
+            <div class="fg">
+              <label for="f-lname">Nom *</label>
+              <input type="text" id="f-lname" placeholder="Votre nom" required autocomplete="family-name">
+            </div>
+          </div>
+          <div class="fg">
+            <label for="f-phone">Téléphone (WhatsApp) *</label>
+            <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="fg">
+            <label for="f-city">Ville de livraison *</label>
+            <select id="f-city" required>
+              <option value="">— Choisissez votre ville —</option>
+              <option value="Conakry - Kaloum">Conakry — Kaloum</option>
+              <option value="Conakry - Ratoma">Conakry — Ratoma</option>
+              <option value="Conakry - Matam">Conakry — Matam</option>
+              <option value="Conakry - Dixinn">Conakry — Dixinn</option>
+              <option value="Conakry - Lambanyi">Conakry — Lambanyi</option>
+              <option value="Kindia">Kindia</option>
+              <option value="Labé">Labé</option>
+              <option value="Kankan">Kankan</option>
+              <option value="Nzérékoré">Nzérékoré</option>
+              <option value="Boké">Boké</option>
+              <option value="Faranah">Faranah</option>
+              <option value="Mamou">Mamou</option>
+              <option value="Autre">Autre ville</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="f-address">Adresse précise</label>
+            <input type="text" id="f-address" placeholder="Quartier, rue, repère..." autocomplete="street-address">
+          </div>
+          <div class="fg">
+            <label for="f-qty">Quantité</label>
+            <select id="f-qty" onchange="updateOrderSummary()">
+              <option value="1">1 unité</option>
+              <option value="2">2 unités</option>
+              <option value="3">3 unités</option>
+              <option value="4">4 unités</option>
+              <option value="5">5 unités</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Mode de paiement *</label>
+            <div class="pay-opts" id="pay-opts">
+              <div class="pay-opt on" onclick="selectPay(this,'Paiement à la livraison')">
+                <span class="pay-icon">💵</span>À la livraison
+              </div>
+              <div class="pay-opt" onclick="selectPay(this,'Orange Money')">
+                <span class="pay-icon">🟠</span>Orange Money
+              </div>
+              <div class="pay-opt" onclick="selectPay(this,'MTN MoMo')">
+                <span class="pay-icon">🟡</span>MTN MoMo
+              </div>
+            </div>
+            <input type="hidden" id="f-payment" value="Paiement à la livraison">
+          </div>
+          <div class="fg">
+            <label for="f-note">Note / Instructions (optionnel)</label>
+            <input type="text" id="f-note" placeholder="Ex: Couleur préférée, taille, variante...">
+          </div>
+
+          <div class="order-summary" id="order-summary">
+            <div class="order-summary-row"><span>Produit</span><span id="os-product">—</span></div>
+            <div class="order-summary-row"><span>Quantité</span><span id="os-qty">1</span></div>
+            <div class="order-summary-row"><span>Livraison</span><span style="color:#2ECC71;font-weight:700">OFFERTE 🎁</span></div>
+            <div class="order-summary-row total"><span>TOTAL</span><span id="os-total">—</span></div>
+          </div>
+
+          <!-- Message WhatsApp obligatoire -->
+          <div class="mandatory-check" id="whatsapp-check-wrap">
+            <input type="checkbox" id="msg-sent-check" onchange="onMsgCheck()">
+            <p>
+              <strong>⚠️ Obligatoire :</strong> Avant de confirmer votre commande, envoyez d'abord ce message à notre WhatsApp :
+              <a id="wa-send-link" href="#" target="_blank" rel="noopener" style="color:var(--rose);font-weight:700;text-decoration:underline;">
+                📲 Envoyer le message WhatsApp
+              </a>
+              <br><small style="opacity:.7">Cochez cette case une fois le message envoyé pour valider votre commande.</small>
+            </p>
+          </div>
+          <div class="warn-unread" id="warn-msg">
+            ⚠️ Merci d'envoyer d'abord le message WhatsApp et de cocher la case ci-dessus.
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <span id="submit-label">✨ Confirmer ma Commande</span>
+            <span id="submit-spin" class="hidden"><span class="spinner"></span></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ POURQUOI NOUS ══════════════ -->
+<section id="pourquoi" class="white">
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Nos Engagements</div>
+    <h2 class="s-title">Pourquoi Choisir <span class="accent">ASMA SHOP</span> ?</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-ico">🌸</div>
+      <div class="feat-title">Produits Authentiques</div>
+      <p class="feat-text">Chaque produit est soigneusement sélectionné et vérifié. Vous recevez uniquement des produits 100% originaux.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico">🚚</div>
+      <div class="feat-title">Livraison Rapide</div>
+      <p class="feat-text">Conakry sous 24h, province sous 48-72h. Votre commande est emballée avec soin avant l'envoi.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico">💳</div>
+      <div class="feat-title">Paiement Flexible</div>
+      <p class="feat-text">Payez à la livraison en espèces, par Orange Money ou MTN MoMo. Aucun risque pour vous.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico">💬</div>
+      <div class="feat-title">Service Client 7j/7</div>
+      <p class="feat-text">Notre équipe est disponible tous les jours via WhatsApp pour répondre à toutes vos questions.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico">🔄</div>
+      <div class="feat-title">Retour Facile</div>
+      <p class="feat-text">Produit non conforme ? Contactez-nous sous 48h. Votre satisfaction est notre priorité absolue.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico">🌺</div>
+      <div class="feat-title">Beauté Africaine</div>
+      <p class="feat-text">Des produits adaptés aux carnations africaines, sélectionnés par et pour les femmes de Guinée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TEMOIGNAGES ══════════════ -->
+<section id="temoignages" class="alt">
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Avis Clients</div>
+    <h2 class="s-title">Elles Parlent de <span class="accent">Nous</span></h2>
+    <p class="s-sub" style="margin:0 auto;">+500 clientes satisfaites dans toute la Guinée 🇬🇳</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"J'ai commandé la crème visage et le parfum Oriental. Livraison en moins de 24h, les produits sont vraiment authentiques. Je recommande vivement !"</p>
+      <div class="testi-author">
+        <div class="testi-av">F</div>
+        <div><div class="testi-name">Fatoumata D.</div><div class="testi-loc">Conakry — Ratoma</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Le rouge à lèvres est magnifique et tient toute la journée. Prix correct et service très professionnel. ASMA SHOP est ma boutique préférée maintenant !"</p>
+      <div class="testi-author">
+        <div class="testi-av">M</div>
+        <div><div class="testi-name">Mariama K.</div><div class="testi-loc">Conakry — Kaloum</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"J'ai pris l'ensemble boubou moderne et les bijoux. Ma famille n'en revenait pas ! Emballage soigné et livraison parfaite jusqu'à Labé."</p>
+      <div class="testi-author">
+        <div class="testi-av">A</div>
+        <div><div class="testi-name">Aissatou B.</div><div class="testi-loc">Labé</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">"Très satisfaite du sérum vitamine C. Mes taches ont vraiment diminué après 3 semaines. Je vais commander à nouveau le mois prochain !"</p>
+      <div class="testi-author">
+        <div class="testi-av">K</div>
+        <div><div class="testi-name">Kadiatou S.</div><div class="testi-loc">Conakry — Dixinn</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Le parfum Oud & Rose est divin ! Très longue tenue. J'ai commandé pour moi et pour offrir à ma mère. Service rapide et emballage cadeau disponible."</p>
+      <div class="testi-author">
+        <div class="testi-av">H</div>
+        <div><div class="testi-name">Hadja T.</div><div class="testi-loc">Kankan</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Excellente boutique ! Le maquillage correspond exactement aux photos. Paiement à la livraison = aucun risque. Je recommande à toutes mes amies."</p>
+      <div class="testi-author">
+        <div class="testi-av">N</div>
+        <div><div class="testi-name">Nènè C.</div><div class="testi-loc">Conakry — Matam</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA BAND ══════════════ -->
+<div class="cta-band">
+  <h2>Prête à vous faire plaisir ? ✨</h2>
+  <p>Découvrez toute notre sélection de cosmétiques et recevez votre commande chez vous en 24h.</p>
+  <button class="btn-gold" onclick="document.getElementById('produits').scrollIntoView({behavior:'smooth'})">
+    🛍️ Commander Maintenant
+  </button>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        ASMA SHOP <span>AFRIQUE</span>
+      </div>
+      <p class="footer-desc">
+        La boutique en ligne dédiée à la beauté de la femme africaine.
+        Cosmétiques authentiques, parfums d'exception et mode féminine livrés chez vous en Guinée.
+      </p>
+      <div class="footer-social">
+        <a href="https://wa.me/224621000000" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+        <a href="#" class="social-btn" aria-label="Facebook">👥</a>
+      </div>
+    </div>
+    <div>
+      <h4>Boutique</h4>
+      <ul class="footer-links">
+        <li><a href="#" onclick="filterCat('maquillage');return false">💄 Maquillage</a></li>
+        <li><a href="#" onclick="filterCat('soins-visage');return false">🌸 Soins Visage</a></li>
+        <li><a href="#" onclick="filterCat('soins-corps');return false">💆 Soins Corps</a></li>
+        <li><a href="#" onclick="filterCat('parfums');return false">🌺 Parfums</a></li>
+        <li><a href="#" onclick="filterCat('mode');return false">👗 Mode Femme</a></li>
+        <li><a href="#" onclick="filterCat('bijoux');return false">💍 Bijoux</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <div>📍 <strong>Conakry, Guinée</strong></div>
+        <div>📞 <strong>+224 621 00 00 00</strong></div>
+        <div>💬 <strong>WhatsApp 7j/7</strong></div>
+        <div>📧 <strong>contact@asmashop.gn</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 ASMA SHOP AFRIQUE — Tous droits réservés</p>
+    <div class="footer-badge">Powered by HelpMeProcess</div>
+  </div>
+</footer>
+
+<!-- ══════════════ CART DRAWER ══════════════ -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Panier">
+  <div class="cart-head">
+    <h3>🛍️ Mon Panier</h3>
+    <button class="cart-close" onclick="toggleCart()" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-container">
+    <div class="cart-empty" id="cart-empty">
+      <span class="cart-empty-ico">🛍️</span>
+      <p style="font-weight:600;color:var(--muted)">Votre panier est vide</p>
+      <p style="font-size:.78rem;margin-top:.4rem">Découvrez notre boutique !</p>
+    </div>
+    <div id="cart-items-list"></div>
+  </div>
+  <div class="cart-foot" id="cart-foot" style="display:none">
+    <div class="cart-total">
+      <div>
+        <div class="ct-label">Total</div>
+        <div class="ct-amount" id="cart-total-amount">0 GNF</div>
+      </div>
+      <div style="font-size:.75rem;color:var(--muted2)">+ Livraison OFFERTE 🎁</div>
+    </div>
+    <button class="cart-checkout-btn" onclick="checkoutCart()">
+      ✨ Commander le Panier
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════ SUCCESS MODAL ══════════════ -->
+<div class="success-modal" id="success-modal" role="alertdialog" aria-modal="true">
+  <div class="success-box">
+    <div class="success-icon">✨</div>
+    <h3>Commande Confirmée !</h3>
+    <p id="success-message">Merci pour votre commande. Notre équipe vous contactera dans les plus brefs délais sur WhatsApp pour confirmer la livraison.</p>
+    <div class="success-code" id="success-code"></div>
+    <button class="btn-rose" onclick="closeSuccess()" style="width:100%;justify-content:center;">
+      Continuer mes achats 🛍️
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════ LOADING ══════════════ -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loader-box">
+    <div class="loader-rose"></div>
+    <p>Traitement de votre commande…</p>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════
+const CONFIG = {
+  whatsappNumber: '224621000000',
+  shopName: 'ASMA SHOP AFRIQUE',
+  webhookUrl: 'https://cod-crm.vercel.app/api/webhook/order',
+  webhookKey: 'ASMA_BOUTIQUE_KEY', // ← À remplacer après création boutique dans le CRM
+};
+
+// ═══════════════════════════════════════════
+// CATALOGUE PRODUITS
+// ═══════════════════════════════════════════
+const PRODUCTS = [
+  // 💄 MAQUILLAGE
+  {
+    id: 'maq-001', emoji: '💄', cat: 'maquillage', catLabel: 'Maquillage',
+    name: 'Rouge à Lèvres Longue Tenue — Mat & Brillant',
+    desc: 'Rouge à lèvres haute pigmentation, formule longue tenue jusqu\'à 12h. Disponible en 8 teintes adaptées aux carnations africaines. Texture veloutée, non desséchante.',
+    price: 85000, oldPrice: 120000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['Longue tenue 12h', 'Non desséchant', '8 teintes', 'Sans paraben'],
+  },
+  {
+    id: 'maq-002', emoji: '🎨', cat: 'maquillage', catLabel: 'Maquillage',
+    name: 'Fond de Teint Couvrant Peau Noire',
+    desc: 'Fond de teint spécialement formulé pour les peaux noires et métissées. Couverture modulable, fini naturel ou satiné. Tient toute la journée sans oxydation.',
+    price: 130000, oldPrice: 180000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['Spécial peau noire', 'Anti-oxydation', 'SPF 20', 'Fini naturel'],
+  },
+  {
+    id: 'maq-003', emoji: '👁️', cat: 'maquillage', catLabel: 'Maquillage',
+    name: 'Palette 18 Ombres à Paupières — Smoky & Nude',
+    desc: 'Palette professionnelle 18 teintes allant du nude naturel au smoky dramatique. Poudre fine ultra-pigmentée, bonne adhérence, longue tenue.',
+    price: 95000, oldPrice: 140000,
+    badge: 'top', stock: true, stars: 4,
+    features: ['18 teintes', 'Ultra-pigmentée', 'Longue tenue', 'Usage pro'],
+  },
+  {
+    id: 'maq-004', emoji: '😍', cat: 'maquillage', catLabel: 'Maquillage',
+    name: 'Mascara Volume Extrême & Allongement',
+    desc: 'Mascara effet volume et allongement extrême. Brosse ergonomique séparant chaque cil. Formule waterproof résistante à la chaleur et à l\'humidité.',
+    price: 70000, oldPrice: null,
+    badge: null, stock: true, stars: 5,
+    features: ['Waterproof', 'Volume × 3', 'Anti-grumeaux', 'Résistant chaleur'],
+  },
+
+  // 🌸 SOINS VISAGE
+  {
+    id: 'vis-001', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
+    name: 'Crème Éclat & Uniformisante Peau Noire',
+    desc: 'Crème de soin spécialement formulée pour éclaircir et unifier le teint des peaux noires sans produits dangereux. Enrichie en niacinamide et vitamine C. Résultats visibles en 2 semaines.',
+    price: 150000, oldPrice: 200000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['Sans mercure', 'Sans hydroquinone', 'Vitamine C', 'Résultats 2 semaines'],
+  },
+  {
+    id: 'vis-002', emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
+    name: 'Sérum Vitamine C Anti-Taches Concentré',
+    desc: 'Sérum haute concentration en vitamine C pure (20%). Efface les taches, unifie le teint, stimule la production de collagène. Texture légère absorption rapide.',
+    price: 190000, oldPrice: 260000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['Vitamine C 20%', 'Anti-taches', 'Anti-âge', 'Absorption rapide'],
+  },
+  {
+    id: 'vis-003', emoji: '🧴', cat: 'soins-visage', catLabel: 'Soins Visage',
+    name: 'Masque Purifiant Argile & Charbon Actif',
+    desc: 'Masque visage à l\'argile blanche et au charbon actif. Désincruste les pores, absorbe l\'excès de sébum, purifie et matifie. Idéal peaux mixtes à grasses.',
+    price: 65000, oldPrice: null,
+    badge: null, stock: true, stars: 4,
+    features: ['Argile blanche', 'Charbon actif', 'Pores resserrés', 'Effet mat'],
+  },
+  {
+    id: 'vis-004', emoji: '💧', cat: 'soins-visage', catLabel: 'Soins Visage',
+    name: 'Huile d\'Argan Pure Bio — Anti-Âge',
+    desc: 'Huile d\'argan 100% pure et certifiée bio du Maroc. Nourrit, répare et illumine la peau. Anti-rides, anti-taches, idéale pour le visage, les cheveux et les ongles.',
+    price: 160000, oldPrice: 210000,
+    badge: 'top', stock: true, stars: 5,
+    features: ['100% pure', 'Certifiée bio', 'Multi-usage', 'Sans conservateur'],
+  },
+
+  // 💆 SOINS CORPS
+  {
+    id: 'cor-001', emoji: '🌸', cat: 'soins-corps', catLabel: 'Soins Corps',
+    name: 'Lait Corporel Hydratant Parfumé — Rose & Vanille',
+    desc: 'Lait corps ultra-nourrissant enrichi en beurre de karité et huile de coco. Hydratation intense 24h, peau soyeuse et lumineuse. Parfum délicat rose et vanille.',
+    price: 120000, oldPrice: 155000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['Beurre de karité', 'Hydratation 24h', 'Peau lumineuse', 'Parfum rose'],
+  },
+  {
+    id: 'cor-002', emoji: '🥥', cat: 'soins-corps', catLabel: 'Soins Corps',
+    name: 'Huile de Coco Naturelle Multi-Usage',
+    desc: 'Huile de coco vierge pressée à froid. Idéale pour la peau, les cheveux et les ongles. Hydrate, nourrit et protège. 100% naturelle, sans additifs.',
+    price: 85000, oldPrice: null,
+    badge: null, stock: true, stars: 5,
+    features: ['Pressée à froid', 'Multi-usage', '100% naturelle', 'Peau & cheveux'],
+  },
+  {
+    id: 'cor-003', emoji: '✨', cat: 'soins-corps', catLabel: 'Soins Corps',
+    name: 'Gommage Corps Café & Sucre de Canne',
+    desc: 'Gommage exfoliant naturel au café et sucre de canne. Élimine les cellules mortes, stimule la circulation, peau douce et lumineuse. Parfum café gourmand.',
+    price: 110000, oldPrice: 145000,
+    badge: 'new', stock: true, stars: 4,
+    features: ['Exfoliant naturel', 'Anti-cellulite', 'Peau lumineuse', 'Parfum café'],
+  },
+
+  // 🌺 PARFUMS
+  {
+    id: 'par-001', emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
+    name: 'Parfum Oriental Rose & Oud — Longue Tenue',
+    desc: 'Parfum oriental de luxe aux notes de rose, oud et musc blanc. Sillage envoûtant, tenue exceptionnelle jusqu\'à 24h. Formule concentrée façon parfumerie du Moyen-Orient.',
+    price: 260000, oldPrice: 350000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['Tenue 24h', 'Notes d\'oud', 'Sillage intense', 'Formule concentrée'],
+  },
+  {
+    id: 'par-002', emoji: '🌸', cat: 'parfums', catLabel: 'Parfums',
+    name: 'Eau de Parfum Fleur de Guinée',
+    desc: 'Fragrance florale créée en hommage à la femme guinéenne. Notes de tête : hibiscus & jasmin. Notes de cœur : rose africaine. Notes de fond : santal & musc doux.',
+    price: 210000, oldPrice: 280000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['Floral oriental', 'Tenue 12h', 'Hibiscus & jasmin', 'Fabriqué en Guinée'],
+  },
+  {
+    id: 'par-003', emoji: '✨', cat: 'parfums', catLabel: 'Parfums',
+    name: 'Brume Parfumée Musc & Vanille — Corps & Cheveux',
+    desc: 'Brume légère pour le corps et les cheveux aux notes douces de musc blanc et vanille bourbon. Peut être utilisée sur vêtements. Rechargeable.',
+    price: 90000, oldPrice: null,
+    badge: null, stock: true, stars: 4,
+    features: ['Corps & cheveux', 'Musc & vanille', 'Léger & frais', 'Rechargeable'],
+  },
+
+  // 👗 MODE FEMME
+  {
+    id: 'mod-001', emoji: '👗', cat: 'mode', catLabel: 'Mode Femme',
+    name: 'Ensemble Boubou Moderne — Tissus Africains',
+    desc: 'Ensemble boubou moderne en tissu africain brodé. Coupe contemporaine alliant tradition et élégance. Tailles disponibles : S, M, L, XL, XXL. Sur commande en différents coloris.',
+    price: 450000, oldPrice: 600000,
+    badge: 'top', stock: true, stars: 5,
+    features: ['Tissu africain', 'Sur mesure', 'Tailles S-XXL', 'Broderie main'],
+  },
+  {
+    id: 'mod-002', emoji: '🌈', cat: 'mode', catLabel: 'Mode Femme',
+    name: 'Robe Wax Africaine — Coupe Moderne',
+    desc: 'Robe en wax authentique africain. Coupe moderne et flatteuse, idéale pour les fêtes, cérémonies ou sorties. Tissu respirant adapté au climat guinéen.',
+    price: 380000, oldPrice: 480000,
+    badge: 'new', stock: true, stars: 4,
+    features: ['Wax authentique', 'Coupe moderne', 'Respirant', 'Pour cérémonies'],
+  },
+
+  // 💍 BIJOUX
+  {
+    id: 'bij-001', emoji: '💍', cat: 'bijoux', catLabel: 'Bijoux',
+    name: 'Parure Collier & Boucles Perles Africaines',
+    desc: 'Parure complète collier + boucles d\'oreilles en perles africaines authentiques. Travail artisanal guinéen. Parfaite pour mariage, baptême ou cérémonie.',
+    price: 120000, oldPrice: 160000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['Artisanal guinéen', 'Perles naturelles', 'Collier + boucles', 'Pour cérémonies'],
+  },
+  {
+    id: 'bij-002', emoji: '✨', cat: 'bijoux', catLabel: 'Bijoux',
+    name: 'Set Bracelet Femme — Or & Plaqué Or',
+    desc: 'Set de 5 bracelets finement travaillés, mélange or jaune et plaqué or rose. Hypoallergéniques, résistants à l\'eau. Idéal cadeau pour toutes les occasions.',
+    price: 75000, oldPrice: 100000,
+    badge: 'new', stock: true, stars: 4,
+    features: ['Set de 5', 'Hypoallergénique', 'Résistant eau', 'Idéal cadeau'],
+  },
+];
+
+// ═══════════════════════════════════════════
+// PANIER
+// ═══════════════════════════════════════════
+let cart = [];
+
+function formatGNF(n) {
+  return Math.round(n).toLocaleString('fr-FR') + ' GNF';
+}
+
+function addToCart(productId) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if (!p) return;
+  const existing = cart.find(x => x.id === productId);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...p, qty: 1 });
+  }
+  updateCartUI();
+  // Flash feedback
+  const btn = document.querySelector(`[data-add="${productId}"]`);
+  if (btn) {
+    btn.textContent = '✓ Ajouté !';
+    btn.style.background = 'linear-gradient(135deg,#2ECC71,#27AE60)';
+    setTimeout(() => {
+      btn.innerHTML = '🛍️ Ajouter au panier';
+      btn.style.background = '';
+    }, 1500);
+  }
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(x => x.id !== productId);
+  updateCartUI();
+}
+
+function changeQty(productId, delta) {
+  const item = cart.find(x => x.id === productId);
+  if (!item) return;
+  item.qty = Math.max(1, item.qty + delta);
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  const count = cart.reduce((s, x) => s + x.qty, 0);
+  document.getElementById('cart-count').textContent = count;
+  document.getElementById('cart-total-amount').textContent = formatGNF(total);
+
+  const list = document.getElementById('cart-items-list');
+  const empty = document.getElementById('cart-empty');
+  const foot = document.getElementById('cart-foot');
+
+  if (cart.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    foot.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  foot.style.display = 'block';
+  list.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="ci-emoji">${item.emoji}</div>
+      <div class="ci-info">
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-price">${formatGNF(item.price)} × ${item.qty} = ${formatGNF(item.price * item.qty)}</div>
+      </div>
+      <div class="ci-qty">
+        <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+        <span class="qty-n">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+      </div>
+      <button class="ci-del" onclick="removeFromCart('${item.id}')" title="Supprimer">✕</button>
+    </div>
+  `).join('');
+}
+
+function toggleCart() {
+  const drawer = document.getElementById('cart-drawer');
+  const overlay = document.getElementById('cart-overlay');
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('show');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+}
+
+function checkoutCart() {
+  if (cart.length === 0) return;
+  toggleCart();
+  // Ouvrir le premier produit pour la commande groupée
+  const first = cart[0];
+  openPD(first.id);
+  // Note: pour le panier complet, on va pré-remplir avec le résumé
+}
+
+// ═══════════════════════════════════════════
+// CATALOGUE UI
+// ═══════════════════════════════════════════
+let currentCat = 'all';
+let currentPdProduct = null;
+
+function renderProducts(cat) {
+  const grid = document.getElementById('prod-grid');
+  const filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+  grid.innerHTML = filtered.map(p => `
+    <div class="prod-card" onclick="openPD('${p.id}')" role="listitem" tabindex="0"
+         onkeypress="if(event.key==='Enter')openPD('${p.id}')">
+      ${p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : p.badge === 'top' ? '⭐ Best-seller' : '🏷️ Promo'}</div>` : ''}
+      <div class="prod-img" aria-hidden="true">
+        ${p.emoji}
+        <div class="stock-dot ${p.stock ? 'stock-ok' : 'stock-no'}"></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">${p.catLabel}</div>
+        <div class="prod-name">${p.name}</div>
+        <div>
+          <span class="prod-price">${formatGNF(p.price)}</span>
+          ${p.oldPrice ? `<span class="prod-old">${formatGNF(p.oldPrice)}</span>` : ''}
+        </div>
+        <button class="prod-add" data-add="${p.id}" onclick="event.stopPropagation();addToCart('${p.id}')">
+          🛍️ Ajouter au panier
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCat(cat) {
+  currentCat = cat;
+  renderProducts(cat);
+  // Update active state
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  const cards = document.querySelectorAll('.cat-card');
+  const idx = ['all','maquillage','soins-visage','soins-corps','parfums','mode','bijoux'].indexOf(cat);
+  if (idx >= 0) cards[idx]?.classList.add('active');
+}
+
+// ═══════════════════════════════════════════
+// PRODUCT DETAIL
+// ═══════════════════════════════════════════
+function openPD(productId) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if (!p) return;
+  currentPdProduct = p;
+
+  document.getElementById('pd-emoji').textContent = p.emoji;
+  document.getElementById('pd-cat').textContent = p.catLabel;
+  document.getElementById('pd-name').textContent = p.name;
+  document.getElementById('pd-desc').textContent = p.desc;
+  document.getElementById('pd-price').textContent = formatGNF(p.price);
+  document.getElementById('pd-stock').innerHTML = p.stock
+    ? '<span style="color:#2ECC71;font-weight:700">✅ En stock — Livraison rapide</span>'
+    : '<span style="color:#E74C3C;font-weight:700">❌ Rupture de stock</span>';
+
+  const oldEl = document.getElementById('pd-old');
+  const savingEl = document.getElementById('pd-saving');
+  if (p.oldPrice) {
+    oldEl.textContent = formatGNF(p.oldPrice);
+    oldEl.classList.remove('hidden');
+    const saving = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
+    savingEl.textContent = `-${saving}%`;
+    savingEl.classList.remove('hidden');
+  } else {
+    oldEl.classList.add('hidden');
+    savingEl.classList.add('hidden');
+  }
+
+  // Features
+  document.getElementById('pd-features').innerHTML = (p.features || [])
+    .map(f => `<span class="pd-feat">✓ ${f}</span>`).join('');
+
+  // Pré-remplir les champs cachés
+  document.getElementById('f-product-id').value = p.id;
+  document.getElementById('f-product-name').value = p.name;
+  document.getElementById('f-product-price').value = p.price;
+
+  // Reset form
+  document.getElementById('order-form').reset();
+  document.getElementById('f-product-id').value = p.id;
+  document.getElementById('f-product-name').value = p.name;
+  document.getElementById('f-product-price').value = p.price;
+  document.getElementById('f-payment').value = 'Paiement à la livraison';
+  document.querySelectorAll('.pay-opt').forEach((o, i) => {
+    o.classList.toggle('on', i === 0);
+  });
+  document.getElementById('msg-sent-check').checked = false;
+  document.getElementById('warn-msg').classList.remove('show');
+  document.getElementById('whatsapp-msg-preview').classList?.remove('show');
+
+  updateOrderSummary();
+
+  document.getElementById('pd-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+  // Autofocus sur prénom
+  setTimeout(() => document.getElementById('f-fname')?.focus(), 200);
+}
+
+function closePD() {
+  document.getElementById('pd-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('pd-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closePD();
+});
+
+function selectPay(el, value) {
+  document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('f-payment').value = value;
+}
+
+function updateOrderSummary() {
+  const p = currentPdProduct;
+  if (!p) return;
+  const qty = parseInt(document.getElementById('f-qty').value) || 1;
+  const total = p.price * qty;
+  document.getElementById('os-product').textContent = p.name.length > 30
+    ? p.name.substring(0, 30) + '…' : p.name;
+  document.getElementById('os-qty').textContent = qty + ' unité' + (qty > 1 ? 's' : '');
+  document.getElementById('os-total').textContent = formatGNF(total);
+
+  // Mise à jour lien WhatsApp obligatoire
+  updateWALink();
+}
+
+function updateWALink() {
+  const p = currentPdProduct;
+  if (!p) return;
+  const fname = document.getElementById('f-fname').value || '[Prénom]';
+  const qty = parseInt(document.getElementById('f-qty').value) || 1;
+  const city = document.getElementById('f-city').value || '[Ville]';
+  const total = p.price * qty;
+  const msg = `Bonjour ASMA SHOP 🌸\nJe souhaite commander :\n\n` +
+    `• ${p.name}\n` +
+    `• Quantité : ${qty}\n` +
+    `• Total : ${formatGNF(total)}\n` +
+    `• Ville : ${city}\n\n` +
+    `Merci de confirmer la disponibilité.`;
+  document.getElementById('wa-send-link').href =
+    `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+}
+
+document.getElementById('f-fname').addEventListener('input', updateWALink);
+document.getElementById('f-city').addEventListener('change', updateWALink);
+
+function onMsgCheck() {
+  const checked = document.getElementById('msg-sent-check').checked;
+  document.getElementById('warn-msg').classList.toggle('show', !checked && false);
+  document.getElementById('submit-btn').disabled = false;
+}
+
+// ═══════════════════════════════════════════
+// COMMANDE — WEBHOOK CRM
+// ═══════════════════════════════════════════
+async function submitOrder(e) {
+  e.preventDefault();
+
+  const msgSent = document.getElementById('msg-sent-check').checked;
+  if (!msgSent) {
+    document.getElementById('warn-msg').classList.add('show');
+    document.getElementById('warn-msg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const p = currentPdProduct;
+  if (!p) return;
+
+  const fname  = document.getElementById('f-fname').value.trim();
+  const lname  = document.getElementById('f-lname').value.trim();
+  const phone  = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
+  const city   = document.getElementById('f-city').value;
+  const addr   = document.getElementById('f-address').value.trim();
+  const qty    = parseInt(document.getElementById('f-qty').value) || 1;
+  const payment= document.getElementById('f-payment').value;
+  const note   = document.getElementById('f-note').value.trim();
+  const total  = p.price * qty;
+
+  // Afficher loading
+  document.getElementById('loading-overlay').classList.add('show');
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('submit-label').classList.add('hidden');
+  document.getElementById('submit-spin').classList.remove('hidden');
+
+  const payload = {
+    webhookKey: CONFIG.webhookKey,
+    customer: {
+      fullName: `${fname} ${lname}`,
+      phone,
+      city,
+      address: addr || null,
+    },
+    items: [{ productName: p.name, quantity: qty, unitPrice: p.price }],
+    totalAmount: total,
+    paymentMethod: payment,
+    notes: note || null,
+    source: 'asmashop-web',
+  };
+
+  try {
+    const res = await fetch(CONFIG.webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    document.getElementById('loading-overlay').classList.remove('show');
+
+    if (res.ok && data.orderCode) {
+      // Succès
+      closePD();
+      document.getElementById('success-code').innerHTML =
+        `🎀 Code commande : <strong>${data.orderCode}</strong>`;
+      document.getElementById('success-message').textContent =
+        `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sous peu sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
+      document.getElementById('success-modal').classList.add('show');
+      trackOrder(p, qty, total, phone);
+    } else {
+      throw new Error(data.error || 'Erreur serveur');
+    }
+  } catch (err) {
+    document.getElementById('loading-overlay').classList.remove('show');
+    document.getElementById('submit-btn').disabled = false;
+    document.getElementById('submit-label').classList.remove('hidden');
+    document.getElementById('submit-spin').classList.add('hidden');
+
+    // Fallback WhatsApp
+    const fname2 = document.getElementById('f-fname').value.trim();
+    const msg = `🌸 *NOUVELLE COMMANDE — ASMA SHOP*\n\n` +
+      `👤 Client: ${fname2} ${document.getElementById('f-lname').value.trim()}\n` +
+      `📞 Téléphone: ${phone}\n` +
+      `📍 Ville: ${city}\n` +
+      `📦 Produit: ${p.name}\n` +
+      `🔢 Quantité: ${qty}\n` +
+      `💰 Total: ${formatGNF(total)}\n` +
+      `💳 Paiement: ${payment}\n` +
+      `${note ? `📝 Note: ${note}` : ''}`;
+    window.open(
+      `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`,
+      '_blank', 'noopener'
+    );
+  }
+}
+
+function closeSuccess() {
+  document.getElementById('success-modal').classList.remove('show');
+}
+
+// ═══════════════════════════════════════════
+// ANALYTICS
+// ═══════════════════════════════════════════
+function trackOrder(product, qty, total, phone) {
+  try {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'purchase', {
+        transaction_id: `ASMA-${Date.now()}`,
+        value: total / 1000,
+        currency: 'GNF',
+        items: [{ item_id: product.id, item_name: product.name, quantity: qty, price: product.price / 1000 }],
+      });
+    }
+    // Returning customer detection
+    const prev = localStorage.getItem('asma_last_order_phone');
+    if (prev === phone) {
+      localStorage.setItem('asma_returning', 'true');
+    } else {
+      localStorage.setItem('asma_last_order_phone', phone);
+    }
+  } catch (e) {}
+}
+
+// ═══════════════════════════════════════════
+// RETURNING CUSTOMER
+// ═══════════════════════════════════════════
+document.getElementById('f-fname').addEventListener('blur', function() {
+  const returning = localStorage.getItem('asma_returning') === 'true';
+  if (returning && this.value.trim()) {
+    const banner = document.createElement('div');
+    banner.style.cssText = 'background:var(--rose-lt);border:1px solid rgba(200,83,107,.3);border-radius:8px;padding:.6rem .9rem;font-size:.78rem;color:var(--rose);font-weight:600;margin-top:.4rem;';
+    banner.textContent = `👋 Bon retour ${this.value.trim()} ! Heureuse de vous revoir chez ASMA SHOP 🌸`;
+    const existing = this.parentNode.querySelector('.return-banner');
+    if (!existing) {
+      banner.className = 'return-banner';
+      this.parentNode.appendChild(banner);
+      setTimeout(() => banner.remove(), 5000);
+    }
+  }
+});
+
+// ═══════════════════════════════════════════
+// PHONE FORMATTING
+// ═══════════════════════════════════════════
+document.getElementById('f-phone').addEventListener('input', function() {
+  const raw = this.value.replace(/\D/g, '').substring(0, 9);
+  if (raw.length > 3 && raw.length <= 5) {
+    this.value = raw.slice(0, 3) + ' ' + raw.slice(3);
+  } else if (raw.length > 5 && raw.length <= 7) {
+    this.value = raw.slice(0, 3) + ' ' + raw.slice(3, 5) + ' ' + raw.slice(5);
+  } else if (raw.length > 7) {
+    this.value = raw.slice(0, 3) + ' ' + raw.slice(3, 5) + ' ' + raw.slice(5, 7) + ' ' + raw.slice(7);
+  } else {
+    this.value = raw;
+  }
+});
+
+// ═══════════════════════════════════════════
+// NAV SCROLL
+// ═══════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+function toggleMobileMenu() {
+  const links = document.querySelector('.nav-links');
+  if (!links) return;
+  const isOpen = links.style.display === 'flex';
+  links.style.display = isOpen ? '' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '76px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = '#fff';
+  links.style.padding = '1rem 5%';
+  links.style.borderBottom = '1.5px solid var(--border)';
+  links.style.zIndex = '280';
+}
+
+// ESC key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closePD();
+    if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
+  }
+});
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+renderProducts('all');
+updateCartUI();
+</script>
+</body>
+</html>
