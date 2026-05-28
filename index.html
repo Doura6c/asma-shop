@@ -1435,8 +1435,8 @@ function openPD(productId) {
     o.classList.toggle('on', i === 0);
   });
   document.getElementById('msg-sent-check').checked = false;
-  document.getElementById('warn-msg').classList.remove('show');
-  document.getElementById('whatsapp-msg-preview').classList?.remove('show');
+  document.getElementById('warn-msg')?.classList.remove('show');
+  document.getElementById('whatsapp-msg-preview')?.classList.remove('show');
 
   updateOrderSummary();
 
