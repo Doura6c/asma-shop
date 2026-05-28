@@ -1788,7 +1788,8 @@ function openPD(productId) {
   document.querySelectorAll('.pay-opt').forEach((o, i) => {
     o.classList.toggle('on', i === 0);
   });
-  document.getElementById('msg-sent-check').checked = false;
+  const _chk = document.getElementById('msg-sent-check');
+  if (_chk) _chk.checked = false;
   document.getElementById('warn-msg')?.classList.remove('show');
   document.getElementById('whatsapp-msg-preview')?.classList.remove('show');
 
@@ -1926,8 +1927,8 @@ function updateWALink() {
     `• Total : ${formatGNF(total)}\n` +
     `• Ville : ${city}\n\n` +
     `Merci de confirmer la disponibilité.`;
-  document.getElementById('wa-send-link').href =
-    `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  const _waLink = document.getElementById('wa-send-link');
+  if (_waLink) _waLink.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
 }
 
 document.getElementById('f-fname').addEventListener('input', updateWALink);
