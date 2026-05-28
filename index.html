@@ -15,7 +15,7 @@
 <meta name="keywords" content="ASMA SHOP, savon argan Guinée, savon lait chameau, cosmétiques naturels Conakry, beauté africaine, savon citron, parfum homme femme Guinée, livraison Conakry">
 <meta name="author" content="ASMA SHOP AFRIQUE">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://asmashop.gn/">
+<link rel="canonical" href="https://asma-shop.vercel.app/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="ASMA SHOP AFRIQUE">
 <meta property="og:title" content="ASMA SHOP AFRIQUE — La beauté africaine, livrée chez vous 🌸">
 <meta property="og:description" content="Cosmétiques premium, parfums & mode féminine. Livraison rapide en Guinée. Paiement à la livraison.">
-<meta property="og:url" content="https://asmashop.gn/">
+<meta property="og:url" content="https://asma-shop.vercel.app/">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -49,8 +49,8 @@
 {
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"Organization","@id":"https://asmashop.gn/#org","name":"ASMA SHOP AFRIQUE","url":"https://asmashop.gn/","slogan":"La beauté africaine, livrée chez vous"},
-    {"@type":"OnlineStore","@id":"https://asmashop.gn/#store","name":"ASMA SHOP AFRIQUE","url":"https://asmashop.gn/","telephone":"+212646702039","priceRange":"65 000 - 450 000 GNF","currenciesAccepted":"GNF","paymentAccepted":"Cash, Orange Money","address":{"@type":"PostalAddress","addressLocality":"Conakry","addressCountry":"GN"},"areaServed":{"@type":"Country","name":"Guinée"}}
+    {"@type":"Organization","@id":"https://asma-shop.vercel.app/#org","name":"ASMA SHOP AFRIQUE","url":"https://asma-shop.vercel.app/","slogan":"La beauté africaine, livrée chez vous"},
+    {"@type":"OnlineStore","@id":"https://asma-shop.vercel.app/#store","name":"ASMA SHOP AFRIQUE","url":"https://asma-shop.vercel.app/","telephone":"+212646702039","priceRange":"65 000 - 450 000 GNF","currenciesAccepted":"GNF","paymentAccepted":"Cash, Orange Money","address":{"@type":"PostalAddress","addressLocality":"Conakry","addressCountry":"GN"},"areaServed":{"@type":"Country","name":"Guinée"}}
   ]
 }
 </script>
@@ -484,6 +484,15 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
+/* ORDER ACTIONS — deux boutons */
+.order-actions{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem;}
+@media(max-width:480px){.order-actions{grid-template-columns:1fr;}}
+.btn-wa-order{background:#25D366;color:#fff;border:none;padding:14px;border-radius:6px;font-family:'Raleway',sans-serif;font-size:.82rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .3s;letter-spacing:.5px;}
+.btn-wa-order:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,.3);}
+/* PRODUCT IMAGES */
+.prod-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.prod-card:hover .prod-img img{transform:scale(1.05);}
+.pd-media img{width:100%;height:100%;object-fit:cover;border-radius:0;}
 .om-instructions{background:rgba(255,94,20,.06);border:1px solid rgba(255,94,20,.25);border-radius:8px;padding:.9rem 1rem;margin-top:.7rem;font-size:.77rem;color:#C44A00;line-height:1.7;}
 .om-instructions .om-number{font-size:1rem;font-weight:800;color:#C44A00;margin:.3rem 0;letter-spacing:1px;}
 .om-instructions .om-number span{font-size:.72rem;font-weight:600;opacity:.75;}
@@ -804,8 +813,8 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <!-- Instructions Orange Money (affiché quand sélectionné) -->
             <div id="om-instructions" class="om-instructions" style="display:none;">
               <p>📲 Envoyez le montant de votre commande au :</p>
-              <p class="om-number">622 00 00 00 <span>(Orange Money — ASMA SHOP)</span></p>
-              <p>Puis mentionnez dans la note ci-dessus la référence de votre paiement.</p>
+              <p class="om-number">+212 646 702 039 <span>(WhatsApp ASMA SHOP)</span></p>
+              <p>Envoyez-nous votre capture de paiement sur WhatsApp et mentionnez votre nom dans la note.</p>
             </div>
           </div>
           <div class="fg">
@@ -820,25 +829,20 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <div class="order-summary-row total"><span>TOTAL</span><span id="os-total">—</span></div>
           </div>
 
-          <!-- Message WhatsApp obligatoire -->
-          <div class="mandatory-check" id="whatsapp-check-wrap">
-            <input type="checkbox" id="msg-sent-check" onchange="onMsgCheck()">
-            <p>
-              <strong>⚠️ Obligatoire :</strong> Avant de confirmer votre commande, envoyez d'abord ce message à notre WhatsApp :
-              <a id="wa-send-link" href="#" target="_blank" rel="noopener" style="color:var(--rose);font-weight:700;text-decoration:underline;">
-                📲 Envoyer le message WhatsApp
-              </a>
-              <br><small style="opacity:.7">Cochez cette case une fois le message envoyé pour valider votre commande.</small>
-            </p>
+          <!-- Deux options de commande -->
+          <div class="order-actions">
+            <button type="button" class="btn-wa-order" onclick="commanderWhatsApp()">
+              <svg width="15" height="15" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Envoyer sur WhatsApp
+            </button>
+            <button type="button" class="submit-btn" id="submit-btn" onclick="submitOrder()">
+              <span id="submit-label">✅ Confirmer & Enregistrer</span>
+              <span id="submit-spin" class="hidden"><span class="spinner"></span></span>
+            </button>
           </div>
-          <div class="warn-unread" id="warn-msg">
-            ⚠️ Merci d'envoyer d'abord le message WhatsApp et de cocher la case ci-dessus.
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span id="submit-label">✨ Confirmer ma Commande</span>
-            <span id="submit-spin" class="hidden"><span class="spinner"></span></span>
-          </button>
+          <p style="font-size:.68rem;color:var(--text-3);text-align:center;margin-top:.6rem;">
+            WhatsApp = réponse immédiate · Enregistrer = confirmation par appel sous 2h
+          </p>
         </form>
       </div>
     </div>
@@ -997,9 +1001,9 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <h4>Contact</h4>
       <div class="footer-contact">
         <div>📍 <strong>Conakry, Guinée</strong></div>
-        <div>📞 <strong>+224 621 00 00 00</strong></div>
-        <div>💬 <strong>WhatsApp 7j/7</strong></div>
-        <div>📧 <strong>contact@asmashop.gn</strong></div>
+        <div>📞 <strong>+212 646 702 039</strong></div>
+        <div>💬 <a href="https://wa.me/212646702039" style="color:inherit;text-decoration:none;"><strong>WhatsApp 7j/7</strong></a></div>
+        <div>📧 <strong>asmashopafrique@gmail.com</strong></div>
       </div>
     </div>
   </div>
@@ -1131,7 +1135,7 @@ const CONFIG = {
 const PRODUCTS = [
   // 💄 MAQUILLAGE
   {
-    id: 'maq-001', emoji: '💄', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-001', emoji: '💄', image: 'https://images.unsplash.com/photo-1631214524020-3c69b3b0ebe0?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Rouge à Lèvres Longue Tenue — Mat & Brillant',
     desc: 'Rouge à lèvres haute pigmentation, formule longue tenue jusqu\'à 12h. Disponible en 8 teintes adaptées aux carnations africaines. Texture veloutée, non desséchante.',
     price: 85000, oldPrice: 120000,
@@ -1139,7 +1143,7 @@ const PRODUCTS = [
     features: ['Longue tenue 12h', 'Non desséchant', '8 teintes', 'Sans paraben'],
   },
   {
-    id: 'maq-002', emoji: '🎨', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-002', emoji: '🎨', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Fond de Teint Couvrant Peau Noire',
     desc: 'Fond de teint spécialement formulé pour les peaux noires et métissées. Couverture modulable, fini naturel ou satiné. Tient toute la journée sans oxydation.',
     price: 130000, oldPrice: 180000,
@@ -1147,7 +1151,7 @@ const PRODUCTS = [
     features: ['Spécial peau noire', 'Anti-oxydation', 'SPF 20', 'Fini naturel'],
   },
   {
-    id: 'maq-003', emoji: '👁️', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-003', emoji: '👁️', image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Palette 18 Ombres à Paupières — Smoky & Nude',
     desc: 'Palette professionnelle 18 teintes allant du nude naturel au smoky dramatique. Poudre fine ultra-pigmentée, bonne adhérence, longue tenue.',
     price: 95000, oldPrice: 140000,
@@ -1155,7 +1159,7 @@ const PRODUCTS = [
     features: ['18 teintes', 'Ultra-pigmentée', 'Longue tenue', 'Usage pro'],
   },
   {
-    id: 'maq-004', emoji: '😍', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-004', emoji: '😍', image: 'https://images.unsplash.com/photo-1631214500004-0c1dea0e1c61?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Mascara Volume Extrême & Allongement',
     desc: 'Mascara effet volume et allongement extrême. Brosse ergonomique séparant chaque cil. Formule waterproof résistante à la chaleur et à l\'humidité.',
     price: 70000, oldPrice: null,
@@ -1165,7 +1169,7 @@ const PRODUCTS = [
 
   // 🌸 SOINS VISAGE
   {
-    id: 'vis-001', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-001', image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&q=80', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Crème Éclat & Uniformisante Peau Noire',
     desc: 'Crème de soin spécialement formulée pour éclaircir et unifier le teint des peaux noires sans produits dangereux. Enrichie en niacinamide et vitamine C. Résultats visibles en 2 semaines.',
     price: 150000, oldPrice: 200000,
@@ -1173,7 +1177,7 @@ const PRODUCTS = [
     features: ['Sans mercure', 'Sans hydroquinone', 'Vitamine C', 'Résultats 2 semaines'],
   },
   {
-    id: 'vis-002', emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-002', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80', emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Sérum Vitamine C Anti-Taches Concentré',
     desc: 'Sérum haute concentration en vitamine C pure (20%). Efface les taches, unifie le teint, stimule la production de collagène. Texture légère absorption rapide.',
     price: 190000, oldPrice: 260000,
@@ -1181,7 +1185,7 @@ const PRODUCTS = [
     features: ['Vitamine C 20%', 'Anti-taches', 'Anti-âge', 'Absorption rapide'],
   },
   {
-    id: 'vis-003', emoji: '🧴', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-003', image: 'https://images.unsplash.com/photo-1552489329-f576b5a86b11?w=400&q=80', emoji: '🧴', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Masque Purifiant Argile & Charbon Actif',
     desc: 'Masque visage à l\'argile blanche et au charbon actif. Désincruste les pores, absorbe l\'excès de sébum, purifie et matifie. Idéal peaux mixtes à grasses.',
     price: 65000, oldPrice: null,
@@ -1189,7 +1193,7 @@ const PRODUCTS = [
     features: ['Argile blanche', 'Charbon actif', 'Pores resserrés', 'Effet mat'],
   },
   {
-    id: 'vis-004', emoji: '💧', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-004', image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80', emoji: '💧', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Huile d\'Argan Pure Bio — Anti-Âge',
     desc: 'Huile d\'argan 100% pure et certifiée bio du Maroc. Nourrit, répare et illumine la peau. Anti-rides, anti-taches, idéale pour le visage, les cheveux et les ongles.',
     price: 160000, oldPrice: 210000,
@@ -1199,7 +1203,7 @@ const PRODUCTS = [
 
   // 💆 SOINS CORPS
   {
-    id: 'cor-001', emoji: '🌸', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-001', image: 'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400&q=80', emoji: '🌸', cat: 'soins-corps', catLabel: 'Soins Corps',
     name: 'Lait Corporel Hydratant Parfumé — Rose & Vanille',
     desc: 'Lait corps ultra-nourrissant enrichi en beurre de karité et huile de coco. Hydratation intense 24h, peau soyeuse et lumineuse. Parfum délicat rose et vanille.',
     price: 120000, oldPrice: 155000,
@@ -1207,7 +1211,7 @@ const PRODUCTS = [
     features: ['Beurre de karité', 'Hydratation 24h', 'Peau lumineuse', 'Parfum rose'],
   },
   {
-    id: 'cor-002', emoji: '🥥', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-002', image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80', emoji: '🥥', cat: 'soins-corps', catLabel: 'Soins Corps',
     name: 'Huile de Coco Naturelle Multi-Usage',
     desc: 'Huile de coco vierge pressée à froid. Idéale pour la peau, les cheveux et les ongles. Hydrate, nourrit et protège. 100% naturelle, sans additifs.',
     price: 85000, oldPrice: null,
@@ -1215,7 +1219,7 @@ const PRODUCTS = [
     features: ['Pressée à froid', 'Multi-usage', '100% naturelle', 'Peau & cheveux'],
   },
   {
-    id: 'cor-003', emoji: '✨', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-003', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80', emoji: '✨', cat: 'soins-corps', catLabel: 'Soins Corps',
     name: 'Gommage Corps Café & Sucre de Canne',
     desc: 'Gommage exfoliant naturel au café et sucre de canne. Élimine les cellules mortes, stimule la circulation, peau douce et lumineuse. Parfum café gourmand.',
     price: 110000, oldPrice: 145000,
@@ -1225,7 +1229,7 @@ const PRODUCTS = [
 
   // 🌺 PARFUMS
   {
-    id: 'par-001', emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-001', image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=400&q=80', emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
     name: 'Parfum Oriental Rose & Oud — Longue Tenue',
     desc: 'Parfum oriental de luxe aux notes de rose, oud et musc blanc. Sillage envoûtant, tenue exceptionnelle jusqu\'à 24h. Formule concentrée façon parfumerie du Moyen-Orient.',
     price: 260000, oldPrice: 350000,
@@ -1233,7 +1237,7 @@ const PRODUCTS = [
     features: ['Tenue 24h', 'Notes d\'oud', 'Sillage intense', 'Formule concentrée'],
   },
   {
-    id: 'par-002', emoji: '🌸', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-002', image: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=400&q=80', emoji: '🌸', cat: 'parfums', catLabel: 'Parfums',
     name: 'Eau de Parfum Fleur de Guinée',
     desc: 'Fragrance florale créée en hommage à la femme guinéenne. Notes de tête : hibiscus & jasmin. Notes de cœur : rose africaine. Notes de fond : santal & musc doux.',
     price: 210000, oldPrice: 280000,
@@ -1241,7 +1245,7 @@ const PRODUCTS = [
     features: ['Floral oriental', 'Tenue 12h', 'Hibiscus & jasmin', 'Fabriqué en Guinée'],
   },
   {
-    id: 'par-003', emoji: '✨', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-003', image: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&q=80', emoji: '✨', cat: 'parfums', catLabel: 'Parfums',
     name: 'Brume Parfumée Musc & Vanille — Corps & Cheveux',
     desc: 'Brume légère pour le corps et les cheveux aux notes douces de musc blanc et vanille bourbon. Peut être utilisée sur vêtements. Rechargeable.',
     price: 90000, oldPrice: null,
@@ -1251,7 +1255,7 @@ const PRODUCTS = [
 
   // 👗 MODE FEMME
   {
-    id: 'mod-001', emoji: '👗', cat: 'mode', catLabel: 'Mode Femme',
+    id: 'mod-001', image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=400&q=80', emoji: '👗', cat: 'mode', catLabel: 'Mode Femme',
     name: 'Ensemble Boubou Moderne — Tissus Africains',
     desc: 'Ensemble boubou moderne en tissu africain brodé. Coupe contemporaine alliant tradition et élégance. Tailles disponibles : S, M, L, XL, XXL. Sur commande en différents coloris.',
     price: 450000, oldPrice: 600000,
@@ -1259,7 +1263,7 @@ const PRODUCTS = [
     features: ['Tissu africain', 'Sur mesure', 'Tailles S-XXL', 'Broderie main'],
   },
   {
-    id: 'mod-002', emoji: '🌈', cat: 'mode', catLabel: 'Mode Femme',
+    id: 'mod-002', image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80', emoji: '🌈', cat: 'mode', catLabel: 'Mode Femme',
     name: 'Robe Wax Africaine — Coupe Moderne',
     desc: 'Robe en wax authentique africain. Coupe moderne et flatteuse, idéale pour les fêtes, cérémonies ou sorties. Tissu respirant adapté au climat guinéen.',
     price: 380000, oldPrice: 480000,
@@ -1269,7 +1273,7 @@ const PRODUCTS = [
 
   // 🧼 SAVONS NATURELS
   {
-    id: 'sav-001', emoji: '🧼', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-001', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80', emoji: '🧼', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon à l\'Huile d\'Argan Pur — Éclat & Nutrition',
     desc: 'Savon artisanal enrichi en huile d\'argan du Maroc. Nettoie en douceur, nourrit et illumine la peau. Convient à tous types de peau, visage et corps. Fabriqué sans sulfates ni parabens.',
     price: 35000, oldPrice: 50000,
@@ -1277,7 +1281,7 @@ const PRODUCTS = [
     features: ['Huile d\'argan pure', 'Visage & corps', 'Sans sulfates', 'Tous types de peau'],
   },
   {
-    id: 'sav-002', emoji: '🐪', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-002', image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80', emoji: '🐪', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Lait de Chameau — Anti-Âge & Hydratation',
     desc: 'Savon premium au lait de chameau frais. Riche en vitamines A, B, C et en acides gras. Hydrate intensément, réduit les rides, unifie le teint. Résultats visibles en 2 semaines.',
     price: 45000, oldPrice: 65000,
@@ -1285,7 +1289,7 @@ const PRODUCTS = [
     features: ['Lait de chameau frais', 'Anti-âge', 'Vitamines A B C', 'Résultats 2 semaines'],
   },
   {
-    id: 'sav-003', emoji: '🌿', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-003', image: 'https://images.unsplash.com/photo-1556760544-74068565f05c?w=400&q=80', emoji: '🌿', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon à la Résine Naturelle — Purifiant & Antiseptique',
     desc: 'Savon traditionnel africain à la résine naturelle. Propriétés purifiantes et antiseptiques puissantes. Élimine les impuretés, combat l\'acné, assainit la peau en profondeur. Recette ancestrale.',
     price: 30000, oldPrice: null,
@@ -1293,7 +1297,7 @@ const PRODUCTS = [
     features: ['Résine naturelle', 'Anti-acné', 'Antiseptique', 'Recette ancestrale'],
   },
   {
-    id: 'sav-004', emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-004', image: 'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=400&q=80', emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Citron Africain — Éclat & Anti-Taches',
     desc: 'Savon naturel au citron africain riche en vitamine C. Efface progressivement les taches, unifie et illumine le teint. Action exfoliante douce. Convient à toutes les carnations.',
     price: 28000, oldPrice: 40000,
@@ -1591,8 +1595,8 @@ function renderProducts(cat) {
     <div class="prod-card" onclick="openPD('${p.id}')" role="listitem" tabindex="0"
          onkeypress="if(event.key==='Enter')openPD('${p.id}')">
       ${p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : p.badge === 'top' ? '⭐ Best-seller' : '🏷️ Promo'}</div>` : ''}
-      <div class="prod-img" aria-hidden="true">
-        ${p.emoji}
+      <div class="prod-img">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : p.emoji}
         <div class="stock-dot ${p.stock ? 'stock-ok' : 'stock-no'}"></div>
       </div>
       <div class="prod-body">
@@ -1628,7 +1632,13 @@ function openPD(productId) {
   if (!p) return;
   currentPdProduct = p;
 
-  document.getElementById('pd-emoji').textContent = p.emoji;
+  const pdMedia = document.querySelector('.pd-media');
+  if (p.image) {
+    pdMedia.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:0;">`;
+  } else {
+    pdMedia.innerHTML = `<div class="pd-emoji" id="pd-emoji">${p.emoji}</div>`;
+  }
+  document.getElementById('pd-emoji') && (document.getElementById('pd-emoji').textContent = p.emoji);
   document.getElementById('pd-cat').textContent = p.catLabel;
   document.getElementById('pd-name').textContent = p.name;
   document.getElementById('pd-desc').textContent = p.desc;
@@ -1800,25 +1810,48 @@ function updateWALink() {
 document.getElementById('f-fname').addEventListener('input', updateWALink);
 document.getElementById('f-city').addEventListener('change', updateWALink);
 
-function onMsgCheck() {
-  const checked = document.getElementById('msg-sent-check').checked;
-  document.getElementById('warn-msg').classList.toggle('show', !checked && false);
-  document.getElementById('submit-btn').disabled = false;
+// ═══════════════════════════════════════════
+// COMMANDE — WHATSAPP DIRECT
+// ═══════════════════════════════════════════
+function commanderWhatsApp() {
+  const p = currentPdProduct;
+  if (!p) return;
+
+  const fname   = document.getElementById('f-fname').value.trim();
+  const lname   = document.getElementById('f-lname').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
+  const city    = document.getElementById('f-city').value;
+  const addr    = document.getElementById('f-address').value.trim();
+  const qty     = parseInt(document.getElementById('f-qty').value) || 1;
+  const payment = document.getElementById('f-payment').value;
+  const note    = document.getElementById('f-note').value.trim();
+  const delivery = getDeliveryCost(city, p.price * qty);
+  const total   = p.price * qty + delivery;
+
+  if (!fname || !phone) {
+    alert('Veuillez entrer votre prénom et votre numéro de téléphone.');
+    document.getElementById('f-fname').focus();
+    return;
+  }
+
+  const msg = `🌸 *NOUVELLE COMMANDE — ASMA SHOP AFRIQUE*\n\n` +
+    `👤 *Client :* ${fname} ${lname}\n` +
+    `📞 *Téléphone :* ${phone}\n` +
+    `📍 *Ville :* ${city}${addr ? ' — ' + addr : ''}\n\n` +
+    `🛍️ *Produit :* ${p.name}\n` +
+    `🔢 *Quantité :* ${qty}\n` +
+    `📦 *Livraison :* ${delivery === 0 ? 'OFFERTE' : formatGNF(delivery)}\n` +
+    `💰 *Total :* ${formatGNF(total)}\n` +
+    `💳 *Paiement :* ${payment}\n` +
+    `${note ? `📝 *Note :* ${note}` : ''}`;
+
+  window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 }
 
 // ═══════════════════════════════════════════
 // COMMANDE — WEBHOOK CRM
 // ═══════════════════════════════════════════
-async function submitOrder(e) {
-  e.preventDefault();
-
-  const msgSent = document.getElementById('msg-sent-check').checked;
-  if (!msgSent) {
-    document.getElementById('warn-msg').classList.add('show');
-    document.getElementById('warn-msg').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
-
+async function submitOrder() {
   const p = currentPdProduct;
   if (!p) return;
 
