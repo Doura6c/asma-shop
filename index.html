@@ -416,6 +416,25 @@ section{padding:6rem 6%;}
 .testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--or-dk),var(--or));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--noir);font-size:.85rem;flex-shrink:0;}
 .testi-name{font-size:.8rem;font-weight:700;color:var(--text);}
 .testi-loc{font-size:.68rem;color:var(--text-3);}
+.testi-verified{display:block;font-size:.65rem;color:#16a34a;margin-top:.3rem;font-weight:600;letter-spacing:.3px;}
+/* Bestsellers */
+.bs-scroll{display:flex;gap:1.2rem;overflow-x:auto;padding-bottom:1rem;scrollbar-width:thin;scrollbar-color:var(--or-lt) transparent;scroll-snap-type:x mandatory;}
+.bs-scroll::-webkit-scrollbar{height:4px;}
+.bs-scroll::-webkit-scrollbar-track{background:transparent;}
+.bs-scroll::-webkit-scrollbar-thumb{background:var(--or-lt);border-radius:2px;}
+.bs-card{flex:0 0 220px;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;scroll-snap-align:start;transition:transform .25s,box-shadow .25s;position:relative;}
+.bs-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(168,116,32,.18);}
+.bs-rank{position:absolute;top:.6rem;left:.6rem;font-size:1.3rem;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.2));}
+.bs-img{width:100%;height:150px;overflow:hidden;}
+.bs-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.bs-card:hover .bs-img img{transform:scale(1.06);}
+.bs-body{padding:.8rem;}
+.bs-tag{font-size:.62rem;font-weight:700;text-transform:uppercase;color:var(--or-dk);background:var(--or-pale);border-radius:20px;padding:.2rem .6rem;display:inline-block;margin-bottom:.4rem;}
+.bs-name{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.4rem;line-height:1.3;}
+.bs-price{font-size:.88rem;font-weight:800;color:var(--or-dk);}
+.bs-price span{font-size:.65rem;font-weight:400;color:var(--text-3);}
+.bs-old{text-decoration:line-through;margin-left:.3rem;}
+.bs-orders{font-size:.63rem;color:var(--text-3);margin-top:.3rem;}
 
 /* ═══════════════════════════════════════
    CTA BANNER
@@ -636,9 +655,65 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   <div class="strip-item"><span>🚚</span><span>Livraison <strong>OFFERTE</strong> à Conakry</span></div>
   <div class="strip-item"><span>✅</span><span>Produits <strong>Authentiques</strong> Garantis</span></div>
   <div class="strip-item"><span>💳</span><span>Paiement <strong>À la Livraison</strong></span></div>
-  <div class="strip-item"><span>🔄</span><span>Retour <strong>Sous 48h</strong></span></div>
+  <div class="strip-item"><span>🔄</span><span>SAV <strong>Réactif 48h</strong></span></div>
   <div class="strip-item"><span>🌸</span><span>Service <strong>Client 7j/7</strong></span></div>
 </div>
+
+
+<!-- ══════════════ BESTSELLERS ══════════════ -->
+<section id="bestsellers" style="padding:4rem 6% 2rem;background:#fff;">
+  <div class="s-head" style="text-align:center;margin-bottom:2rem;">
+    <div class="s-label">Les Plus Commandés</div>
+    <h2 class="s-title">Nos <span class="accent">Bestsellers</span></h2>
+    <p class="s-sub" style="margin:0 auto;">Les produits que nos clientes commandent encore et encore ✨</p>
+  </div>
+  <div class="bs-scroll">
+    <div class="bs-card" onclick="openPD('vis-001')">
+      <div class="bs-rank">🥇</div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=300&q=80" alt="Crème Éclat" loading="lazy"></div>
+      <div class="bs-body">
+        <div class="bs-tag">⭐ N°1 Soins Visage</div>
+        <div class="bs-name">Crème Éclat & Uniformisante</div>
+        <div class="bs-price">150 000 <span>GNF</span> <span class="bs-old">200 000</span></div>
+        <div class="bs-orders">🛍️ 47 commandes ce mois</div>
+        <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('vis-001')">Commander</button>
+      </div>
+    </div>
+    <div class="bs-card" onclick="openPD('par-001')">
+      <div class="bs-rank">🥈</div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=300&q=80" alt="Parfum Oud" loading="lazy"></div>
+      <div class="bs-body">
+        <div class="bs-tag">🌺 N°1 Parfums</div>
+        <div class="bs-name">Parfum Oriental Rose & Oud</div>
+        <div class="bs-price">260 000 <span>GNF</span> <span class="bs-old">350 000</span></div>
+        <div class="bs-orders">🛍️ 38 commandes ce mois</div>
+        <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('par-001')">Commander</button>
+      </div>
+    </div>
+    <div class="bs-card" onclick="openPD('sav-004')">
+      <div class="bs-rank">🥉</div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=300&q=80" alt="Savon Citron" loading="lazy"></div>
+      <div class="bs-body">
+        <div class="bs-tag">🧼 N°1 Savons</div>
+        <div class="bs-name">Savon Citron Anti-Taches</div>
+        <div class="bs-price">28 000 <span>GNF</span> <span class="bs-old">40 000</span></div>
+        <div class="bs-orders">🛍️ 62 commandes ce mois</div>
+        <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('sav-004')">Commander</button>
+      </div>
+    </div>
+    <div class="bs-card" onclick="openPD('vis-002')">
+      <div class="bs-rank">⭐</div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80" alt="Sérum Vitamine C" loading="lazy"></div>
+      <div class="bs-body">
+        <div class="bs-tag">✨ Coup de Cœur</div>
+        <div class="bs-name">Sérum Vitamine C 20%</div>
+        <div class="bs-price">190 000 <span>GNF</span> <span class="bs-old">260 000</span></div>
+        <div class="bs-orders">🛍️ 29 commandes ce mois</div>
+        <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('vis-002')">Commander</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════ BOUTIQUE ══════════════ -->
 <section id="produits" aria-label="Catalogue produits">
@@ -905,59 +980,87 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   </div>
   <div class="testi-grid">
     <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"J'ai commandé la crème visage et le parfum Oriental. Livraison en moins de 24h, les produits sont vraiment authentiques. Je recommande vivement !"</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-verified">✓ Achat vérifié · CMD-4821</span>
+      </div>
+      <p class="testi-text">"J'ai reçu la Crème Éclat en 2 jours. Franchement je doutais au début mais après 10 jours d'utilisation mon teint a vraiment changé. J'ai déjà passé une 2ème commande pour ma sœur."</p>
       <div class="testi-author">
-        <div class="testi-av">F</div>
-        <div><div class="testi-name">Fatoumata D.</div><div class="testi-loc">Conakry — Ratoma</div></div>
+        <div class="testi-av" style="background:linear-gradient(135deg,#C9A84C,#7A5418)">F</div>
+        <div>
+          <div class="testi-name">Fatoumata D.</div>
+          <div class="testi-loc">Conakry — Ratoma · il y a 3 jours</div>
+        </div>
       </div>
     </div>
     <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Le rouge à lèvres est magnifique et tient toute la journée. Prix correct et service très professionnel. ASMA SHOP est ma boutique préférée maintenant !"</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-verified">✓ Achat vérifié · CMD-5103</span>
+      </div>
+      <p class="testi-text">"Le Sérum Vitamine C à 20% c'est vraiment efficace. En 3 semaines mes taches ont clairement diminué. L'agent a rappelé dans l'heure pour confirmer, très sérieux."</p>
       <div class="testi-author">
-        <div class="testi-av">M</div>
-        <div><div class="testi-name">Mariama K.</div><div class="testi-loc">Conakry — Kaloum</div></div>
+        <div class="testi-av" style="background:linear-gradient(135deg,#C8536B,#9D2F44)">K</div>
+        <div>
+          <div class="testi-name">Kadiatou S.</div>
+          <div class="testi-loc">Conakry — Dixinn · il y a 1 semaine</div>
+        </div>
       </div>
     </div>
     <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"J'ai pris l'ensemble boubou moderne et les bijoux. Ma famille n'en revenait pas ! Emballage soigné et livraison parfaite jusqu'à Labé."</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-verified">✓ Achat vérifié · CMD-4677</span>
+      </div>
+      <p class="testi-text">"Le Parfum Oriental Rose & Oud tient vraiment 24h, pas exagéré ! Mon mari me demande ce que je mets. J'ai commandé le boubou en même temps, emballage nickel."</p>
       <div class="testi-author">
-        <div class="testi-av">A</div>
-        <div><div class="testi-name">Aissatou B.</div><div class="testi-loc">Labé</div></div>
+        <div class="testi-av" style="background:linear-gradient(135deg,#A87420,#C9A84C)">H</div>
+        <div>
+          <div class="testi-name">Hadja T.</div>
+          <div class="testi-loc">Kankan · il y a 5 jours</div>
+        </div>
       </div>
     </div>
     <div class="testi-card">
-      <div class="testi-stars">★★★★☆</div>
-      <p class="testi-text">"Très satisfaite du sérum vitamine C. Mes taches ont vraiment diminué après 3 semaines. Je vais commander à nouveau le mois prochain !"</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-verified">✓ Achat vérifié · CMD-5290</span>
+      </div>
+      <p class="testi-text">"Le savon citron j'en commande tous les mois maintenant. 28 000 GNF c'est honnête pour le résultat. Livraison à Kaloum en 1 journée. Je recommande à toutes mes amies."</p>
       <div class="testi-author">
-        <div class="testi-av">K</div>
-        <div><div class="testi-name">Kadiatou S.</div><div class="testi-loc">Conakry — Dixinn</div></div>
+        <div class="testi-av" style="background:linear-gradient(135deg,#2ECC71,#1A8A4A)">N</div>
+        <div>
+          <div class="testi-name">Nènè C.</div>
+          <div class="testi-loc">Conakry — Matam · il y a 2 jours</div>
+        </div>
       </div>
     </div>
     <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Le parfum Oud & Rose est divin ! Très longue tenue. J'ai commandé pour moi et pour offrir à ma mère. Service rapide et emballage cadeau disponible."</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="testi-stars">★★★★☆</div>
+        <span class="testi-verified">✓ Achat vérifié · CMD-4512</span>
+      </div>
+      <p class="testi-text">"J'ai pris la palette ombres à paupières et le rouge à lèvres. Qualité vraiment bien pour le prix. Seul bémol la livraison a pris 3 jours au lieu de 2 mais le produit valait l'attente."</p>
       <div class="testi-author">
-        <div class="testi-av">H</div>
-        <div><div class="testi-name">Hadja T.</div><div class="testi-loc">Kankan</div></div>
+        <div class="testi-av" style="background:linear-gradient(135deg,#C8536B,#7A5418)">M</div>
+        <div>
+          <div class="testi-name">Mariama K.</div>
+          <div class="testi-loc">Conakry — Kaloum · il y a 1 semaine</div>
+        </div>
       </div>
     </div>
     <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Le savon au lait de chameau est incroyable. Ma peau n'a jamais été aussi douce. Le parfum homme Oud tient toute la journée. Je commande régulièrement !"</p>
-      <div class="testi-author">
-        <div class="testi-av">M</div>
-        <div><div class="testi-name">Mamadou B.</div><div class="testi-loc">Conakry — Kaloum</div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-verified">✓ Achat vérifié · CMD-5038</span>
       </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Le savon au citron a vraiment effacé mes taches en 3 semaines. L'huile d'argan est pure et authentique. ASMA SHOP est ma boutique de confiance !"</p>
+      <p class="testi-text">"Le savon lait de chameau je l'ai pris pour ma mère qui avait des problèmes de peau depuis longtemps. En 2 semaines vraiment visible. Merci ASMA SHOP, vous avez une cliente fidèle !"</p>
       <div class="testi-author">
-        <div class="testi-av">N</div>
-        <div><div class="testi-name">Nènè C.</div><div class="testi-loc">Conakry — Matam</div></div>
+        <div class="testi-av" style="background:linear-gradient(135deg,#3498DB,#1A5276)">A</div>
+        <div>
+          <div class="testi-name">Aissatou B.</div>
+          <div class="testi-loc">Labé · il y a 4 jours</div>
+        </div>
       </div>
     </div>
   </div>
