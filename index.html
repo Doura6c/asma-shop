@@ -339,6 +339,34 @@ section{padding:6rem 6%;}
 ═══════════════════════════════════════ */
 .cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:600;backdrop-filter:blur(6px);}
 .cart-overlay.show{display:block;}
+/* CART CHECKOUT MODAL */
+.cco-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:900;backdrop-filter:blur(8px);align-items:flex-end;justify-content:center;}
+.cco-overlay.show{display:flex;}
+@media(min-width:600px){.cco-overlay.show{align-items:center;}}
+.cco-box{background:#FDF8F0;border-radius:16px 16px 0 0;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;padding:1.6rem 1.4rem 2rem;}
+@media(min-width:600px){.cco-box{border-radius:16px;}}
+.cco-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.cco-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text-3);}
+.cco-items{margin-bottom:1.2rem;}
+.cco-item{display:flex;align-items:center;gap:.7rem;padding:.7rem 0;border-bottom:1px solid var(--border);}
+.cco-item:last-child{border-bottom:none;}
+.cco-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--or);flex-shrink:0;cursor:pointer;}
+.cco-item-emoji{font-size:1.5rem;width:40px;height:40px;background:#F5E8D0;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cco-item-info{flex:1;min-width:0;}
+.cco-item-name{font-size:.8rem;font-weight:600;color:var(--text);}
+.cco-item-price{font-size:.76rem;color:var(--or);font-weight:700;}
+.cco-total-row{display:flex;justify-content:space-between;align-items:center;background:var(--or-bg);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;margin-bottom:1.2rem;}
+.cco-total-label{font-size:.8rem;font-weight:600;color:var(--text-2);}
+.cco-total-val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--or-lt);}
+.cco-form label{display:block;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);margin-bottom:.35rem;margin-top:.9rem;}
+.cco-form input,.cco-form select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'Raleway',sans-serif;font-size:.82rem;color:var(--text);background:#fff;outline:none;transition:border-color .3s;}
+.cco-form input:focus,.cco-form select:focus{border-color:var(--or);}
+.cco-pay-opts{display:flex;gap:.6rem;margin-top:.35rem;}
+.cco-pay-opt{flex:1;border:1.5px solid var(--border);border-radius:8px;padding:.6rem .5rem;text-align:center;cursor:pointer;font-size:.72rem;font-weight:700;color:var(--text-2);transition:all .3s;}
+.cco-pay-opt.active{border-color:var(--or);background:var(--or-bg);color:var(--or);}
+.cco-submit{width:100%;margin-top:1.4rem;background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);border:none;padding:14px;border-radius:8px;font-family:'Raleway',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px var(--or-glow);}
+.cco-submit:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--or-glow);}
+.cco-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;}
 .cart-drawer{position:fixed;top:0;right:-420px;width:420px;max-width:100vw;height:100%;background:#FDF8F0;border-left:1px solid var(--border);z-index:700;box-shadow:-20px 0 60px rgba(28,18,8,.2);transition:right .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
 .cart-drawer.open{right:0;}
 .cart-head{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
@@ -1010,6 +1038,61 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   </div>
 </div>
 
+<!-- ══════════════ CART CHECKOUT MODAL ══════════════ -->
+<div class="cco-overlay" id="cco-overlay" onclick="if(event.target===this)closeCCO()">
+  <div class="cco-box">
+    <div class="cco-title">
+      🛍️ Finaliser ma commande
+      <button class="cco-close" onclick="closeCCO()" aria-label="Fermer">✕</button>
+    </div>
+
+    <!-- Items avec checkboxes -->
+    <div class="cco-items" id="cco-items-list"></div>
+
+    <!-- Total -->
+    <div class="cco-total-row">
+      <span class="cco-total-label">Total sélectionné</span>
+      <span class="cco-total-val" id="cco-total">0 GNF</span>
+    </div>
+
+    <!-- Formulaire client -->
+    <div class="cco-form">
+      <label for="cco-fname">Prénom *</label>
+      <input type="text" id="cco-fname" placeholder="Votre prénom" autocomplete="given-name">
+
+      <label for="cco-lname">Nom</label>
+      <input type="text" id="cco-lname" placeholder="Votre nom" autocomplete="family-name">
+
+      <label for="cco-phone">Téléphone (WhatsApp) *</label>
+      <input type="tel" id="cco-phone" placeholder="ex: 622 34 56 78" inputmode="tel" autocomplete="tel">
+
+      <label for="cco-city">Ville *</label>
+      <select id="cco-city">
+        <option value="">— Choisir votre ville —</option>
+        <option>Conakry</option><option>Labé</option><option>Kankan</option>
+        <option>Kindia</option><option>Mamou</option><option>Boké</option>
+        <option>N'Zérékoré</option><option>Faranah</option><option>Siguiri</option>
+        <option>Autre</option>
+      </select>
+
+      <label for="cco-address">Adresse / Quartier</label>
+      <input type="text" id="cco-address" placeholder="Quartier, repère...">
+
+      <label>Mode de paiement</label>
+      <div class="cco-pay-opts">
+        <div class="cco-pay-opt active" onclick="ccoPay(this,'Paiement à la livraison')">💵 Cash</div>
+        <div class="cco-pay-opt" onclick="ccoPay(this,'Orange Money')">🟠 Orange Money</div>
+        <div class="cco-pay-opt" onclick="ccoPay(this,'MTN MoMo')">💛 MTN MoMo</div>
+      </div>
+      <input type="hidden" id="cco-payment" value="Paiement à la livraison">
+    </div>
+
+    <button class="cco-submit" id="cco-submit-btn" onclick="confirmerCommandePanier()">
+      ✨ Confirmer ma commande
+    </button>
+  </div>
+</div>
+
 <!-- ══════════════ SUCCESS MODAL ══════════════ -->
 <div class="success-modal" id="success-modal" role="alertdialog" aria-modal="true">
   <div class="success-box">
@@ -1038,7 +1121,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 const CONFIG = {
   whatsappNumber: '212646702039',
   shopName: 'ASMA SHOP AFRIQUE',
-  webhookUrl: 'https://cod-crm.vercel.app/api/webhook/order',
+  webhookUrl: 'https://cod-crm-zeta.vercel.app/api/webhook/order',
   webhookKey: 'ASMA_BOUTIQUE_KEY', // ← À remplacer après création boutique dans le CRM
 };
 
@@ -1384,10 +1467,115 @@ function toggleCart() {
 function checkoutCart() {
   if (cart.length === 0) return;
   toggleCart();
-  // Ouvrir le premier produit pour la commande groupée
-  const first = cart[0];
-  openPD(first.id);
-  // Note: pour le panier complet, on va pré-remplir avec le résumé
+
+  // Construire la liste des items avec checkboxes
+  const list = document.getElementById('cco-items-list');
+  list.innerHTML = cart.map(item => {
+    const p = PRODUCTS.find(x => x.id === item.id);
+    if (!p) return '';
+    const lineTotal = p.price * item.qty;
+    return `<div class="cco-item">
+      <input type="checkbox" class="cco-cb" data-id="${p.id}" data-price="${lineTotal}" checked onchange="ccoUpdateTotal()">
+      <div class="cco-item-emoji">${p.emoji}</div>
+      <div class="cco-item-info">
+        <div class="cco-item-name">${p.name}</div>
+        <div class="cco-item-price">${item.qty > 1 ? item.qty + ' × ' : ''}${formatGNF(p.price)} = ${formatGNF(lineTotal)}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  ccoUpdateTotal();
+  document.getElementById('cco-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCCO() {
+  document.getElementById('cco-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function ccoUpdateTotal() {
+  const total = [...document.querySelectorAll('.cco-cb:checked')]
+    .reduce((sum, cb) => sum + Number(cb.dataset.price), 0);
+  document.getElementById('cco-total').textContent = formatGNF(total);
+}
+
+function ccoPay(el, value) {
+  document.querySelectorAll('.cco-pay-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('cco-payment').value = value;
+}
+
+async function confirmerCommandePanier() {
+  const fname = document.getElementById('cco-fname').value.trim();
+  const lname = document.getElementById('cco-lname').value.trim();
+  const phone = document.getElementById('cco-phone').value.trim().replace(/\s/g, '');
+  const city  = document.getElementById('cco-city').value;
+  const addr  = document.getElementById('cco-address').value.trim();
+  const payment = document.getElementById('cco-payment').value;
+
+  if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
+  if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
+  if (!city)  { alert('Veuillez sélectionner votre ville.'); return; }
+
+  const checked = [...document.querySelectorAll('.cco-cb:checked')];
+  if (checked.length === 0) { alert('Sélectionnez au moins un article.'); return; }
+
+  const items = checked.map(cb => {
+    const p = PRODUCTS.find(x => x.id === cb.dataset.id);
+    const cartItem = cart.find(x => x.id === cb.dataset.id);
+    return { sku: p.id, name: p.name, price: p.price, quantity: cartItem?.qty || 1 };
+  });
+  const total = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
+
+  const btn = document.getElementById('cco-submit-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Envoi en cours…';
+
+  const payload = {
+    externalRef: `ASMA-CART-${Date.now()}`,
+    customer: { fullName: `${fname} ${lname}`.trim(), phone, city, address: addr || null },
+    items,
+    deliveryFee: 0,
+    notes: payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : null,
+    source: 'asmashop-cart',
+  };
+
+  try {
+    const res = await fetch(CONFIG.webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Webhook-Key': CONFIG.webhookKey },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (res.ok && data.order) {
+      // Retirer les articles commandés du panier
+      checked.forEach(cb => {
+        cart = cart.filter(x => x.id !== cb.dataset.id);
+      });
+      updateCartUI();
+      closeCCO();
+
+      document.getElementById('success-code').innerHTML =
+        `🎀 Code commande : <strong>${data.order.code}</strong>`;
+      document.getElementById('success-message').textContent =
+        `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
+      document.getElementById('success-modal').classList.add('show');
+    } else {
+      throw new Error(data.error || 'Erreur serveur');
+    }
+  } catch (err) {
+    // Fallback WhatsApp
+    const msg = `🌸 *COMMANDE PANIER — ASMA SHOP*\n\n` +
+      `👤 ${fname} ${lname}\n📞 ${phone}\n📍 ${city}${addr ? ' — ' + addr : ''}\n\n` +
+      items.map(i => `• ${i.name} ×${i.quantity} = ${formatGNF(i.price * i.quantity)}`).join('\n') +
+      `\n\n💰 Total : ${formatGNF(total)}\n💳 ${payment}`;
+    window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✨ Confirmer ma commande';
+  }
 }
 
 // ═══════════════════════════════════════════
@@ -1651,35 +1839,34 @@ async function submitOrder(e) {
   document.getElementById('submit-spin').classList.remove('hidden');
 
   const payload = {
-    webhookKey: CONFIG.webhookKey,
+    externalRef: `ASMA-${Date.now()}`,
     customer: {
-      fullName: `${fname} ${lname}`,
+      fullName: `${fname} ${lname}`.trim(),
       phone,
       city,
       address: addr || null,
     },
-    items: [{ productName: p.name, quantity: qty, unitPrice: p.price }],
-    totalAmount: total,
-    paymentMethod: payment,
-    notes: note || null,
+    items: [{ sku: p.id, name: p.name, price: p.price, quantity: qty }],
+    deliveryFee: 0,
+    notes: [note, payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : ''].filter(Boolean).join(' | ') || null,
     source: 'asmashop-web',
   };
 
   try {
     const res = await fetch(CONFIG.webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'X-Webhook-Key': CONFIG.webhookKey },
       body: JSON.stringify(payload),
     });
 
     const data = await res.json();
     document.getElementById('loading-overlay').classList.remove('show');
 
-    if (res.ok && data.orderCode) {
+    if (res.ok && data.order) {
       // Succès
       closePD();
       document.getElementById('success-code').innerHTML =
-        `🎀 Code commande : <strong>${data.orderCode}</strong>`;
+        `🎀 Code commande : <strong>${data.order.code}</strong>`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sous peu sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
