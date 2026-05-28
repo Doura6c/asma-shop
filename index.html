@@ -484,6 +484,9 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
+/* DÉTAILS OPTIONNELS */
+.details-toggle{font-size:.74rem;font-weight:700;color:var(--or);cursor:pointer;padding:.5rem 0;letter-spacing:.5px;user-select:none;display:inline-flex;align-items:center;gap:.4rem;margin-top:.3rem;}
+.details-toggle:hover{opacity:.75;}
 /* ORDER ACTIONS — deux boutons */
 .order-actions{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem;}
 @media(max-width:480px){.order-actions{grid-template-columns:1fr;}}
@@ -543,7 +546,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   </a>
   <ul class="nav-links">
     <li><a href="#produits">Boutique</a></li>
-    <li><a href="#beaute">Beauté</a></li>
+    <li><a href="#produits" onclick="filterCat('soins-visage')">Beauté</a></li>
     <li><a href="#pourquoi">À propos</a></li>
     <li><a href="#temoignages">Avis</a></li>
   </ul>
@@ -721,22 +724,17 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
           <input type="hidden" id="f-product-name">
           <input type="hidden" id="f-product-price">
 
-          <div class="frow">
-            <div class="fg">
-              <label for="f-fname">Prénom *</label>
-              <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name">
-            </div>
-            <div class="fg">
-              <label for="f-lname">Nom *</label>
-              <input type="text" id="f-lname" placeholder="Votre nom" required autocomplete="family-name">
-            </div>
+          <!-- 3 champs essentiels -->
+          <div class="fg">
+            <label for="f-fname">Prénom *</label>
+            <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name">
           </div>
           <div class="fg">
-            <label for="f-phone">Téléphone (WhatsApp) *</label>
+            <label for="f-phone">📞 Téléphone WhatsApp *</label>
             <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel">
           </div>
           <div class="fg">
-            <label for="f-city">Ville de livraison *</label>
+            <label for="f-city">📍 Ville de livraison *</label>
             <select id="f-city" required onchange="updateOrderSummary()">
               <option value="">— Choisissez votre ville —</option>
               <optgroup label="🟢 Conakry — Livraison OFFERTE">
@@ -785,9 +783,20 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
           </div>
           <!-- Info livraison dynamique -->
           <div id="delivery-info-box" class="delivery-info-box" style="display:none;"></div>
-          <div class="fg">
-            <label for="f-address">Adresse précise</label>
-            <input type="text" id="f-address" placeholder="Quartier, rue, repère..." autocomplete="street-address">
+
+          <!-- Détails optionnels -->
+          <div class="details-toggle" onclick="toggleDetails()" id="details-toggle">
+            <span id="details-toggle-label">+ Ajouter adresse, nom, note (optionnel)</span>
+          </div>
+          <div id="details-extra" style="display:none;">
+            <div class="fg">
+              <label for="f-lname">Nom de famille</label>
+              <input type="text" id="f-lname" placeholder="Votre nom" autocomplete="family-name">
+            </div>
+            <div class="fg">
+              <label for="f-address">Adresse / Quartier</label>
+              <input type="text" id="f-address" placeholder="Quartier, rue, repère..." autocomplete="street-address">
+            </div>
           </div>
           <div class="fg">
             <label for="f-qty">Quantité</label>
@@ -817,10 +826,8 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
               <p>Envoyez-nous votre capture de paiement sur WhatsApp et mentionnez votre nom dans la note.</p>
             </div>
           </div>
-          <div class="fg">
-            <label for="f-note">Note / Instructions (optionnel)</label>
-            <input type="text" id="f-note" placeholder="Ex: Couleur préférée, taille, variante...">
-          </div>
+          <!-- Note dans les détails optionnels -->
+          <input type="hidden" id="f-note" value="">
 
           <div class="order-summary" id="order-summary">
             <div class="order-summary-row"><span>Produit</span><span id="os-product">—</span></div>
@@ -1323,7 +1330,7 @@ const PRODUCTS = [
 
   // 👔 HOMME
   {
-    id: 'hom-001', emoji: '🌑', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-001', image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=400&q=80', emoji: '🌑', cat: 'homme', catLabel: 'Homme',
     name: 'Parfum Homme Oriental — Oud & Bois de Santal',
     desc: 'Parfum masculin intense aux notes d\'oud noir, bois de santal et musc ambré. Sillage puissant, tenue exceptionnelle jusqu\'à 24h. Flacon élégant, idéal en cadeau.',
     price: 280000, oldPrice: 380000,
@@ -1331,7 +1338,7 @@ const PRODUCTS = [
     features: ['Notes d\'oud', 'Tenue 24h', 'Sillage intense', 'Idéal cadeau'],
   },
   {
-    id: 'hom-002', emoji: '💪', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-002', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80', emoji: '💪', cat: 'homme', catLabel: 'Homme',
     name: 'Crème Hydratante Homme — Légère & Non Grasse',
     desc: 'Crème de soin formulée pour la peau masculine. Texture légère non grasse, absorption rapide. Hydrate, protège et unifie le teint. Enrichie en vitamine E et aloe vera.',
     price: 95000, oldPrice: 130000,
@@ -1339,7 +1346,7 @@ const PRODUCTS = [
     features: ['Non grasse', 'Absorption rapide', 'Vitamine E', 'Aloe vera'],
   },
   {
-    id: 'hom-003', emoji: '🧔', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-003', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80', emoji: '🧔', cat: 'homme', catLabel: 'Homme',
     name: 'Huile Barbe Premium à l\'Argan & Jojoba',
     desc: 'Huile barbe nourrissante à l\'argan et jojoba. Adoucit, assouplit et fait briller la barbe. Élimine les démangeaisons et l\'effet sec. Parfum boisé discret. Pour barbe courte ou longue.',
     price: 75000, oldPrice: null,
@@ -1347,7 +1354,7 @@ const PRODUCTS = [
     features: ['Argan & jojoba', 'Anti-démangeaisons', 'Barbe brillante', 'Parfum boisé'],
   },
   {
-    id: 'hom-004', emoji: '✂️', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-004', image: 'https://images.unsplash.com/photo-1621607505989-4bb9f9e0c53c?w=400&q=80', emoji: '✂️', cat: 'homme', catLabel: 'Homme',
     name: 'After-Shave Naturel — Apaisant & Anti-Irritations',
     desc: 'Lotion après-rasage à base d\'aloe vera, hamamélis et huile d\'argan. Apaise les irritations, referme les pores, hydrate la peau rasée. Fini mat et frais, parfum agrumes.',
     price: 65000, oldPrice: 85000,
@@ -1355,7 +1362,7 @@ const PRODUCTS = [
     features: ['Aloe vera', 'Anti-irritations', 'Pores resserrés', 'Parfum agrumes'],
   },
   {
-    id: 'hom-005', emoji: '🧼', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-005', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80', emoji: '🧼', cat: 'homme', catLabel: 'Homme',
     name: 'Savon Homme Actif — Charbon & Menthe Fraîche',
     desc: 'Savon homme formulé pour les peaux masculines. Charbon actif purifiant + menthe fraîche tonifiante. Nettoie en profondeur, élimine les odeurs, laisse une sensation de fraîcheur durable.',
     price: 35000, oldPrice: null,
@@ -1365,7 +1372,7 @@ const PRODUCTS = [
 
   // 💍 BIJOUX
   {
-    id: 'bij-001', emoji: '💍', cat: 'bijoux', catLabel: 'Bijoux',
+    id: 'bij-001', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80', emoji: '💍', cat: 'bijoux', catLabel: 'Bijoux',
     name: 'Parure Collier & Boucles Perles Africaines',
     desc: 'Parure complète collier + boucles d\'oreilles en perles africaines authentiques. Travail artisanal guinéen. Parfaite pour mariage, baptême ou cérémonie.',
     price: 120000, oldPrice: 160000,
@@ -1373,7 +1380,7 @@ const PRODUCTS = [
     features: ['Artisanal guinéen', 'Perles naturelles', 'Collier + boucles', 'Pour cérémonies'],
   },
   {
-    id: 'bij-002', emoji: '✨', cat: 'bijoux', catLabel: 'Bijoux',
+    id: 'bij-002', image: 'https://images.unsplash.com/photo-1573408301185-9519f94815b6?w=400&q=80', emoji: '✨', cat: 'bijoux', catLabel: 'Bijoux',
     name: 'Set Bracelet Femme — Or & Plaqué Or',
     desc: 'Set de 5 bracelets finement travaillés, mélange or jaune et plaqué or rose. Hypoallergéniques, résistants à l\'eau. Idéal cadeau pour toutes les occasions.',
     price: 75000, oldPrice: 100000,
@@ -1694,6 +1701,19 @@ function openPD(productId) {
 function closePD() {
   document.getElementById('pd-overlay').classList.remove('show');
   document.body.style.overflow = '';
+  // reset détails optionnels
+  const extra = document.getElementById('details-extra');
+  if (extra) extra.style.display = 'none';
+  const lbl = document.getElementById('details-toggle-label');
+  if (lbl) lbl.textContent = '+ Ajouter adresse, nom, note (optionnel)';
+}
+
+function toggleDetails() {
+  const extra = document.getElementById('details-extra');
+  const lbl   = document.getElementById('details-toggle-label');
+  const open  = extra.style.display !== 'none';
+  extra.style.display = open ? 'none' : 'block';
+  lbl.textContent = open ? '+ Ajouter adresse, nom, note (optionnel)' : '− Masquer les détails';
 }
 
 document.getElementById('pd-overlay').addEventListener('click', function(e) {
