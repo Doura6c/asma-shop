@@ -173,9 +173,11 @@ nav.scrolled{background:rgba(6,4,16,.97);top:37px;}
 
 .africa-svg{animation:africa-glow 3.5s ease-in-out infinite;}
 @keyframes africa-glow{
-  0%,100%{filter:drop-shadow(0 0 8px rgba(201,168,76,.3)) drop-shadow(0 0 25px rgba(201,168,76,.1));opacity:.7;}
-  50%{filter:drop-shadow(0 0 18px rgba(201,168,76,.65)) drop-shadow(0 0 50px rgba(201,168,76,.25));opacity:1;}
+  0%,100%{filter:drop-shadow(0 0 8px rgba(201,168,76,.3)) drop-shadow(0 0 25px rgba(201,168,76,.1));opacity:.75;}
+  50%{filter:drop-shadow(0 0 20px rgba(201,168,76,.7)) drop-shadow(0 0 55px rgba(201,168,76,.3));opacity:1;}
 }
+.africa-svg .ping{animation:ping 2s ease-in-out infinite;}
+@keyframes ping{0%,100%{r:9;opacity:.45;}50%{r:14;opacity:.1;}}
 
 /* Particules */
 .particle{position:absolute;border-radius:50%;background:var(--or);pointer-events:none;animation:float-particle linear infinite;}
@@ -250,15 +252,15 @@ section{padding:6rem 6%;}
 .pd-container{max-width:920px;margin:0 auto;position:relative;}
 .pd-close{position:absolute;top:-15px;right:-15px;background:var(--or);border:none;color:var(--noir);width:40px;height:40px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 20px var(--or-glow);transition:all .3s;font-weight:800;}
 .pd-close:hover{transform:scale(1.1);box-shadow:0 6px 25px var(--or-glow);}
-.pd-box{background:var(--noir-2);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);}
+.pd-box{background:#12102A;border:1.5px solid rgba(201,168,76,.4);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(201,168,76,.1),0 40px 80px rgba(0,0,0,.8),0 0 60px rgba(201,168,76,.08);}
 .pd-top{display:grid;grid-template-columns:1fr 1fr;}
 @media(max-width:680px){.pd-top{grid-template-columns:1fr;}}
-.pd-media{background:linear-gradient(135deg,var(--noir-3),var(--noir-4));min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;position:relative;}
-.pd-media::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,var(--or-bg),transparent 60%);}
-.pd-emoji{font-size:7rem;filter:drop-shadow(0 0 20px rgba(201,168,76,.3));position:relative;}
-.pd-info{padding:2.5rem;}
-.pd-cat-tag{display:inline-block;background:var(--or-bg);color:var(--or);font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;border:1px solid var(--border);margin-bottom:.8rem;}
-.pd-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--text);margin-bottom:.6rem;line-height:1.1;}
+.pd-media{background:linear-gradient(135deg,#0A0820,#1A1040);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;position:relative;}
+.pd-media::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(201,168,76,.1),transparent 65%);}
+.pd-emoji{font-size:8rem;filter:drop-shadow(0 0 30px rgba(201,168,76,.4));position:relative;z-index:1;}
+.pd-info{padding:2.5rem;background:#12102A;}
+.pd-cat-tag{display:inline-block;background:rgba(201,168,76,.12);color:var(--or-lt);font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;border:1px solid rgba(201,168,76,.3);margin-bottom:.8rem;}
+.pd-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:#FAF5EC;margin-bottom:.6rem;line-height:1.1;}
 .pd-stars{color:var(--or);font-size:.9rem;margin-bottom:.8rem;}
 .pd-desc{font-size:.83rem;color:var(--text-2);line-height:1.85;margin-bottom:1.2rem;}
 .pd-price-row{display:flex;align-items:baseline;gap:.8rem;margin-bottom:.5rem;}
@@ -268,7 +270,7 @@ section{padding:6rem 6%;}
 .pd-delivery{background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:.8rem 1rem;font-size:.78rem;color:#6EE89A;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
 .pd-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
 .pd-feat{background:var(--or-bg);color:var(--or);font-size:.62rem;font-weight:600;padding:4px 10px;border-radius:3px;border:1px solid rgba(201,168,76,.2);}
-.pd-form-section{background:var(--noir-3);border-top:1px solid var(--border);padding:2.5rem;}
+.pd-form-section{background:#0E0C22;border-top:1px solid rgba(201,168,76,.2);padding:2.5rem;}
 .pd-form-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
 .fg{margin-bottom:1rem;}
 .fg label{display:block;font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-bottom:.4rem;}
@@ -502,47 +504,76 @@ footer{background:#030208;color:var(--text);padding:5rem 6% 2.5rem;border-top:1p
   <!-- Africa SVG animé -->
   <div class="hero-africa" aria-hidden="true">
     <div class="africa-ring">
-      <svg class="africa-svg" width="260" height="310" viewBox="0 0 260 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="africa-svg" width="290" height="340" viewBox="0 0 290 370" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="afGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#F0D575"/>
-            <stop offset="50%" stop-color="#C9A84C"/>
-            <stop offset="100%" stop-color="#8A6E28"/>
+            <stop offset="55%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#7D6422"/>
           </linearGradient>
+          <radialGradient id="afFill" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(201,168,76,0.10)"/>
+            <stop offset="100%" stop-color="rgba(201,168,76,0.02)"/>
+          </radialGradient>
         </defs>
-        <!-- Continent Africa (simplified) -->
+
+        <!-- ══════════════════════════════════
+             CONTOUR AFRIQUE — tracé réel
+             Corne de l'Afrique + Bulge Ouest
+        ════════════════════════════════════ -->
         <path d="
-          M 130,12
-          C 150,11 172,18 186,32
-          C 200,46 205,64 208,82
-          C 211,98 208,116 214,130
-          C 220,144 232,154 235,168
-          C 238,182 232,196 228,208
-          C 224,220 220,232 216,244
-          C 212,256 208,268 200,278
-          C 192,288 180,294 170,300
-          C 160,306 148,308 140,314
-          C 132,320 126,330 118,332
-          C 110,334 100,330 92,322
-          C 84,314 78,304 72,308
-          C 66,312 62,324 52,326
-          C 42,328 30,320 22,310
-          C 14,300 8,286 6,272
-          C 4,258 6,244 4,230
-          C 2,216 -4,204 -4,190
-          C -4,176 2,162 4,148
-          C 6,134 4,118 8,104
-          C 12,90 20,78 22,64
-          C 24,50 20,34 28,22
-          C 36,10 52,6 68,6
-          C 84,6 100,10 116,12
-          C 122,13 128,12 130,12 Z
-        " fill="rgba(201,168,76,0.06)" stroke="url(#afGrad)" stroke-width="1.5"/>
-        <!-- Point lumineux sur l'Afrique -->
-        <circle cx="130" cy="165" r="4" fill="url(#afGrad)" opacity="0.8"/>
-        <circle cx="130" cy="165" r="8" fill="none" stroke="url(#afGrad)" stroke-width="1" opacity="0.4"/>
-        <!-- Texte GUINÉE -->
-        <text x="115" y="170" font-size="7" fill="#C9A84C" opacity="0.7" font-family="Raleway,sans-serif" font-weight="700" letter-spacing="2">GUINÉE</text>
+          M 72,14
+          L 105,10 L 138,8 L 168,10 L 195,16
+          C 210,22 222,30 228,42
+          C 234,52 234,64 236,76
+          C 238,86 244,94 252,104
+          C 260,116 268,128 275,142
+          L 280,158
+          C 274,174 264,182 258,196
+          C 250,212 245,230 238,248
+          C 230,268 218,286 204,302
+          C 190,316 174,326 158,332
+          C 142,336 126,334 112,326
+          C 98,318 88,308 80,316
+          C 72,324 68,338 56,340
+          C 44,342 30,332 20,320
+          C 10,308 4,292 2,276
+          C 0,260 2,244 0,228
+          C -2,214 -6,200 -4,186
+          C -2,172 4,160 6,148
+          C 8,136 6,122 10,108
+          C 14,92 22,80 26,66
+          C 30,52 28,38 36,26
+          C 44,14 58,10 72,14 Z
+        " fill="url(#afFill)" stroke="url(#afGrad)" stroke-width="2" stroke-linejoin="round"/>
+
+        <!-- Saillant Corne de l'Afrique (detail) -->
+        <path d="M 252,104 C 265,115 278,138 280,158 C 270,148 260,132 252,118 Z"
+              fill="rgba(201,168,76,0.06)" stroke="url(#afGrad)" stroke-width="1.5" opacity="0.8"/>
+
+        <!-- Côte Ouest saillante (Guinée/Liberia bulge) -->
+        <path d="M -4,186 C -8,192 -8,200 -4,208" stroke="url(#afGrad)" stroke-width="1.5" opacity="0.6"/>
+
+        <!-- Madagascar (île) -->
+        <ellipse cx="254" cy="240" rx="7" ry="18" transform="rotate(-10 254 240)"
+                 fill="rgba(201,168,76,0.05)" stroke="url(#afGrad)" stroke-width="1.2" opacity="0.65"/>
+
+        <!-- Ligne Équateur -->
+        <line x1="2" y1="210" x2="242" y2="210" stroke="rgba(201,168,76,0.14)" stroke-width="0.8" stroke-dasharray="3,6"/>
+        <text x="246" y="213" font-size="5.5" fill="rgba(201,168,76,0.45)" font-family="Raleway,sans-serif" font-weight="600">EQ</text>
+
+        <!-- Tropique du Cancer -->
+        <line x1="18" y1="100" x2="230" y2="100" stroke="rgba(201,168,76,0.07)" stroke-width="0.6" stroke-dasharray="2,8"/>
+
+        <!-- Point GUINÉE (sur la côte ouest) -->
+        <circle cx="14" cy="172" r="4" fill="#C9A84C" opacity="0.95"/>
+        <circle cx="14" cy="172" r="9" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.45" class="ping"/>
+        <circle cx="14" cy="172" r="15" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+        <text x="24" y="175" font-size="7" fill="#F0D575" opacity="0.95" font-family="Raleway,sans-serif" font-weight="700" letter-spacing="1.5">GUINÉE</text>
+
+        <!-- Croix centrale (centre géographique) -->
+        <line x1="128" y1="186" x2="138" y2="186" stroke="rgba(201,168,76,0.25)" stroke-width="0.8"/>
+        <line x1="133" y1="181" x2="133" y2="191" stroke="rgba(201,168,76,0.25)" stroke-width="0.8"/>
       </svg>
     </div>
   </div>
