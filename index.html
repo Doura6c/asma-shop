@@ -1224,6 +1224,9 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <h3>Commande Confirmée !</h3>
     <p id="success-message">Merci pour votre commande. Notre équipe vous contactera dans les plus brefs délais sur WhatsApp pour confirmer la livraison.</p>
     <div class="success-code" id="success-code"></div>
+    <a id="success-wa" class="btn-wa" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-bottom:.6rem;">
+      💬 Confirmer sur WhatsApp
+    </a>
     <button class="btn-rose" onclick="closeSuccess()" style="width:100%;justify-content:center;">
       Continuer mes achats 🛍️
     </button>
@@ -1521,6 +1524,14 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// Pré-remplit le bouton « Confirmer sur WhatsApp » de la modale de succès.
+function fillSuccessWhatsApp(code, name) {
+  const a = document.getElementById('success-wa');
+  if (!a) return;
+  const msg = `Bonjour ASMA SHOP 🌸 Je confirme ma commande ${code}${name ? ' (' + name + ')' : ''}. Merci !`;
+  a.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+}
+
 function addToCart(productId) {
   const p = PRODUCTS.find(x => x.id === productId);
   if (!p) return;
@@ -1699,6 +1710,7 @@ async function confirmerCommandePanier() {
         `🎀 Code commande : <strong>${data.order.code}</strong>`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
+      fillSuccessWhatsApp(data.order.code, fname);
       document.getElementById('success-modal').classList.add('show');
     } else {
       throw new Error(data.error || 'Erreur serveur');
@@ -2057,6 +2069,7 @@ async function submitOrder() {
         `🎀 Code commande : <strong>${data.order.code}</strong>`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sous peu sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
+      fillSuccessWhatsApp(data.order.code, fname);
       document.getElementById('success-modal').classList.add('show');
       trackOrder(p, qty, total, phone);
     } else {
