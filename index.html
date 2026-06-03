@@ -1235,8 +1235,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 const CONFIG = {
   whatsappNumber: '212646702039',
   shopName: 'ASMA SHOP AFRIQUE',
-  webhookUrl: 'https://cod-crm-zeta.vercel.app/api/webhook/order',
-  webhookKey: '0YsAAoFONxPKvwbCkVXy7PDkUbR7lUB9Oupd0CuE',
+  webhookUrl: '/api/submit-order',
 };
 
 // ═══════════════════════════════════════════
@@ -1658,7 +1657,7 @@ async function confirmerCommandePanier() {
   try {
     const res = await fetch(CONFIG.webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Webhook-Key': CONFIG.webhookKey },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     const data = await res.json();
@@ -2012,7 +2011,7 @@ async function submitOrder() {
   try {
     const res = await fetch(CONFIG.webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Webhook-Key': CONFIG.webhookKey },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
