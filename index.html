@@ -1513,6 +1513,11 @@ function isValidGuineaPhone(raw) {
   return /^6\d{8}$/.test(d) || /^2246\d{8}$/.test(d);
 }
 
+// Échappe le HTML d'une saisie utilisateur avant injection en innerHTML (anti-XSS).
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 function addToCart(productId) {
   const p = PRODUCTS.find(x => x.id === productId);
   if (!p) return;
@@ -2217,7 +2222,7 @@ function handleSearch(query) {
     (p.desc && p.desc.toLowerCase().includes(q))
   ).slice(0, 8);
   if (!results.length) {
-    dropdown.innerHTML = `<div class="search-empty">Aucun produit trouvé pour "<strong>${query}</strong>"</div>`;
+    dropdown.innerHTML = `<div class="search-empty">Aucun produit trouvé pour "<strong>${escapeHtml(query)}</strong>"</div>`;
   } else {
     dropdown.innerHTML = results.map(p => `
       <div class="search-item" onclick="searchSelect('${p.id}')">
