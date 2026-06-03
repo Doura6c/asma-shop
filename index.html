@@ -1649,7 +1649,7 @@ async function confirmerCommandePanier() {
     externalRef: `ASMA-CART-${Date.now()}`,
     customer: { fullName: `${fname} ${lname}`.trim(), phone, city, address: addr || null },
     items,
-    deliveryFee: 0,
+    deliveryFee: getDeliveryCost(city, total) || 0,
     notes: payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : null,
     source: 'asmashop-cart',
   };
@@ -2003,7 +2003,7 @@ async function submitOrder() {
       address: addr || null,
     },
     items: [{ sku: p.id, name: p.name, price: p.price, quantity: qty }],
-    deliveryFee: 0,
+    deliveryFee: getDeliveryCost(city, total) || 0,
     notes: [note, payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : ''].filter(Boolean).join(' | ') || null,
     source: 'asmashop-web',
   };
