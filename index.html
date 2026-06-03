@@ -525,6 +525,15 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .delivery-info-box.paid{background:rgba(255,154,0,.06);border:1px solid rgba(255,154,0,.25);color:#7A5000;}
 .delivery-info-box.free300{background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.3);color:#1A8A4A;}
 
+/* ══ GALERIE MULTI-ANGLES ══ */
+.pd-gallery{width:100%;display:flex;flex-direction:column;gap:.6rem;}
+.pd-gallery-main{width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#FDF4E8,#F5E8D0);position:relative;}
+.pd-gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s ease;}
+.pd-gallery-thumbs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.pd-thumb{width:64px;height:64px;border-radius:7px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;flex-shrink:0;}
+.pd-thumb:hover{transform:scale(1.05);}
+.pd-thumb.active{border-color:var(--or);box-shadow:0 0 0 1px var(--or);}
+.pd-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 /* ══ PANIER — AJOUT DEPUIS FICHE PRODUIT ══ */
 .pd-cart-actions{margin-top:1.2rem;display:flex;gap:.6rem;}
 .pd-add-cart{flex:1;padding:13px 10px;font-size:.82rem;font-family:'Raleway',sans-serif;font-weight:800;letter-spacing:.5px;background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);border:none;border-radius:8px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
@@ -1397,7 +1406,9 @@ const PRODUCTS = [
 
   // 🌸 SOINS VISAGE
   {
-    id: 'vis-001', image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&q=80', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-001', image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&q=80',
+    images: ['https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=400&q=80','https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80','https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80'],
+    emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Crème Éclat & Uniformisante Peau Noire',
     desc: 'Crème de soin spécialement formulée pour éclaircir et unifier le teint des peaux noires sans produits dangereux. Enrichie en niacinamide et vitamine C. Résultats visibles en 2 semaines.',
     price: 150000, oldPrice: 200000,
@@ -1405,7 +1416,9 @@ const PRODUCTS = [
     features: ['Sans mercure', 'Sans hydroquinone', 'Vitamine C', 'Résultats 2 semaines'],
   },
   {
-    id: 'vis-002', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80', emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-002', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80',
+    images: ['https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80','https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=400&q=80'],
+    emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Sérum Vitamine C Anti-Taches Concentré',
     desc: 'Sérum haute concentration en vitamine C pure (20%). Efface les taches, unifie le teint, stimule la production de collagène. Texture légère absorption rapide.',
     price: 190000, oldPrice: 260000,
@@ -1457,7 +1470,9 @@ const PRODUCTS = [
 
   // 🌺 PARFUMS
   {
-    id: 'par-001', image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&q=80', emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-001', image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&q=80',
+    images: ['https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&q=80','https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80'],
+    emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
     name: 'Parfum Oriental Rose & Oud — Longue Tenue',
     desc: 'Parfum oriental de luxe aux notes de rose, oud et musc blanc. Sillage envoûtant, tenue exceptionnelle jusqu\'à 24h. Formule concentrée façon parfumerie du Moyen-Orient.',
     price: 260000, oldPrice: 350000,
@@ -1525,7 +1540,9 @@ const PRODUCTS = [
     features: ['Résine naturelle', 'Anti-acné', 'Antiseptique', 'Recette ancestrale'],
   },
   {
-    id: 'sav-004', image: 'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=400&q=80', emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-004', image: 'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=400&q=80',
+    images: ['https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80','https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80'],
+    emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Citron Africain — Éclat & Anti-Taches',
     desc: 'Savon naturel au citron africain riche en vitamine C. Efface progressivement les taches, unifie et illumine le teint. Action exfoliante douce. Convient à toutes les carnations.',
     price: 28000, oldPrice: 40000,
@@ -1656,6 +1673,16 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+
+// Galerie — change l'image principale en cliquant sur une vignette.
+function switchGalleryThumb(el, url) {
+  document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const img = document.getElementById('pd-gallery-img');
+  if (!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => { img.src = url; img.style.opacity = '1'; }, 200);
+}
 
 // Ajoute le produit actuellement ouvert en fiche au panier, ferme la fiche et ouvre le panier.
 function addPdToCart() {
@@ -1913,8 +1940,23 @@ function openPD(productId) {
   currentPdProduct = p;
 
   const pdMedia = document.querySelector('.pd-media');
-  if (p.image) {
-    pdMedia.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:0;">`;
+  if (p.images && p.images.length > 0) {
+    // Galerie multi-angles : image principale + vignettes
+    const all = [p.image, ...p.images].filter(Boolean);
+    pdMedia.innerHTML = `
+      <div class="pd-gallery">
+        <div class="pd-gallery-main">
+          <img id="pd-gallery-img" src="${all[0]}" alt="${escapeHtml(p.name)}" width="400" height="400" loading="eager">
+        </div>
+        <div class="pd-gallery-thumbs">
+          ${all.map((url, i) => `
+            <div class="pd-thumb${i === 0 ? ' active' : ''}" onclick="switchGalleryThumb(this,'${url}')">
+              <img src="${url.replace('w=400', 'w=80')}" alt="${escapeHtml(p.name)} — vue ${i + 1}" width="80" height="80" loading="lazy">
+            </div>`).join('')}
+        </div>
+      </div>`;
+  } else if (p.image) {
+    pdMedia.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.name)}" width="400" height="400" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" loading="eager">`;
   } else {
     pdMedia.innerHTML = `<div class="pd-emoji" id="pd-emoji">${p.emoji}</div>`;
   }
