@@ -1507,6 +1507,12 @@ function formatGNF(n) {
   return Math.round(n).toLocaleString('fr-FR') + ' GNF';
 }
 
+// Valide un numéro mobile guinéen : 6XXXXXXXX (9 chiffres) ou 2246XXXXXXXX.
+function isValidGuineaPhone(raw) {
+  const d = String(raw || '').replace(/\D/g, '');
+  return /^6\d{8}$/.test(d) || /^2246\d{8}$/.test(d);
+}
+
 function addToCart(productId) {
   const p = PRODUCTS.find(x => x.id === productId);
   if (!p) return;
@@ -1636,6 +1642,7 @@ async function confirmerCommandePanier() {
 
   if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
   if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
+  if (!isValidGuineaPhone(phone)) { alert('Numéro WhatsApp invalide. Ex : 622 34 56 78.'); return; }
   if (!city)  { alert('Veuillez sélectionner votre ville.'); return; }
 
   const checked = [...document.querySelectorAll('.cco-cb:checked')];
@@ -1994,6 +2001,11 @@ async function submitOrder() {
   const payment= document.getElementById('f-payment').value;
   const note   = document.getElementById('f-note').value.trim();
   const total  = p.price * qty;
+
+  if (!isValidGuineaPhone(phone)) {
+    alert('Numéro WhatsApp invalide. Entrez un numéro guinéen, ex : 622 34 56 78.');
+    return;
+  }
 
   // Afficher loading
   document.getElementById('loading-overlay').classList.add('show');
