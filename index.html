@@ -534,6 +534,18 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   nav{top:33px;}
   .nav-search{display:none;}
 }
+/* ══ FAQ ══ */
+.faq-section{padding:5rem 6%;}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem;}
+.faq-item{border:1px solid rgba(201,168,76,.18);border-radius:12px;overflow:hidden;}
+.faq-q{width:100%;background:rgba(255,255,255,.02);border:none;padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:var(--text);font-size:.87rem;font-weight:600;text-align:left;gap:1rem;transition:background .2s;}
+.faq-q:hover,.faq-q[aria-expanded="true"]{background:rgba(201,168,76,.06);color:var(--or);}
+.faq-icon{color:var(--or);font-size:1.2rem;flex-shrink:0;transition:transform .25s;line-height:1;}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-a.open{max-height:320px;}
+.faq-a p{padding:.1rem 1.5rem 1.2rem;color:var(--text-2);font-size:.83rem;line-height:1.9;}
+@media(max-width:600px){.faq-q{font-size:.82rem;padding:1rem 1.1rem;}.faq-a p{padding:.1rem 1.1rem 1rem;}}
 </style>
 </head>
 <body>
@@ -572,6 +584,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <li><a href="#produits" onclick="filterCat('soins-visage')">Beauté</a></li>
     <li><a href="#pourquoi">À propos</a></li>
     <li><a href="#temoignages">Avis</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <!-- Barre de recherche -->
   <div class="nav-search-wrap">
@@ -1076,6 +1089,67 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     🛍️ Commander Maintenant
   </button>
 </div>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section id="faq" class="alt faq-section">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment fonctionne le paiement à la livraison ?","acceptedAnswer":{"@type":"Answer","text":"Vous ne payez rien à l'avance. Le livreur vous apporte votre commande, vous vérifiez les produits, et vous payez uniquement si vous êtes satisfaite."}},{"@type":"Question","name":"Quel est le délai de livraison ?","acceptedAnswer":{"@type":"Answer","text":"Conakry : 24 à 48 heures, livraison gratuite dans les 8 communes. Province : 2 à 5 jours selon votre ville."}},{"@type":"Question","name":"Livrez-vous en province (hors Conakry) ?","acceptedAnswer":{"@type":"Answer","text":"Oui, nous livrons dans toutes les grandes villes de Guinée : Labé, Kindia, Kankan, N'Zérékoré, Mamou, Faranah, Boké et plus. Des frais de livraison s'appliquent selon la distance."}},{"@type":"Question","name":"Les produits sont-ils vraiment naturels ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Nos produits sont sélectionnés auprès de fournisseurs spécialisés : argan du Maroc, lait de chameau, beurre de karité, résine traditionnelle africaine."}},{"@type":"Question","name":"Comment payer avec Orange Money ?","acceptedAnswer":{"@type":"Answer","text":"Sélectionnez Orange Money lors de la commande. Envoyez le montant exact au +224 621 88 12 10, puis envoyez-nous la capture de confirmation sur WhatsApp."}},{"@type":"Question","name":"Puis-je retourner ou échanger un produit ?","acceptedAnswer":{"@type":"Answer","text":"Si le produit est endommagé ou ne correspond pas à votre commande, contactez-nous sur WhatsApp au +224 621 88 12 10 dans les 24h. Nous arrangeons un échange ou un remboursement."}}]}</script>
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Questions Fréquentes</div>
+    <h2 class="s-title">Tout ce que vous <span class="accent">voulez savoir</span></h2>
+    <p class="s-sub" style="margin:0 auto;">Réponses aux questions les plus posées avant de commander</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Comment fonctionne le paiement à la livraison ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Vous ne payez <strong>rien à l'avance</strong>. Le livreur vous apporte votre commande, vous vérifiez les produits, et vous payez uniquement si vous êtes satisfaite. Aucun risque de votre côté.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Quel est le délai de livraison ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p><strong>Conakry :</strong> 24 à 48 heures — livraison gratuite dans les 8 communes. <strong>Province :</strong> 2 à 5 jours selon votre ville. Notre équipe vous appelle pour confirmer la date avant l'envoi.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Livrez-vous en province (hors Conakry) ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Oui, nous livrons dans toutes les grandes villes de Guinée : <strong>Labé, Kindia, Kankan, N'Zérékoré, Mamou, Faranah, Boké</strong> et plus. Les frais de livraison sont indiqués automatiquement quand vous saisissez votre ville.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Comment passer une commande ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Choisissez votre produit, cliquez sur <strong>« Commander »</strong>, remplissez votre prénom, numéro de téléphone et adresse, puis cliquez sur <strong>« Confirmer & Enregistrer »</strong>. Notre équipe vous rappelle dans les 2 heures pour valider votre commande.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Les produits sont-ils vraiment naturels ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Oui. Nos produits sont sélectionnés auprès de fournisseurs spécialisés en cosmétiques africains naturels : <strong>argan du Maroc, lait de chameau, beurre de karité, résine traditionnelle</strong>. Les ingrédients sont listés sur chaque fiche produit.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Comment payer avec Orange Money ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Sélectionnez <strong>Orange Money</strong> lors de votre commande. Envoyez le montant exact au <strong>+224 621 88 12 10</strong> (numéro Orange Money Guinée). Envoyez-nous la capture de confirmation sur WhatsApp et votre livraison est confirmée.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Puis-je retourner ou échanger un produit ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Si le produit est endommagé à la livraison ou ne correspond pas à votre commande, contactez-nous sur WhatsApp au <strong>+224 621 88 12 10</strong> dans les <strong>24h</strong>. Nous arrangeons un échange ou un remboursement sans discussion.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
@@ -2348,6 +2422,21 @@ function injectProductSchema() {
   s.type = 'application/ld+json';
   s.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": items });
   document.head.appendChild(s);
+}
+
+// ═══════════════════════════════════════════
+// FAQ — accordion
+// ═══════════════════════════════════════════
+function toggleFaq(btn) {
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+  document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(b => {
+    b.setAttribute('aria-expanded', 'false');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.setAttribute('aria-expanded', 'true');
+    btn.nextElementSibling.classList.add('open');
+  }
 }
 
 // ═══════════════════════════════════════════
