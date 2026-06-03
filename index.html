@@ -2295,11 +2295,39 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// A9 — Données structurées Product (rich results : prix + disponibilité).
+// Généré depuis PRODUCTS pour rester synchronisé. Pas d'AggregateRating
+// tant qu'il n'y a pas de vrais avis (cohérent avec A4).
+function injectProductSchema() {
+  const items = PRODUCTS.map(p => ({
+    "@type": "Product",
+    "@id": `https://asma-shop.vercel.app/#${p.id}`,
+    "name": p.name,
+    "description": p.desc,
+    "image": p.image || 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&q=80',
+    "category": p.catLabel,
+    "brand": { "@type": "Brand", "name": "ASMA SHOP AFRIQUE" },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://asma-shop.vercel.app/#${p.id}`,
+      "price": p.price,
+      "priceCurrency": "GNF",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": "https://asma-shop.vercel.app/#store" }
+    }
+  }));
+  const s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": items });
+  document.head.appendChild(s);
+}
+
 // ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
 renderProducts('all');
 updateCartUI();
+injectProductSchema();
 </script>
 </body>
 </html>
