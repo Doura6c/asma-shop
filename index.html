@@ -525,6 +525,13 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .delivery-info-box.paid{background:rgba(255,154,0,.06);border:1px solid rgba(255,154,0,.25);color:#7A5000;}
 .delivery-info-box.free300{background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.3);color:#1A8A4A;}
 
+/* ══ PANIER — AJOUT DEPUIS FICHE PRODUIT ══ */
+.pd-cart-actions{margin-top:1.2rem;display:flex;gap:.6rem;}
+.pd-add-cart{flex:1;padding:13px 10px;font-size:.82rem;font-family:'Raleway',sans-serif;font-weight:800;letter-spacing:.5px;background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);border:none;border-radius:8px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.pd-add-cart:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--or-glow);}
+.pd-form-sep{text-align:center;font-size:.7rem;color:var(--text-3);margin:1.6rem 0 .6rem;letter-spacing:1.5px;text-transform:uppercase;position:relative;}
+.pd-form-sep::before,.pd-form-sep::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:var(--border);opacity:.5;}
+.pd-form-sep::before{left:0;}.pd-form-sep::after{right:0;}
 @media(max-width:600px){
   .frow{grid-template-columns:1fr;}
   .pay-opts{grid-template-columns:1fr 1fr;}
@@ -809,12 +816,18 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <span>🔄 Échange sous 48h</span>
           </div>
           <p class="pd-stock-status" id="pd-stock"></p>
+          <div class="pd-cart-actions">
+            <button class="pd-add-cart" onclick="addPdToCart()">
+              🛍️ Ajouter au panier
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Formulaire commande -->
+      <!-- Formulaire commande directe -->
+      <div class="pd-form-sep">ou commander directement</div>
       <div class="pd-form-section">
-        <div class="pd-form-title">🛍️ Commander ce produit</div>
+        <div class="pd-form-title">Commander ce produit</div>
         <form id="order-form" onsubmit="submitOrder(event)">
           <input type="hidden" id="f-product-id">
           <input type="hidden" id="f-product-name">
@@ -1643,6 +1656,21 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+
+// Ajoute le produit actuellement ouvert en fiche au panier, ferme la fiche et ouvre le panier.
+function addPdToCart() {
+  const p = currentPdProduct;
+  if (!p) return;
+  const existing = cart.find(x => x.id === p.id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...p, qty: 1 });
+  }
+  updateCartUI();
+  closePD();
+  setTimeout(() => toggleCart(), 180);
+}
 
 function addToCart(productId) {
   const p = PRODUCTS.find(x => x.id === productId);
