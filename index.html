@@ -805,6 +805,8 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
           <input type="hidden" id="f-product-id">
           <input type="hidden" id="f-product-name">
           <input type="hidden" id="f-product-price">
+          <!-- Honeypot anti-bot : invisible pour l'humain, rempli par les bots -->
+          <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" placeholder="Laisser vide">
 
           <!-- 3 champs essentiels -->
           <div class="fg">
@@ -1172,6 +1174,8 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 
     <!-- Formulaire client -->
     <div class="cco-form">
+      <!-- Honeypot anti-bot : invisible pour l'humain, rempli par les bots -->
+      <input type="text" id="cco-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" placeholder="Laisser vide">
       <label for="cco-fname">Prénom *</label>
       <input type="text" id="cco-fname" placeholder="Votre prénom" autocomplete="given-name">
 
@@ -1645,6 +1649,9 @@ async function confirmerCommandePanier() {
   const addr  = document.getElementById('cco-address').value.trim();
   const payment = document.getElementById('cco-payment').value;
 
+  // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
+  if (document.getElementById('cco-website')?.value) return;
+
   if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
   if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
   if (!isValidGuineaPhone(phone)) { alert('Numéro WhatsApp invalide. Ex : 622 34 56 78.'); return; }
@@ -1996,6 +2003,8 @@ function commanderWhatsApp() {
 async function submitOrder() {
   const p = currentPdProduct;
   if (!p) return;
+  // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
+  if (document.getElementById('f-website')?.value) return;
 
   const fname  = document.getElementById('f-fname').value.trim();
   const lname  = document.getElementById('f-lname').value.trim();
