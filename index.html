@@ -46,6 +46,8 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=300&q=80" fetchpriority="high">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Raleway:wght@300;400;500;600;700;800&display=swap">
 
 <!-- JSON-LD -->
@@ -687,7 +689,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   <div class="bs-scroll">
     <div class="bs-card" onclick="openPD('vis-001')">
       <div class="bs-rank">🥇</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=300&q=80" alt="Crème Éclat" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=300&q=80" alt="Crème Éclat" width="300" height="300" loading="eager" fetchpriority="high"></div>
       <div class="bs-body">
         <div class="bs-tag">⭐ N°1 Soins Visage</div>
         <div class="bs-name">Crème Éclat & Uniformisante</div>
@@ -697,7 +699,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     </div>
     <div class="bs-card" onclick="openPD('par-001')">
       <div class="bs-rank">🥈</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&q=80" alt="Parfum Oud" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&q=80" alt="Parfum Oud" width="300" height="300" loading="lazy"></div>
       <div class="bs-body">
         <div class="bs-tag">🌺 N°1 Parfums</div>
         <div class="bs-name">Parfum Oriental Rose & Oud</div>
@@ -707,7 +709,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     </div>
     <div class="bs-card" onclick="openPD('sav-004')">
       <div class="bs-rank">🥉</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=300&q=80" alt="Savon Citron" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=300&q=80" alt="Savon Citron" width="300" height="300" loading="lazy"></div>
       <div class="bs-body">
         <div class="bs-tag">🧼 N°1 Savons</div>
         <div class="bs-name">Savon Citron Anti-Taches</div>
@@ -717,7 +719,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     </div>
     <div class="bs-card" onclick="openPD('vis-002')">
       <div class="bs-rank">⭐</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80" alt="Sérum Vitamine C" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80" alt="Sérum Vitamine C" width="300" height="300" loading="lazy"></div>
       <div class="bs-body">
         <div class="bs-tag">✨ Coup de Cœur</div>
         <div class="bs-name">Sérum Vitamine C 20%</div>
@@ -1870,7 +1872,7 @@ function renderProducts(cat) {
          onkeypress="if(event.key==='Enter')openPD('${p.id}')">
       ${p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : p.badge === 'top' ? '⭐ Best-seller' : '🏷️ Promo'}</div>` : ''}
       <div class="prod-img">
-        ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : p.emoji}
+        ${p.image ? `<img src="${p.image}" alt="${p.name}" width="400" height="400" loading="lazy">` : p.emoji}
         <div class="stock-dot ${p.stock ? 'stock-ok' : 'stock-no'}"></div>
       </div>
       <div class="prod-body">
