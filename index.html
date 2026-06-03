@@ -774,6 +774,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <span class="cat-emoji">👔</span>
       <div class="cat-name">Homme</div>
     </div>
+    <div class="cat-card" onclick="filterCat('coffrets')" role="tab">
+      <span class="cat-emoji">🎁</span>
+      <div class="cat-name">Coffrets</div>
+    </div>
   </div>
 
   <div class="prod-grid" id="prod-grid" role="list"></div>
@@ -1181,6 +1185,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <li><a href="#" onclick="filterCat('bijoux');return false">💍 Bijoux</a></li>
         <li><a href="#" onclick="filterCat('savons');return false">🧼 Savons Naturels</a></li>
         <li><a href="#" onclick="filterCat('homme');return false">👔 Homme</a></li>
+        <li><a href="#" onclick="filterCat('coffrets');return false">🎁 Coffrets</a></li>
       </ul>
     </div>
     <div>
@@ -1598,6 +1603,32 @@ const PRODUCTS = [
     price: 75000, oldPrice: 100000,
     badge: 'new', stock: true, stars: 4,
     features: ['Set de 5', 'Hypoallergénique', 'Résistant eau', 'Idéal cadeau'],
+  },
+
+  // 🎁 COFFRETS & ROUTINES
+  {
+    id: 'cof-001', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80', emoji: '✨', cat: 'coffrets', catLabel: 'Coffrets',
+    name: 'Routine Visage Éclat — Crème + Sérum',
+    desc: 'Le duo star pour un teint lumineux en 3 semaines. Comprend : Crème Éclat Anti-Taches (150 000 GNF) + Sérum Vitamine C 20% (190 000 GNF). Protocole matin & soir inclus.',
+    price: 270000, oldPrice: 340000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['2 produits bestsellers', 'Protocole inclus', 'Résultats 3 semaines', 'Économisez 70 000 GNF'],
+  },
+  {
+    id: 'cof-002', image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80', emoji: '🧼', cat: 'coffrets', catLabel: 'Coffrets',
+    name: 'Pack Découverte Savons Naturels — 4 Savons',
+    desc: 'Coffret de 4 savons naturels africains au choix parmi notre sélection : Argan, Lait de Chameau, Charbon Actif, Beurre de Karité & Rose. Idéal pour tester ou offrir.',
+    price: 110000, oldPrice: 147000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['4 savons naturels', 'Argan • Chameau • Charbon • Karité', 'Peaux de tous types', 'Économisez 37 000 GNF'],
+  },
+  {
+    id: 'cof-003', image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400&q=80', emoji: '🎁', cat: 'coffrets', catLabel: 'Coffrets',
+    name: 'Coffret Beauté Premium — Cadeau Idéal',
+    desc: 'Le coffret cadeau premium : Crème Éclat Anti-Taches (150 000 GNF) + Parfum Oriental Rose & Oud (260 000 GNF). Emballage cadeau soigné. Livré avec un message personnalisé.',
+    price: 320000, oldPrice: 410000,
+    badge: 'top', stock: true, stars: 5,
+    features: ['Crème Éclat + Parfum Oud', 'Emballage cadeau offert', 'Message personnalisé', 'Économisez 90 000 GNF'],
   },
 ];
 
