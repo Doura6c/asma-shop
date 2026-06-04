@@ -551,6 +551,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   .hero-btns{flex-direction:column;align-items:stretch;}
   .hero-btns .btn-rose,.hero-btns .btn-wa{width:100%;justify-content:center;}
 }
+/* ══ Validation inline ══ */
+.field-error{display:block;color:#e0584f;font-size:.72rem;font-weight:600;margin-top:.25rem;min-height:0;line-height:1.3;}
+.field-error:empty{margin-top:0;}
+.input-invalid{border-color:#e0584f !important;box-shadow:0 0 0 2px rgba(224,88,79,.15) !important;}
 /* ══ FAQ ══ */
 .faq-section{padding:5rem 6%;}
 .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem;}
@@ -850,15 +854,17 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
           <!-- 3 champs essentiels -->
           <div class="fg">
             <label for="f-fname">Prénom *</label>
-            <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name">
+            <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name" oninput="clearFieldError('f-fname')">
+            <small class="field-error" id="err-f-fname"></small>
           </div>
           <div class="fg">
             <label for="f-phone">📞 Téléphone WhatsApp *</label>
-            <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel">
+            <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel" oninput="clearFieldError('f-phone')">
+            <small class="field-error" id="err-f-phone"></small>
           </div>
           <div class="fg">
             <label for="f-city">📍 Ville de livraison *</label>
-            <select id="f-city" required onchange="updateOrderSummary()">
+            <select id="f-city" required onchange="updateOrderSummary();clearFieldError('f-city')">
               <option value="">— Choisissez votre ville —</option>
               <optgroup label="🟢 Conakry — Livraison OFFERTE">
                 <option value="Conakry - Kaloum">Conakry — Kaloum</option>
@@ -903,6 +909,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
               </optgroup>
               <option value="Autre">Autre ville — nous contacter</option>
             </select>
+            <small class="field-error" id="err-f-city"></small>
           </div>
           <!-- Info livraison dynamique -->
           <div id="delivery-info-box" class="delivery-info-box" style="display:none;"></div>
@@ -1273,22 +1280,25 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <!-- Honeypot anti-bot : invisible pour l'humain, rempli par les bots -->
       <input type="text" id="cco-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" placeholder="Laisser vide">
       <label for="cco-fname">Prénom *</label>
-      <input type="text" id="cco-fname" placeholder="Votre prénom" autocomplete="given-name">
+      <input type="text" id="cco-fname" placeholder="Votre prénom" autocomplete="given-name" oninput="clearFieldError('cco-fname')">
+      <small class="field-error" id="err-cco-fname"></small>
 
       <label for="cco-lname">Nom</label>
       <input type="text" id="cco-lname" placeholder="Votre nom" autocomplete="family-name">
 
       <label for="cco-phone">Téléphone (WhatsApp) *</label>
-      <input type="tel" id="cco-phone" placeholder="ex: 622 34 56 78" inputmode="tel" autocomplete="tel">
+      <input type="tel" id="cco-phone" placeholder="ex: 622 34 56 78" inputmode="tel" autocomplete="tel" oninput="clearFieldError('cco-phone')">
+      <small class="field-error" id="err-cco-phone"></small>
 
       <label for="cco-city">Ville *</label>
-      <select id="cco-city">
+      <select id="cco-city" onchange="clearFieldError('cco-city')">
         <option value="">— Choisir votre ville —</option>
         <option>Conakry</option><option>Labé</option><option>Kankan</option>
         <option>Kindia</option><option>Mamou</option><option>Boké</option>
         <option>N'Zérékoré</option><option>Faranah</option><option>Siguiri</option>
         <option>Autre</option>
       </select>
+      <small class="field-error" id="err-cco-city"></small>
 
       <label for="cco-address">Adresse / Quartier</label>
       <input type="text" id="cco-address" placeholder="Quartier, repère...">
@@ -1831,10 +1841,7 @@ async function confirmerCommandePanier() {
   // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
   if (document.getElementById('cco-website')?.value) return;
 
-  if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
-  if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
-  if (!isValidGuineaPhone(phone)) { alert('Numéro WhatsApp invalide. Ex : 622 34 56 78.'); return; }
-  if (!city)  { alert('Veuillez sélectionner votre ville.'); return; }
+  if (!validateOrderFields({ fnameId: 'cco-fname', phoneId: 'cco-phone', cityId: 'cco-city', fname, phone, city })) return;
 
   const checked = [...document.querySelectorAll('.cco-cb:checked')];
   if (checked.length === 0) { alert('Sélectionnez au moins un article.'); return; }
@@ -2118,6 +2125,39 @@ function updateOrderSummary() {
 }
 
 // ═══════════════════════════════════════════
+// VALIDATION INLINE (messages sous les champs, sans alert)
+// ═══════════════════════════════════════════
+function setFieldError(id, msg) {
+  const el = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (el) el.classList.add('input-invalid');
+  if (err) err.textContent = msg;
+  return el;
+}
+function clearFieldError(id) {
+  const el = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (el) el.classList.remove('input-invalid');
+  if (err) err.textContent = '';
+}
+// Valide prénom/téléphone/ville pour un tunnel donné (préfixe d'ids).
+// Retourne true si tout est valide, sinon affiche les erreurs et focus le 1er champ.
+function validateOrderFields({ fnameId, phoneId, cityId, fname, phone, city }) {
+  [fnameId, phoneId, cityId].forEach(clearFieldError);
+  let firstInvalid = null;
+  if (!fname) firstInvalid = firstInvalid || setFieldError(fnameId, 'Veuillez entrer votre prénom.');
+  if (!phone) firstInvalid = firstInvalid || setFieldError(phoneId, 'Veuillez entrer votre numéro de téléphone.');
+  else if (!isValidGuineaPhone(phone)) firstInvalid = firstInvalid || setFieldError(phoneId, 'Numéro invalide. Ex : 622 34 56 78.');
+  if (!city) firstInvalid = firstInvalid || setFieldError(cityId, 'Veuillez choisir votre ville.');
+  if (firstInvalid) {
+    firstInvalid.focus({ preventScroll: true });
+    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+  return true;
+}
+
+// ═══════════════════════════════════════════
 // COMMANDE — WEBHOOK CRM
 // ═══════════════════════════════════════════
 async function submitOrder() {
@@ -2136,14 +2176,8 @@ async function submitOrder() {
   const note   = document.getElementById('f-note').value.trim();
   const total  = p.price * qty;
 
-  // Validation : le bouton est type="button" donc le required HTML5 ne se déclenche pas.
-  if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
-  if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
-  if (!isValidGuineaPhone(phone)) {
-    alert('Numéro WhatsApp invalide. Entrez un numéro guinéen, ex : 622 34 56 78.');
-    return;
-  }
-  if (!city) { alert('Veuillez sélectionner votre ville.'); return; }
+  // Validation inline (le bouton est type="button" -> le required HTML5 ne se déclenche pas).
+  if (!validateOrderFields({ fnameId: 'f-fname', phoneId: 'f-phone', cityId: 'f-city', fname, phone, city })) return;
 
   // Afficher loading
   document.getElementById('loading-overlay').classList.add('show');
