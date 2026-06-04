@@ -2134,10 +2134,14 @@ async function submitOrder() {
   const note   = document.getElementById('f-note').value.trim();
   const total  = p.price * qty;
 
+  // Validation : le bouton est type="button" donc le required HTML5 ne se déclenche pas.
+  if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
+  if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
   if (!isValidGuineaPhone(phone)) {
     alert('Numéro WhatsApp invalide. Entrez un numéro guinéen, ex : 622 34 56 78.');
     return;
   }
+  if (!city) { alert('Veuillez sélectionner votre ville.'); return; }
 
   // Afficher loading
   document.getElementById('loading-overlay').classList.add('show');
