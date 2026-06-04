@@ -1225,6 +1225,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <div>📞 <strong>+224 621 88 12 10</strong></div>
         <div>💬 <a href="https://wa.me/224621881210" style="color:inherit;text-decoration:none;"><strong>WhatsApp 7j/7</strong></a></div>
         <div>📧 <strong>asmashopafrique@gmail.com</strong></div>
+        <div>📦 <a href="https://cod-crm-zeta.vercel.app/suivi" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;"><strong>Suivre ma commande</strong></a></div>
       </div>
     </div>
   </div>
@@ -1336,6 +1337,9 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <h3>Commande Confirmée !</h3>
     <p id="success-message">Merci pour votre commande. Notre équipe vous contactera dans les plus brefs délais sur WhatsApp pour confirmer la livraison.</p>
     <div class="success-code" id="success-code"></div>
+    <a id="success-track" href="https://cod-crm-zeta.vercel.app/suivi" target="_blank" rel="noopener" class="btn-wa" style="width:100%;justify-content:center;margin-bottom:.7rem;">
+      📦 Suivre ma commande
+    </a>
     <button class="btn-rose" onclick="closeSuccess()" style="width:100%;justify-content:center;">
       Continuer mes achats 🛍️
     </button>
@@ -1381,6 +1385,7 @@ const CONFIG = {
   whatsappNumber: '224621881210',
   shopName: 'ASMA SHOP AFRIQUE',
   webhookUrl: '/api/submit-order',
+  trackingUrl: 'https://cod-crm-zeta.vercel.app/suivi',
 };
 
 // ═══════════════════════════════════════════
@@ -1889,6 +1894,8 @@ async function confirmerCommandePanier() {
 
       document.getElementById('success-code').innerHTML =
         `🎀 Code commande : <strong>${data.order.code}</strong>`;
+      document.getElementById('success-track').href =
+        `${CONFIG.trackingUrl}?q=${encodeURIComponent(data.order.code)}`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
@@ -2234,6 +2241,8 @@ async function submitOrder() {
       closePD();
       document.getElementById('success-code').innerHTML =
         `🎀 Code commande : <strong>${data.order.code}</strong>`;
+      document.getElementById('success-track').href =
+        `${CONFIG.trackingUrl}?q=${encodeURIComponent(data.order.code)}`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sous peu sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
