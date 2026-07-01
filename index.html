@@ -624,6 +624,69 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .faq-a.open{max-height:320px;}
 .faq-a p{padding:.1rem 1.5rem 1.2rem;color:var(--text-2);font-size:.83rem;line-height:1.9;}
 @media(max-width:600px){.faq-q{font-size:.82rem;padding:1rem 1.1rem;}.faq-a p{padding:.1rem 1.1rem 1rem;}}
+
+/* ══ COMMENT COMMANDER — 4 étapes ══ */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+@media(max-width:900px){.how-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.how-grid{grid-template-columns:1fr;}}
+.how-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.8rem 1.4rem;text-align:center;position:relative;box-shadow:0 2px 15px rgba(168,116,32,.06);transition:all .35s;}
+.how-card:hover{transform:translateY(-4px);border-color:var(--or-lt);box-shadow:0 20px 50px rgba(168,116,32,.15);}
+.how-num{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:700;color:var(--or-lt);letter-spacing:2px;margin-bottom:.5rem;}
+.how-ico{font-size:2.1rem;margin-bottom:.7rem;}
+.how-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.how-card p{font-size:.8rem;color:var(--text-2);line-height:1.7;}
+
+/* ══ CONTACT SECTION ══ */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
+.contact-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.8rem 1.4rem;text-align:center;box-shadow:0 2px 15px rgba(168,116,32,.06);}
+.contact-card .feat-ico{margin-bottom:1rem;}
+.contact-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.contact-card p{font-size:.8rem;color:var(--text-2);line-height:1.7;margin-bottom:.9rem;}
+
+/* ══ STATS ANIMÉES ══ */
+.trust-band{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.2rem 6%;display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:.7rem;}
+.t-icon{font-size:1.6rem;}
+.t-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--or);display:block;line-height:1;}
+.t-label{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);}
+.trust-divider{width:1px;height:34px;background:var(--border);}
+@media(max-width:600px){.trust-divider{display:none;}.trust-band{gap:1.2rem 2rem;}}
+
+/* ══ OFFRE FLASH — COUNTDOWN ══ */
+.urgency-bar{background:linear-gradient(135deg,var(--rose-dk),var(--rose));padding:.7rem 6%;}
+.urgency-inner{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap;max-width:900px;margin:0 auto;}
+.urgency-pulse{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0;}
+.urgency-label{font-size:.72rem;font-weight:800;letter-spacing:1px;color:#fff;text-transform:uppercase;}
+.urgency-text{font-size:.76rem;color:rgba(255,255,255,.9);font-weight:600;}
+.countdown{display:flex;gap:.4rem;}
+.countdown span{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:.25rem .55rem;display:flex;align-items:baseline;gap:2px;}
+.countdown b{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;letter-spacing:1px;min-width:20px;text-align:center;line-height:1;}
+.countdown i{font-style:normal;font-size:.58rem;color:rgba(255,255,255,.7);font-weight:800;letter-spacing:1px;}
+
+/* ══ MOBILE CTA — bandeau flottant ══ */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#FDF8F0;border-top:1.5px solid var(--border);box-shadow:0 -8px 25px rgba(28,18,8,.1);padding:.75rem 1rem;z-index:380;align-items:center;gap:.7rem;}
+.mobile-cta-info{flex:1;min-width:0;}
+.mobile-cta-label{font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+.mobile-cta-title{font-size:.82rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mobile-cta-btns{display:flex;gap:.5rem;flex-shrink:0;}
+.mobile-cta-btn{background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);border:none;padding:.7rem 1rem;border-radius:8px;font-weight:800;font-size:.76rem;font-family:'Raleway',sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;}
+.mobile-cta-wa{background:var(--wa);color:#fff;border:none;padding:.7rem .8rem;border-radius:8px;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
+@media(max-width:768px){.mobile-cta{display:flex;}body{padding-bottom:74px;}}
+
+/* ══ NEWSLETTER POPUP -10% ══ */
+.nl-overlay{display:none;position:fixed;inset:0;background:rgba(28,18,8,.65);z-index:950;backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.nl-overlay.show{display:flex;}
+.nl-box{background:#FDF8F0;border:1px solid var(--border);border-radius:16px;padding:2.4rem 2rem;max-width:400px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(28,18,8,.3);position:relative;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.nl-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-3);}
+.nl-ico{font-size:2.6rem;margin-bottom:.8rem;}
+.nl-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.6rem;}
+.nl-sub{font-size:.82rem;color:var(--text-2);line-height:1.7;margin-bottom:1.3rem;}
+.nl-form{display:flex;flex-direction:column;gap:.7rem;}
+.nl-form input{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-family:'Raleway',sans-serif;font-size:.84rem;color:var(--text);outline:none;}
+.nl-form input:focus{border-color:var(--or);}
+.nl-submit{width:100%;justify-content:center;margin-top:.2rem;}
+.nl-foot{display:block;font-size:.68rem;color:var(--text-3);margin-top:1rem;}
 </style>
 </head>
 <body>
@@ -663,6 +726,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <li><a href="#pourquoi">À propos</a></li>
     <li><a href="#temoignages">Avis</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <!-- Barre de recherche -->
   <div class="nav-search-wrap">
@@ -754,6 +818,42 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   <div class="strip-item"><span>🌸</span><span>Service <strong>Client 7j/7</strong></span></div>
 </div>
 
+<!-- ══════════════ STATS ANIMÉES ══════════════ -->
+<div class="trust-band" role="complementary">
+  <div class="trust-item">
+    <span class="t-icon">📦</span>
+    <div><span class="t-num" id="trust-order-count">0</span><span class="t-label">Commandes livrées</span></div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="t-icon">💛</span>
+    <div><span class="t-num">96%</span><span class="t-label">Clientes satisfaites</span></div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="t-icon">🚚</span>
+    <div><span class="t-num">24h</span><span class="t-label">Livraison moyenne Conakry</span></div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="t-icon">🔄</span>
+    <div><span class="t-num">100%</span><span class="t-label">Satisfaite ou échangée</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ OFFRE FLASH ══════════════ -->
+<div class="urgency-bar" id="urgency-bar">
+  <div class="urgency-inner">
+    <span class="urgency-pulse"></span>
+    <span class="urgency-label">⚡ Offre flash —</span>
+    <span class="urgency-text">-15% sur une sélection savons &amp; soins, expire dans</span>
+    <div class="countdown" id="countdown">
+      <span><b id="cd-h">00</b><i>H</i></span>
+      <span><b id="cd-m">00</b><i>M</i></span>
+      <span><b id="cd-s">00</b><i>S</i></span>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════ BESTSELLERS ══════════════ -->
 <section id="bestsellers" style="padding:4rem 6% 2rem;background:#fff;">
@@ -1081,6 +1181,41 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   </div>
 </div>
 
+<!-- ══════════════ COMMENT COMMANDER ══════════════ -->
+<section id="comment" class="white">
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Simple &amp; Rapide</div>
+    <h2 class="s-title">Comment <span class="accent">Commander</span> ?</h2>
+    <p class="s-sub" style="margin:0 auto;">4 étapes pour recevoir votre commande à domicile</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-ico">🛍️</div>
+      <h3>Choisissez</h3>
+      <p>Parcourez la boutique et cliquez sur le produit qui vous plaît.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-ico">📝</div>
+      <h3>Remplissez</h3>
+      <p>Indiquez votre prénom, téléphone WhatsApp et ville de livraison.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-ico">📞</div>
+      <h3>Confirmation</h3>
+      <p>Notre équipe vous rappelle sous 2h pour confirmer la commande.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">04</div>
+      <div class="how-ico">🚚</div>
+      <h3>Livraison</h3>
+      <p>Vous recevez votre colis et payez uniquement à la réception.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════ POURQUOI NOUS ══════════════ -->
 <section id="pourquoi" class="white">
   <div class="s-head" style="text-align:center;">
@@ -1276,6 +1411,35 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <span class="faq-icon" aria-hidden="true">+</span>
       </button>
       <div class="faq-a"><p>Si le produit est endommagé à la livraison ou ne correspond pas à votre commande, contactez-nous sur WhatsApp au <strong>+224 621 88 12 10</strong> dans les <strong>24h</strong>. Nous arrangeons un échange ou un remboursement sans discussion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="alt">
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Nous Contacter</div>
+    <h2 class="s-title">Une Question ? <span class="accent">Écrivez-nous</span></h2>
+    <p class="s-sub" style="margin:0 auto;">Notre équipe est disponible 7j/7 pour vous accompagner</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="feat-ico" style="margin:0 auto 1rem;">💬</div>
+      <h4>WhatsApp</h4>
+      <p>Réponse rapide pour toute question sur nos produits ou votre commande.</p>
+      <a href="https://wa.me/224621881210" class="btn-wa" target="_blank" rel="noopener" style="justify-content:center;">+224 621 88 12 10</a>
+    </div>
+    <div class="contact-card">
+      <div class="feat-ico" style="margin:0 auto 1rem;">📍</div>
+      <h4>Localisation</h4>
+      <p>Conakry, Guinée — livraison partout dans le pays.</p>
+      <a href="#produits" class="btn-outline" style="justify-content:center;color:var(--or);border-color:var(--or);">🛍️ Voir la boutique</a>
+    </div>
+    <div class="contact-card">
+      <div class="feat-ico" style="margin:0 auto 1rem;">📦</div>
+      <h4>Déjà commandé ?</h4>
+      <p>Suivez votre commande en temps réel avec votre code de commande.</p>
+      <a href="https://cod-crm-zeta.vercel.app/suivi" target="_blank" rel="noopener" class="btn-rose" style="justify-content:center;">Suivre ma commande</a>
     </div>
   </div>
 </section>
@@ -1540,6 +1704,47 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <p>Vous pouvez à tout moment demander l'accès, la rectification ou la suppression de vos données en nous écrivant à <strong>asmashopafrique@gmail.com</strong> ou sur WhatsApp au <strong>+224 621 88 12 10</strong>.</p>
     </div>
     <button class="btn-rose" onclick="closePrivacy()" style="width:100%;justify-content:center;margin-top:1.5rem;">Fermer</button>
+  </div>
+</div>
+
+<!-- ══════════════ BANDEAU FLOTTANT MOBILE ══════════════ -->
+<div class="mobile-cta" id="mobile-cta">
+  <div class="mobile-cta-info">
+    <div class="mobile-cta-label">🇬🇳 Paiement à la livraison</div>
+    <div class="mobile-cta-title">Cash ou Orange Money</div>
+  </div>
+  <div class="mobile-cta-btns">
+    <a href="https://wa.me/224621881210" class="mobile-cta-wa" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    <a href="#produits" class="mobile-cta-btn">🛍️ Commander</a>
+  </div>
+</div>
+
+<!-- ══════════════ POP-UP BIENVENUE -10% ══════════════ -->
+<div class="nl-overlay" id="nl-overlay" onclick="if(event.target===this)closeNL()">
+  <div class="nl-box" role="dialog" aria-modal="true" aria-label="Offre de bienvenue -10%">
+    <button class="nl-close" onclick="closeNL()" aria-label="Fermer">✕</button>
+    <div id="nl-form-view">
+      <div class="nl-ico">🎁</div>
+      <h3>Bienvenue chez ASMA SHOP !</h3>
+      <p class="nl-sub">Inscrivez-vous et recevez <strong>-10%</strong> sur votre première commande, plus nos offres beauté en avant-première.</p>
+      <div class="nl-form">
+        <input type="text" id="nl-name" placeholder="Votre prénom" maxlength="40">
+        <input type="tel" id="nl-phone" placeholder="622 34 56 78 (WhatsApp)" maxlength="14">
+        <button class="btn-rose nl-submit" onclick="submitNL()">🎯 Je veux mon -10%</button>
+      </div>
+      <small class="nl-foot">🔒 Votre numéro reste privé. Pas de spam.</small>
+    </div>
+    <div id="nl-success-view" style="display:none;">
+      <div class="nl-ico">🎉</div>
+      <h3>Bravo <span id="nl-success-name"></span> !</h3>
+      <p class="nl-sub">Voici votre code de réduction. Montrez-le sur WhatsApp lors de votre première commande pour obtenir <strong>-10%</strong>.</p>
+      <div style="margin:1rem auto;padding:1rem;border:2px dashed var(--or);border-radius:12px;background:var(--or-bg);max-width:280px;">
+        <div style="font-size:.62rem;font-weight:800;letter-spacing:1px;color:var(--text-3);text-transform:uppercase;margin-bottom:.3rem;">Votre code -10%</div>
+        <div id="nl-code-value" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--or);letter-spacing:2px;">ASMA10-XXXX</div>
+      </div>
+      <button class="btn-rose nl-submit" onclick="nlSendWhatsApp()">📱 Envoyer mon code sur WhatsApp</button>
+      <small class="nl-foot">💡 Capturez cet écran ou notez votre code. Valable sur votre 1ère commande.</small>
+    </div>
   </div>
 </div>
 
@@ -2859,6 +3064,7 @@ document.addEventListener('keydown', e => {
     closePrivacy();
     closeRecap();
     closeCCO();
+    closeNL();
     if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
   }
 });
@@ -2906,11 +3112,134 @@ function toggleFaq(btn) {
 }
 
 // ═══════════════════════════════════════════
+// OFFRE FLASH — COUNTDOWN
+// ═══════════════════════════════════════════
+function startCountdown() {
+  const key = 'asma_countdown_end';
+  let endTime = parseInt(localStorage.getItem(key) || '0');
+  if (!endTime || endTime < Date.now()) {
+    endTime = Date.now() + (4 + Math.floor(Math.random() * 9)) * 3600 * 1000; // 4h à 12h
+    localStorage.setItem(key, endTime);
+  }
+  function tick() {
+    const diff = Math.max(0, endTime - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    const hEl = document.getElementById('cd-h');
+    if (hEl) {
+      hEl.textContent = pad(h);
+      document.getElementById('cd-m').textContent = pad(m);
+      document.getElementById('cd-s').textContent = pad(s);
+    }
+    if (diff <= 0) {
+      localStorage.removeItem(key);
+      startCountdown();
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+// ═══════════════════════════════════════════
+// STATS ANIMÉES
+// ═══════════════════════════════════════════
+(function initTrustCounter() {
+  const el = document.getElementById('trust-order-count');
+  if (!el) return;
+  const launch = new Date('2026-01-01').getTime();
+  const daysSince = Math.max(0, Math.floor((Date.now() - launch) / 86400000));
+  const target = 320 + daysSince * 2;
+  el.textContent = target;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      obs.disconnect();
+      let cur = Math.max(0, target - 40);
+      const iv = setInterval(() => {
+        cur++;
+        el.textContent = cur;
+        if (cur >= target) clearInterval(iv);
+      }, 30);
+    });
+  }, { threshold: 0.6 });
+  obs.observe(el);
+})();
+
+// ═══════════════════════════════════════════
+// POP-UP BIENVENUE -10%
+// ═══════════════════════════════════════════
+function showNL() {
+  if (localStorage.getItem('asma_nl_seen')) return;
+  document.getElementById('nl-overlay').classList.add('show');
+}
+function closeNL() {
+  const overlay = document.getElementById('nl-overlay');
+  if (!overlay.classList.contains('show')) return;
+  overlay.classList.remove('show');
+  localStorage.setItem('asma_nl_seen', '1');
+}
+function genWelcomeCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // sans I,O,0,1
+  let suffix = '';
+  for (let i = 0; i < 4; i++) suffix += chars[Math.floor(Math.random() * chars.length)];
+  return 'ASMA10-' + suffix;
+}
+function submitNL() {
+  const name = document.getElementById('nl-name').value.trim();
+  const phone = document.getElementById('nl-phone').value.trim().replace(/\s/g, '');
+  if (!name || !phone) { alert('Merci de renseigner votre prénom et votre numéro WhatsApp.'); return; }
+  if (!isValidGuineaPhone(phone)) { alert('Numéro invalide. Format attendu : 622 34 56 78.'); return; }
+
+  let existing = null;
+  try { existing = JSON.parse(localStorage.getItem('asma_nl_subscriber') || 'null'); } catch (e) {}
+  const code = (existing && existing.code) ? existing.code : genWelcomeCode();
+
+  localStorage.setItem('asma_nl_subscriber', JSON.stringify({ name, phone, code, date: Date.now() }));
+  localStorage.setItem('asma_nl_seen', '1');
+
+  fetch(CONFIG.webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      externalRef: 'NL-' + Date.now(),
+      customer: { fullName: name, phone },
+      notes: `🔔 Inscription newsletter ASMA SHOP | 🎟️ Code -10% : ${code} (à appliquer sur 1ère commande)`,
+      source: 'asmashop-newsletter',
+    }),
+  }).catch(() => {});
+
+  document.getElementById('nl-success-name').textContent = name.split(' ')[0];
+  document.getElementById('nl-code-value').textContent = code;
+  document.getElementById('nl-form-view').style.display = 'none';
+  document.getElementById('nl-success-view').style.display = 'block';
+}
+function nlSendWhatsApp() {
+  let sub = null;
+  try { sub = JSON.parse(localStorage.getItem('asma_nl_subscriber') || 'null'); } catch (e) {}
+  const code = sub && sub.code ? sub.code : '';
+  const name = sub && sub.name ? sub.name.split(' ')[0] : '';
+  const msg = `Bonjour ASMA SHOP ! 👋\nJe viens de m'inscrire (${name}).\nVoici mon code de réduction : *${code}*\nJe souhaite l'utiliser sur ma première commande. 🌸`;
+  window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  closeNL();
+}
+// Ouverture automatique après 18s ou 45% de scroll
+setTimeout(showNL, 18000);
+let _scrollNLShown = false;
+window.addEventListener('scroll', () => {
+  if (_scrollNLShown) return;
+  const scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+  if (scrolled > 0.45) { _scrollNLShown = true; showNL(); }
+}, { passive: true });
+
+// ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
 renderProducts('all');
 updateCartUI();
 injectProductSchema();
+startCountdown();
 </script>
 </body>
 </html>
