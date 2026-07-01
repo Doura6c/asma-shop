@@ -263,6 +263,19 @@ section{padding:6rem 6%;}
 .cat-card.active .cat-name,.cat-card:hover .cat-name{color:var(--or);}
 
 /* ═══════════════════════════════════════
+   SORT BAR
+═══════════════════════════════════════ */
+.sort-bar{display:flex;align-items:center;justify-content:flex-end;gap:.6rem;margin:0 0 1.5rem;}
+.sort-label{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+.sort-select{background:#fff;border:1.5px solid var(--border);color:var(--text);padding:8px 34px 8px 14px;border-radius:30px;font-size:.76rem;font-weight:700;font-family:'Raleway',sans-serif;cursor:pointer;box-shadow:0 2px 10px rgba(168,116,32,.08);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A87420' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;outline:none;}
+.sort-select:focus{border-color:var(--or);}
+.no-results{display:none;text-align:center;padding:4rem 1rem;color:var(--text-3);}
+.no-results.show{display:block;}
+.no-results-ico{font-size:2.6rem;margin-bottom:.8rem;opacity:.5;}
+.no-results h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text);margin-bottom:.5rem;}
+.no-results p{font-size:.82rem;margin-bottom:1.2rem;}
+
+/* ═══════════════════════════════════════
    PRODUCT GRID
 ═══════════════════════════════════════ */
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.2rem;}
@@ -806,7 +819,24 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     </div>
   </div>
 
+  <div class="sort-bar">
+    <label class="sort-label" for="sort-select">Trier :</label>
+    <select id="sort-select" class="sort-select" onchange="setSort(this.value)" aria-label="Trier les produits">
+      <option value="default">Pertinence</option>
+      <option value="price-asc">Prix croissant ↑</option>
+      <option value="price-desc">Prix décroissant ↓</option>
+    </select>
+  </div>
+
   <div class="prod-grid" id="prod-grid" role="list"></div>
+  <div class="no-results" id="no-results">
+    <div class="no-results-ico">🔍</div>
+    <h3>Aucun produit trouvé</h3>
+    <p>Essayez une autre catégorie ou contactez-nous sur WhatsApp pour une demande spéciale.</p>
+    <a href="https://wa.me/224621881210?text=Bonjour%20ASMA%20SHOP%2C%20je%20cherche%20un%20produit%20que%20je%20ne%20trouve%20pas%20sur%20le%20site" class="btn-wa" target="_blank" rel="noopener" style="display:inline-flex;">
+      💬 Demander sur WhatsApp
+    </a>
+  </div>
 </section>
 
 <!-- ══════════════ PRODUCT DETAIL ══════════════ -->
@@ -1914,15 +1944,30 @@ async function confirmerCommandePanier() {
 // CATALOGUE UI
 // ═══════════════════════════════════════════
 let currentCat = 'all';
+let currentSort = 'default';
 let currentPdProduct = null;
 
 function renderProducts(cat) {
   const grid = document.getElementById('prod-grid');
-  const filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
-  grid.innerHTML = filtered.map(p => `
+  const noResults = document.getElementById('no-results');
+  let filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+
+  if (currentSort === 'price-asc') filtered = [...filtered].sort((a, b) => a.price - b.price);
+  else if (currentSort === 'price-desc') filtered = [...filtered].sort((a, b) => b.price - a.price);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    noResults.classList.add('show');
+    return;
+  }
+  noResults.classList.remove('show');
+
+  grid.innerHTML = filtered.map(p => {
+    const discount = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+    return `
     <div class="prod-card" onclick="openPD('${p.id}')" role="listitem" tabindex="0"
          onkeypress="if(event.key==='Enter')openPD('${p.id}')">
-      ${p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : p.badge === 'top' ? '⭐ Best-seller' : '🏷️ Promo'}</div>` : ''}
+      ${discount > 0 ? `<div class="prod-badge badge-promo">-${discount}%</div>` : p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : '⭐ Best-seller'}</div>` : ''}
       <div class="prod-img">
         ${p.image ? `<img src="${p.image}" alt="${p.name}" width="400" height="400" loading="lazy">` : p.emoji}
         <div class="stock-dot ${p.stock ? 'stock-ok' : 'stock-no'}"></div>
@@ -1939,7 +1984,8 @@ function renderProducts(cat) {
         </button>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function filterCat(cat) {
@@ -1948,8 +1994,13 @@ function filterCat(cat) {
   // Update active state
   document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
   const cards = document.querySelectorAll('.cat-card');
-  const idx = ['all','maquillage','soins-visage','soins-corps','parfums','mode','bijoux','savons','homme'].indexOf(cat);
+  const idx = ['all','maquillage','soins-visage','soins-corps','parfums','mode','bijoux','savons','homme','coffrets'].indexOf(cat);
   if (idx >= 0) cards[idx]?.classList.add('active');
+}
+
+function setSort(value) {
+  currentSort = value;
+  renderProducts(currentCat);
 }
 
 // ═══════════════════════════════════════════
