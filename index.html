@@ -1488,7 +1488,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 ASMA SHOP AFRIQUE — Tous droits réservés · <a href="#" onclick="openPrivacy();return false" style="color:inherit;text-decoration:underline;">Politique de confidentialité</a></p>
+    <p>© 2025 ASMA SHOP AFRIQUE — Tous droits réservés · <a href="/politique-confidentialite.html" style="color:inherit;text-decoration:underline;">Politique de confidentialité</a> · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">Mentions légales</a></p>
     <div class="footer-badge">Powered by HelpMeProcess</div>
   </div>
 </footer>
@@ -1681,29 +1681,6 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <button class="btn-rose" onclick="closeSuccess()" style="width:100%;justify-content:center;">
       Continuer mes achats 🛍️
     </button>
-  </div>
-</div>
-
-<!-- ══════════════ PRIVACY MODAL (A15 RGPD) ══════════════ -->
-<div class="success-modal" id="privacy-modal" role="dialog" aria-modal="true" aria-label="Politique de confidentialité">
-  <div class="success-box" style="max-width:640px;text-align:left;max-height:85vh;overflow-y:auto;padding:2.5rem 2rem;">
-    <h3 style="text-align:center;">Politique de confidentialité</h3>
-    <div style="font-size:.84rem;color:var(--text-2);line-height:1.8;">
-      <p style="margin-bottom:1rem;"><strong>Dernière mise à jour : juin 2026.</strong> ASMA SHOP AFRIQUE (« nous ») attache de l'importance à la protection de vos données personnelles. Cette politique explique quelles données nous collectons et comment nous les utilisons.</p>
-      <p style="margin:1.2rem 0 .4rem;"><strong>1. Données collectées</strong></p>
-      <p>Lorsque vous passez commande, nous collectons uniquement : votre prénom et nom, votre numéro de téléphone (WhatsApp) et votre adresse de livraison (ville ou commune). Aucune donnée bancaire n'est collectée : le paiement se fait à la livraison, en espèces ou par Orange Money.</p>
-      <p style="margin:1.2rem 0 .4rem;"><strong>2. Utilisation des données</strong></p>
-      <p>Vos données servent exclusivement à traiter et livrer votre commande, à vous contacter sur WhatsApp pour confirmer la livraison, et à assurer le service après-vente. Nous ne vendons ni ne louons vos données.</p>
-      <p style="margin:1.2rem 0 .4rem;"><strong>3. Partage</strong></p>
-      <p>Vos données sont partagées uniquement avec notre équipe logistique et notre partenaire de gestion des commandes (HelpMeProcess) afin d'assurer la livraison. Elles ne sont transmises à aucun tiers à des fins publicitaires.</p>
-      <p style="margin:1.2rem 0 .4rem;"><strong>4. Mesure d'audience</strong></p>
-      <p>Notre site utilise Google Analytics pour mesurer la fréquentation de manière anonyme et améliorer votre expérience. Vous pouvez bloquer ces cookies via les réglages de votre navigateur.</p>
-      <p style="margin:1.2rem 0 .4rem;"><strong>5. Conservation</strong></p>
-      <p>Vos données de commande sont conservées le temps nécessaire au traitement et au suivi de votre commande, puis archivées conformément à nos obligations.</p>
-      <p style="margin:1.2rem 0 .4rem;"><strong>6. Vos droits</strong></p>
-      <p>Vous pouvez à tout moment demander l'accès, la rectification ou la suppression de vos données en nous écrivant à <strong>asmashopafrique@gmail.com</strong> ou sur WhatsApp au <strong>+224 621 88 12 10</strong>.</p>
-    </div>
-    <button class="btn-rose" onclick="closePrivacy()" style="width:100%;justify-content:center;margin-top:1.5rem;">Fermer</button>
   </div>
 </div>
 
@@ -2869,10 +2846,6 @@ function closeSuccess() {
   document.getElementById('success-modal').classList.remove('show');
 }
 
-// A15 — Modale Politique de confidentialité (RGPD).
-function openPrivacy() { document.getElementById('privacy-modal').classList.add('show'); }
-function closePrivacy() { document.getElementById('privacy-modal').classList.remove('show'); }
-
 // ═══════════════════════════════════════════
 // ANALYTICS
 // ═══════════════════════════════════════════
@@ -3061,7 +3034,6 @@ function hideSearchDropdown() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closePD();
-    closePrivacy();
     closeRecap();
     closeCCO();
     closeNL();
