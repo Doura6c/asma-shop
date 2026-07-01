@@ -505,6 +505,38 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .success-code{background:var(--or-bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;font-size:.85rem;font-weight:700;color:var(--or);margin-bottom:2rem;}
 
 /* ═══════════════════════════════════════
+   RECAP MODAL (avant confirmation)
+═══════════════════════════════════════ */
+.recap-overlay{display:none;position:fixed;inset:0;background:rgba(28,18,8,.6);z-index:850;backdrop-filter:blur(10px);align-items:flex-end;justify-content:center;padding:0;}
+.recap-overlay.show{display:flex;}
+@media(min-width:600px){.recap-overlay{align-items:center;padding:1rem;}}
+.recap-box{background:#FDF8F0;border-radius:16px 16px 0 0;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px rgba(28,18,8,.3);animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
+@media(min-width:600px){.recap-box{border-radius:16px;}}
+.recap-header{background:linear-gradient(135deg,var(--or),var(--or-dk));padding:1.1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;}
+.recap-title{color:var(--noir);font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;}
+.recap-close{background:rgba(253,248,240,.25);border:none;color:var(--noir);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.recap-body{padding:1.3rem 1.4rem;}
+.recap-product{display:flex;gap:.9rem;background:var(--or-bg);border:1px solid var(--border);border-radius:10px;padding:.9rem;margin-bottom:1rem;align-items:center;}
+.recap-product-emoji{font-size:2rem;width:52px;height:52px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.recap-product-emoji img{width:100%;height:100%;object-fit:cover;}
+.recap-product-name{font-weight:700;font-size:.86rem;color:var(--text);margin-bottom:.2rem;}
+.recap-product-qty{font-size:.76rem;color:var(--text-2);}
+.recap-section{margin-bottom:1rem;}
+.recap-section-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--or);margin-bottom:.4rem;}
+.recap-row{display:flex;justify-content:space-between;font-size:.82rem;padding:.35rem 0;border-bottom:1px solid rgba(168,116,32,.1);}
+.recap-row:last-child{border-bottom:none;}
+.recap-row span:first-child{color:var(--text-2);}
+.recap-row span:last-child{font-weight:700;color:var(--text);text-align:right;max-width:60%;}
+.recap-total-row{display:flex;justify-content:space-between;align-items:center;background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.25);border-radius:8px;padding:.9rem 1rem;margin-top:.6rem;}
+.recap-total-label{font-size:.82rem;font-weight:700;color:#1A8A4A;}
+.recap-total-amount{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#1A8A4A;}
+.recap-footer{padding:1rem 1.4rem 1.3rem;display:flex;gap:.7rem;border-top:1px solid var(--border);}
+.recap-btn-edit{flex:1;padding:12px;border:1.5px solid var(--border);background:#fff;border-radius:8px;font-family:'Raleway',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--text-2);transition:all .3s;}
+.recap-btn-edit:hover{border-color:var(--or);color:var(--or);}
+.recap-btn-confirm{flex:2;}
+@media(max-width:480px){.recap-footer{flex-direction:column;}}
+
+/* ═══════════════════════════════════════
    UTILS
 ═══════════════════════════════════════ */
 .spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(201,168,76,.3);border-top-color:var(--or);border-radius:50%;animation:spin .8s linear infinite;}
@@ -979,6 +1011,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
               <label for="f-address">Adresse / Quartier</label>
               <input type="text" id="f-address" placeholder="Quartier, rue, repère..." autocomplete="street-address">
             </div>
+            <div class="fg">
+              <label for="f-note">Note pour le livreur</label>
+              <input type="text" id="f-note" placeholder="Ex: appeler avant de livrer, point de repère..." autocomplete="off">
+            </div>
           </div>
           <div class="fg">
             <label for="f-qty">Quantité</label>
@@ -1003,13 +1039,24 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <input type="hidden" id="f-payment" value="Paiement à la livraison">
             <!-- Instructions Orange Money (affiché quand sélectionné) -->
             <div id="om-instructions" class="om-instructions" style="display:none;">
-              <p>📲 Envoyez le montant de votre commande au :</p>
-              <p class="om-number">+224 621 88 12 10 <span>(WhatsApp ASMA SHOP)</span></p>
-              <p>Envoyez-nous votre capture de paiement sur WhatsApp et mentionnez votre nom dans la note.</p>
+              <p>📲 <strong>Comment payer :</strong></p>
+              <p>1. Composez <strong>#144#</strong> sur votre téléphone Orange<br>
+                 2. Envoyer de l'argent → numéro marchand :</p>
+              <p class="om-number">+224 621 88 12 10 <span>(ASMA SHOP)</span></p>
+              <p>3. Copiez l'<strong>ID de transaction</strong> reçu par SMS<br>
+                 4. Collez-le ci-dessous puis confirmez votre commande.</p>
+              <div class="fg" style="margin-top:.6rem;margin-bottom:0;">
+                <label for="f-om-id" style="color:#C44A00;">ID Transaction Orange Money *</label>
+                <input type="text" id="f-om-id" placeholder="Ex: PP250522.1234.A56789" autocomplete="off" oninput="clearFieldError('f-om-id')">
+                <small class="field-error" id="err-f-om-id"></small>
+              </div>
             </div>
           </div>
-          <!-- Note dans les détails optionnels -->
-          <input type="hidden" id="f-note" value="">
+
+          <div class="mandatory-check">
+            <span style="font-size:1.1rem;">⚠️</span>
+            <p><strong>Commande à paiement à la livraison.</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception. Un colis refusé mobilise inutilement notre équipe de livraison — nous vous en remercions par avance.</p>
+          </div>
 
           <div class="order-summary" id="order-summary">
             <div class="order-summary-row"><span>Produit</span><span id="os-product">—</span></div>
@@ -1020,8 +1067,8 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 
           <!-- Bouton de commande -->
           <div class="order-actions">
-            <button type="button" class="submit-btn" id="submit-btn" onclick="submitOrder()" style="width:100%;">
-              <span id="submit-label">✅ Confirmer & Enregistrer</span>
+            <button type="button" class="submit-btn" id="submit-btn" onclick="openProductRecap()" style="width:100%;">
+              <span id="submit-label">📋 Vérifier ma commande</span>
               <span id="submit-spin" class="hidden"><span class="spinner"></span></span>
             </button>
           </div>
@@ -1303,7 +1350,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <div class="ct-label">Total</div>
         <div class="ct-amount" id="cart-total-amount">0 GNF</div>
       </div>
-      <div style="font-size:.75rem;color:var(--muted2)">+ Livraison OFFERTE 🎁</div>
+      <div style="font-size:.75rem;color:var(--muted2)">+ Livraison selon votre ville (gratuite à Conakry)</div>
     </div>
     <button class="cart-checkout-btn" onclick="checkoutCart()">
       ✨ Commander le Panier
@@ -1323,9 +1370,17 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <div class="cco-items" id="cco-items-list"></div>
 
     <!-- Total -->
-    <div class="cco-total-row">
-      <span class="cco-total-label">Total sélectionné</span>
-      <span class="cco-total-val" id="cco-total">0 GNF</span>
+    <div class="cco-total-row" style="flex-direction:column;align-items:stretch;gap:.3rem;">
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-2);">
+        <span>Sous-total produits</span><span id="cco-subtotal">0 GNF</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-2);">
+        <span>Livraison</span><span id="cco-delivery">— choisir ville</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding-top:.3rem;border-top:1px solid var(--border);">
+        <span class="cco-total-label">Total à payer</span>
+        <span class="cco-total-val" id="cco-total">0 GNF</span>
+      </div>
     </div>
 
     <!-- Formulaire client -->
@@ -1343,15 +1398,54 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <input type="tel" id="cco-phone" placeholder="ex: 622 34 56 78" inputmode="tel" autocomplete="tel" oninput="clearFieldError('cco-phone')">
       <small class="field-error" id="err-cco-phone"></small>
 
-      <label for="cco-city">Ville *</label>
-      <select id="cco-city" onchange="clearFieldError('cco-city')">
-        <option value="">— Choisir votre ville —</option>
-        <option>Conakry</option><option>Labé</option><option>Kankan</option>
-        <option>Kindia</option><option>Mamou</option><option>Boké</option>
-        <option>N'Zérékoré</option><option>Faranah</option><option>Siguiri</option>
-        <option>Autre</option>
+      <label for="cco-city">Ville de livraison *</label>
+      <select id="cco-city" onchange="ccoUpdateTotal();clearFieldError('cco-city')">
+        <option value="">— Choisissez votre ville —</option>
+        <optgroup label="🟢 Conakry — Livraison OFFERTE">
+          <option value="Conakry - Kaloum">Conakry — Kaloum</option>
+          <option value="Conakry - Ratoma">Conakry — Ratoma</option>
+          <option value="Conakry - Matam">Conakry — Matam</option>
+          <option value="Conakry - Dixinn">Conakry — Dixinn</option>
+          <option value="Conakry - Lambanyi">Conakry — Lambanyi</option>
+          <option value="Conakry - Coléah">Conakry — Coléah</option>
+          <option value="Conakry - Kipé">Conakry — Kipé</option>
+          <option value="Conakry - Nongo">Conakry — Nongo</option>
+        </optgroup>
+        <optgroup label="🟡 Basse Guinée — 15 000–25 000 GNF">
+          <option value="Coyah">Coyah — 15 000 GNF</option>
+          <option value="Dubréka">Dubréka — 18 000 GNF</option>
+          <option value="Forécariah">Forécariah — 22 000 GNF</option>
+          <option value="Kindia">Kindia — 20 000 GNF</option>
+        </optgroup>
+        <optgroup label="🟡 Moyenne Guinée — 28 000–35 000 GNF">
+          <option value="Télimélé">Télimélé — 28 000 GNF</option>
+          <option value="Pita">Pita — 32 000 GNF</option>
+          <option value="Dalaba">Dalaba — 30 000 GNF</option>
+          <option value="Mamou">Mamou — 28 000 GNF</option>
+          <option value="Labé">Labé — 35 000 GNF</option>
+        </optgroup>
+        <optgroup label="🟡 Haute Guinée — 38 000–45 000 GNF">
+          <option value="Faranah">Faranah — 35 000 GNF</option>
+          <option value="Dinguiraye">Dinguiraye — 38 000 GNF</option>
+          <option value="Kankan">Kankan — 40 000 GNF</option>
+          <option value="Siguiri">Siguiri — 45 000 GNF</option>
+          <option value="Kérouané">Kérouané — 42 000 GNF</option>
+          <option value="Mandiana">Mandiana — 42 000 GNF</option>
+          <option value="Boké">Boké — 30 000 GNF</option>
+        </optgroup>
+        <optgroup label="🟡 Guinée Forestière — 42 000–55 000 GNF">
+          <option value="Kissidougou">Kissidougou — 40 000 GNF</option>
+          <option value="Guéckédou">Guéckédou — 45 000 GNF</option>
+          <option value="Macenta">Macenta — 45 000 GNF</option>
+          <option value="Nzérékoré">Nzérékoré — 50 000 GNF</option>
+          <option value="Lola">Lola — 52 000 GNF</option>
+          <option value="Yomou">Yomou — 55 000 GNF</option>
+          <option value="Beyla">Beyla — 50 000 GNF</option>
+        </optgroup>
+        <option value="Autre">Autre ville — nous contacter</option>
       </select>
       <small class="field-error" id="err-cco-city"></small>
+      <div id="cco-delivery-info-box" class="delivery-info-box" style="display:none;"></div>
 
       <label for="cco-address">Adresse / Quartier</label>
       <input type="text" id="cco-address" placeholder="Quartier, repère...">
@@ -1362,6 +1456,24 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <div class="cco-pay-opt" onclick="ccoPay(this,'Orange Money')">🟠 Orange Money</div>
       </div>
       <input type="hidden" id="cco-payment" value="Paiement à la livraison">
+      <div id="cco-om-instructions" class="om-instructions" style="display:none;">
+        <p>📲 <strong>Comment payer :</strong></p>
+        <p>1. Composez <strong>#144#</strong> sur votre téléphone Orange<br>
+           2. Envoyer de l'argent → numéro marchand :</p>
+        <p class="om-number">+224 621 88 12 10 <span>(ASMA SHOP)</span></p>
+        <p>3. Copiez l'<strong>ID de transaction</strong> reçu par SMS<br>
+           4. Collez-le ci-dessous puis confirmez votre commande.</p>
+        <div class="fg" style="margin-top:.6rem;margin-bottom:0;">
+          <label for="cco-om-id" style="color:#C44A00;">ID Transaction Orange Money *</label>
+          <input type="text" id="cco-om-id" placeholder="Ex: PP250522.1234.A56789" autocomplete="off" oninput="clearFieldError('cco-om-id')">
+          <small class="field-error" id="err-cco-om-id"></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="mandatory-check">
+      <span style="font-size:1.1rem;">⚠️</span>
+      <p><strong>Commande à paiement à la livraison.</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception.</p>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .8rem;margin-top:1rem;font-size:.7rem;font-weight:600;color:var(--text-2);">
@@ -1371,9 +1483,24 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <span>🔄 Échange sous 48h</span>
     </div>
 
-    <button class="cco-submit" id="cco-submit-btn" onclick="confirmerCommandePanier()">
+    <button class="cco-submit" id="cco-submit-btn" onclick="openCartRecap()">
       ✨ Confirmer ma commande
     </button>
+  </div>
+</div>
+
+<!-- ══════════════ RÉCAP AVANT CONFIRMATION ══════════════ -->
+<div class="recap-overlay" id="recap-overlay" onclick="if(event.target===this)closeRecap()">
+  <div class="recap-box" role="dialog" aria-modal="true" aria-label="Récapitulatif de commande">
+    <div class="recap-header">
+      <div class="recap-title">📋 Vérifiez votre commande</div>
+      <button class="recap-close" onclick="closeRecap()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="recap-body" id="recap-body"></div>
+    <div class="recap-footer">
+      <button class="recap-btn-edit" onclick="closeRecap()">✏️ Modifier</button>
+      <button class="recap-btn-confirm submit-btn" id="recap-confirm-btn">✅ Confirmer ma commande</button>
+    </div>
   </div>
 </div>
 
@@ -1876,23 +2003,58 @@ function closeCCO() {
 }
 
 function ccoUpdateTotal() {
-  const total = [...document.querySelectorAll('.cco-cb:checked')]
+  const subtotal = [...document.querySelectorAll('.cco-cb:checked')]
     .reduce((sum, cb) => sum + Number(cb.dataset.price), 0);
-  document.getElementById('cco-total').textContent = formatGNF(total);
+  const city = document.getElementById('cco-city').value;
+  const deliveryFee = getDeliveryCost(city, subtotal);
+  const infoBox = document.getElementById('cco-delivery-info-box');
+  const delivEl = document.getElementById('cco-delivery');
+
+  document.getElementById('cco-subtotal').textContent = formatGNF(subtotal);
+
+  if (!city) {
+    delivEl.textContent = '— choisir ville';
+    infoBox.style.display = 'none';
+    document.getElementById('cco-total').textContent = formatGNF(subtotal);
+    return;
+  }
+  if (deliveryFee === null) {
+    delivEl.textContent = 'À confirmer';
+    infoBox.style.display = 'none';
+    document.getElementById('cco-total').textContent = formatGNF(subtotal);
+    return;
+  }
+  if (deliveryFee === 0) {
+    delivEl.innerHTML = '<span style="color:#1A8A4A;font-weight:800">OFFERTE 🎁</span>';
+    infoBox.className = 'delivery-info-box free';
+    infoBox.innerHTML = subtotal >= FREE_DELIVERY_THRESHOLD
+      ? '✅ Félicitations ! Votre panier dépasse 300 000 GNF — livraison offerte partout en Guinée.'
+      : '🟢 Zone Conakry — livraison offerte !';
+    infoBox.style.display = 'block';
+  } else {
+    delivEl.textContent = formatGNF(deliveryFee);
+    infoBox.className = 'delivery-info-box paid';
+    infoBox.innerHTML = `🚚 Livraison ${formatGNF(deliveryFee)} pour ${city}. Gratuite dès <strong>${formatGNF(FREE_DELIVERY_THRESHOLD)}</strong> de commande.`;
+    infoBox.style.display = 'block';
+  }
+  document.getElementById('cco-total').textContent = formatGNF(subtotal + deliveryFee);
 }
 
 function ccoPay(el, value) {
   document.querySelectorAll('.cco-pay-opt').forEach(o => o.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('cco-payment').value = value;
+  const omBox = document.getElementById('cco-om-instructions');
+  if (omBox) omBox.style.display = (value === 'Orange Money') ? 'block' : 'none';
 }
 
-async function confirmerCommandePanier() {
+// ═══════════════════════════════════════════
+// RÉCAP AVANT CONFIRMATION — panier
+// ═══════════════════════════════════════════
+function openCartRecap() {
   const fname = document.getElementById('cco-fname').value.trim();
-  const lname = document.getElementById('cco-lname').value.trim();
   const phone = document.getElementById('cco-phone').value.trim().replace(/\s/g, '');
   const city  = document.getElementById('cco-city').value;
-  const addr  = document.getElementById('cco-address').value.trim();
   const payment = document.getElementById('cco-payment').value;
 
   // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
@@ -1903,13 +2065,68 @@ async function confirmerCommandePanier() {
   const checked = [...document.querySelectorAll('.cco-cb:checked')];
   if (checked.length === 0) { alert('Sélectionnez au moins un article.'); return; }
 
+  if (payment === 'Orange Money' && !document.getElementById('cco-om-id').value.trim()) {
+    setFieldError('cco-om-id', 'Merci de renseigner l\'ID de transaction reçu par SMS.');
+    document.getElementById('cco-om-id').focus();
+    return;
+  }
+
+  const subtotal = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
+  const deliveryFee = getDeliveryCost(city, subtotal) || 0;
+  const grandTotal = subtotal + deliveryFee;
+  const payLabel = payment === 'Orange Money' ? '🟠 Orange Money' : '💵 Cash à la livraison';
+
+  const itemsHtml = checked.map(cb => {
+    const p = PRODUCTS.find(x => x.id === cb.dataset.id);
+    const cartItem = cart.find(x => x.id === cb.dataset.id);
+    return `<div class="recap-row"><span>${escapeHtml(p.name)} × ${cartItem?.qty || 1}</span><span>${formatGNF(Number(cb.dataset.price))}</span></div>`;
+  }).join('');
+
+  document.getElementById('recap-body').innerHTML = `
+    <div class="recap-section">
+      <div class="recap-section-title">🛍️ Articles</div>
+      ${itemsHtml}
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">📍 Livraison</div>
+      <div class="recap-row"><span>Nom</span><span>${escapeHtml(fname)}</span></div>
+      <div class="recap-row"><span>Téléphone</span><span>${escapeHtml(phone)}</span></div>
+      <div class="recap-row"><span>Ville</span><span>${escapeHtml(city)}</span></div>
+      <div class="recap-row"><span>Frais de livraison</span><span>${deliveryFee === 0 ? 'OFFERTE 🎁' : formatGNF(deliveryFee)}</span></div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">💳 Paiement</div>
+      <div class="recap-row"><span>Mode</span><span>${payLabel}</span></div>
+    </div>
+    <div class="recap-total-row">
+      <span class="recap-total-label">💰 Total à payer</span>
+      <span class="recap-total-amount">${formatGNF(grandTotal)}</span>
+    </div>`;
+
+  document.getElementById('recap-confirm-btn').onclick = doSubmitCartOrder;
+  document.getElementById('recap-overlay').classList.add('show');
+}
+
+async function doSubmitCartOrder() {
+  const fname = document.getElementById('cco-fname').value.trim();
+  const lname = document.getElementById('cco-lname').value.trim();
+  const phone = document.getElementById('cco-phone').value.trim().replace(/\s/g, '');
+  const city  = document.getElementById('cco-city').value;
+  const addr  = document.getElementById('cco-address').value.trim();
+  const payment = document.getElementById('cco-payment').value;
+  const omId  = document.getElementById('cco-om-id').value.trim();
+
+  const checked = [...document.querySelectorAll('.cco-cb:checked')];
+  if (checked.length === 0) return;
+
   const items = checked.map(cb => {
     const p = PRODUCTS.find(x => x.id === cb.dataset.id);
     const cartItem = cart.find(x => x.id === cb.dataset.id);
     return { sku: p.id, name: p.name, price: p.price, quantity: cartItem?.qty || 1 };
   });
-  const total = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
+  const subtotal = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
 
+  closeRecap();
   const btn = document.getElementById('cco-submit-btn');
   btn.disabled = true;
   btn.textContent = '⏳ Envoi en cours…';
@@ -1918,8 +2135,11 @@ async function confirmerCommandePanier() {
     externalRef: `ASMA-CART-${Date.now()}`,
     customer: { fullName: `${fname} ${lname}`.trim(), phone, city, address: addr || null },
     items,
-    deliveryFee: getDeliveryCost(city, total) || 0,
-    notes: payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : null,
+    deliveryFee: getDeliveryCost(city, subtotal) || 0,
+    notes: [
+      payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : '',
+      omId ? `ID Transaction Orange Money: ${omId}` : '',
+    ].filter(Boolean).join(' | ') || null,
     source: 'asmashop-cart',
   };
 
@@ -2290,11 +2510,71 @@ function validateOrderFields({ fnameId, phoneId, cityId, fname, phone, city }) {
 // ═══════════════════════════════════════════
 // COMMANDE — WEBHOOK CRM
 // ═══════════════════════════════════════════
-async function submitOrder() {
+// ═══════════════════════════════════════════
+// RÉCAP AVANT CONFIRMATION — fiche produit
+// ═══════════════════════════════════════════
+function closeRecap() {
+  document.getElementById('recap-overlay').classList.remove('show');
+}
+
+function openProductRecap() {
   const p = currentPdProduct;
   if (!p) return;
   // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
   if (document.getElementById('f-website')?.value) return;
+
+  const fname  = document.getElementById('f-fname').value.trim();
+  const phone  = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
+  const city   = document.getElementById('f-city').value;
+  const qty    = parseInt(document.getElementById('f-qty').value) || 1;
+  const payment= document.getElementById('f-payment').value;
+  const total  = p.price * qty;
+
+  // Validation inline (le bouton est type="button" -> le required HTML5 ne se déclenche pas).
+  if (!validateOrderFields({ fnameId: 'f-fname', phoneId: 'f-phone', cityId: 'f-city', fname, phone, city })) return;
+
+  if (payment === 'Orange Money' && !document.getElementById('f-om-id').value.trim()) {
+    setFieldError('f-om-id', 'Merci de renseigner l\'ID de transaction reçu par SMS.');
+    document.getElementById('f-om-id').focus();
+    document.getElementById('f-om-id').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const deliveryFee = getDeliveryCost(city, total) || 0;
+  const grandTotal = total + deliveryFee;
+  const payLabel = payment === 'Orange Money' ? '🟠 Orange Money' : '💵 Cash à la livraison';
+
+  document.getElementById('recap-body').innerHTML = `
+    <div class="recap-product">
+      <div class="recap-product-emoji">${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">` : p.emoji}</div>
+      <div>
+        <div class="recap-product-name">${escapeHtml(p.name)}</div>
+        <div class="recap-product-qty">Quantité : ${qty} · ${formatGNF(total)}</div>
+      </div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">📍 Livraison</div>
+      <div class="recap-row"><span>Nom</span><span>${escapeHtml(fname)}</span></div>
+      <div class="recap-row"><span>Téléphone</span><span>${escapeHtml(phone)}</span></div>
+      <div class="recap-row"><span>Ville</span><span>${escapeHtml(city)}</span></div>
+      <div class="recap-row"><span>Frais de livraison</span><span>${deliveryFee === 0 ? 'OFFERTE 🎁' : formatGNF(deliveryFee)}</span></div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">💳 Paiement</div>
+      <div class="recap-row"><span>Mode</span><span>${payLabel}</span></div>
+    </div>
+    <div class="recap-total-row">
+      <span class="recap-total-label">💰 Total à payer</span>
+      <span class="recap-total-amount">${formatGNF(grandTotal)}</span>
+    </div>`;
+
+  document.getElementById('recap-confirm-btn').onclick = doSubmitProductOrder;
+  document.getElementById('recap-overlay').classList.add('show');
+}
+
+async function doSubmitProductOrder() {
+  const p = currentPdProduct;
+  if (!p) return;
 
   const fname  = document.getElementById('f-fname').value.trim();
   const lname  = document.getElementById('f-lname').value.trim();
@@ -2304,10 +2584,10 @@ async function submitOrder() {
   const qty    = parseInt(document.getElementById('f-qty').value) || 1;
   const payment= document.getElementById('f-payment').value;
   const note   = document.getElementById('f-note').value.trim();
+  const omId   = document.getElementById('f-om-id').value.trim();
   const total  = p.price * qty;
 
-  // Validation inline (le bouton est type="button" -> le required HTML5 ne se déclenche pas).
-  if (!validateOrderFields({ fnameId: 'f-fname', phoneId: 'f-phone', cityId: 'f-city', fname, phone, city })) return;
+  closeRecap();
 
   // Afficher loading
   document.getElementById('loading-overlay').classList.add('show');
@@ -2325,7 +2605,11 @@ async function submitOrder() {
     },
     items: [{ sku: p.id, name: p.name, price: p.price, quantity: qty }],
     deliveryFee: getDeliveryCost(city, total) || 0,
-    notes: [note, payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : ''].filter(Boolean).join(' | ') || null,
+    notes: [
+      note,
+      payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : '',
+      omId ? `ID Transaction Orange Money: ${omId}` : '',
+    ].filter(Boolean).join(' | ') || null,
     source: 'asmashop-web',
   };
 
@@ -2360,15 +2644,14 @@ async function submitOrder() {
     document.getElementById('submit-spin').classList.add('hidden');
 
     // Fallback WhatsApp
-    const fname2 = document.getElementById('f-fname').value.trim();
     const msg = `🌸 *NOUVELLE COMMANDE — ASMA SHOP*\n\n` +
-      `👤 Client: ${fname2} ${document.getElementById('f-lname').value.trim()}\n` +
+      `👤 Client: ${fname} ${lname}\n` +
       `📞 Téléphone: ${phone}\n` +
       `📍 Ville: ${city}\n` +
       `📦 Produit: ${p.name}\n` +
       `🔢 Quantité: ${qty}\n` +
       `💰 Total: ${formatGNF(total)}\n` +
-      `💳 Paiement: ${payment}\n` +
+      `💳 Paiement: ${payment}${omId ? ` (ID: ${omId})` : ''}\n` +
       `${note ? `📝 Note: ${note}` : ''}`;
     window.open(
       `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`,
@@ -2574,6 +2857,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closePD();
     closePrivacy();
+    closeRecap();
+    closeCCO();
     if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
   }
 });
