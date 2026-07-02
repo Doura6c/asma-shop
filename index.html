@@ -307,10 +307,18 @@ section{padding:6rem 6%;}
 .pd-container{max-width:920px;margin:0 auto;position:relative;}
 .pd-close{position:absolute;top:-15px;right:-15px;background:var(--or);border:none;color:var(--noir);width:40px;height:40px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 20px var(--or-glow);transition:all .3s;font-weight:800;}
 .pd-close:hover{transform:scale(1.1);box-shadow:0 6px 25px var(--or-glow);}
-.pd-box{background:#FDF8F0;border:1.5px solid rgba(168,116,32,.3);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(168,116,32,.08),0 40px 80px rgba(28,18,8,.25),0 0 60px rgba(168,116,32,.08);}
+/* Pas d'overflow:hidden ici : il neutraliserait le position:sticky de la
+   photo. Les coins arrondis sont posés sur les enfants aux angles. */
+.pd-box{background:#FDF8F0;border:1.5px solid rgba(168,116,32,.3);border-radius:16px;box-shadow:0 0 0 1px rgba(168,116,32,.08),0 40px 80px rgba(28,18,8,.25),0 0 60px rgba(168,116,32,.08);}
+.pd-media{border-radius:16px 0 0 0;}
+.pd-info{border-radius:0 16px 0 0;}
+.cross-sell{border-radius:0 0 16px 16px;}
+@media(max-width:680px){.pd-media{border-radius:16px 16px 0 0;}.pd-info{border-radius:0;}}
 .pd-top{display:grid;grid-template-columns:1fr 1fr;}
 @media(max-width:680px){.pd-top{grid-template-columns:1fr;}}
 .pd-media{background:linear-gradient(135deg,#FDF4E8,#F5E6CC);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;position:relative;}
+/* Desktop : la photo reste visible pendant que la fiche/formulaire défile */
+@media(min-width:681px){.pd-media{position:sticky;top:0;align-self:start;min-height:0;}}
 .pd-media::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(168,116,32,.12),transparent 65%);pointer-events:none;}
 .pd-emoji{font-size:8rem;filter:drop-shadow(0 0 20px rgba(168,116,32,.3));position:relative;z-index:1;}
 .pd-info{padding:2.5rem;background:#FDF8F0;}
@@ -628,6 +636,19 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   .pd-sticky-cta.show{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:560;align-items:center;gap:.7rem;background:#FDF8F0;border-top:1.5px solid var(--border);box-shadow:0 -6px 20px rgba(28,18,8,.12);padding:.55rem .9rem;padding-bottom:calc(.55rem + env(safe-area-inset-bottom));}
   .pd-overlay.show .pd-box{padding-bottom:72px;}
 }
+/* ══ Vous aimerez aussi (cross-sell fiche produit) ══ */
+.cross-sell{padding:1.5rem 2.5rem;border-top:1px solid var(--border);background:var(--noir-2);}
+.cross-sell-title{font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--or);margin-bottom:1rem;}
+.cross-sell-grid{display:flex;gap:.7rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:var(--or-lt) transparent;}
+.cross-sell-grid::-webkit-scrollbar{height:4px;}
+.cross-sell-grid::-webkit-scrollbar-thumb{background:var(--or-lt);border-radius:4px;}
+.cs-item{flex:0 0 140px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:.6rem;cursor:pointer;text-align:center;transition:all .25s;scroll-snap-align:start;}
+.cs-item:hover{border-color:var(--or);transform:translateY(-3px);box-shadow:0 6px 16px rgba(168,116,32,.15);}
+.cs-img{height:70px;border-radius:6px;overflow:hidden;background:#F5E8D0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.cs-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.cs-name{font-size:.65rem;font-weight:700;color:var(--text);line-height:1.25;height:2.5em;overflow:hidden;margin:.35rem 0 .2rem;}
+.cs-price{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--or);}
+@media(max-width:600px){.cs-item{flex:0 0 130px;}.cross-sell{padding:1.2rem 1.4rem;}}
 /* ══ Toasts ══ */
 #toast-container{position:fixed;top:90px;right:16px;z-index:1200;display:flex;flex-direction:column;gap:.6rem;pointer-events:none;}
 .toast{background:#fff;border:1px solid var(--border);border-left:4px solid var(--or);border-radius:10px;padding:.8rem 1rem;box-shadow:0 10px 30px rgba(28,18,8,.15);display:flex;gap:.6rem;align-items:flex-start;min-width:230px;max-width:320px;animation:toastIn .3s ease;pointer-events:auto;transition:opacity .35s,transform .35s;}
@@ -642,8 +663,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 /* ══ Preuve sociale ══ */
 .pd-social{display:flex;align-items:center;gap:.5rem;background:var(--rose-bg);border:1px solid var(--rose-lt);border-radius:8px;padding:.6rem .9rem;margin-bottom:1rem;font-size:.74rem;color:var(--rose-dk);font-weight:600;}
 .pd-social-dot{width:7px;height:7px;border-radius:50%;background:#2ECC71;box-shadow:0 0 6px rgba(46,204,113,.7);flex-shrink:0;animation:pulseDot 1.6s ease-in-out infinite;}
+/* Colonne droite : infos + vidéo + formulaire (la photo à gauche reste sticky) */
+.pd-right{min-width:0;}
 /* ══ Vidéo produit ══ */
-.pd-video-block{margin:1.2rem 0;}
+.pd-video-block{margin:1.2rem 0;padding:0 2.5rem;}
 .pd-video-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
 .pd-video-block video{width:100%;max-height:420px;background:#000;border-radius:10px;display:block;}
 /* ══ Urgence / stock limité ══ */
@@ -1030,6 +1053,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <div class="pd-media">
           <div class="pd-emoji" id="pd-emoji">💄</div>
         </div>
+        <div class="pd-right">
         <div class="pd-info">
           <div class="pd-cat-tag" id="pd-cat">Maquillage</div>
           <h2 class="pd-name" id="pd-name">Produit</h2>
@@ -1058,11 +1082,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
               🛍️ Ajouter au panier
             </button>
           </div>
-        </div>
-      </div>
+        </div><!-- /pd-info -->
 
       <!-- Vidéo produit (si disponible) -->
-      <div class="pd-video-block" id="pd-video-block" style="display:none;padding:0 2.5rem;">
+      <div class="pd-video-block" id="pd-video-block" style="display:none;">
         <div class="pd-video-label">🎬 Voir le produit en action</div>
         <video id="pd-video" muted loop playsinline controls preload="none"></video>
       </div>
@@ -1237,6 +1260,14 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <p><strong>Commande à paiement à la livraison (COD).</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception. Un colis refusé mobilise inutilement notre équipe de livraison — merci de votre compréhension.</p>
           </div>
         </form>
+      </div><!-- /pd-form-section -->
+        </div><!-- /pd-right -->
+      </div><!-- /pd-top -->
+
+      <!-- Vous aimerez aussi -->
+      <div class="cross-sell" id="cross-sell" style="display:none;">
+        <div class="cross-sell-title">✨ Vous aimerez aussi</div>
+        <div class="cross-sell-grid" id="cross-sell-grid"></div>
       </div>
     </div>
   </div>
@@ -2688,10 +2719,35 @@ function openPD(productId) {
   // Coordonnées mémorisées (30 jours) — la cliente ne re-saisit pas tout.
   restoreCustomer();
   updateOrderSummary();
+  renderCrossSell(p.id);
 
-  document.getElementById('pd-overlay').classList.add('show');
+  const overlay = document.getElementById('pd-overlay');
+  overlay.classList.add('show');
+  overlay.scrollTop = 0;
   document.getElementById('pd-sticky-cta').classList.add('show');
   document.body.style.overflow = 'hidden';
+}
+
+// « Vous aimerez aussi » — 4 suggestions en bas de fiche : d'abord la même
+// catégorie, complété par d'autres produits en stock si la catégorie est maigre.
+function renderCrossSell(currentId) {
+  const current = PRODUCTS.find(p => p.id === currentId);
+  const box = document.getElementById('cross-sell');
+  const grid = document.getElementById('cross-sell-grid');
+  if (!current || !box || !grid) return;
+  const shuffle = a => a.slice().sort(() => Math.random() - .5);
+  const sameCat = shuffle(PRODUCTS.filter(p => p.cat === current.cat && p.id !== currentId && p.stock));
+  const others  = shuffle(PRODUCTS.filter(p => p.cat !== current.cat && p.id !== currentId && p.stock));
+  const picks = sameCat.concat(others).slice(0, 4);
+  if (!picks.length) { box.style.display = 'none'; return; }
+  grid.innerHTML = picks.map(p => `
+    <div class="cs-item" onclick="openPD('${p.id}')" role="button" tabindex="0"
+         onkeypress="if(event.key==='Enter')openPD('${p.id}')">
+      <div class="cs-img">${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}" loading="lazy">` : p.emoji}</div>
+      <div class="cs-name">${escapeHtml(p.name)}</div>
+      <div class="cs-price">${formatGNF(p.price)}</div>
+    </div>`).join('');
+  box.style.display = 'block';
 }
 
 function closePD() {
