@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="theme-color" content="#FDF8F0">
 
-<!-- Security headers -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net; frame-ancestors 'none'; form-action 'self' https://wa.me; base-uri 'self'; upgrade-insecure-requests">
+<!-- Security headers (CSP servie en en-tête HTTP via vercel.json) -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -24,11 +23,16 @@
 <meta property="og:title" content="ASMA SHOP AFRIQUE — La beauté africaine, livrée chez vous 🌸">
 <meta property="og:description" content="Cosmétiques premium, parfums & mode féminine. Livraison rapide en Guinée. Paiement à la livraison.">
 <meta property="og:url" content="https://asma-shop.vercel.app/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1638609927040-8a7e97cd9d6a?w=1200&h=630&fit=crop&q=80&fm=webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ASMA SHOP AFRIQUE — Cosmétiques naturels & parfums, livrés en Guinée">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ASMA SHOP AFRIQUE — La beauté africaine 🌸">
 <meta name="twitter:description" content="Cosmétiques & parfums authentiques, livrés chez vous en Guinée.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1638609927040-8a7e97cd9d6a?w=1200&h=630&fit=crop&q=80&fm=webp">
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
@@ -42,6 +46,8 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1638609927040-8a7e97cd9d6a?w=300&q=80&fm=webp" fetchpriority="high">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Raleway:wght@300;400;500;600;700;800&display=swap">
 
 <!-- JSON-LD -->
@@ -50,7 +56,7 @@
   "@context":"https://schema.org",
   "@graph":[
     {"@type":"Organization","@id":"https://asma-shop.vercel.app/#org","name":"ASMA SHOP AFRIQUE","url":"https://asma-shop.vercel.app/","slogan":"La beauté africaine, livrée chez vous"},
-    {"@type":"OnlineStore","@id":"https://asma-shop.vercel.app/#store","name":"ASMA SHOP AFRIQUE","url":"https://asma-shop.vercel.app/","telephone":"+212646702039","priceRange":"65 000 - 450 000 GNF","currenciesAccepted":"GNF","paymentAccepted":"Cash, Orange Money","address":{"@type":"PostalAddress","addressLocality":"Conakry","addressCountry":"GN"},"areaServed":{"@type":"Country","name":"Guinée"}}
+    {"@type":"OnlineStore","@id":"https://asma-shop.vercel.app/#store","name":"ASMA SHOP AFRIQUE","url":"https://asma-shop.vercel.app/","telephone":"+224621881210","priceRange":"65 000 - 450 000 GNF","currenciesAccepted":"GNF","paymentAccepted":"Cash, Orange Money","address":{"@type":"PostalAddress","addressLocality":"Conakry","addressCountry":"GN"},"areaServed":{"@type":"Country","name":"Guinée"}}
   ]
 }
 </script>
@@ -257,6 +263,19 @@ section{padding:6rem 6%;}
 .cat-card.active .cat-name,.cat-card:hover .cat-name{color:var(--or);}
 
 /* ═══════════════════════════════════════
+   SORT BAR
+═══════════════════════════════════════ */
+.sort-bar{display:flex;align-items:center;justify-content:flex-end;gap:.6rem;margin:0 0 1.5rem;}
+.sort-label{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+.sort-select{background:#fff;border:1.5px solid var(--border);color:var(--text);padding:8px 34px 8px 14px;border-radius:30px;font-size:.76rem;font-weight:700;font-family:'Raleway',sans-serif;cursor:pointer;box-shadow:0 2px 10px rgba(168,116,32,.08);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A87420' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;outline:none;}
+.sort-select:focus{border-color:var(--or);}
+.no-results{display:none;text-align:center;padding:4rem 1rem;color:var(--text-3);}
+.no-results.show{display:block;}
+.no-results-ico{font-size:2.6rem;margin-bottom:.8rem;opacity:.5;}
+.no-results h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text);margin-bottom:.5rem;}
+.no-results p{font-size:.82rem;margin-bottom:1.2rem;}
+
+/* ═══════════════════════════════════════
    PRODUCT GRID
 ═══════════════════════════════════════ */
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.2rem;}
@@ -288,11 +307,19 @@ section{padding:6rem 6%;}
 .pd-container{max-width:920px;margin:0 auto;position:relative;}
 .pd-close{position:absolute;top:-15px;right:-15px;background:var(--or);border:none;color:var(--noir);width:40px;height:40px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 20px var(--or-glow);transition:all .3s;font-weight:800;}
 .pd-close:hover{transform:scale(1.1);box-shadow:0 6px 25px var(--or-glow);}
-.pd-box{background:#FDF8F0;border:1.5px solid rgba(168,116,32,.3);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(168,116,32,.08),0 40px 80px rgba(28,18,8,.25),0 0 60px rgba(168,116,32,.08);}
+/* Pas d'overflow:hidden ici : il neutraliserait le position:sticky de la
+   photo. Les coins arrondis sont posés sur les enfants aux angles. */
+.pd-box{background:#FDF8F0;border:1.5px solid rgba(168,116,32,.3);border-radius:16px;box-shadow:0 0 0 1px rgba(168,116,32,.08),0 40px 80px rgba(28,18,8,.25),0 0 60px rgba(168,116,32,.08);}
+.pd-media{border-radius:16px 0 0 0;}
+.pd-info{border-radius:0 16px 0 0;}
+.cross-sell{border-radius:0 0 16px 16px;}
+@media(max-width:680px){.pd-media{border-radius:16px 16px 0 0;}.pd-info{border-radius:0;}}
 .pd-top{display:grid;grid-template-columns:1fr 1fr;}
 @media(max-width:680px){.pd-top{grid-template-columns:1fr;}}
 .pd-media{background:linear-gradient(135deg,#FDF4E8,#F5E6CC);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;position:relative;}
-.pd-media::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(168,116,32,.12),transparent 65%);}
+/* Desktop : la photo reste visible pendant que la fiche/formulaire défile */
+@media(min-width:681px){.pd-media{position:sticky;top:0;align-self:start;min-height:0;}}
+.pd-media::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(168,116,32,.12),transparent 65%);pointer-events:none;}
 .pd-emoji{font-size:8rem;filter:drop-shadow(0 0 20px rgba(168,116,32,.3));position:relative;z-index:1;}
 .pd-info{padding:2.5rem;background:#FDF8F0;}
 .pd-cat-tag{display:inline-block;background:rgba(201,168,76,.12);color:var(--or-lt);font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;border:1px solid rgba(201,168,76,.3);margin-bottom:.8rem;}
@@ -306,39 +333,6 @@ section{padding:6rem 6%;}
 .pd-delivery{background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:.8rem 1rem;font-size:.78rem;color:#6EE89A;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
 .pd-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
 .pd-feat{background:var(--or-bg);color:var(--or);font-size:.62rem;font-weight:600;padding:4px 10px;border-radius:3px;border:1px solid rgba(201,168,76,.2);}
-/* ===== GALERIE MÉDIA (structure HPSHOP, palette Asma) ===== */
-.pd-visual{display:flex;flex-direction:column;}
-.pd-media-img{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center;cursor:zoom-in;z-index:1;}
-.pd-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:2;}
-.pd-zoom-btn{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:none;background:rgba(253,248,240,.88);box-shadow:0 2px 8px rgba(28,18,8,.18);font-size:1rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;}
-.pd-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:3;}
-.pd-dot{width:7px;height:7px;border-radius:50%;background:rgba(28,18,8,.22);cursor:pointer;transition:all .25s;}
-.pd-dot.active{background:var(--or);width:20px;border-radius:4px;}
-.pd-thumbs{display:flex;gap:.5rem;padding:.7rem 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;background:linear-gradient(135deg,#FDF4E8,#F5E6CC);}
-.pd-thumbs::-webkit-scrollbar{height:5px;}
-.pd-thumb{flex:0 0 auto;width:56px;height:56px;border-radius:8px;border:2px solid rgba(168,116,32,.25);background:#fff center/contain no-repeat;cursor:pointer;position:relative;padding:0;transition:border-color .2s,transform .2s;}
-.pd-thumb.active{border-color:var(--or);box-shadow:0 3px 12px rgba(168,116,32,.35);}
-.pd-thumb-badge{position:absolute;bottom:-1px;right:-1px;font-size:.6rem;line-height:1;padding:2px 4px;border-radius:6px 0 6px 0;color:#fff;}
-.pd-thumb-badge.vid{background:var(--or);}
-.pd-thumb-badge.pub{background:var(--or-lt);}
-.pd-zoom{position:fixed;inset:0;background:rgba(28,18,8,.92);z-index:1200;display:none;align-items:center;justify-content:center;padding:1rem;cursor:zoom-out;}
-.pd-zoom.show{display:flex;}
-.pd-zoom img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
-.pd-zoom-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:none;background:rgba(253,248,240,.15);color:#fff;font-size:1.2rem;cursor:pointer;}
-/* Vidéo « en action » + photos pub + mode d'emploi (après le formulaire) */
-.pd-video-block,.pd-more-images,.pd-usage-block{padding:0 2.5rem 1.3rem;background:#F7EFE1;}
-.pd-usage-block{padding-bottom:2rem;}
-.pd-more-images{display:flex;flex-direction:column;gap:.7rem;}
-.pd-video-label{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem;}
-.pd-form-video{width:100%;max-height:440px;border-radius:12px;background:#000;display:block;object-fit:contain;box-shadow:0 8px 28px rgba(28,18,8,.14);}
-.pd-more-label{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.1rem;display:flex;align-items:center;gap:.4rem;}
-.pd-more-images img{width:100%;border-radius:12px;display:block;border:1px solid rgba(168,116,32,.2);}
-.pd-usage{margin:0;padding:.2rem 0 0;list-style:none;counter-reset:step;}
-.pd-usage li{position:relative;counter-increment:step;margin-left:1.05rem;padding:0 0 1.25rem 2.5rem;border-left:2px dashed rgba(201,168,76,.5);}
-.pd-usage li:last-child{border-left-color:transparent;padding-bottom:0;}
-.pd-usage li::before{content:counter(step);position:absolute;left:-1.06rem;top:-.2rem;width:2.1rem;height:2.1rem;background:linear-gradient(135deg,var(--or),var(--or-lt));color:#FDF8F0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.92rem;box-shadow:0 4px 12px rgba(168,116,32,.35);border:3px solid #FDF8F0;z-index:1;}
-.pd-usage li span{display:block;background:#FDF8F0;border:1.5px solid rgba(168,116,32,.25);border-radius:14px;padding:.8rem 1rem;font-size:.94rem;line-height:1.5;color:var(--text);box-shadow:0 3px 12px rgba(28,18,8,.05);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
-.pd-usage li:hover span{transform:translateX(4px);box-shadow:0 6px 20px rgba(201,168,76,.18);border-color:var(--or-lt);}
 .pd-form-section{background:#F7EFE1;border-top:1px solid rgba(168,116,32,.15);padding:2.5rem;}
 .pd-form-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
 .fg{margin-bottom:1rem;}
@@ -362,8 +356,6 @@ section{padding:6rem 6%;}
 .mandatory-check input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--or);flex-shrink:0;margin-top:2px;}
 .mandatory-check p{font-size:.77rem;color:var(--text-2);line-height:1.5;}
 .mandatory-check strong{color:var(--or);}
-.whatsapp-msg-preview{background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.75rem;color:#6EE89A;display:none;}
-.whatsapp-msg-preview.show{display:block;}
 .warn-unread{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:.7rem 1rem;font-size:.77rem;color:var(--or);margin-bottom:1rem;display:none;font-weight:600;}
 .warn-unread.show{display:block;}
 
@@ -521,6 +513,38 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .success-code{background:var(--or-bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;font-size:.85rem;font-weight:700;color:var(--or);margin-bottom:2rem;}
 
 /* ═══════════════════════════════════════
+   RECAP MODAL (avant confirmation)
+═══════════════════════════════════════ */
+.recap-overlay{display:none;position:fixed;inset:0;background:rgba(28,18,8,.6);z-index:850;backdrop-filter:blur(10px);align-items:flex-end;justify-content:center;padding:0;}
+.recap-overlay.show{display:flex;}
+@media(min-width:600px){.recap-overlay{align-items:center;padding:1rem;}}
+.recap-box{background:#FDF8F0;border-radius:16px 16px 0 0;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px rgba(28,18,8,.3);animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
+@media(min-width:600px){.recap-box{border-radius:16px;}}
+.recap-header{background:linear-gradient(135deg,var(--or),var(--or-dk));padding:1.1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;}
+.recap-title{color:var(--noir);font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;}
+.recap-close{background:rgba(253,248,240,.25);border:none;color:var(--noir);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.recap-body{padding:1.3rem 1.4rem;}
+.recap-product{display:flex;gap:.9rem;background:var(--or-bg);border:1px solid var(--border);border-radius:10px;padding:.9rem;margin-bottom:1rem;align-items:center;}
+.recap-product-emoji{font-size:2rem;width:52px;height:52px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.recap-product-emoji img{width:100%;height:100%;object-fit:cover;}
+.recap-product-name{font-weight:700;font-size:.86rem;color:var(--text);margin-bottom:.2rem;}
+.recap-product-qty{font-size:.76rem;color:var(--text-2);}
+.recap-section{margin-bottom:1rem;}
+.recap-section-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--or);margin-bottom:.4rem;}
+.recap-row{display:flex;justify-content:space-between;font-size:.82rem;padding:.35rem 0;border-bottom:1px solid rgba(168,116,32,.1);}
+.recap-row:last-child{border-bottom:none;}
+.recap-row span:first-child{color:var(--text-2);}
+.recap-row span:last-child{font-weight:700;color:var(--text);text-align:right;max-width:60%;}
+.recap-total-row{display:flex;justify-content:space-between;align-items:center;background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.25);border-radius:8px;padding:.9rem 1rem;margin-top:.6rem;}
+.recap-total-label{font-size:.82rem;font-weight:700;color:#1A8A4A;}
+.recap-total-amount{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#1A8A4A;}
+.recap-footer{padding:1rem 1.4rem 1.3rem;display:flex;gap:.7rem;border-top:1px solid var(--border);}
+.recap-btn-edit{flex:1;padding:12px;border:1.5px solid var(--border);background:#fff;border-radius:8px;font-family:'Raleway',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--text-2);transition:all .3s;}
+.recap-btn-edit:hover{border-color:var(--or);color:var(--or);}
+.recap-btn-confirm{flex:2;}
+@media(max-width:480px){.recap-footer{flex-direction:column;}}
+
+/* ═══════════════════════════════════════
    UTILS
 ═══════════════════════════════════════ */
 .spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(201,168,76,.3);border-top-color:var(--or);border-radius:50%;animation:spin .8s linear infinite;}
@@ -542,8 +566,6 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 /* ORDER ACTIONS — deux boutons */
 .order-actions{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem;}
 @media(max-width:480px){.order-actions{grid-template-columns:1fr;}}
-.btn-wa-order{background:#25D366;color:#fff;border:none;padding:14px;border-radius:6px;font-family:'Raleway',sans-serif;font-size:.82rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .3s;letter-spacing:.5px;}
-.btn-wa-order:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,.3);}
 /* PRODUCT IMAGES */
 .prod-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
 .prod-card:hover .prod-img img{transform:scale(1.05);}
@@ -556,13 +578,181 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 .delivery-info-box.paid{background:rgba(255,154,0,.06);border:1px solid rgba(255,154,0,.25);color:#7A5000;}
 .delivery-info-box.free300{background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.3);color:#1A8A4A;}
 
+/* ══ GALERIE MULTI-ANGLES ══ */
+.pd-gallery{width:100%;display:flex;flex-direction:column;gap:.6rem;position:relative;z-index:1;}
+.pd-gallery-main{width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#FDF4E8,#F5E8D0);position:relative;}
+.pd-gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s ease;}
+.pd-gallery-thumbs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.pd-thumb{width:64px;height:64px;border-radius:7px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;flex-shrink:0;}
+.pd-thumb:hover{transform:scale(1.05);}
+.pd-thumb.active{border-color:var(--or);box-shadow:0 0 0 1px var(--or);}
+.pd-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+/* ══ PANIER — AJOUT DEPUIS FICHE PRODUIT ══ */
+.pd-cart-actions{margin-top:1.2rem;display:flex;gap:.6rem;}
+.pd-add-cart{flex:1;padding:13px 10px;font-size:.82rem;font-family:'Raleway',sans-serif;font-weight:800;letter-spacing:.5px;background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);border:none;border-radius:8px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.pd-add-cart:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--or-glow);}
+.pd-form-sep{text-align:center;font-size:.7rem;color:var(--text-3);margin:1.6rem 0 .6rem;letter-spacing:1.5px;text-transform:uppercase;position:relative;}
+.pd-form-sep::before,.pd-form-sep::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:var(--border);opacity:.5;}
+.pd-form-sep::before{left:0;}.pd-form-sep::after{right:0;}
 @media(max-width:600px){
   .frow{grid-template-columns:1fr;}
   .pay-opts{grid-template-columns:1fr 1fr;}
   section{padding:4rem 5%;}
   nav{top:33px;}
   .nav-search{display:none;}
+  .hero-tag{white-space:normal;text-align:center;line-height:1.5;font-size:.55rem;letter-spacing:2px;}
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .hero-btns .btn-rose,.hero-btns .btn-wa{width:100%;justify-content:center;}
 }
+/* ══ Réassurance formulaire ══ */
+.pd-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem;}
+.pd-trust-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.6rem .4rem;text-align:center;font-size:.64rem;font-weight:700;color:var(--text-2);display:flex;flex-direction:column;align-items:center;gap:.25rem;line-height:1.3;}
+.pd-trust-item span{font-size:1.15rem;}
+/* ══ Résumé produit dans le formulaire ══ */
+.pd-summary{display:flex;align-items:center;gap:.8rem;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.8rem;margin-bottom:1rem;box-shadow:0 2px 10px rgba(168,116,32,.08);}
+.pd-sum-img{width:56px;height:56px;border-radius:8px;overflow:hidden;background:#F5E8D0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;}
+.pd-sum-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.pd-sum-info{flex:1;min-width:0;}
+.pd-sum-name{font-size:.8rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pd-sum-stock{font-size:.68rem;color:#1A8A4A;font-weight:600;margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+@media(max-width:480px){.pd-sum-total strong{font-size:1.05rem;}.pd-sum-img{width:48px;height:48px;}}
+.pd-sum-total{text-align:right;flex-shrink:0;}
+.pd-sum-total span{display:block;font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);}
+.pd-sum-total strong{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--or);}
+/* ══ Quantité − / + ══ */
+.qty-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;background:#fff;border:1px solid var(--border);border-radius:8px;padding:.6rem 1rem;}
+.qty-row .qty-label{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);}
+.qty-box{display:flex;align-items:center;gap:.9rem;}
+.qty-box .qty-btn{width:34px;height:34px;font-size:1rem;}
+.qty-val{font-weight:800;font-size:1.05rem;min-width:24px;text-align:center;color:var(--text);}
+.fg-hint{font-size:.7rem;color:var(--text-3);margin:-.4rem 0 1rem;line-height:1.5;}
+/* ══ Barre sticky mobile — fiche produit ══ */
+.pd-sticky-cta{display:none;}
+.pd-sticky-info{display:flex;flex-direction:column;line-height:1.1;flex-shrink:0;}
+.pd-sticky-info span{font-size:.58rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);font-weight:700;}
+.pd-sticky-info strong{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--or);}
+.pd-sticky-btn{flex:1;min-height:48px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);font-family:'Raleway',sans-serif;font-size:.85rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px var(--or-glow);}
+@media(max-width:900px){
+  .pd-sticky-cta.show{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:560;align-items:center;gap:.7rem;background:#FDF8F0;border-top:1.5px solid var(--border);box-shadow:0 -6px 20px rgba(28,18,8,.12);padding:.55rem .9rem;padding-bottom:calc(.55rem + env(safe-area-inset-bottom));}
+  .pd-overlay.show .pd-box{padding-bottom:72px;}
+}
+/* ══ Vous aimerez aussi (cross-sell fiche produit) ══ */
+.cross-sell{padding:1.5rem 2.5rem;border-top:1px solid var(--border);background:var(--noir-2);}
+.cross-sell-title{font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--or);margin-bottom:1rem;}
+.cross-sell-grid{display:flex;gap:.7rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:var(--or-lt) transparent;}
+.cross-sell-grid::-webkit-scrollbar{height:4px;}
+.cross-sell-grid::-webkit-scrollbar-thumb{background:var(--or-lt);border-radius:4px;}
+.cs-item{flex:0 0 140px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:.6rem;cursor:pointer;text-align:center;transition:all .25s;scroll-snap-align:start;}
+.cs-item:hover{border-color:var(--or);transform:translateY(-3px);box-shadow:0 6px 16px rgba(168,116,32,.15);}
+.cs-img{height:70px;border-radius:6px;overflow:hidden;background:#F5E8D0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.cs-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.cs-name{font-size:.65rem;font-weight:700;color:var(--text);line-height:1.25;height:2.5em;overflow:hidden;margin:.35rem 0 .2rem;}
+.cs-price{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--or);}
+@media(max-width:600px){.cs-item{flex:0 0 130px;}.cross-sell{padding:1.2rem 1.4rem;}}
+/* ══ Toasts ══ */
+#toast-container{position:fixed;top:90px;right:16px;z-index:1200;display:flex;flex-direction:column;gap:.6rem;pointer-events:none;}
+.toast{background:#fff;border:1px solid var(--border);border-left:4px solid var(--or);border-radius:10px;padding:.8rem 1rem;box-shadow:0 10px 30px rgba(28,18,8,.15);display:flex;gap:.6rem;align-items:flex-start;min-width:230px;max-width:320px;animation:toastIn .3s ease;pointer-events:auto;transition:opacity .35s,transform .35s;}
+.toast.success{border-left-color:#2ECC71;}
+.toast.error{border-left-color:#E74C3C;}
+.toast.warning{border-left-color:#F5A800;}
+.toast-ico{font-size:1rem;flex-shrink:0;}
+.toast-title{font-size:.8rem;font-weight:800;color:var(--text);}
+.toast-msg{font-size:.72rem;color:var(--text-2);margin-top:.15rem;}
+.toast.out{opacity:0;transform:translateX(20px);}
+@keyframes toastIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
+/* ══ Preuve sociale ══ */
+.pd-social{display:flex;align-items:center;gap:.5rem;background:var(--rose-bg);border:1px solid var(--rose-lt);border-radius:8px;padding:.6rem .9rem;margin-bottom:1rem;font-size:.74rem;color:var(--rose-dk);font-weight:600;}
+.pd-social-dot{width:7px;height:7px;border-radius:50%;background:#2ECC71;box-shadow:0 0 6px rgba(46,204,113,.7);flex-shrink:0;animation:pulseDot 1.6s ease-in-out infinite;}
+/* Colonne droite : infos + vidéo + formulaire (la photo à gauche reste sticky) */
+.pd-right{min-width:0;}
+/* ══ Vidéo produit ══ */
+.pd-video-block{margin:1.2rem 0;padding:0 2.5rem;}
+.pd-video-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.pd-video-block video{width:100%;max-height:420px;background:#000;border-radius:10px;display:block;}
+/* ══ Urgence / stock limité ══ */
+.pd-urgency{display:inline-flex;align-items:center;gap:.5rem;background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.25);color:#c0392b;font-size:.72rem;font-weight:700;padding:.45rem .8rem;border-radius:8px;margin-top:.2rem;}
+.pd-urgency .dot{width:8px;height:8px;border-radius:50%;background:#e74c3c;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+@media(prefers-reduced-motion:reduce){.pd-urgency .dot{animation:none;}}
+/* ══ Validation inline ══ */
+.field-error{display:block;color:#e0584f;font-size:.72rem;font-weight:600;margin-top:.25rem;min-height:0;line-height:1.3;}
+.field-error:empty{margin-top:0;}
+.input-invalid{border-color:#e0584f !important;box-shadow:0 0 0 2px rgba(224,88,79,.15) !important;}
+/* ══ FAQ ══ */
+.faq-section{padding:5rem 6%;}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem;}
+.faq-item{border:1px solid rgba(201,168,76,.18);border-radius:12px;overflow:hidden;}
+.faq-q{width:100%;background:rgba(255,255,255,.02);border:none;padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:var(--text);font-size:.87rem;font-weight:600;text-align:left;gap:1rem;transition:background .2s;}
+.faq-q:hover,.faq-q[aria-expanded="true"]{background:rgba(201,168,76,.06);color:var(--or);}
+.faq-icon{color:var(--or);font-size:1.2rem;flex-shrink:0;transition:transform .25s;line-height:1;}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-a.open{max-height:320px;}
+.faq-a p{padding:.1rem 1.5rem 1.2rem;color:var(--text-2);font-size:.83rem;line-height:1.9;}
+@media(max-width:600px){.faq-q{font-size:.82rem;padding:1rem 1.1rem;}.faq-a p{padding:.1rem 1.1rem 1rem;}}
+
+/* ══ COMMENT COMMANDER — 4 étapes ══ */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+@media(max-width:900px){.how-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.how-grid{grid-template-columns:1fr;}}
+.how-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.8rem 1.4rem;text-align:center;position:relative;box-shadow:0 2px 15px rgba(168,116,32,.06);transition:all .35s;}
+.how-card:hover{transform:translateY(-4px);border-color:var(--or-lt);box-shadow:0 20px 50px rgba(168,116,32,.15);}
+.how-num{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:700;color:var(--or-lt);letter-spacing:2px;margin-bottom:.5rem;}
+.how-ico{font-size:2.1rem;margin-bottom:.7rem;}
+.how-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.how-card p{font-size:.8rem;color:var(--text-2);line-height:1.7;}
+
+/* ══ CONTACT SECTION ══ */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
+.contact-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.8rem 1.4rem;text-align:center;box-shadow:0 2px 15px rgba(168,116,32,.06);}
+.contact-card .feat-ico{margin-bottom:1rem;}
+.contact-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.contact-card p{font-size:.8rem;color:var(--text-2);line-height:1.7;margin-bottom:.9rem;}
+
+/* ══ STATS ANIMÉES ══ */
+.trust-band{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.2rem 6%;display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:.7rem;}
+.t-icon{font-size:1.6rem;}
+.t-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--or);display:block;line-height:1;}
+.t-label{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);}
+.trust-divider{width:1px;height:34px;background:var(--border);}
+@media(max-width:600px){.trust-divider{display:none;}.trust-band{gap:1.2rem 2rem;}}
+
+/* ══ OFFRE FLASH — COUNTDOWN ══ */
+.urgency-bar{background:linear-gradient(135deg,var(--rose-dk),var(--rose));padding:.7rem 6%;}
+.urgency-inner{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap;max-width:900px;margin:0 auto;}
+.urgency-pulse{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s ease-in-out infinite;flex-shrink:0;}
+.urgency-label{font-size:.72rem;font-weight:800;letter-spacing:1px;color:#fff;text-transform:uppercase;}
+.urgency-text{font-size:.76rem;color:rgba(255,255,255,.9);font-weight:600;}
+.countdown{display:flex;gap:.4rem;}
+.countdown span{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:.25rem .55rem;display:flex;align-items:baseline;gap:2px;}
+.countdown b{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;letter-spacing:1px;min-width:20px;text-align:center;line-height:1;}
+.countdown i{font-style:normal;font-size:.58rem;color:rgba(255,255,255,.7);font-weight:800;letter-spacing:1px;}
+
+/* ══ MOBILE CTA — bandeau flottant ══ */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#FDF8F0;border-top:1.5px solid var(--border);box-shadow:0 -8px 25px rgba(28,18,8,.1);padding:.75rem 1rem;z-index:380;align-items:center;gap:.7rem;}
+.mobile-cta-info{flex:1;min-width:0;}
+.mobile-cta-label{font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+.mobile-cta-title{font-size:.82rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mobile-cta-btns{display:flex;gap:.5rem;flex-shrink:0;}
+.mobile-cta-btn{background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);border:none;padding:.7rem 1rem;border-radius:8px;font-weight:800;font-size:.76rem;font-family:'Raleway',sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;}
+.mobile-cta-wa{background:var(--wa);color:#fff;border:none;padding:.7rem .8rem;border-radius:8px;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
+@media(max-width:768px){.mobile-cta{display:flex;}body{padding-bottom:74px;}}
+
+/* ══ NEWSLETTER POPUP -10% ══ */
+.nl-overlay{display:none;position:fixed;inset:0;background:rgba(28,18,8,.65);z-index:950;backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.nl-overlay.show{display:flex;}
+.nl-box{background:#FDF8F0;border:1px solid var(--border);border-radius:16px;padding:2.4rem 2rem;max-width:400px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(28,18,8,.3);position:relative;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.nl-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-3);}
+.nl-ico{font-size:2.6rem;margin-bottom:.8rem;}
+.nl-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.6rem;}
+.nl-sub{font-size:.82rem;color:var(--text-2);line-height:1.7;margin-bottom:1.3rem;}
+.nl-form{display:flex;flex-direction:column;gap:.7rem;}
+.nl-form input{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-family:'Raleway',sans-serif;font-size:.84rem;color:var(--text);outline:none;}
+.nl-form input:focus{border-color:var(--or);}
+.nl-submit{width:100%;justify-content:center;margin-top:.2rem;}
+.nl-foot{display:block;font-size:.68rem;color:var(--text-3);margin-top:1rem;}
 </style>
 </head>
 <body>
@@ -601,6 +791,8 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <li><a href="#produits" onclick="filterCat('soins-visage')">Beauté</a></li>
     <li><a href="#pourquoi">À propos</a></li>
     <li><a href="#temoignages">Avis</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <!-- Barre de recherche -->
   <div class="nav-search-wrap">
@@ -639,16 +831,16 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <button class="btn-rose" onclick="document.getElementById('produits').scrollIntoView({behavior:'smooth'})">
         ✦ Découvrir la Boutique
       </button>
-      <a href="https://wa.me/212646702039?text=Bonjour%20ASMA%20SHOP%2C%20je%20voudrais%20des%20informations%20sur%20vos%20produits" class="btn-wa" target="_blank" rel="noopener">
+      <a href="https://wa.me/224621881210?text=Bonjour%20ASMA%20SHOP%2C%20je%20voudrais%20des%20informations%20sur%20vos%20produits" class="btn-wa" target="_blank" rel="noopener">
         <svg width="15" height="15" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
       </a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Clients Heureux</span></div>
-      <div class="stat"><span class="stat-n">24h</span><span class="stat-l">Livraison</span></div>
+      <div class="stat"><span class="stat-n">🇬🇳</span><span class="stat-l">Partout en Guinée</span></div>
+      <div class="stat"><span class="stat-n">24h</span><span class="stat-l">Livraison Conakry</span></div>
       <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Naturel</span></div>
-      <div class="stat"><span class="stat-n">4.9★</span><span class="stat-l">Note Moyenne</span></div>
+      <div class="stat"><span class="stat-n">💵</span><span class="stat-l">Payez à la livraison</span></div>
     </div>
   </div>
 
@@ -692,6 +884,42 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   <div class="strip-item"><span>🌸</span><span>Service <strong>Client 7j/7</strong></span></div>
 </div>
 
+<!-- ══════════════ STATS ANIMÉES ══════════════ -->
+<div class="trust-band" role="complementary">
+  <div class="trust-item">
+    <span class="t-icon">📦</span>
+    <div><span class="t-num" id="trust-order-count">0</span><span class="t-label">Commandes livrées</span></div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="t-icon">💛</span>
+    <div><span class="t-num">96%</span><span class="t-label">Clientes satisfaites</span></div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="t-icon">🚚</span>
+    <div><span class="t-num">24h</span><span class="t-label">Livraison moyenne Conakry</span></div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="t-icon">🔄</span>
+    <div><span class="t-num">100%</span><span class="t-label">Satisfaite ou échangée</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ OFFRE FLASH ══════════════ -->
+<div class="urgency-bar" id="urgency-bar">
+  <div class="urgency-inner">
+    <span class="urgency-pulse"></span>
+    <span class="urgency-label">⚡ Offre flash —</span>
+    <span class="urgency-text">-15% sur une sélection savons &amp; soins, expire dans</span>
+    <div class="countdown" id="countdown">
+      <span><b id="cd-h">00</b><i>H</i></span>
+      <span><b id="cd-m">00</b><i>M</i></span>
+      <span><b id="cd-s">00</b><i>S</i></span>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════ BESTSELLERS ══════════════ -->
 <section id="bestsellers" style="padding:4rem 6% 2rem;background:#fff;">
@@ -703,45 +931,41 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   <div class="bs-scroll">
     <div class="bs-card" onclick="openPD('vis-001')">
       <div class="bs-rank">🥇</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=300&q=80" alt="Crème Éclat" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1638609927040-8a7e97cd9d6a?w=300&q=80&fm=webp" alt="Crème Éclat" width="300" height="300" loading="eager" fetchpriority="high"></div>
       <div class="bs-body">
         <div class="bs-tag">⭐ N°1 Soins Visage</div>
         <div class="bs-name">Crème Éclat & Uniformisante</div>
         <div class="bs-price">150 000 <span>GNF</span> <span class="bs-old">200 000</span></div>
-        <div class="bs-orders">🛍️ 47 commandes ce mois</div>
         <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('vis-001')">Commander</button>
       </div>
     </div>
     <div class="bs-card" onclick="openPD('par-001')">
       <div class="bs-rank">🥈</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&q=80" alt="Parfum Oud" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1585218334450-afcf929da36e?w=300&q=80&fm=webp" alt="Parfum Oud" width="300" height="300" loading="lazy"></div>
       <div class="bs-body">
         <div class="bs-tag">🌺 N°1 Parfums</div>
         <div class="bs-name">Parfum Oriental Rose & Oud</div>
         <div class="bs-price">260 000 <span>GNF</span> <span class="bs-old">350 000</span></div>
-        <div class="bs-orders">🛍️ 38 commandes ce mois</div>
         <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('par-001')">Commander</button>
       </div>
     </div>
     <div class="bs-card" onclick="openPD('sav-004')">
       <div class="bs-rank">🥉</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=300&q=80" alt="Savon Citron" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1687272901949-2a518b04417a?w=300&q=80&fm=webp" alt="Savon Citron" width="300" height="300" loading="lazy"></div>
       <div class="bs-body">
         <div class="bs-tag">🧼 N°1 Savons</div>
         <div class="bs-name">Savon Citron Anti-Taches</div>
         <div class="bs-price">28 000 <span>GNF</span> <span class="bs-old">40 000</span></div>
-        <div class="bs-orders">🛍️ 62 commandes ce mois</div>
         <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('sav-004')">Commander</button>
       </div>
     </div>
     <div class="bs-card" onclick="openPD('vis-002')">
       <div class="bs-rank">⭐</div>
-      <div class="bs-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&q=80" alt="Sérum Vitamine C" loading="lazy"></div>
+      <div class="bs-img"><img src="https://images.unsplash.com/photo-1633793566063-52465a148cc7?w=300&q=80&fm=webp" alt="Sérum Vitamine C" width="300" height="300" loading="lazy"></div>
       <div class="bs-body">
         <div class="bs-tag">✨ Coup de Cœur</div>
         <div class="bs-name">Sérum Vitamine C 20%</div>
         <div class="bs-price">190 000 <span>GNF</span> <span class="bs-old">260 000</span></div>
-        <div class="bs-orders">🛍️ 29 commandes ce mois</div>
         <button class="btn-rose" style="width:100%;justify-content:center;font-size:.72rem;padding:10px;" onclick="event.stopPropagation();openPD('vis-002')">Commander</button>
       </div>
     </div>
@@ -794,9 +1018,30 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <span class="cat-emoji">👔</span>
       <div class="cat-name">Homme</div>
     </div>
+    <div class="cat-card" onclick="filterCat('coffrets')" role="tab">
+      <span class="cat-emoji">🎁</span>
+      <div class="cat-name">Coffrets</div>
+    </div>
+  </div>
+
+  <div class="sort-bar">
+    <label class="sort-label" for="sort-select">Trier :</label>
+    <select id="sort-select" class="sort-select" onchange="setSort(this.value)" aria-label="Trier les produits">
+      <option value="default">Pertinence</option>
+      <option value="price-asc">Prix croissant ↑</option>
+      <option value="price-desc">Prix décroissant ↓</option>
+    </select>
   </div>
 
   <div class="prod-grid" id="prod-grid" role="list"></div>
+  <div class="no-results" id="no-results">
+    <div class="no-results-ico">🔍</div>
+    <h3>Aucun produit trouvé</h3>
+    <p>Essayez une autre catégorie ou contactez-nous sur WhatsApp pour une demande spéciale.</p>
+    <a href="https://wa.me/224621881210?text=Bonjour%20ASMA%20SHOP%2C%20je%20cherche%20un%20produit%20que%20je%20ne%20trouve%20pas%20sur%20le%20site" class="btn-wa" target="_blank" rel="noopener" style="display:inline-flex;">
+      💬 Demander sur WhatsApp
+    </a>
+  </div>
 </section>
 
 <!-- ══════════════ PRODUCT DETAIL ══════════════ -->
@@ -805,21 +1050,14 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <button class="pd-close" onclick="closePD()" aria-label="Fermer">✕</button>
     <div class="pd-box">
       <div class="pd-top">
-        <!-- ===== GALERIE MÉDIA UNIFIÉE (image + vues, swipe + dots + zoom) ===== -->
-        <div class="pd-visual">
-          <div class="pd-media" id="pd-stage">
-            <video id="pd-video" class="pd-video" muted loop playsinline preload="none" style="display:none"></video>
-            <div class="pd-emoji" id="pd-emoji">💄</div>
-            <button type="button" class="pd-zoom-btn" id="pd-zoom-btn" onclick="openPdZoom()" aria-label="Agrandir l'image">🔍</button>
-            <div class="pd-dots" id="pd-dots"></div>
-          </div>
-          <!-- MINIATURES (générées dynamiquement, scroll horizontal mobile) -->
-          <div class="pd-thumbs" id="pd-thumbs"></div>
+        <div class="pd-media">
+          <div class="pd-emoji" id="pd-emoji">💄</div>
         </div>
+        <div class="pd-right">
         <div class="pd-info">
           <div class="pd-cat-tag" id="pd-cat">Maquillage</div>
           <h2 class="pd-name" id="pd-name">Produit</h2>
-          <div class="pd-stars">★★★★★ <span style="color:var(--muted);font-size:.78rem">(124 avis)</span></div>
+          <div class="pd-stars">★★★★★</div>
           <p class="pd-desc" id="pd-desc">Description du produit.</p>
           <div class="pd-features" id="pd-features"></div>
           <div class="pd-price-row">
@@ -828,30 +1066,90 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <span class="pd-saving hidden" id="pd-saving"></span>
           </div>
           <div class="pd-delivery">🚚 Livraison offerte à Conakry · 24-48h en province</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin-top:.7rem;font-size:.72rem;font-weight:600;color:var(--text-2);">
+            <span>💵 Payez à la livraison</span>
+            <span>✅ 100% authentique</span>
+            <span>🚚 Conakry sous 24h</span>
+            <span>🔄 Échange sous 48h</span>
+          </div>
           <p class="pd-stock-status" id="pd-stock"></p>
-        </div>
+          <div class="pd-social" id="pd-social" style="display:none;">
+            <span class="pd-social-dot"></span>
+            <span><b id="pd-social-count">0</b> personnes ont commandé aujourd'hui · ★★★★★ 4,8/5</span>
+          </div>
+          <div class="pd-cart-actions">
+            <button class="pd-add-cart" onclick="addPdToCart()">
+              🛍️ Ajouter au panier
+            </button>
+          </div>
+        </div><!-- /pd-info -->
+
+      <!-- Vidéo produit (si disponible) -->
+      <div class="pd-video-block" id="pd-video-block" style="display:none;">
+        <div class="pd-video-label">🎬 Voir le produit en action</div>
+        <video id="pd-video" muted loop playsinline controls preload="none"></video>
       </div>
 
-      <!-- Formulaire commande -->
+      <!-- Formulaire commande directe -->
+      <div class="pd-form-sep">ou commander directement</div>
       <div class="pd-form-section">
-        <div class="pd-form-title">🛍️ Commander ce produit</div>
-        <form id="order-form" onsubmit="submitOrder(event)">
+        <div class="pd-form-title">📦 Passer ma commande</div>
+
+        <!-- Réassurance COD -->
+        <div class="pd-trust">
+          <div class="pd-trust-item"><span>🚚</span>Livraison 24–48h</div>
+          <div class="pd-trust-item"><span>💰</span>Paiement à la réception</div>
+          <div class="pd-trust-item"><span>🔄</span>Retour facile si problème</div>
+        </div>
+
+        <form id="order-form" onsubmit="event.preventDefault();openProductRecap()">
           <input type="hidden" id="f-product-id">
           <input type="hidden" id="f-product-name">
           <input type="hidden" id="f-product-price">
+          <!-- Honeypot anti-bot : invisible pour l'humain, rempli par les bots -->
+          <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" placeholder="Laisser vide">
 
-          <!-- 3 champs essentiels -->
-          <div class="fg">
-            <label for="f-fname">Prénom *</label>
-            <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name">
+          <!-- Résumé produit : photo + nom + total en direct -->
+          <div class="pd-summary">
+            <div class="pd-sum-img" id="pd-sum-img">💄</div>
+            <div class="pd-sum-info">
+              <div class="pd-sum-name" id="pd-sum-name">Produit</div>
+              <div class="pd-sum-stock" id="pd-sum-stock">✅ En stock — 24–48h</div>
+            </div>
+            <div class="pd-sum-total"><span>Total</span><strong id="pd-total">0 GNF</strong></div>
           </div>
+
+          <!-- Quantité − / + -->
+          <div class="qty-row">
+            <span class="qty-label">Quantité</span>
+            <div class="qty-box">
+              <button class="qty-btn" type="button" onclick="updateQty(-1)" aria-label="Diminuer">−</button>
+              <span class="qty-val" id="pd-qty">1</span>
+              <button class="qty-btn" type="button" onclick="updateQty(1)" aria-label="Augmenter">+</button>
+            </div>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label for="f-fname">Prénom &amp; Nom *</label>
+              <input type="text" id="f-fname" placeholder="Ex: Fatoumata Diallo" required autocomplete="name" oninput="clearFieldError('f-fname')">
+              <small class="field-error" id="err-f-fname"></small>
+            </div>
+            <div class="fg">
+              <label for="f-phone">📞 Téléphone WhatsApp *</label>
+              <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel" oninput="clearFieldError('f-phone')">
+              <small class="field-error" id="err-f-phone"></small>
+            </div>
+          </div>
+          <div class="fg-hint">📞 Nous vous appelons pour confirmer avant la livraison — <strong>aucun paiement en ligne</strong>.</div>
           <div class="fg">
-            <label for="f-phone">📞 Téléphone WhatsApp *</label>
-            <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel">
+            <label for="f-address">🏠 Adresse de livraison *</label>
+            <input type="text" id="f-address" placeholder="Ex: Ratoma, près du marché — quartier, rue, repère" required autocomplete="street-address" oninput="clearFieldError('f-address')">
+            <small class="field-error" id="err-f-address"></small>
           </div>
           <div class="fg">
             <label for="f-city">📍 Ville de livraison *</label>
-            <select id="f-city" required onchange="updateOrderSummary()">
+            <select id="f-city" required onchange="updateOrderSummary();clearFieldError('f-city')">
               <option value="">— Choisissez votre ville —</option>
               <optgroup label="🟢 Conakry — Livraison OFFERTE">
                 <option value="Conakry - Kaloum">Conakry — Kaloum</option>
@@ -896,39 +1194,25 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
               </optgroup>
               <option value="Autre">Autre ville — nous contacter</option>
             </select>
+            <small class="field-error" id="err-f-city"></small>
           </div>
           <!-- Info livraison dynamique -->
           <div id="delivery-info-box" class="delivery-info-box" style="display:none;"></div>
 
-          <!-- Détails optionnels -->
-          <div class="details-toggle" onclick="toggleDetails()" id="details-toggle">
-            <span id="details-toggle-label">+ Ajouter adresse, nom, note (optionnel)</span>
+          <!-- Note livreur (repliable) -->
+          <div class="details-toggle" onclick="togglePdNote()" id="note-toggle">
+            <span id="note-toggle-label">+ Ajouter une note pour le livreur (optionnel)</span>
           </div>
-          <div id="details-extra" style="display:none;">
-            <div class="fg">
-              <label for="f-lname">Nom de famille</label>
-              <input type="text" id="f-lname" placeholder="Votre nom" autocomplete="family-name">
-            </div>
-            <div class="fg">
-              <label for="f-address">Adresse / Quartier</label>
-              <input type="text" id="f-address" placeholder="Quartier, rue, repère..." autocomplete="street-address">
-            </div>
+          <div class="fg" id="note-field" style="display:none;">
+            <label for="f-note">Note pour le livreur</label>
+            <input type="text" id="f-note" placeholder="Ex: appeler avant de livrer, point de repère..." autocomplete="off">
           </div>
-          <div class="fg">
-            <label for="f-qty">Quantité</label>
-            <select id="f-qty" onchange="updateOrderSummary()">
-              <option value="1">1 unité</option>
-              <option value="2">2 unités</option>
-              <option value="3">3 unités</option>
-              <option value="4">4 unités</option>
-              <option value="5">5 unités</option>
-            </select>
-          </div>
+
           <div class="fg">
             <label>Mode de paiement *</label>
             <div class="pay-opts" id="pay-opts" style="grid-template-columns:1fr 1fr;">
               <div class="pay-opt on" onclick="selectPay(this,'Paiement à la livraison')">
-                <span class="pay-icon">💵</span>À la livraison
+                <span class="pay-icon">💵</span>Cash à la livraison
               </div>
               <div class="pay-opt" onclick="selectPay(this,'Orange Money')">
                 <span class="pay-icon">🟠</span>Orange Money
@@ -937,13 +1221,19 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <input type="hidden" id="f-payment" value="Paiement à la livraison">
             <!-- Instructions Orange Money (affiché quand sélectionné) -->
             <div id="om-instructions" class="om-instructions" style="display:none;">
-              <p>📲 Envoyez le montant de votre commande au :</p>
-              <p class="om-number">+212 646 702 039 <span>(WhatsApp ASMA SHOP)</span></p>
-              <p>Envoyez-nous votre capture de paiement sur WhatsApp et mentionnez votre nom dans la note.</p>
+              <p>📲 <strong>Comment payer :</strong></p>
+              <p>1. Composez <strong>#144#</strong> sur votre téléphone Orange<br>
+                 2. Envoyer de l'argent → numéro marchand :</p>
+              <p class="om-number" onclick="copyOM(this)" title="Cliquez pour copier" style="cursor:pointer;">+224 621 88 12 10 <span>(cliquez pour copier)</span></p>
+              <p>3. Copiez l'<strong>ID de transaction</strong> reçu par SMS<br>
+                 4. Collez-le ci-dessous puis confirmez votre commande.</p>
+              <div class="fg" style="margin-top:.6rem;margin-bottom:0;">
+                <label for="f-om-id" style="color:#C44A00;">ID Transaction Orange Money *</label>
+                <input type="text" id="f-om-id" placeholder="Ex: PP250522.1234.A56789" autocomplete="off" oninput="clearFieldError('f-om-id')">
+                <small class="field-error" id="err-f-om-id"></small>
+              </div>
             </div>
           </div>
-          <!-- Note dans les détails optionnels -->
-          <input type="hidden" id="f-note" value="">
 
           <div class="order-summary" id="order-summary">
             <div class="order-summary-row"><span>Produit</span><span id="os-product">—</span></div>
@@ -952,38 +1242,77 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <div class="order-summary-row total"><span>TOTAL</span><span id="os-total">—</span></div>
           </div>
 
-          <!-- Deux options de commande -->
+          <p class="pd-urgency" id="pd-urgency-form" style="margin-bottom:1rem;">⚡ Plus que <b id="pd-stock-left" style="margin:0 .25em;">5</b> en stock — commandez vite !</p>
+
+          <!-- Bouton de commande -->
           <div class="order-actions">
-            <button type="button" class="btn-wa-order" onclick="commanderWhatsApp()">
-              <svg width="15" height="15" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Envoyer sur WhatsApp
-            </button>
-            <button type="button" class="submit-btn" id="submit-btn" onclick="submitOrder()">
-              <span id="submit-label">✅ Confirmer & Enregistrer</span>
+            <button type="button" class="submit-btn" id="submit-btn" onclick="openProductRecap()" style="width:100%;">
+              <span id="submit-label">🛒 Commander maintenant</span>
               <span id="submit-spin" class="hidden"><span class="spinner"></span></span>
             </button>
           </div>
           <p style="font-size:.68rem;color:var(--text-3);text-align:center;margin-top:.6rem;">
-            WhatsApp = réponse immédiate · Enregistrer = confirmation par appel sous 2h
+            🔒 Données confidentielles · Sans paiement en ligne · Notre équipe vous rappelle sous 2h.
           </p>
-        </form>
 
-        <!-- VIDÉO PUB (1 seule par produit) — APRÈS le formulaire -->
-        <div class="pd-video-block" id="pd-video-block" style="display:none">
-          <div class="pd-video-label">🎬 Voir le produit en action</div>
-          <video id="pd-form-video" class="pd-form-video" muted loop playsinline controls preload="none"></video>
-        </div>
-        <!-- Le reste des photos (au-delà des 3 miniatures) -->
-        <div class="pd-more-images" id="pd-more-images" style="display:none"></div>
-        <!-- Mode d'emploi (étapes numérotées) -->
-        <div class="pd-usage-block" id="pd-usage-block" style="display:none">
-          <div class="pd-video-label">📋 Comment utiliser ce produit</div>
-          <ol class="pd-usage" id="pd-usage"></ol>
-        </div>
+          <div class="mandatory-check">
+            <span style="font-size:1.1rem;">⚠️</span>
+            <p><strong>Commande à paiement à la livraison (COD).</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception. Un colis refusé mobilise inutilement notre équipe de livraison — merci de votre compréhension.</p>
+          </div>
+        </form>
+      </div><!-- /pd-form-section -->
+        </div><!-- /pd-right -->
+      </div><!-- /pd-top -->
+
+      <!-- Vous aimerez aussi -->
+      <div class="cross-sell" id="cross-sell" style="display:none;">
+        <div class="cross-sell-title">✨ Vous aimerez aussi</div>
+        <div class="cross-sell-grid" id="cross-sell-grid"></div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- CTA STICKY MOBILE — fiche produit (hors overlay pour un position:fixed fiable) -->
+<div class="pd-sticky-cta" id="pd-sticky-cta">
+  <div class="pd-sticky-info"><span>Total à payer</span><strong id="pd-sticky-total">0 GNF</strong></div>
+  <button type="button" class="pd-sticky-btn" onclick="openProductRecap()">🛒 Commander</button>
+</div>
+
+<!-- ══════════════ COMMENT COMMANDER ══════════════ -->
+<section id="comment" class="white">
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Simple &amp; Rapide</div>
+    <h2 class="s-title">Comment <span class="accent">Commander</span> ?</h2>
+    <p class="s-sub" style="margin:0 auto;">4 étapes pour recevoir votre commande à domicile</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-ico">🛍️</div>
+      <h3>Choisissez</h3>
+      <p>Parcourez la boutique et cliquez sur le produit qui vous plaît.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-ico">📝</div>
+      <h3>Remplissez</h3>
+      <p>Indiquez votre prénom, téléphone WhatsApp et ville de livraison.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-ico">📞</div>
+      <h3>Confirmation</h3>
+      <p>Notre équipe vous rappelle sous 2h pour confirmer la commande.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">04</div>
+      <div class="how-ico">🚚</div>
+      <h3>Livraison</h3>
+      <p>Vous recevez votre colis et payez uniquement à la réception.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════ POURQUOI NOUS ══════════════ -->
 <section id="pourquoi" class="white">
@@ -1005,7 +1334,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <div class="feat-card">
       <div class="feat-ico">💳</div>
       <div class="feat-title">Paiement Flexible</div>
-      <p class="feat-text">Payez à la livraison en espèces, par Orange Money ou MTN MoMo. Aucun risque pour vous.</p>
+      <p class="feat-text">Payez à la livraison en espèces ou par Orange Money. Aucun risque pour vous.</p>
     </div>
     <div class="feat-card">
       <div class="feat-ico">💬</div>
@@ -1028,92 +1357,86 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 <!-- ══════════════ TEMOIGNAGES ══════════════ -->
 <section id="temoignages" class="alt">
   <div class="s-head" style="text-align:center;">
-    <div class="s-label">Avis Clients</div>
+    <div class="s-label">Témoignages</div>
     <h2 class="s-title">Elles Parlent de <span class="accent">Nous</span></h2>
-    <p class="s-sub" style="margin:0 auto;">+500 clientes satisfaites dans toute la Guinée 🇬🇳</p>
+    <p class="s-sub" style="margin:0 auto;">Des cosmétiques naturels appréciés partout en Guinée 🇬🇳</p>
   </div>
   <div class="testi-grid">
     <div class="testi-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
         <div class="testi-stars">★★★★★</div>
-        <span class="testi-verified">✓ Achat vérifié · CMD-4821</span>
       </div>
       <p class="testi-text">"J'ai reçu la Crème Éclat en 2 jours. Franchement je doutais au début mais après 10 jours d'utilisation mon teint a vraiment changé. J'ai déjà passé une 2ème commande pour ma sœur."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:linear-gradient(135deg,#C9A84C,#7A5418)">F</div>
         <div>
           <div class="testi-name">Fatoumata D.</div>
-          <div class="testi-loc">Conakry — Ratoma · il y a 3 jours</div>
+          <div class="testi-loc">Conakry — Ratoma</div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
         <div class="testi-stars">★★★★★</div>
-        <span class="testi-verified">✓ Achat vérifié · CMD-5103</span>
       </div>
       <p class="testi-text">"Le Sérum Vitamine C à 20% c'est vraiment efficace. En 3 semaines mes taches ont clairement diminué. L'agent a rappelé dans l'heure pour confirmer, très sérieux."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:linear-gradient(135deg,#C8536B,#9D2F44)">K</div>
         <div>
           <div class="testi-name">Kadiatou S.</div>
-          <div class="testi-loc">Conakry — Dixinn · il y a 1 semaine</div>
+          <div class="testi-loc">Conakry — Dixinn</div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
         <div class="testi-stars">★★★★★</div>
-        <span class="testi-verified">✓ Achat vérifié · CMD-4677</span>
       </div>
       <p class="testi-text">"Le Parfum Oriental Rose & Oud tient vraiment 24h, pas exagéré ! Mon mari me demande ce que je mets. J'ai commandé le boubou en même temps, emballage nickel."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:linear-gradient(135deg,#A87420,#C9A84C)">H</div>
         <div>
           <div class="testi-name">Hadja T.</div>
-          <div class="testi-loc">Kankan · il y a 5 jours</div>
+          <div class="testi-loc">Kankan</div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
         <div class="testi-stars">★★★★★</div>
-        <span class="testi-verified">✓ Achat vérifié · CMD-5290</span>
       </div>
       <p class="testi-text">"Le savon citron j'en commande tous les mois maintenant. 28 000 GNF c'est honnête pour le résultat. Livraison à Kaloum en 1 journée. Je recommande à toutes mes amies."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:linear-gradient(135deg,#2ECC71,#1A8A4A)">N</div>
         <div>
           <div class="testi-name">Nènè C.</div>
-          <div class="testi-loc">Conakry — Matam · il y a 2 jours</div>
+          <div class="testi-loc">Conakry — Matam</div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
         <div class="testi-stars">★★★★☆</div>
-        <span class="testi-verified">✓ Achat vérifié · CMD-4512</span>
       </div>
       <p class="testi-text">"J'ai pris la palette ombres à paupières et le rouge à lèvres. Qualité vraiment bien pour le prix. Seul bémol la livraison a pris 3 jours au lieu de 2 mais le produit valait l'attente."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:linear-gradient(135deg,#C8536B,#7A5418)">M</div>
         <div>
           <div class="testi-name">Mariama K.</div>
-          <div class="testi-loc">Conakry — Kaloum · il y a 1 semaine</div>
+          <div class="testi-loc">Conakry — Kaloum</div>
         </div>
       </div>
     </div>
     <div class="testi-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
         <div class="testi-stars">★★★★★</div>
-        <span class="testi-verified">✓ Achat vérifié · CMD-5038</span>
       </div>
       <p class="testi-text">"Le savon lait de chameau je l'ai pris pour ma mère qui avait des problèmes de peau depuis longtemps. En 2 semaines vraiment visible. Merci ASMA SHOP, vous avez une cliente fidèle !"</p>
       <div class="testi-author">
         <div class="testi-av" style="background:linear-gradient(135deg,#3498DB,#1A5276)">A</div>
         <div>
           <div class="testi-name">Aissatou B.</div>
-          <div class="testi-loc">Labé · il y a 4 jours</div>
+          <div class="testi-loc">Labé</div>
         </div>
       </div>
     </div>
@@ -1129,6 +1452,96 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   </button>
 </div>
 
+<!-- ══════════════ FAQ ══════════════ -->
+<section id="faq" class="alt faq-section">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment fonctionne le paiement à la livraison ?","acceptedAnswer":{"@type":"Answer","text":"Vous ne payez rien à l'avance. Le livreur vous apporte votre commande, vous vérifiez les produits, et vous payez uniquement si vous êtes satisfaite."}},{"@type":"Question","name":"Quel est le délai de livraison ?","acceptedAnswer":{"@type":"Answer","text":"Conakry : 24 à 48 heures, livraison gratuite dans les 8 communes. Province : 2 à 5 jours selon votre ville."}},{"@type":"Question","name":"Livrez-vous en province (hors Conakry) ?","acceptedAnswer":{"@type":"Answer","text":"Oui, nous livrons dans toutes les grandes villes de Guinée : Labé, Kindia, Kankan, N'Zérékoré, Mamou, Faranah, Boké et plus. Des frais de livraison s'appliquent selon la distance."}},{"@type":"Question","name":"Les produits sont-ils vraiment naturels ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Nos produits sont sélectionnés auprès de fournisseurs spécialisés : argan du Maroc, lait de chameau, beurre de karité, résine traditionnelle africaine."}},{"@type":"Question","name":"Comment payer avec Orange Money ?","acceptedAnswer":{"@type":"Answer","text":"Sélectionnez Orange Money lors de la commande. Envoyez le montant exact au +224 621 88 12 10, puis envoyez-nous la capture de confirmation sur WhatsApp."}},{"@type":"Question","name":"Puis-je retourner ou échanger un produit ?","acceptedAnswer":{"@type":"Answer","text":"Si le produit est endommagé ou ne correspond pas à votre commande, contactez-nous sur WhatsApp au +224 621 88 12 10 dans les 24h. Nous arrangeons un échange ou un remboursement."}}]}</script>
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Questions Fréquentes</div>
+    <h2 class="s-title">Tout ce que vous <span class="accent">voulez savoir</span></h2>
+    <p class="s-sub" style="margin:0 auto;">Réponses aux questions les plus posées avant de commander</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Comment fonctionne le paiement à la livraison ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Vous ne payez <strong>rien à l'avance</strong>. Le livreur vous apporte votre commande, vous vérifiez les produits, et vous payez uniquement si vous êtes satisfaite. Aucun risque de votre côté.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Quel est le délai de livraison ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p><strong>Conakry :</strong> 24 à 48 heures — livraison gratuite dans les 8 communes. <strong>Province :</strong> 2 à 5 jours selon votre ville. Notre équipe vous appelle pour confirmer la date avant l'envoi.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Livrez-vous en province (hors Conakry) ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Oui, nous livrons dans toutes les grandes villes de Guinée : <strong>Labé, Kindia, Kankan, N'Zérékoré, Mamou, Faranah, Boké</strong> et plus. Les frais de livraison sont indiqués automatiquement quand vous saisissez votre ville.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Comment passer une commande ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Choisissez votre produit, cliquez sur <strong>« Commander »</strong>, remplissez votre prénom, numéro de téléphone et adresse, puis cliquez sur <strong>« Confirmer & Enregistrer »</strong>. Notre équipe vous rappelle dans les 2 heures pour valider votre commande.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Les produits sont-ils vraiment naturels ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Oui. Nos produits sont sélectionnés auprès de fournisseurs spécialisés en cosmétiques africains naturels : <strong>argan du Maroc, lait de chameau, beurre de karité, résine traditionnelle</strong>. Les ingrédients sont listés sur chaque fiche produit.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Comment payer avec Orange Money ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Sélectionnez <strong>Orange Money</strong> lors de votre commande. Envoyez le montant exact au <strong>+224 621 88 12 10</strong> (numéro Orange Money Guinée). Envoyez-nous la capture de confirmation sur WhatsApp et votre livraison est confirmée.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+        Puis-je retourner ou échanger un produit ?
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><p>Si le produit est endommagé à la livraison ou ne correspond pas à votre commande, contactez-nous sur WhatsApp au <strong>+224 621 88 12 10</strong> dans les <strong>24h</strong>. Nous arrangeons un échange ou un remboursement sans discussion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="alt">
+  <div class="s-head" style="text-align:center;">
+    <div class="s-label">Nous Contacter</div>
+    <h2 class="s-title">Une Question ? <span class="accent">Écrivez-nous</span></h2>
+    <p class="s-sub" style="margin:0 auto;">Notre équipe est disponible 7j/7 pour vous accompagner</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="feat-ico" style="margin:0 auto 1rem;">💬</div>
+      <h4>WhatsApp</h4>
+      <p>Réponse rapide pour toute question sur nos produits ou votre commande.</p>
+      <a href="https://wa.me/224621881210" class="btn-wa" target="_blank" rel="noopener" style="justify-content:center;">+224 621 88 12 10</a>
+    </div>
+    <div class="contact-card">
+      <div class="feat-ico" style="margin:0 auto 1rem;">📍</div>
+      <h4>Localisation</h4>
+      <p>Conakry, Guinée — livraison partout dans le pays.</p>
+      <a href="#produits" class="btn-outline" style="justify-content:center;color:var(--or);border-color:var(--or);">🛍️ Voir la boutique</a>
+    </div>
+    <div class="contact-card">
+      <div class="feat-ico" style="margin:0 auto 1rem;">📦</div>
+      <h4>Déjà commandé ?</h4>
+      <p>Suivez votre commande en temps réel avec votre code de commande.</p>
+      <a href="https://cod-crm-zeta.vercel.app/suivi" target="_blank" rel="noopener" class="btn-rose" style="justify-content:center;">Suivre ma commande</a>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="footer-grid">
@@ -1141,11 +1554,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         Cosmétiques authentiques, parfums d'exception et mode féminine livrés chez vous en Guinée.
       </p>
       <div class="footer-social">
-        <a href="https://wa.me/212646702039" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a href="https://wa.me/224621881210" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
           <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
-        <a href="#" class="social-btn" aria-label="Instagram">📸</a>
-        <a href="#" class="social-btn" aria-label="Facebook">👥</a>
+        <!-- Instagram & Facebook masqués tant que les pages n'existent pas (évite les liens morts). À réactiver avec les vraies URLs. -->
       </div>
     </div>
     <div>
@@ -1159,20 +1571,22 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <li><a href="#" onclick="filterCat('bijoux');return false">💍 Bijoux</a></li>
         <li><a href="#" onclick="filterCat('savons');return false">🧼 Savons Naturels</a></li>
         <li><a href="#" onclick="filterCat('homme');return false">👔 Homme</a></li>
+        <li><a href="#" onclick="filterCat('coffrets');return false">🎁 Coffrets</a></li>
       </ul>
     </div>
     <div>
       <h4>Contact</h4>
       <div class="footer-contact">
         <div>📍 <strong>Conakry, Guinée</strong></div>
-        <div>📞 <strong>+212 646 702 039</strong></div>
-        <div>💬 <a href="https://wa.me/212646702039" style="color:inherit;text-decoration:none;"><strong>WhatsApp 7j/7</strong></a></div>
+        <div>📞 <strong>+224 621 88 12 10</strong></div>
+        <div>💬 <a href="https://wa.me/224621881210" style="color:inherit;text-decoration:none;"><strong>WhatsApp 7j/7</strong></a></div>
         <div>📧 <strong>asmashopafrique@gmail.com</strong></div>
+        <div>📦 <a href="https://cod-crm-zeta.vercel.app/suivi" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;"><strong>Suivre ma commande</strong></a></div>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 ASMA SHOP AFRIQUE — Tous droits réservés</p>
+    <p>© 2025 ASMA SHOP AFRIQUE — Tous droits réservés · <a href="/politique-confidentialite.html" style="color:inherit;text-decoration:underline;">Politique de confidentialité</a> · <a href="/mentions-legales.html" style="color:inherit;text-decoration:underline;">Mentions légales</a></p>
     <div class="footer-badge">Powered by HelpMeProcess</div>
   </div>
 </footer>
@@ -1198,7 +1612,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <div class="ct-label">Total</div>
         <div class="ct-amount" id="cart-total-amount">0 GNF</div>
       </div>
-      <div style="font-size:.75rem;color:var(--muted2)">+ Livraison OFFERTE 🎁</div>
+      <div style="font-size:.75rem;color:var(--muted2)">+ Livraison selon votre ville (gratuite à Conakry)</div>
     </div>
     <button class="cart-checkout-btn" onclick="checkoutCart()">
       ✨ Commander le Panier
@@ -1218,30 +1632,82 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <div class="cco-items" id="cco-items-list"></div>
 
     <!-- Total -->
-    <div class="cco-total-row">
-      <span class="cco-total-label">Total sélectionné</span>
-      <span class="cco-total-val" id="cco-total">0 GNF</span>
+    <div class="cco-total-row" style="flex-direction:column;align-items:stretch;gap:.3rem;">
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-2);">
+        <span>Sous-total produits</span><span id="cco-subtotal">0 GNF</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-2);">
+        <span>Livraison</span><span id="cco-delivery">— choisir ville</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding-top:.3rem;border-top:1px solid var(--border);">
+        <span class="cco-total-label">Total à payer</span>
+        <span class="cco-total-val" id="cco-total">0 GNF</span>
+      </div>
     </div>
 
     <!-- Formulaire client -->
     <div class="cco-form">
+      <!-- Honeypot anti-bot : invisible pour l'humain, rempli par les bots -->
+      <input type="text" id="cco-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" placeholder="Laisser vide">
       <label for="cco-fname">Prénom *</label>
-      <input type="text" id="cco-fname" placeholder="Votre prénom" autocomplete="given-name">
+      <input type="text" id="cco-fname" placeholder="Votre prénom" autocomplete="given-name" oninput="clearFieldError('cco-fname')">
+      <small class="field-error" id="err-cco-fname"></small>
 
       <label for="cco-lname">Nom</label>
       <input type="text" id="cco-lname" placeholder="Votre nom" autocomplete="family-name">
 
       <label for="cco-phone">Téléphone (WhatsApp) *</label>
-      <input type="tel" id="cco-phone" placeholder="ex: 622 34 56 78" inputmode="tel" autocomplete="tel">
+      <input type="tel" id="cco-phone" placeholder="ex: 622 34 56 78" inputmode="tel" autocomplete="tel" oninput="clearFieldError('cco-phone')">
+      <small class="field-error" id="err-cco-phone"></small>
 
-      <label for="cco-city">Ville *</label>
-      <select id="cco-city">
-        <option value="">— Choisir votre ville —</option>
-        <option>Conakry</option><option>Labé</option><option>Kankan</option>
-        <option>Kindia</option><option>Mamou</option><option>Boké</option>
-        <option>N'Zérékoré</option><option>Faranah</option><option>Siguiri</option>
-        <option>Autre</option>
+      <label for="cco-city">Ville de livraison *</label>
+      <select id="cco-city" onchange="ccoUpdateTotal();clearFieldError('cco-city')">
+        <option value="">— Choisissez votre ville —</option>
+        <optgroup label="🟢 Conakry — Livraison OFFERTE">
+          <option value="Conakry - Kaloum">Conakry — Kaloum</option>
+          <option value="Conakry - Ratoma">Conakry — Ratoma</option>
+          <option value="Conakry - Matam">Conakry — Matam</option>
+          <option value="Conakry - Dixinn">Conakry — Dixinn</option>
+          <option value="Conakry - Lambanyi">Conakry — Lambanyi</option>
+          <option value="Conakry - Coléah">Conakry — Coléah</option>
+          <option value="Conakry - Kipé">Conakry — Kipé</option>
+          <option value="Conakry - Nongo">Conakry — Nongo</option>
+        </optgroup>
+        <optgroup label="🟡 Basse Guinée — 15 000–25 000 GNF">
+          <option value="Coyah">Coyah — 15 000 GNF</option>
+          <option value="Dubréka">Dubréka — 18 000 GNF</option>
+          <option value="Forécariah">Forécariah — 22 000 GNF</option>
+          <option value="Kindia">Kindia — 20 000 GNF</option>
+        </optgroup>
+        <optgroup label="🟡 Moyenne Guinée — 28 000–35 000 GNF">
+          <option value="Télimélé">Télimélé — 28 000 GNF</option>
+          <option value="Pita">Pita — 32 000 GNF</option>
+          <option value="Dalaba">Dalaba — 30 000 GNF</option>
+          <option value="Mamou">Mamou — 28 000 GNF</option>
+          <option value="Labé">Labé — 35 000 GNF</option>
+        </optgroup>
+        <optgroup label="🟡 Haute Guinée — 38 000–45 000 GNF">
+          <option value="Faranah">Faranah — 35 000 GNF</option>
+          <option value="Dinguiraye">Dinguiraye — 38 000 GNF</option>
+          <option value="Kankan">Kankan — 40 000 GNF</option>
+          <option value="Siguiri">Siguiri — 45 000 GNF</option>
+          <option value="Kérouané">Kérouané — 42 000 GNF</option>
+          <option value="Mandiana">Mandiana — 42 000 GNF</option>
+          <option value="Boké">Boké — 30 000 GNF</option>
+        </optgroup>
+        <optgroup label="🟡 Guinée Forestière — 42 000–55 000 GNF">
+          <option value="Kissidougou">Kissidougou — 40 000 GNF</option>
+          <option value="Guéckédou">Guéckédou — 45 000 GNF</option>
+          <option value="Macenta">Macenta — 45 000 GNF</option>
+          <option value="Nzérékoré">Nzérékoré — 50 000 GNF</option>
+          <option value="Lola">Lola — 52 000 GNF</option>
+          <option value="Yomou">Yomou — 55 000 GNF</option>
+          <option value="Beyla">Beyla — 50 000 GNF</option>
+        </optgroup>
+        <option value="Autre">Autre ville — nous contacter</option>
       </select>
+      <small class="field-error" id="err-cco-city"></small>
+      <div id="cco-delivery-info-box" class="delivery-info-box" style="display:none;"></div>
 
       <label for="cco-address">Adresse / Quartier</label>
       <input type="text" id="cco-address" placeholder="Quartier, repère...">
@@ -1250,14 +1716,53 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <div class="cco-pay-opts">
         <div class="cco-pay-opt active" onclick="ccoPay(this,'Paiement à la livraison')">💵 Cash</div>
         <div class="cco-pay-opt" onclick="ccoPay(this,'Orange Money')">🟠 Orange Money</div>
-        <div class="cco-pay-opt" onclick="ccoPay(this,'MTN MoMo')">💛 MTN MoMo</div>
       </div>
       <input type="hidden" id="cco-payment" value="Paiement à la livraison">
+      <div id="cco-om-instructions" class="om-instructions" style="display:none;">
+        <p>📲 <strong>Comment payer :</strong></p>
+        <p>1. Composez <strong>#144#</strong> sur votre téléphone Orange<br>
+           2. Envoyer de l'argent → numéro marchand :</p>
+        <p class="om-number" onclick="copyOM(this)" title="Cliquez pour copier" style="cursor:pointer;">+224 621 88 12 10 <span>(cliquez pour copier)</span></p>
+        <p>3. Copiez l'<strong>ID de transaction</strong> reçu par SMS<br>
+           4. Collez-le ci-dessous puis confirmez votre commande.</p>
+        <div class="fg" style="margin-top:.6rem;margin-bottom:0;">
+          <label for="cco-om-id" style="color:#C44A00;">ID Transaction Orange Money *</label>
+          <input type="text" id="cco-om-id" placeholder="Ex: PP250522.1234.A56789" autocomplete="off" oninput="clearFieldError('cco-om-id')">
+          <small class="field-error" id="err-cco-om-id"></small>
+        </div>
+      </div>
     </div>
 
-    <button class="cco-submit" id="cco-submit-btn" onclick="confirmerCommandePanier()">
+    <div class="mandatory-check">
+      <span style="font-size:1.1rem;">⚠️</span>
+      <p><strong>Commande à paiement à la livraison.</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .8rem;margin-top:1rem;font-size:.7rem;font-weight:600;color:var(--text-2);">
+      <span>💵 Payez à la livraison</span>
+      <span>✅ 100% authentique</span>
+      <span>🚚 Conakry sous 24h</span>
+      <span>🔄 Échange sous 48h</span>
+    </div>
+
+    <button class="cco-submit" id="cco-submit-btn" onclick="openCartRecap()">
       ✨ Confirmer ma commande
     </button>
+  </div>
+</div>
+
+<!-- ══════════════ RÉCAP AVANT CONFIRMATION ══════════════ -->
+<div class="recap-overlay" id="recap-overlay" onclick="if(event.target===this)closeRecap()">
+  <div class="recap-box" role="dialog" aria-modal="true" aria-label="Récapitulatif de commande">
+    <div class="recap-header">
+      <div class="recap-title">📋 Vérifiez votre commande</div>
+      <button class="recap-close" onclick="closeRecap()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="recap-body" id="recap-body"></div>
+    <div class="recap-footer">
+      <button class="recap-btn-edit" onclick="closeRecap()">✏️ Modifier</button>
+      <button class="recap-btn-confirm submit-btn" id="recap-confirm-btn">✅ Confirmer ma commande</button>
+    </div>
   </div>
 </div>
 
@@ -1268,11 +1773,58 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <h3>Commande Confirmée !</h3>
     <p id="success-message">Merci pour votre commande. Notre équipe vous contactera dans les plus brefs délais sur WhatsApp pour confirmer la livraison.</p>
     <div class="success-code" id="success-code"></div>
+    <a id="success-track" href="https://cod-crm-zeta.vercel.app/suivi" target="_blank" rel="noopener" class="btn-wa" style="width:100%;justify-content:center;margin-bottom:.7rem;">
+      📦 Suivre ma commande
+    </a>
     <button class="btn-rose" onclick="closeSuccess()" style="width:100%;justify-content:center;">
       Continuer mes achats 🛍️
     </button>
   </div>
 </div>
+
+<!-- ══════════════ BANDEAU FLOTTANT MOBILE ══════════════ -->
+<div class="mobile-cta" id="mobile-cta">
+  <div class="mobile-cta-info">
+    <div class="mobile-cta-label">🇬🇳 Paiement à la livraison</div>
+    <div class="mobile-cta-title">Cash ou Orange Money</div>
+  </div>
+  <div class="mobile-cta-btns">
+    <a href="https://wa.me/224621881210" class="mobile-cta-wa" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    <a href="#produits" class="mobile-cta-btn">🛍️ Commander</a>
+  </div>
+</div>
+
+<!-- ══════════════ POP-UP BIENVENUE -10% ══════════════ -->
+<div class="nl-overlay" id="nl-overlay" onclick="if(event.target===this)closeNL()">
+  <div class="nl-box" role="dialog" aria-modal="true" aria-label="Offre de bienvenue -10%">
+    <button class="nl-close" onclick="closeNL()" aria-label="Fermer">✕</button>
+    <div id="nl-form-view">
+      <div class="nl-ico">🎁</div>
+      <h3>Bienvenue chez ASMA SHOP !</h3>
+      <p class="nl-sub">Inscrivez-vous et recevez <strong>-10%</strong> sur votre première commande, plus nos offres beauté en avant-première.</p>
+      <div class="nl-form">
+        <input type="text" id="nl-name" placeholder="Votre prénom" maxlength="40">
+        <input type="tel" id="nl-phone" placeholder="622 34 56 78 (WhatsApp)" maxlength="14">
+        <button class="btn-rose nl-submit" onclick="submitNL()">🎯 Je veux mon -10%</button>
+      </div>
+      <small class="nl-foot">🔒 Votre numéro reste privé. Pas de spam.</small>
+    </div>
+    <div id="nl-success-view" style="display:none;">
+      <div class="nl-ico">🎉</div>
+      <h3>Bravo <span id="nl-success-name"></span> !</h3>
+      <p class="nl-sub">Voici votre code de réduction. Montrez-le sur WhatsApp lors de votre première commande pour obtenir <strong>-10%</strong>.</p>
+      <div style="margin:1rem auto;padding:1rem;border:2px dashed var(--or);border-radius:12px;background:var(--or-bg);max-width:280px;">
+        <div style="font-size:.62rem;font-weight:800;letter-spacing:1px;color:var(--text-3);text-transform:uppercase;margin-bottom:.3rem;">Votre code -10%</div>
+        <div id="nl-code-value" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--or);letter-spacing:2px;">ASMA10-XXXX</div>
+      </div>
+      <button class="btn-rose nl-submit" onclick="nlSendWhatsApp()">📱 Envoyer mon code sur WhatsApp</button>
+      <small class="nl-foot">💡 Capturez cet écran ou notez votre code. Valable sur votre 1ère commande.</small>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TOASTS ══════════════ -->
+<div id="toast-container" aria-live="polite"></div>
 
 <!-- ══════════════ LOADING ══════════════ -->
 <div class="loading-overlay" id="loading-overlay">
@@ -1287,10 +1839,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
 // CONFIG
 // ═══════════════════════════════════════════
 const CONFIG = {
-  whatsappNumber: '212646702039',
+  whatsappNumber: '224621881210',
   shopName: 'ASMA SHOP AFRIQUE',
-  webhookUrl: 'https://cod-crm-zeta.vercel.app/api/webhook/order',
-  webhookKey: '0YsAAoFONxPKvwbCkVXy7PDkUbR7lUB9Oupd0CuE',
+  webhookUrl: '/api/submit-order',
+  trackingUrl: 'https://cod-crm-zeta.vercel.app/suivi',
 };
 
 // ═══════════════════════════════════════════
@@ -1299,327 +1851,284 @@ const CONFIG = {
 const PRODUCTS = [
   // 💄 MAQUILLAGE
   {
-    id: 'maq-001', emoji: '💄', image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-001', emoji: '💄', image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80&fm=webp', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Rouge à Lèvres Longue Tenue — Mat & Brillant',
     desc: 'Rouge à lèvres haute pigmentation, formule longue tenue jusqu\'à 12h. Disponible en 8 teintes adaptées aux carnations africaines. Texture veloutée, non desséchante.',
     price: 85000, oldPrice: 120000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Longue tenue 12h', 'Non desséchant', '8 teintes', 'Sans paraben'],
-    video: '',
   },
   {
-    id: 'maq-002', emoji: '🎨', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-002', emoji: '🎨', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80&fm=webp', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Fond de Teint Couvrant Peau Noire',
     desc: 'Fond de teint spécialement formulé pour les peaux noires et métissées. Couverture modulable, fini naturel ou satiné. Tient toute la journée sans oxydation.',
     price: 130000, oldPrice: 180000,
     badge: 'new', stock: true, stars: 5,
     features: ['Spécial peau noire', 'Anti-oxydation', 'SPF 20', 'Fini naturel'],
-    video: '',
   },
   {
-    id: 'maq-003', emoji: '👁️', image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-003', emoji: '👁️', image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80&fm=webp', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Palette 18 Ombres à Paupières — Smoky & Nude',
     desc: 'Palette professionnelle 18 teintes allant du nude naturel au smoky dramatique. Poudre fine ultra-pigmentée, bonne adhérence, longue tenue.',
     price: 95000, oldPrice: 140000,
     badge: 'top', stock: true, stars: 4,
     features: ['18 teintes', 'Ultra-pigmentée', 'Longue tenue', 'Usage pro'],
-    video: '',
   },
   {
-    id: 'maq-004', emoji: '😍', image: 'https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
+    id: 'maq-004', emoji: '😍', image: 'https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=400&q=80&fm=webp', cat: 'maquillage', catLabel: 'Maquillage',
     name: 'Mascara Volume Extrême & Allongement',
     desc: 'Mascara effet volume et allongement extrême. Brosse ergonomique séparant chaque cil. Formule waterproof résistante à la chaleur et à l\'humidité.',
     price: 70000, oldPrice: null,
     badge: null, stock: true, stars: 5,
     features: ['Waterproof', 'Volume × 3', 'Anti-grumeaux', 'Résistant chaleur'],
-    video: '',
   },
 
   // 🌸 SOINS VISAGE
   {
-    id: 'vis-001', image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&q=80', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-001', image: 'https://images.unsplash.com/photo-1638609927040-8a7e97cd9d6a?w=400&q=80&fm=webp',
+    images: ['https://images.unsplash.com/photo-1609097164673-7cfafb51b926?w=400&q=80&fm=webp','https://images.unsplash.com/photo-1629732097571-b042b35aa3ed?w=400&q=80&fm=webp','https://images.unsplash.com/photo-1629380108660-bd39c778a721?w=400&q=80&fm=webp'],
+    emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Crème Éclat & Uniformisante Peau Noire',
     desc: 'Crème de soin spécialement formulée pour éclaircir et unifier le teint des peaux noires sans produits dangereux. Enrichie en niacinamide et vitamine C. Résultats visibles en 2 semaines.',
     price: 150000, oldPrice: 200000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Sans mercure', 'Sans hydroquinone', 'Vitamine C', 'Résultats 2 semaines'],
-    video: '',
   },
   {
-    id: 'vis-002', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80', emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-002', image: 'https://images.unsplash.com/photo-1633793566063-52465a148cc7?w=400&q=80&fm=webp',
+    images: ['https://images.unsplash.com/photo-1638609927252-9982beed7af8?w=400&q=80&fm=webp','https://images.unsplash.com/photo-1629380108574-40c083555579?w=400&q=80&fm=webp'],
+    emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Sérum Vitamine C Anti-Taches Concentré',
     desc: 'Sérum haute concentration en vitamine C pure (20%). Efface les taches, unifie le teint, stimule la production de collagène. Texture légère absorption rapide.',
     price: 190000, oldPrice: 260000,
     badge: 'new', stock: true, stars: 5,
     features: ['Vitamine C 20%', 'Anti-taches', 'Anti-âge', 'Absorption rapide'],
-    video: '',
   },
   {
-    id: 'vis-003', image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80', emoji: '🧴', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-003', image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80&fm=webp', emoji: '🧴', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Masque Purifiant Argile & Charbon Actif',
     desc: 'Masque visage à l\'argile blanche et au charbon actif. Désincruste les pores, absorbe l\'excès de sébum, purifie et matifie. Idéal peaux mixtes à grasses.',
     price: 65000, oldPrice: null,
     badge: null, stock: true, stars: 4,
     features: ['Argile blanche', 'Charbon actif', 'Pores resserrés', 'Effet mat'],
-    video: '',
   },
   {
-    id: 'vis-004', image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80', emoji: '💧', cat: 'soins-visage', catLabel: 'Soins Visage',
+    id: 'vis-004', image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80&fm=webp', emoji: '💧', cat: 'soins-visage', catLabel: 'Soins Visage',
     name: 'Huile d\'Argan Pure Bio — Anti-Âge',
     desc: 'Huile d\'argan 100% pure et certifiée bio du Maroc. Nourrit, répare et illumine la peau. Anti-rides, anti-taches, idéale pour le visage, les cheveux et les ongles.',
     price: 160000, oldPrice: 210000,
     badge: 'top', stock: true, stars: 5,
     features: ['100% pure', 'Certifiée bio', 'Multi-usage', 'Sans conservateur'],
-    video: '',
-  },
-  {
-    id: 'vis-005', image: 'assets/products/p02-kojic-lotion.jpg', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
-    name: 'Soin Kojic Acid Anti-Taches & Anti-Acné',
-    desc: 'Gamme à l\'acide kojique (lotion + crème) qui estompe taches brunes, boutons et cicatrices pour un teint clair et uniforme. Appliquez matin et soir sur peau propre, avec une protection solaire le jour. Résultats visibles en 14 jours.',
-    price: 165000, oldPrice: 250000,
-    badge: 'new', stock: true, stars: 5,
-    features: ['Acide kojique', 'Anti-taches & anti-acné', 'Lotion + crème', 'Résultats en 14 jours'],
-    imgs: ['assets/products/p02-kojic-cream.jpg'],
-    pub: ['assets/products/p02-pub-modele.jpg', 'assets/products/p02b-avant-apres.jpg'],
-    video: 'assets/videos/p02-kojic.mp4',
-    usage: ['Nettoyez et séchez votre peau matin et soir.', 'Appliquez une fine couche sur les zones à traiter.', 'Massez délicatement jusqu\'à absorption, en évitant le contour des yeux.', 'Le jour, appliquez une protection solaire pour de meilleurs résultats.'],
-  },
-  {
-    id: 'vis-006', image: 'assets/products/p03d-aqa-box.jpg', emoji: '🦷', cat: 'soins-visage', catLabel: 'Soins Visage',
-    name: 'Poudre Minérale AQA — Restauration de l\'Émail',
-    desc: 'Reminéralise et blanchit les dents en comblant les micro-fissures de l\'émail. Brossez doucement 2 minutes matin et soir avec la poudre : un sourire éclatant à la maison, sans dentiste, dès les premiers jours.',
-    price: 185000, oldPrice: 280000,
-    badge: 'top', stock: true, stars: 5,
-    features: ['Reminéralise l\'émail', 'Effet blanchissant', '2 min matin & soir', 'Sans dentiste'],
-    imgs: ['assets/products/p03b-benefices.jpg'],
-    pub: ['assets/products/p03-pub-avantapres.jpg', 'assets/products/p03-pub-shield.jpg', 'assets/products/aqa-oyikey.jpg'],
-    video: '',
-    usage: ['Humidifiez votre brosse à dents.', 'Trempez-la dans la poudre minérale AQA.', 'Brossez doucement 2 minutes, matin et soir.', 'Rincez à l\'eau : un sourire plus blanc dès les premiers jours.'],
   },
 
   // 💆 SOINS CORPS
   {
-    id: 'cor-001', image: 'https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=400&q=80', emoji: '🌸', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-001', image: 'https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=400&q=80&fm=webp', emoji: '🌸', cat: 'soins-corps', catLabel: 'Soins Corps',
     name: 'Lait Corporel Hydratant Parfumé — Rose & Vanille',
     desc: 'Lait corps ultra-nourrissant enrichi en beurre de karité et huile de coco. Hydratation intense 24h, peau soyeuse et lumineuse. Parfum délicat rose et vanille.',
     price: 120000, oldPrice: 155000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Beurre de karité', 'Hydratation 24h', 'Peau lumineuse', 'Parfum rose'],
-    video: '',
   },
   {
-    id: 'cor-002', image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80', emoji: '🥥', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-002', image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80&fm=webp', emoji: '🥥', cat: 'soins-corps', catLabel: 'Soins Corps',
     name: 'Huile de Coco Naturelle Multi-Usage',
     desc: 'Huile de coco vierge pressée à froid. Idéale pour la peau, les cheveux et les ongles. Hydrate, nourrit et protège. 100% naturelle, sans additifs.',
     price: 85000, oldPrice: null,
     badge: null, stock: true, stars: 5,
     features: ['Pressée à froid', 'Multi-usage', '100% naturelle', 'Peau & cheveux'],
-    video: '',
   },
   {
-    id: 'cor-003', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80', emoji: '✨', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-003', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80&fm=webp', emoji: '✨', cat: 'soins-corps', catLabel: 'Soins Corps',
     name: 'Gommage Corps Café & Sucre de Canne',
     desc: 'Gommage exfoliant naturel au café et sucre de canne. Élimine les cellules mortes, stimule la circulation, peau douce et lumineuse. Parfum café gourmand.',
     price: 110000, oldPrice: 145000,
     badge: 'new', stock: true, stars: 4,
     features: ['Exfoliant naturel', 'Anti-cellulite', 'Peau lumineuse', 'Parfum café'],
-    video: '',
-  },
-  {
-    id: 'cor-004', image: 'assets/products/p01-shilajit.jpg', emoji: '🍯', cat: 'soins-corps', catLabel: 'Soins Corps',
-    name: 'Shilajit Gummies Himalayen — Énergie & Vitalité',
-    desc: 'Cure de minéraux purs de l\'Himalaya pour booster énergie, endurance et immunité. 1 à 2 gommes par jour, de préférence le matin, à bien mâcher — effet ressenti dès la première semaine.',
-    price: 245000, oldPrice: 360000,
-    badge: 'hot', stock: true, stars: 5,
-    features: ['Minéraux purs Himalaya', '1 gomme par jour', 'Énergie & endurance', 'Effet dès la 1ʳᵉ semaine'],
-    imgs: ['assets/products/p01-shilajit-natural.jpg'],
-    pub: ['assets/products/p01-pub-strength.jpg'],
-    video: 'assets/videos/p01-shilajit.mp4',
-    usage: ['Prenez 1 à 2 gommes par jour, de préférence le matin.', 'Mâchez bien avant d\'avaler — inutile de prendre avec de l\'eau.', 'Faites une cure régulière pour une énergie et une vitalité durables.'],
-  },
-  {
-    id: 'cor-005', image: 'assets/products/p11-coupe-ongles-electrique.jpg', emoji: '💅', cat: 'soins-corps', catLabel: 'Soins Corps',
-    name: 'Coupe-Ongles & Polisseur Électrique 2-en-1',
-    desc: 'Coupe et polit les ongles sans effort, mains comme pieds, pour une manucure parfaite à la maison. Lumière LED intégrée, 2 vitesses, rechargeable et sûr pour toute la famille, même les bébés.',
-    price: 175000, oldPrice: 260000,
-    badge: 'new', stock: true, stars: 5,
-    features: ['2-en-1 : coupe & polit', 'Lumière LED', '2 vitesses', 'Rechargeable'],
-    imgs: ['assets/products/p11-clipper2.jpg'],
-    pub: ['assets/products/p11-pub-bebe.jpg'],
-    video: 'assets/videos/p11-coupe-ongles.mp4',
-    usage: ['Rechargez l\'appareil avant la première utilisation.', 'Choisissez l\'embout adapté (coupe ou polissage).', 'Passez doucement sur l\'ongle, sans appuyer.', 'Nettoyez l\'embout après usage. Idéal bébés, adultes et seniors.'],
   },
 
   // 🌺 PARFUMS
   {
-    id: 'par-001', image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&q=80', emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-001', image: 'https://images.unsplash.com/photo-1585218334450-afcf929da36e?w=400&q=80&fm=webp',
+    images: ['https://images.unsplash.com/photo-1615160460366-2c9a41771b51?w=400&q=80&fm=webp','https://images.unsplash.com/photo-1615160460524-432433ba1b8f?w=400&q=80&fm=webp'],
+    emoji: '🌺', cat: 'parfums', catLabel: 'Parfums',
     name: 'Parfum Oriental Rose & Oud — Longue Tenue',
     desc: 'Parfum oriental de luxe aux notes de rose, oud et musc blanc. Sillage envoûtant, tenue exceptionnelle jusqu\'à 24h. Formule concentrée façon parfumerie du Moyen-Orient.',
     price: 260000, oldPrice: 350000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Tenue 24h', 'Notes d\'oud', 'Sillage intense', 'Formule concentrée'],
-    video: '',
   },
   {
-    id: 'par-002', image: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=400&q=80', emoji: '🌸', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-002', image: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=400&q=80&fm=webp', emoji: '🌸', cat: 'parfums', catLabel: 'Parfums',
     name: 'Eau de Parfum Fleur de Guinée',
     desc: 'Fragrance florale créée en hommage à la femme guinéenne. Notes de tête : hibiscus & jasmin. Notes de cœur : rose africaine. Notes de fond : santal & musc doux.',
     price: 210000, oldPrice: 280000,
     badge: 'new', stock: true, stars: 5,
     features: ['Floral oriental', 'Tenue 12h', 'Hibiscus & jasmin', 'Fabriqué en Guinée'],
-    video: '',
   },
   {
-    id: 'par-003', image: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&q=80', emoji: '✨', cat: 'parfums', catLabel: 'Parfums',
+    id: 'par-003', image: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&q=80&fm=webp', emoji: '✨', cat: 'parfums', catLabel: 'Parfums',
     name: 'Brume Parfumée Musc & Vanille — Corps & Cheveux',
     desc: 'Brume légère pour le corps et les cheveux aux notes douces de musc blanc et vanille bourbon. Peut être utilisée sur vêtements. Rechargeable.',
     price: 90000, oldPrice: null,
     badge: null, stock: true, stars: 4,
     features: ['Corps & cheveux', 'Musc & vanille', 'Léger & frais', 'Rechargeable'],
-    video: '',
   },
 
   // 👗 MODE FEMME
   {
-    id: 'mod-001', image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=400&q=80', emoji: '👗', cat: 'mode', catLabel: 'Mode Femme',
+    id: 'mod-001', image: 'https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=400&q=80&fm=webp', emoji: '👗', cat: 'mode', catLabel: 'Mode Femme',
     name: 'Ensemble Boubou Moderne — Tissus Africains',
     desc: 'Ensemble boubou moderne en tissu africain brodé. Coupe contemporaine alliant tradition et élégance. Tailles disponibles : S, M, L, XL, XXL. Sur commande en différents coloris.',
     price: 450000, oldPrice: 600000,
     badge: 'top', stock: true, stars: 5,
     features: ['Tissu africain', 'Sur mesure', 'Tailles S-XXL', 'Broderie main'],
-    video: '',
   },
   {
-    id: 'mod-002', image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80', emoji: '🌈', cat: 'mode', catLabel: 'Mode Femme',
+    id: 'mod-002', image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80&fm=webp', emoji: '🌈', cat: 'mode', catLabel: 'Mode Femme',
     name: 'Robe Wax Africaine — Coupe Moderne',
     desc: 'Robe en wax authentique africain. Coupe moderne et flatteuse, idéale pour les fêtes, cérémonies ou sorties. Tissu respirant adapté au climat guinéen.',
     price: 380000, oldPrice: 480000,
     badge: 'new', stock: true, stars: 4,
     features: ['Wax authentique', 'Coupe moderne', 'Respirant', 'Pour cérémonies'],
-    video: '',
   },
 
   // 🧼 SAVONS NATURELS
   {
-    id: 'sav-001', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80', emoji: '🧼', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-001', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80&fm=webp', emoji: '🧼', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon à l\'Huile d\'Argan Pur — Éclat & Nutrition',
     desc: 'Savon artisanal enrichi en huile d\'argan du Maroc. Nettoie en douceur, nourrit et illumine la peau. Convient à tous types de peau, visage et corps. Fabriqué sans sulfates ni parabens.',
     price: 35000, oldPrice: 50000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Huile d\'argan pure', 'Visage & corps', 'Sans sulfates', 'Tous types de peau'],
-    video: '',
   },
   {
-    id: 'sav-002', image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80', emoji: '🐪', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-002', image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80&fm=webp', emoji: '🐪', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Lait de Chameau — Anti-Âge & Hydratation',
     desc: 'Savon premium au lait de chameau frais. Riche en vitamines A, B, C et en acides gras. Hydrate intensément, réduit les rides, unifie le teint. Résultats visibles en 2 semaines.',
     price: 45000, oldPrice: 65000,
     badge: 'new', stock: true, stars: 5,
     features: ['Lait de chameau frais', 'Anti-âge', 'Vitamines A B C', 'Résultats 2 semaines'],
-    video: '',
   },
   {
-    id: 'sav-003', image: 'https://images.unsplash.com/photo-1556760544-74068565f05c?w=400&q=80', emoji: '🌿', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-003', image: 'https://images.unsplash.com/photo-1556760544-74068565f05c?w=400&q=80&fm=webp', emoji: '🌿', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon à la Résine Naturelle — Purifiant & Antiseptique',
     desc: 'Savon traditionnel africain à la résine naturelle. Propriétés purifiantes et antiseptiques puissantes. Élimine les impuretés, combat l\'acné, assainit la peau en profondeur. Recette ancestrale.',
     price: 30000, oldPrice: null,
     badge: 'top', stock: true, stars: 4,
     features: ['Résine naturelle', 'Anti-acné', 'Antiseptique', 'Recette ancestrale'],
-    video: '',
   },
   {
-    id: 'sav-004', image: 'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=400&q=80', emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-004', image: 'https://images.unsplash.com/photo-1687272901949-2a518b04417a?w=400&q=80&fm=webp',
+    images: ['https://images.unsplash.com/photo-1602103242369-0116ae1c7002?w=400&q=80&fm=webp','https://images.unsplash.com/photo-1618840152526-92682643af2d?w=400&q=80&fm=webp'],
+    emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Citron Africain — Éclat & Anti-Taches',
     desc: 'Savon naturel au citron africain riche en vitamine C. Efface progressivement les taches, unifie et illumine le teint. Action exfoliante douce. Convient à toutes les carnations.',
     price: 28000, oldPrice: 40000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Citron africain', 'Vitamine C naturelle', 'Anti-taches', 'Exfoliant doux'],
-    video: '',
   },
   {
-    id: 'sav-005', emoji: '⚫', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-005', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80&fm=webp', emoji: '⚫', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Charbon Actif & Argile Noire — Détox Pores',
     desc: 'Savon detox au charbon actif et argile noire du Maroc. Aspire les impuretés logées dans les pores, régule le sébum, affine le grain de peau. Idéal peaux grasses et mixtes.',
     price: 32000, oldPrice: null,
     badge: 'new', stock: true, stars: 4,
     features: ['Charbon actif', 'Argile noire', 'Pores nets', 'Peaux grasses'],
-    video: '',
   },
   {
-    id: 'sav-006', emoji: '🌹', cat: 'savons', catLabel: 'Savons Naturels',
+    id: 'sav-006', image: 'https://images.unsplash.com/photo-1585751119414-ef2636f8aede?w=400&q=80&fm=webp', emoji: '🌹', cat: 'savons', catLabel: 'Savons Naturels',
     name: 'Savon au Beurre de Karité & Rose — Ultra-Nourrissant',
     desc: 'Savon surgras au beurre de karité pur et pétales de rose. Nourrit intensément les peaux sèches et sensibles. Laisse la peau veloutée, douce et parfumée toute la journée.',
     price: 32000, oldPrice: 45000,
     badge: null, stock: true, stars: 5,
     features: ['Beurre de karité', 'Pétales de rose', 'Peaux sèches', 'Surgras'],
-    video: '',
   },
 
   // 👔 HOMME
   {
-    id: 'hom-001', image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&q=80', emoji: '🌑', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-001', image: 'https://images.unsplash.com/photo-1608721279136-cd41b752fa41?w=400&q=80&fm=webp', emoji: '🌑', cat: 'homme', catLabel: 'Homme',
     name: 'Parfum Homme Oriental — Oud & Bois de Santal',
     desc: 'Parfum masculin intense aux notes d\'oud noir, bois de santal et musc ambré. Sillage puissant, tenue exceptionnelle jusqu\'à 24h. Flacon élégant, idéal en cadeau.',
     price: 280000, oldPrice: 380000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Notes d\'oud', 'Tenue 24h', 'Sillage intense', 'Idéal cadeau'],
-    video: '',
   },
   {
-    id: 'hom-002', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80', emoji: '💪', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-002', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80&fm=webp', emoji: '💪', cat: 'homme', catLabel: 'Homme',
     name: 'Crème Hydratante Homme — Légère & Non Grasse',
     desc: 'Crème de soin formulée pour la peau masculine. Texture légère non grasse, absorption rapide. Hydrate, protège et unifie le teint. Enrichie en vitamine E et aloe vera.',
     price: 95000, oldPrice: 130000,
     badge: 'new', stock: true, stars: 4,
     features: ['Non grasse', 'Absorption rapide', 'Vitamine E', 'Aloe vera'],
-    video: '',
   },
   {
-    id: 'hom-003', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80', emoji: '🧔', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-003', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80&fm=webp', emoji: '🧔', cat: 'homme', catLabel: 'Homme',
     name: 'Huile Barbe Premium à l\'Argan & Jojoba',
     desc: 'Huile barbe nourrissante à l\'argan et jojoba. Adoucit, assouplit et fait briller la barbe. Élimine les démangeaisons et l\'effet sec. Parfum boisé discret. Pour barbe courte ou longue.',
     price: 75000, oldPrice: null,
     badge: 'top', stock: true, stars: 5,
     features: ['Argan & jojoba', 'Anti-démangeaisons', 'Barbe brillante', 'Parfum boisé'],
-    video: '',
   },
   {
-    id: 'hom-004', image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80', emoji: '✂️', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-004', image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80&fm=webp', emoji: '✂️', cat: 'homme', catLabel: 'Homme',
     name: 'After-Shave Naturel — Apaisant & Anti-Irritations',
     desc: 'Lotion après-rasage à base d\'aloe vera, hamamélis et huile d\'argan. Apaise les irritations, referme les pores, hydrate la peau rasée. Fini mat et frais, parfum agrumes.',
     price: 65000, oldPrice: 85000,
     badge: null, stock: true, stars: 4,
     features: ['Aloe vera', 'Anti-irritations', 'Pores resserrés', 'Parfum agrumes'],
-    video: '',
   },
   {
-    id: 'hom-005', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80', emoji: '🧼', cat: 'homme', catLabel: 'Homme',
+    id: 'hom-005', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80&fm=webp', emoji: '🧼', cat: 'homme', catLabel: 'Homme',
     name: 'Savon Homme Actif — Charbon & Menthe Fraîche',
     desc: 'Savon homme formulé pour les peaux masculines. Charbon actif purifiant + menthe fraîche tonifiante. Nettoie en profondeur, élimine les odeurs, laisse une sensation de fraîcheur durable.',
     price: 35000, oldPrice: null,
     badge: 'new', stock: true, stars: 4,
     features: ['Charbon actif', 'Menthe fraîche', 'Anti-odeurs', 'Sensation fraîche'],
-    video: '',
   },
 
   // 💍 BIJOUX
   {
-    id: 'bij-001', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80', emoji: '💍', cat: 'bijoux', catLabel: 'Bijoux',
+    id: 'bij-001', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&fm=webp', emoji: '💍', cat: 'bijoux', catLabel: 'Bijoux',
     name: 'Parure Collier & Boucles Perles Africaines',
     desc: 'Parure complète collier + boucles d\'oreilles en perles africaines authentiques. Travail artisanal guinéen. Parfaite pour mariage, baptême ou cérémonie.',
     price: 120000, oldPrice: 160000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Artisanal guinéen', 'Perles naturelles', 'Collier + boucles', 'Pour cérémonies'],
-    video: '',
   },
   {
-    id: 'bij-002', image: 'https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=400&q=80', emoji: '✨', cat: 'bijoux', catLabel: 'Bijoux',
+    id: 'bij-002', image: 'https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=400&q=80&fm=webp', emoji: '✨', cat: 'bijoux', catLabel: 'Bijoux',
     name: 'Set Bracelet Femme — Or & Plaqué Or',
     desc: 'Set de 5 bracelets finement travaillés, mélange or jaune et plaqué or rose. Hypoallergéniques, résistants à l\'eau. Idéal cadeau pour toutes les occasions.',
     price: 75000, oldPrice: 100000,
     badge: 'new', stock: true, stars: 4,
     features: ['Set de 5', 'Hypoallergénique', 'Résistant eau', 'Idéal cadeau'],
-    video: '',
+  },
+
+  // 🎁 COFFRETS & ROUTINES
+  {
+    id: 'cof-001', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80&fm=webp', emoji: '✨', cat: 'coffrets', catLabel: 'Coffrets',
+    name: 'Routine Visage Éclat — Crème + Sérum',
+    desc: 'Le duo star pour un teint lumineux en 3 semaines. Comprend : Crème Éclat Anti-Taches (150 000 GNF) + Sérum Vitamine C 20% (190 000 GNF). Protocole matin & soir inclus.',
+    price: 270000, oldPrice: 340000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['2 produits bestsellers', 'Protocole inclus', 'Résultats 3 semaines', 'Économisez 70 000 GNF'],
+  },
+  {
+    id: 'cof-002', image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80&fm=webp', emoji: '🧼', cat: 'coffrets', catLabel: 'Coffrets',
+    name: 'Pack Découverte Savons Naturels — 4 Savons',
+    desc: 'Coffret de 4 savons naturels africains au choix parmi notre sélection : Argan, Lait de Chameau, Charbon Actif, Beurre de Karité & Rose. Idéal pour tester ou offrir.',
+    price: 110000, oldPrice: 147000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['4 savons naturels', 'Argan • Chameau • Charbon • Karité', 'Peaux de tous types', 'Économisez 37 000 GNF'],
+  },
+  {
+    id: 'cof-003', image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400&q=80&fm=webp', emoji: '🎁', cat: 'coffrets', catLabel: 'Coffrets',
+    name: 'Coffret Beauté Premium — Cadeau Idéal',
+    desc: 'Le coffret cadeau premium : Crème Éclat Anti-Taches (150 000 GNF) + Parfum Oriental Rose & Oud (260 000 GNF). Emballage cadeau soigné. Livré avec un message personnalisé.',
+    price: 320000, oldPrice: 410000,
+    badge: 'top', stock: true, stars: 5,
+    features: ['Crème Éclat + Parfum Oud', 'Emballage cadeau offert', 'Message personnalisé', 'Économisez 90 000 GNF'],
   },
 ];
 
@@ -1630,6 +2139,106 @@ let cart = [];
 
 function formatGNF(n) {
   return Math.round(n).toLocaleString('fr-FR') + ' GNF';
+}
+
+// Valide un numéro mobile guinéen : 6XXXXXXXX (9 chiffres) ou 2246XXXXXXXX.
+function isValidGuineaPhone(raw) {
+  const d = String(raw || '').replace(/\D/g, '');
+  return /^6\d{8}$/.test(d) || /^2246\d{8}$/.test(d);
+}
+
+// Échappe le HTML d'une saisie utilisateur avant injection en innerHTML (anti-XSS).
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+
+// ═══════════════════════════════════════════
+// TOASTS
+// ═══════════════════════════════════════════
+function toast(title, msg = '', type = 'success') {
+  const c = document.getElementById('toast-container');
+  if (!c) return;
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  const ico = { success: '✅', error: '❌', warning: '⚠️' }[type] || 'ℹ️';
+  t.innerHTML = `<div class="toast-ico">${ico}</div><div><div class="toast-title">${escapeHtml(title)}</div>${msg ? `<div class="toast-msg">${escapeHtml(msg)}</div>` : ''}</div>`;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, 3500);
+}
+
+// Copie le numéro Orange Money dans le presse-papiers.
+function copyOM(el) {
+  const num = '+224621881210';
+  navigator.clipboard?.writeText(num).then(() => {
+    toast('Numéro copié !', 'Collez-le dans Orange Money');
+    el.style.background = 'rgba(255,94,20,.15)';
+    setTimeout(() => el.style.background = '', 500);
+  }).catch(() => toast('Numéro : +224 621 88 12 10', '', 'warning'));
+}
+
+// ═══════════════════════════════════════════
+// QUANTITÉ − / + (fiche produit)
+// ═══════════════════════════════════════════
+let currentQty = 1;
+function updateQty(delta) {
+  currentQty = Math.max(1, Math.min(10, currentQty + delta));
+  document.getElementById('pd-qty').textContent = currentQty;
+  updateOrderSummary();
+}
+
+// ═══════════════════════════════════════════
+// MÉMORISATION CLIENT (localStorage, 30 jours)
+// ═══════════════════════════════════════════
+const CUSTOMER_KEY = 'asma_customer';
+function saveCustomer() {
+  try {
+    localStorage.setItem(CUSTOMER_KEY, JSON.stringify({
+      nom: document.getElementById('f-fname').value,
+      tel: document.getElementById('f-phone').value,
+      adresse: document.getElementById('f-address').value,
+      ville: document.getElementById('f-city').value,
+      savedAt: Date.now(),
+    }));
+  } catch (e) {}
+}
+function restoreCustomer() {
+  try {
+    const raw = localStorage.getItem(CUSTOMER_KEY);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (Date.now() - (d.savedAt || 0) > 30 * 24 * 3600 * 1000) return;
+    if (d.nom) document.getElementById('f-fname').value = d.nom;
+    if (d.tel) document.getElementById('f-phone').value = d.tel;
+    if (d.adresse) document.getElementById('f-address').value = d.adresse;
+    if (d.ville) document.getElementById('f-city').value = d.ville;
+  } catch (e) {}
+}
+
+// Galerie — change l'image principale en cliquant sur une vignette.
+function switchGalleryThumb(el, url) {
+  document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const img = document.getElementById('pd-gallery-img');
+  if (!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => { img.src = url; img.style.opacity = '1'; }, 200);
+}
+
+// Ajoute le produit ouvert au panier avec la quantité choisie.
+// La fiche reste ouverte (toast de confirmation) — la cliente peut
+// continuer à lire ou commander directement.
+function addPdToCart() {
+  const p = currentPdProduct;
+  if (!p) return;
+  const existing = cart.find(x => x.id === p.id);
+  if (existing) {
+    existing.qty += currentQty;
+  } else {
+    cart.push({ ...p, qty: currentQty });
+  }
+  updateCartUI();
+  toast('Ajouté au panier !', `${p.name} × ${currentQty}`);
 }
 
 function addToCart(productId) {
@@ -1740,39 +2349,130 @@ function closeCCO() {
 }
 
 function ccoUpdateTotal() {
-  const total = [...document.querySelectorAll('.cco-cb:checked')]
+  const subtotal = [...document.querySelectorAll('.cco-cb:checked')]
     .reduce((sum, cb) => sum + Number(cb.dataset.price), 0);
-  document.getElementById('cco-total').textContent = formatGNF(total);
+  const city = document.getElementById('cco-city').value;
+  const deliveryFee = getDeliveryCost(city, subtotal);
+  const infoBox = document.getElementById('cco-delivery-info-box');
+  const delivEl = document.getElementById('cco-delivery');
+
+  document.getElementById('cco-subtotal').textContent = formatGNF(subtotal);
+
+  if (!city) {
+    delivEl.textContent = '— choisir ville';
+    infoBox.style.display = 'none';
+    document.getElementById('cco-total').textContent = formatGNF(subtotal);
+    return;
+  }
+  if (deliveryFee === null) {
+    delivEl.textContent = 'À confirmer';
+    infoBox.style.display = 'none';
+    document.getElementById('cco-total').textContent = formatGNF(subtotal);
+    return;
+  }
+  if (deliveryFee === 0) {
+    delivEl.innerHTML = '<span style="color:#1A8A4A;font-weight:800">OFFERTE 🎁</span>';
+    infoBox.className = 'delivery-info-box free';
+    infoBox.innerHTML = subtotal >= FREE_DELIVERY_THRESHOLD
+      ? '✅ Félicitations ! Votre panier dépasse 300 000 GNF — livraison offerte partout en Guinée.'
+      : '🟢 Zone Conakry — livraison offerte !';
+    infoBox.style.display = 'block';
+  } else {
+    delivEl.textContent = formatGNF(deliveryFee);
+    infoBox.className = 'delivery-info-box paid';
+    infoBox.innerHTML = `🚚 Livraison ${formatGNF(deliveryFee)} pour ${city}. Gratuite dès <strong>${formatGNF(FREE_DELIVERY_THRESHOLD)}</strong> de commande.`;
+    infoBox.style.display = 'block';
+  }
+  document.getElementById('cco-total').textContent = formatGNF(subtotal + deliveryFee);
 }
 
 function ccoPay(el, value) {
   document.querySelectorAll('.cco-pay-opt').forEach(o => o.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('cco-payment').value = value;
+  const omBox = document.getElementById('cco-om-instructions');
+  if (omBox) omBox.style.display = (value === 'Orange Money') ? 'block' : 'none';
 }
 
-async function confirmerCommandePanier() {
+// ═══════════════════════════════════════════
+// RÉCAP AVANT CONFIRMATION — panier
+// ═══════════════════════════════════════════
+function openCartRecap() {
+  const fname = document.getElementById('cco-fname').value.trim();
+  const phone = document.getElementById('cco-phone').value.trim().replace(/\s/g, '');
+  const city  = document.getElementById('cco-city').value;
+  const payment = document.getElementById('cco-payment').value;
+
+  // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
+  if (document.getElementById('cco-website')?.value) return;
+
+  if (!validateOrderFields({ fnameId: 'cco-fname', phoneId: 'cco-phone', cityId: 'cco-city', fname, phone, city })) return;
+
+  const checked = [...document.querySelectorAll('.cco-cb:checked')];
+  if (checked.length === 0) { alert('Sélectionnez au moins un article.'); return; }
+
+  if (payment === 'Orange Money' && !document.getElementById('cco-om-id').value.trim()) {
+    setFieldError('cco-om-id', 'Merci de renseigner l\'ID de transaction reçu par SMS.');
+    document.getElementById('cco-om-id').focus();
+    return;
+  }
+
+  const subtotal = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
+  const deliveryFee = getDeliveryCost(city, subtotal) || 0;
+  const grandTotal = subtotal + deliveryFee;
+  const payLabel = payment === 'Orange Money' ? '🟠 Orange Money' : '💵 Cash à la livraison';
+
+  const itemsHtml = checked.map(cb => {
+    const p = PRODUCTS.find(x => x.id === cb.dataset.id);
+    const cartItem = cart.find(x => x.id === cb.dataset.id);
+    return `<div class="recap-row"><span>${escapeHtml(p.name)} × ${cartItem?.qty || 1}</span><span>${formatGNF(Number(cb.dataset.price))}</span></div>`;
+  }).join('');
+
+  document.getElementById('recap-body').innerHTML = `
+    <div class="recap-section">
+      <div class="recap-section-title">🛍️ Articles</div>
+      ${itemsHtml}
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">📍 Livraison</div>
+      <div class="recap-row"><span>Nom</span><span>${escapeHtml(fname)}</span></div>
+      <div class="recap-row"><span>Téléphone</span><span>${escapeHtml(phone)}</span></div>
+      <div class="recap-row"><span>Ville</span><span>${escapeHtml(city)}</span></div>
+      <div class="recap-row"><span>Frais de livraison</span><span>${deliveryFee === 0 ? 'OFFERTE 🎁' : formatGNF(deliveryFee)}</span></div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">💳 Paiement</div>
+      <div class="recap-row"><span>Mode</span><span>${payLabel}</span></div>
+    </div>
+    <div class="recap-total-row">
+      <span class="recap-total-label">💰 Total à payer</span>
+      <span class="recap-total-amount">${formatGNF(grandTotal)}</span>
+    </div>`;
+
+  document.getElementById('recap-confirm-btn').onclick = doSubmitCartOrder;
+  document.getElementById('recap-overlay').classList.add('show');
+}
+
+async function doSubmitCartOrder() {
   const fname = document.getElementById('cco-fname').value.trim();
   const lname = document.getElementById('cco-lname').value.trim();
   const phone = document.getElementById('cco-phone').value.trim().replace(/\s/g, '');
   const city  = document.getElementById('cco-city').value;
   const addr  = document.getElementById('cco-address').value.trim();
   const payment = document.getElementById('cco-payment').value;
-
-  if (!fname) { alert('Veuillez entrer votre prénom.'); return; }
-  if (!phone) { alert('Veuillez entrer votre numéro de téléphone.'); return; }
-  if (!city)  { alert('Veuillez sélectionner votre ville.'); return; }
+  const omId  = document.getElementById('cco-om-id').value.trim();
 
   const checked = [...document.querySelectorAll('.cco-cb:checked')];
-  if (checked.length === 0) { alert('Sélectionnez au moins un article.'); return; }
+  if (checked.length === 0) return;
 
   const items = checked.map(cb => {
     const p = PRODUCTS.find(x => x.id === cb.dataset.id);
     const cartItem = cart.find(x => x.id === cb.dataset.id);
     return { sku: p.id, name: p.name, price: p.price, quantity: cartItem?.qty || 1 };
   });
-  const total = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
+  const subtotal = checked.reduce((s, cb) => s + Number(cb.dataset.price), 0);
 
+  closeRecap();
   const btn = document.getElementById('cco-submit-btn');
   btn.disabled = true;
   btn.textContent = '⏳ Envoi en cours…';
@@ -1781,15 +2481,18 @@ async function confirmerCommandePanier() {
     externalRef: `ASMA-CART-${Date.now()}`,
     customer: { fullName: `${fname} ${lname}`.trim(), phone, city, address: addr || null },
     items,
-    deliveryFee: 0,
-    notes: payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : null,
+    deliveryFee: getDeliveryCost(city, subtotal) || 0,
+    notes: [
+      payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : '',
+      omId ? `ID Transaction Orange Money: ${omId}` : '',
+    ].filter(Boolean).join(' | ') || null,
     source: 'asmashop-cart',
   };
 
   try {
     const res = await fetch(CONFIG.webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Webhook-Key': CONFIG.webhookKey },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     const data = await res.json();
@@ -1804,6 +2507,8 @@ async function confirmerCommandePanier() {
 
       document.getElementById('success-code').innerHTML =
         `🎀 Code commande : <strong>${data.order.code}</strong>`;
+      document.getElementById('success-track').href =
+        `${CONFIG.trackingUrl}?q=${encodeURIComponent(data.order.code)}`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
@@ -1811,12 +2516,7 @@ async function confirmerCommandePanier() {
       throw new Error(data.error || 'Erreur serveur');
     }
   } catch (err) {
-    // Fallback WhatsApp
-    const msg = `🌸 *COMMANDE PANIER — ASMA SHOP*\n\n` +
-      `👤 ${fname} ${lname}\n📞 ${phone}\n📍 ${city}${addr ? ' — ' + addr : ''}\n\n` +
-      items.map(i => `• ${i.name} ×${i.quantity} = ${formatGNF(i.price * i.quantity)}`).join('\n') +
-      `\n\n💰 Total : ${formatGNF(total)}\n💳 ${payment}`;
-    window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    alert('Une erreur est survenue lors de l\'envoi de la commande. Veuillez réessayer ou nous contacter au +224 621 88 12 10.');
   } finally {
     btn.disabled = false;
     btn.textContent = '✨ Confirmer ma commande';
@@ -1827,17 +2527,32 @@ async function confirmerCommandePanier() {
 // CATALOGUE UI
 // ═══════════════════════════════════════════
 let currentCat = 'all';
+let currentSort = 'default';
 let currentPdProduct = null;
 
 function renderProducts(cat) {
   const grid = document.getElementById('prod-grid');
-  const filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
-  grid.innerHTML = filtered.map(p => `
+  const noResults = document.getElementById('no-results');
+  let filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+
+  if (currentSort === 'price-asc') filtered = [...filtered].sort((a, b) => a.price - b.price);
+  else if (currentSort === 'price-desc') filtered = [...filtered].sort((a, b) => b.price - a.price);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    noResults.classList.add('show');
+    return;
+  }
+  noResults.classList.remove('show');
+
+  grid.innerHTML = filtered.map(p => {
+    const discount = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+    return `
     <div class="prod-card" onclick="openPD('${p.id}')" role="listitem" tabindex="0"
          onkeypress="if(event.key==='Enter')openPD('${p.id}')">
-      ${p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : p.badge === 'top' ? '⭐ Best-seller' : '🏷️ Promo'}</div>` : ''}
+      ${discount > 0 ? `<div class="prod-badge badge-promo">-${discount}%</div>` : p.badge ? `<div class="prod-badge badge-${p.badge}">${p.badge === 'hot' ? '🔥 Tendance' : p.badge === 'new' ? '✨ Nouveau' : '⭐ Best-seller'}</div>` : ''}
       <div class="prod-img">
-        ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : p.emoji}
+        ${p.image ? `<img src="${p.image}" alt="${p.name}" width="400" height="400" loading="lazy">` : p.emoji}
         <div class="stock-dot ${p.stock ? 'stock-ok' : 'stock-no'}"></div>
       </div>
       <div class="prod-body">
@@ -1852,7 +2567,8 @@ function renderProducts(cat) {
         </button>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function filterCat(cat) {
@@ -1861,95 +2577,79 @@ function filterCat(cat) {
   // Update active state
   document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
   const cards = document.querySelectorAll('.cat-card');
-  const idx = ['all','maquillage','soins-visage','soins-corps','parfums','mode','bijoux','savons','homme'].indexOf(cat);
+  const idx = ['all','maquillage','soins-visage','soins-corps','parfums','mode','bijoux','savons','homme','coffrets'].indexOf(cat);
   if (idx >= 0) cards[idx]?.classList.add('active');
+}
+
+function setSort(value) {
+  currentSort = value;
+  renderProducts(currentCat);
 }
 
 // ═══════════════════════════════════════════
 // PRODUCT DETAIL
 // ═══════════════════════════════════════════
+// Compteur de stock "faible" déterministe par produit (3 à 9), pour créer
+// l'urgence sans varier à chaque rechargement. Surchargeable via p.stockCount.
+function lowStockCount(p) {
+  if (typeof p.stockCount === 'number') return p.stockCount;
+  let h = 0;
+  for (let i = 0; i < p.id.length; i++) h = (h * 31 + p.id.charCodeAt(i)) >>> 0;
+  return 3 + (h % 7); // 3..9
+}
+
+// Preuve sociale non vérifiable individuellement (pas de vrai flux CRM en
+// façade) : on affiche un nombre plausible, stable sur une journée, qui
+// varie d'un jour à l'autre et d'un produit à l'autre (pas figé "124 avis"
+// identique partout comme l'ancien texte codé en dur).
+function recentOrdersCount(p) {
+  const day = new Date().toISOString().slice(0, 10);
+  let h = 0;
+  const key = p.id + day;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return 6 + (h % 19); // 6..24
+}
+
 function openPD(productId) {
   const p = PRODUCTS.find(x => x.id === productId);
   if (!p) return;
   currentPdProduct = p;
 
-  // ===== GALERIE MÉDIA UNIFIÉE (packshot → vues → pub, structure HPSHOP) =====
-  const stage = document.getElementById('pd-stage');
-  let bigImg = document.getElementById('pd-big-img');
-  if (!bigImg) {
-    bigImg = document.createElement('div');
-    bigImg.id = 'pd-big-img';
-    bigImg.className = 'pd-media-img';
-    stage.insertBefore(bigImg, document.getElementById('pd-emoji'));
-  }
-  const emojiEl = document.getElementById('pd-emoji');
-  emojiEl.textContent = p.emoji;
-
-  // Galerie = image principale + vues supplémentaires (max 3 miniatures, jamais de doublon)
-  const GAL_MAX = 3;
-  let gal = p.image ? [{ type: 'img', src: p.image, kind: 'Produit' }] : [];
-  (p.imgs || []).forEach(s => gal.push({ type: 'img', src: s, kind: 'Vue' }));
-  const _seen = new Set();
-  gal = gal.filter(m => { if (_seen.has(m.src)) return false; _seen.add(m.src); return true; });
-  const _overflow = gal.slice(GAL_MAX).map(m => m.src); // angles au-delà de 3
-  const M = gal.slice(0, GAL_MAX);
-  window.pdMedia = M;
-
-  const hasImg = M.length > 0;
-  emojiEl.style.display = hasImg ? 'none' : '';
-  bigImg.style.display = hasImg ? '' : 'none';
-  document.getElementById('pd-zoom-btn').style.display = hasImg ? '' : 'none';
-
-  // Le RESTE des photos (pub/lifestyle + surplus) → empilées sous la vidéo, sans doublon
-  const _belowSeen = new Set(M.map(m => m.src));
-  const _belowImgs = (p.pub || []).concat(_overflow).filter(s => { if (_belowSeen.has(s)) return false; _belowSeen.add(s); return true; });
-  const moreEl = document.getElementById('pd-more-images');
-  if (_belowImgs.length) {
-    moreEl.innerHTML = '<div class="pd-more-label">📸 Le produit en images</div>' + _belowImgs.map((s, idx) => `<img src="${s}" loading="${idx < 1 ? 'eager' : 'lazy'}" alt="${p.name}">`).join('');
-    moreEl.style.display = '';
-  } else { moreEl.innerHTML = ''; moreEl.style.display = 'none'; }
-
-  // Vidéo démo : bloc dédié EN GRAND après le formulaire (pas dans la galerie)
-  const vBlock = document.getElementById('pd-video-block');
-  const vEl = document.getElementById('pd-form-video');
-  if (p.video) {
-    if (vEl.getAttribute('src') !== p.video) { vEl.setAttribute('src', p.video); vEl.setAttribute('poster', p.image || ''); vEl.load(); }
-    vBlock.style.display = '';
-    attachDetailVideoAutoplay(vEl);
+  const pdMedia = document.querySelector('.pd-media');
+  if (p.images && p.images.length > 0) {
+    // Galerie multi-angles : image principale + vignettes
+    const all = [p.image, ...p.images].filter(Boolean);
+    pdMedia.innerHTML = `
+      <div class="pd-gallery">
+        <div class="pd-gallery-main">
+          <img id="pd-gallery-img" src="${all[0]}" alt="${escapeHtml(p.name)}" width="400" height="400" loading="eager">
+        </div>
+        <div class="pd-gallery-thumbs">
+          ${all.map((url, i) => `
+            <div class="pd-thumb${i === 0 ? ' active' : ''}" onclick="switchGalleryThumb(this,'${url}')">
+              <img src="${url.replace('w=400', 'w=80')}" alt="${escapeHtml(p.name)} — vue ${i + 1}" width="80" height="80" loading="lazy">
+            </div>`).join('')}
+        </div>
+      </div>`;
+  } else if (p.image) {
+    pdMedia.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.name)}" width="400" height="400" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" loading="eager">`;
   } else {
-    vEl.pause(); vEl.removeAttribute('src');
-    vBlock.style.display = 'none';
+    pdMedia.innerHTML = `<div class="pd-emoji" id="pd-emoji">${p.emoji}</div>`;
   }
-
-  // Mode d'emploi (étapes numérotées)
-  const uBlock = document.getElementById('pd-usage-block');
-  if (p.usage && p.usage.length) {
-    document.getElementById('pd-usage').innerHTML = p.usage.map(s => `<li><span>${s}</span></li>`).join('');
-    uBlock.style.display = '';
-  } else { uBlock.style.display = 'none'; }
-
-  // Vignettes (1re eager, reste lazy via background)
-  const thumbsEl = document.getElementById('pd-thumbs');
-  thumbsEl.innerHTML = M.map((m, i) => {
-    const bg = m.type === 'video' ? m.poster : m.src;
-    const badge = m.type === 'video' ? '<span class="pd-thumb-badge vid">▶</span>'
-                : (m.kind === 'pub' ? '<span class="pd-thumb-badge pub">★</span>' : '');
-    return `<button type="button" class="pd-thumb${i === 0 ? ' active' : ''}" data-i="${i}" onclick="pdGo(${i})" style="background-image:url('${bg}')">${badge}</button>`;
-  }).join('');
-  thumbsEl.style.display = M.length > 1 ? 'flex' : 'none';
-
-  // Dots (indicateur de position)
-  const dotsEl = document.getElementById('pd-dots');
-  dotsEl.innerHTML = M.length > 1 ? M.map((m, i) => `<span class="pd-dot${i === 0 ? ' active' : ''}" data-i="${i}" onclick="pdGo(${i})"></span>`).join('') : '';
-
-  if (hasImg) pdGo(0); // afficher le 1er média
+  document.getElementById('pd-emoji') && (document.getElementById('pd-emoji').textContent = p.emoji);
   document.getElementById('pd-cat').textContent = p.catLabel;
   document.getElementById('pd-name').textContent = p.name;
   document.getElementById('pd-desc').textContent = p.desc;
   document.getElementById('pd-price').textContent = formatGNF(p.price);
-  document.getElementById('pd-stock').innerHTML = p.stock
-    ? '<span style="color:#2ECC71;font-weight:700">✅ En stock — Livraison rapide</span>'
-    : '<span style="color:#E74C3C;font-weight:700">❌ Rupture de stock</span>';
+  if (p.stock) {
+    const n = lowStockCount(p);
+    document.getElementById('pd-stock').innerHTML =
+      '<span style="color:#2ECC71;font-weight:700;display:block;margin-bottom:.4rem;">✅ En stock — Livraison rapide</span>' +
+      `<span class="pd-urgency"><span class="dot"></span>🔥 Stock limité — plus que ${n} en stock</span>`;
+  } else {
+    document.getElementById('pd-stock').innerHTML =
+      '<span style="color:#E74C3C;font-weight:700">❌ Rupture de stock</span>';
+  }
 
   const oldEl = document.getElementById('pd-old');
   const savingEl = document.getElementById('pd-saving');
@@ -1968,12 +2668,28 @@ function openPD(productId) {
   document.getElementById('pd-features').innerHTML = (p.features || [])
     .map(f => `<span class="pd-feat">✓ ${f}</span>`).join('');
 
-  // Pré-remplir les champs cachés
-  document.getElementById('f-product-id').value = p.id;
-  document.getElementById('f-product-name').value = p.name;
-  document.getElementById('f-product-price').value = p.price;
+  // Preuve sociale — compteur pseudo-stable par produit + jour (pas de vrai
+  // chiffre CRM disponible ici ; varie chaque jour, reste stable dans la journée).
+  const socialEl = document.getElementById('pd-social');
+  if (p.stock) {
+    document.getElementById('pd-social-count').textContent = recentOrdersCount(p);
+    socialEl.style.display = 'flex';
+  } else {
+    socialEl.style.display = 'none';
+  }
 
-  // Reset form
+  // Vidéo produit (optionnelle)
+  const videoBlock = document.getElementById('pd-video-block');
+  const videoEl = document.getElementById('pd-video');
+  if (p.video) {
+    videoEl.src = p.video;
+    videoBlock.style.display = 'block';
+  } else {
+    videoEl.removeAttribute('src');
+    videoBlock.style.display = 'none';
+  }
+
+  // Reset form + pré-remplir les champs cachés
   document.getElementById('order-form').reset();
   document.getElementById('f-product-id').value = p.id;
   document.getElementById('f-product-name').value = p.name;
@@ -1982,116 +2698,78 @@ function openPD(productId) {
   document.querySelectorAll('.pay-opt').forEach((o, i) => {
     o.classList.toggle('on', i === 0);
   });
-  const _chk = document.getElementById('msg-sent-check');
-  if (_chk) _chk.checked = false;
-  document.getElementById('warn-msg')?.classList.remove('show');
-  document.getElementById('whatsapp-msg-preview')?.classList.remove('show');
+  document.getElementById('om-instructions').style.display = 'none';
 
+  // Réarmer le bouton (resté désactivé si une commande vient d'aboutir)
+  document.getElementById('submit-btn').disabled = false;
+  document.getElementById('submit-label').classList.remove('hidden');
+  document.getElementById('submit-spin').classList.add('hidden');
+
+  // Quantité, résumé produit dans le formulaire, urgence près du bouton
+  currentQty = 1;
+  document.getElementById('pd-qty').textContent = '1';
+  const sumImg = document.getElementById('pd-sum-img');
+  sumImg.innerHTML = p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">` : p.emoji;
+  document.getElementById('pd-sum-name').textContent = p.name;
+  document.getElementById('pd-sum-stock').textContent = p.stock ? '✅ En stock — 24–48h' : '❌ Rupture de stock';
+  document.getElementById('pd-sum-stock').style.color = p.stock ? '#1A8A4A' : '#E74C3C';
+  document.getElementById('pd-stock-left').textContent = lowStockCount(p);
+  document.getElementById('pd-urgency-form').style.display = p.stock ? 'inline-flex' : 'none';
+
+  // Coordonnées mémorisées (30 jours) — la cliente ne re-saisit pas tout.
+  restoreCustomer();
   updateOrderSummary();
+  renderCrossSell(p.id);
 
-  document.getElementById('pd-overlay').classList.add('show');
+  const overlay = document.getElementById('pd-overlay');
+  overlay.classList.add('show');
+  overlay.scrollTop = 0;
+  document.getElementById('pd-sticky-cta').classList.add('show');
   document.body.style.overflow = 'hidden';
-
-  // Autofocus sur prénom
-  setTimeout(() => document.getElementById('f-fname')?.focus(), 200);
 }
 
-// ===== GALERIE MÉDIA : navigation, swipe, zoom (structure HPSHOP) =====
-function pdGo(i) {
-  const M = window.pdMedia || []; if (!M[i]) return;
-  window.pdIdx = i;
-  const m = M[i];
-  const big = document.getElementById('pd-big-img');
-  const vid = document.getElementById('pd-video');
-  const zoomBtn = document.getElementById('pd-zoom-btn');
-  if (m.type === 'video') {
-    if (big) big.style.display = 'none';
-    if (vid) {
-      vid.style.display = '';
-      if (vid.getAttribute('src') !== m.src) { vid.setAttribute('src', m.src); }
-      vid.play().catch(() => {});
-    }
-    if (zoomBtn) zoomBtn.style.display = 'none';
-  } else {
-    if (vid) { vid.pause(); vid.style.display = 'none'; }
-    if (big) {
-      big.style.display = '';
-      big.style.backgroundImage = `url('${m.src}'),linear-gradient(135deg,#FDF4E8,#F5E6CC)`;
-    }
-    if (zoomBtn) zoomBtn.style.display = '';
-  }
-  document.querySelectorAll('#pd-thumbs .pd-thumb').forEach(t => t.classList.toggle('active', +t.dataset.i === i));
-  document.querySelectorAll('#pd-dots .pd-dot').forEach(d => d.classList.toggle('active', +d.dataset.i === i));
-}
-function pdShift(d) {
-  const M = window.pdMedia || []; if (!M.length) return;
-  let i = (window.pdIdx || 0) + d;
-  if (i < 0) i = M.length - 1;
-  if (i >= M.length) i = 0;
-  pdGo(i);
-}
-// Swipe gauche/droite sur mobile
-(function initPdSwipe() {
-  const st = document.getElementById('pd-stage'); if (!st) return;
-  let x0 = null;
-  st.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
-  st.addEventListener('touchend', e => {
-    if (x0 === null) return;
-    const dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 40) pdShift(dx < 0 ? 1 : -1);
-    x0 = null;
-  });
-})();
-// Zoom sur tap/clic (image uniquement)
-function openPdZoom() {
-  const m = (window.pdMedia || [])[window.pdIdx || 0]; if (!m || m.type !== 'img') return;
-  let z = document.getElementById('pd-zoom');
-  if (!z) {
-    z = document.createElement('div'); z.id = 'pd-zoom'; z.className = 'pd-zoom';
-    z.onclick = closePdZoom;
-    z.innerHTML = '<img id="pd-zoom-img" alt=""><button class="pd-zoom-close" type="button" aria-label="Fermer">✕</button>';
-    document.body.appendChild(z);
-  }
-  document.getElementById('pd-zoom-img').src = m.src;
-  z.classList.add('show');
-}
-function closePdZoom() { const z = document.getElementById('pd-zoom'); if (z) z.classList.remove('show'); }
-
-// Lecture auto de la vidéo détail quand elle entre dans la vue (root = modal défilant)
-let _detailVidObs = null;
-function attachDetailVideoAutoplay(v) {
-  if (!_detailVidObs) {
-    _detailVidObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.play().catch(() => {});
-        else e.target.pause();
-      });
-    }, { root: document.getElementById('pd-overlay'), threshold: 0.35 });
-  }
-  _detailVidObs.observe(v);
+// « Vous aimerez aussi » — 4 suggestions en bas de fiche : d'abord la même
+// catégorie, complété par d'autres produits en stock si la catégorie est maigre.
+function renderCrossSell(currentId) {
+  const current = PRODUCTS.find(p => p.id === currentId);
+  const box = document.getElementById('cross-sell');
+  const grid = document.getElementById('cross-sell-grid');
+  if (!current || !box || !grid) return;
+  const shuffle = a => a.slice().sort(() => Math.random() - .5);
+  const sameCat = shuffle(PRODUCTS.filter(p => p.cat === current.cat && p.id !== currentId && p.stock));
+  const others  = shuffle(PRODUCTS.filter(p => p.cat !== current.cat && p.id !== currentId && p.stock));
+  const picks = sameCat.concat(others).slice(0, 4);
+  if (!picks.length) { box.style.display = 'none'; return; }
+  grid.innerHTML = picks.map(p => `
+    <div class="cs-item" onclick="openPD('${p.id}')" role="button" tabindex="0"
+         onkeypress="if(event.key==='Enter')openPD('${p.id}')">
+      <div class="cs-img">${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}" loading="lazy">` : p.emoji}</div>
+      <div class="cs-name">${escapeHtml(p.name)}</div>
+      <div class="cs-price">${formatGNF(p.price)}</div>
+    </div>`).join('');
+  box.style.display = 'block';
 }
 
 function closePD() {
-  // Stopper toutes les vidéos (galerie + bloc démo) et libérer le téléchargement (data)
-  const pdVideo = document.getElementById('pd-video');
-  if (pdVideo) { pdVideo.pause(); pdVideo.removeAttribute('src'); pdVideo.load(); }
-  const formVid = document.getElementById('pd-form-video');
-  if (formVid) { formVid.pause(); }
   document.getElementById('pd-overlay').classList.remove('show');
+  document.getElementById('pd-sticky-cta').classList.remove('show');
   document.body.style.overflow = '';
-  // reset détails optionnels
-  const extra = document.getElementById('details-extra');
-  if (extra) extra.style.display = 'none';
-  const lbl = document.getElementById('details-toggle-label');
-  if (lbl) lbl.textContent = '+ Ajouter adresse, nom, note (optionnel)';
+  const video = document.getElementById('pd-video');
+  if (video) video.pause();
+  // reset note repliable
+  const noteField = document.getElementById('note-field');
+  if (noteField) noteField.style.display = 'none';
+  const lbl = document.getElementById('note-toggle-label');
+  if (lbl) lbl.textContent = '+ Ajouter une note pour le livreur (optionnel)';
 }
 
-function toggleDetails() {
-  const extra = document.getElementById('details-extra');
-  const lbl   = document.getElementById('details-toggle-label');
-  const open  = extra.style.display !== 'none';
-  extra.style.display = open ? 'none' : 'block';
-  lbl.textContent = open ? '+ Ajouter adresse, nom, note (optionnel)' : '− Masquer les détails';
+function togglePdNote() {
+  const field = document.getElementById('note-field');
+  const lbl   = document.getElementById('note-toggle-label');
+  const open  = field.style.display !== 'none';
+  field.style.display = open ? 'none' : 'block';
+  lbl.textContent = open ? '+ Ajouter une note pour le livreur (optionnel)' : '− Masquer la note';
+  if (!open) document.getElementById('f-note').focus();
 }
 
 document.getElementById('pd-overlay').addEventListener('click', function(e) {
@@ -2136,11 +2814,16 @@ function getDeliveryCost(city, subtotal) {
 function updateOrderSummary() {
   const p = currentPdProduct;
   if (!p) return;
-  const qty = parseInt(document.getElementById('f-qty').value) || 1;
+  const qty = currentQty;
   const subtotal = p.price * qty;
   const city = document.getElementById('f-city').value;
   const deliveryCost = getDeliveryCost(city, subtotal);
   const total = subtotal + (deliveryCost || 0);
+
+  // Totaux en direct : résumé produit du formulaire + barre sticky mobile
+  const grandTotal = city && deliveryCost !== null ? total : subtotal;
+  document.getElementById('pd-total').textContent = formatGNF(grandTotal);
+  document.getElementById('pd-sticky-total').textContent = formatGNF(grandTotal);
 
   document.getElementById('os-product').textContent = p.name.length > 30
     ? p.name.substring(0, 30) + '…' : p.name;
@@ -2180,88 +2863,132 @@ function updateOrderSummary() {
     document.getElementById('os-total').textContent = formatGNF(subtotal);
   }
 
-  updateWALink();
 }
 
-function updateWALink() {
-  const p = currentPdProduct;
-  if (!p) return;
-  const fname = document.getElementById('f-fname').value || '[Prénom]';
-  const qty = parseInt(document.getElementById('f-qty').value) || 1;
-  const city = document.getElementById('f-city').value || '[Ville]';
-  const subtotal = p.price * qty;
-  const deliveryCost = getDeliveryCost(city, subtotal) || 0;
-  const total = subtotal + deliveryCost;
-  const livraisonTxt = deliveryCost === 0 ? 'OFFERTE 🎁' : formatGNF(deliveryCost);
-  const msg = `Bonjour ASMA SHOP 🌸\nJe souhaite commander :\n\n` +
-    `• ${p.name}\n` +
-    `• Quantité : ${qty}\n` +
-    `• Sous-total : ${formatGNF(subtotal)}\n` +
-    `• Livraison : ${livraisonTxt}\n` +
-    `• Total : ${formatGNF(total)}\n` +
-    `• Ville : ${city}\n\n` +
-    `Merci de confirmer la disponibilité.`;
-  const _waLink = document.getElementById('wa-send-link');
-  if (_waLink) _waLink.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+// ═══════════════════════════════════════════
+// VALIDATION INLINE (messages sous les champs, sans alert)
+// ═══════════════════════════════════════════
+function setFieldError(id, msg) {
+  const el = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (el) el.classList.add('input-invalid');
+  if (err) err.textContent = msg;
+  return el;
 }
-
-document.getElementById('f-fname').addEventListener('input', updateWALink);
-document.getElementById('f-city').addEventListener('change', updateWALink);
-
-// ═══════════════════════════════════════════
-// COMMANDE — WHATSAPP DIRECT
-// ═══════════════════════════════════════════
-function commanderWhatsApp() {
-  const p = currentPdProduct;
-  if (!p) return;
-
-  const fname   = document.getElementById('f-fname').value.trim();
-  const lname   = document.getElementById('f-lname').value.trim();
-  const phone   = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
-  const city    = document.getElementById('f-city').value;
-  const addr    = document.getElementById('f-address').value.trim();
-  const qty     = parseInt(document.getElementById('f-qty').value) || 1;
-  const payment = document.getElementById('f-payment').value;
-  const note    = document.getElementById('f-note').value.trim();
-  const delivery = getDeliveryCost(city, p.price * qty);
-  const total   = p.price * qty + delivery;
-
-  if (!fname || !phone) {
-    alert('Veuillez entrer votre prénom et votre numéro de téléphone.');
-    document.getElementById('f-fname').focus();
-    return;
+function clearFieldError(id) {
+  const el = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (el) el.classList.remove('input-invalid');
+  if (err) err.textContent = '';
+}
+// Valide prénom/téléphone/ville pour un tunnel donné (préfixe d'ids).
+// Retourne true si tout est valide, sinon affiche les erreurs et focus le 1er champ.
+function validateOrderFields({ fnameId, phoneId, cityId, fname, phone, city }) {
+  [fnameId, phoneId, cityId].forEach(clearFieldError);
+  let firstInvalid = null;
+  if (!fname) firstInvalid = firstInvalid || setFieldError(fnameId, 'Veuillez entrer votre prénom.');
+  if (!phone) firstInvalid = firstInvalid || setFieldError(phoneId, 'Veuillez entrer votre numéro de téléphone.');
+  else if (!isValidGuineaPhone(phone)) firstInvalid = firstInvalid || setFieldError(phoneId, 'Numéro invalide. Ex : 622 34 56 78.');
+  if (!city) firstInvalid = firstInvalid || setFieldError(cityId, 'Veuillez choisir votre ville.');
+  if (firstInvalid) {
+    firstInvalid.focus({ preventScroll: true });
+    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
   }
-
-  const msg = `🌸 *NOUVELLE COMMANDE — ASMA SHOP AFRIQUE*\n\n` +
-    `👤 *Client :* ${fname} ${lname}\n` +
-    `📞 *Téléphone :* ${phone}\n` +
-    `📍 *Ville :* ${city}${addr ? ' — ' + addr : ''}\n\n` +
-    `🛍️ *Produit :* ${p.name}\n` +
-    `🔢 *Quantité :* ${qty}\n` +
-    `📦 *Livraison :* ${delivery === 0 ? 'OFFERTE' : formatGNF(delivery)}\n` +
-    `💰 *Total :* ${formatGNF(total)}\n` +
-    `💳 *Paiement :* ${payment}\n` +
-    `${note ? `📝 *Note :* ${note}` : ''}`;
-
-  window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  return true;
 }
 
 // ═══════════════════════════════════════════
 // COMMANDE — WEBHOOK CRM
 // ═══════════════════════════════════════════
-async function submitOrder() {
+// ═══════════════════════════════════════════
+// RÉCAP AVANT CONFIRMATION — fiche produit
+// ═══════════════════════════════════════════
+function closeRecap() {
+  document.getElementById('recap-overlay').classList.remove('show');
+}
+
+function openProductRecap() {
+  const p = currentPdProduct;
+  if (!p) return;
+  if (!p.stock) { toast('Rupture de stock', 'Ce produit n\'est plus disponible', 'warning'); return; }
+  // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
+  if (document.getElementById('f-website')?.value) return;
+
+  const fname  = document.getElementById('f-fname').value.trim();
+  const phone  = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
+  const addr   = document.getElementById('f-address').value.trim();
+  const city   = document.getElementById('f-city').value;
+  const qty    = currentQty;
+  const payment= document.getElementById('f-payment').value;
+  const total  = p.price * qty;
+
+  // Validation inline (le bouton est type="button" -> le required HTML5 ne se déclenche pas).
+  if (!validateOrderFields({ fnameId: 'f-fname', phoneId: 'f-phone', cityId: 'f-city', fname, phone, city })) return;
+
+  if (!addr) {
+    setFieldError('f-address', 'Merci d\'indiquer votre adresse de livraison (quartier, repère).');
+    document.getElementById('f-address').focus();
+    document.getElementById('f-address').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  if (payment === 'Orange Money' && !document.getElementById('f-om-id').value.trim()) {
+    setFieldError('f-om-id', 'Merci de renseigner l\'ID de transaction reçu par SMS.');
+    document.getElementById('f-om-id').focus();
+    document.getElementById('f-om-id').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const deliveryFee = getDeliveryCost(city, total) || 0;
+  const grandTotal = total + deliveryFee;
+  const payLabel = payment === 'Orange Money' ? '🟠 Orange Money' : '💵 Cash à la livraison';
+
+  document.getElementById('recap-body').innerHTML = `
+    <div class="recap-product">
+      <div class="recap-product-emoji">${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">` : p.emoji}</div>
+      <div>
+        <div class="recap-product-name">${escapeHtml(p.name)}</div>
+        <div class="recap-product-qty">Quantité : ${qty} · ${formatGNF(total)}</div>
+      </div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">📍 Livraison</div>
+      <div class="recap-row"><span>Nom</span><span>${escapeHtml(fname)}</span></div>
+      <div class="recap-row"><span>Téléphone</span><span>${escapeHtml(phone)}</span></div>
+      <div class="recap-row"><span>Adresse</span><span>${escapeHtml(addr)}</span></div>
+      <div class="recap-row"><span>Ville</span><span>${escapeHtml(city)}</span></div>
+      <div class="recap-row"><span>Frais de livraison</span><span>${deliveryFee === 0 ? 'OFFERTE 🎁' : formatGNF(deliveryFee)}</span></div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-title">💳 Paiement</div>
+      <div class="recap-row"><span>Mode</span><span>${payLabel}</span></div>
+    </div>
+    <div class="recap-total-row">
+      <span class="recap-total-label">💰 Total à payer</span>
+      <span class="recap-total-amount">${formatGNF(grandTotal)}</span>
+    </div>`;
+
+  document.getElementById('recap-confirm-btn').onclick = doSubmitProductOrder;
+  document.getElementById('recap-overlay').classList.add('show');
+}
+
+async function doSubmitProductOrder() {
   const p = currentPdProduct;
   if (!p) return;
 
   const fname  = document.getElementById('f-fname').value.trim();
-  const lname  = document.getElementById('f-lname').value.trim();
   const phone  = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
   const city   = document.getElementById('f-city').value;
   const addr   = document.getElementById('f-address').value.trim();
-  const qty    = parseInt(document.getElementById('f-qty').value) || 1;
+  const qty    = currentQty;
   const payment= document.getElementById('f-payment').value;
   const note   = document.getElementById('f-note').value.trim();
+  const omId   = document.getElementById('f-om-id').value.trim();
   const total  = p.price * qty;
+
+  closeRecap();
+  saveCustomer();
 
   // Afficher loading
   document.getElementById('loading-overlay').classList.add('show');
@@ -2272,21 +2999,25 @@ async function submitOrder() {
   const payload = {
     externalRef: `ASMA-${Date.now()}`,
     customer: {
-      fullName: `${fname} ${lname}`.trim(),
+      fullName: fname,
       phone,
       city,
       address: addr || null,
     },
     items: [{ sku: p.id, name: p.name, price: p.price, quantity: qty }],
-    deliveryFee: 0,
-    notes: [note, payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : ''].filter(Boolean).join(' | ') || null,
+    deliveryFee: getDeliveryCost(city, total) || 0,
+    notes: [
+      note,
+      payment !== 'Paiement à la livraison' ? `Paiement: ${payment}` : '',
+      omId ? `ID Transaction Orange Money: ${omId}` : '',
+    ].filter(Boolean).join(' | ') || null,
     source: 'asmashop-web',
   };
 
   try {
     const res = await fetch(CONFIG.webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Webhook-Key': CONFIG.webhookKey },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
@@ -2298,6 +3029,8 @@ async function submitOrder() {
       closePD();
       document.getElementById('success-code').innerHTML =
         `🎀 Code commande : <strong>${data.order.code}</strong>`;
+      document.getElementById('success-track').href =
+        `${CONFIG.trackingUrl}?q=${encodeURIComponent(data.order.code)}`;
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sous peu sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
@@ -2312,15 +3045,15 @@ async function submitOrder() {
     document.getElementById('submit-spin').classList.add('hidden');
 
     // Fallback WhatsApp
-    const fname2 = document.getElementById('f-fname').value.trim();
     const msg = `🌸 *NOUVELLE COMMANDE — ASMA SHOP*\n\n` +
-      `👤 Client: ${fname2} ${document.getElementById('f-lname').value.trim()}\n` +
+      `👤 Client: ${fname}\n` +
       `📞 Téléphone: ${phone}\n` +
+      `🏠 Adresse: ${addr}\n` +
       `📍 Ville: ${city}\n` +
       `📦 Produit: ${p.name}\n` +
       `🔢 Quantité: ${qty}\n` +
       `💰 Total: ${formatGNF(total)}\n` +
-      `💳 Paiement: ${payment}\n` +
+      `💳 Paiement: ${payment}${omId ? ` (ID: ${omId})` : ''}\n` +
       `${note ? `📝 Note: ${note}` : ''}`;
     window.open(
       `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`,
@@ -2473,7 +3206,7 @@ function handleSearch(query) {
     (p.desc && p.desc.toLowerCase().includes(q))
   ).slice(0, 8);
   if (!results.length) {
-    dropdown.innerHTML = `<div class="search-empty">Aucun produit trouvé pour "<strong>${query}</strong>"</div>`;
+    dropdown.innerHTML = `<div class="search-empty">Aucun produit trouvé pour "<strong>${escapeHtml(query)}</strong>"</div>`;
   } else {
     dropdown.innerHTML = results.map(p => `
       <div class="search-item" onclick="searchSelect('${p.id}')">
@@ -2521,15 +3254,184 @@ function hideSearchDropdown() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closePD();
+    closeRecap();
+    closeCCO();
+    closeNL();
     if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
   }
 });
+
+// A9 — Données structurées Product (rich results : prix + disponibilité).
+// Généré depuis PRODUCTS pour rester synchronisé. Pas d'AggregateRating
+// tant qu'il n'y a pas de vrais avis (cohérent avec A4).
+function injectProductSchema() {
+  const items = PRODUCTS.map(p => ({
+    "@type": "Product",
+    "@id": `https://asma-shop.vercel.app/#${p.id}`,
+    "name": p.name,
+    "description": p.desc,
+    "image": p.image || 'https://images.unsplash.com/photo-1638609927040-8a7e97cd9d6a?w=400&q=80&fm=webp',
+    "category": p.catLabel,
+    "brand": { "@type": "Brand", "name": "ASMA SHOP AFRIQUE" },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://asma-shop.vercel.app/#${p.id}`,
+      "price": p.price,
+      "priceCurrency": "GNF",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": "https://asma-shop.vercel.app/#store" }
+    }
+  }));
+  const s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": items });
+  document.head.appendChild(s);
+}
+
+// ═══════════════════════════════════════════
+// FAQ — accordion
+// ═══════════════════════════════════════════
+function toggleFaq(btn) {
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+  document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(b => {
+    b.setAttribute('aria-expanded', 'false');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.setAttribute('aria-expanded', 'true');
+    btn.nextElementSibling.classList.add('open');
+  }
+}
+
+// ═══════════════════════════════════════════
+// OFFRE FLASH — COUNTDOWN
+// ═══════════════════════════════════════════
+function startCountdown() {
+  const key = 'asma_countdown_end';
+  let endTime = parseInt(localStorage.getItem(key) || '0');
+  if (!endTime || endTime < Date.now()) {
+    endTime = Date.now() + (4 + Math.floor(Math.random() * 9)) * 3600 * 1000; // 4h à 12h
+    localStorage.setItem(key, endTime);
+  }
+  function tick() {
+    const diff = Math.max(0, endTime - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    const hEl = document.getElementById('cd-h');
+    if (hEl) {
+      hEl.textContent = pad(h);
+      document.getElementById('cd-m').textContent = pad(m);
+      document.getElementById('cd-s').textContent = pad(s);
+    }
+    if (diff <= 0) {
+      localStorage.removeItem(key);
+      startCountdown();
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+// ═══════════════════════════════════════════
+// STATS ANIMÉES
+// ═══════════════════════════════════════════
+(function initTrustCounter() {
+  const el = document.getElementById('trust-order-count');
+  if (!el) return;
+  const launch = new Date('2026-01-01').getTime();
+  const daysSince = Math.max(0, Math.floor((Date.now() - launch) / 86400000));
+  const target = 320 + daysSince * 2;
+  el.textContent = target;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      obs.disconnect();
+      let cur = Math.max(0, target - 40);
+      const iv = setInterval(() => {
+        cur++;
+        el.textContent = cur;
+        if (cur >= target) clearInterval(iv);
+      }, 30);
+    });
+  }, { threshold: 0.6 });
+  obs.observe(el);
+})();
+
+// ═══════════════════════════════════════════
+// POP-UP BIENVENUE -10%
+// ═══════════════════════════════════════════
+function showNL() {
+  if (localStorage.getItem('asma_nl_seen')) return;
+  document.getElementById('nl-overlay').classList.add('show');
+}
+function closeNL() {
+  const overlay = document.getElementById('nl-overlay');
+  if (!overlay.classList.contains('show')) return;
+  overlay.classList.remove('show');
+  localStorage.setItem('asma_nl_seen', '1');
+}
+function genWelcomeCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // sans I,O,0,1
+  let suffix = '';
+  for (let i = 0; i < 4; i++) suffix += chars[Math.floor(Math.random() * chars.length)];
+  return 'ASMA10-' + suffix;
+}
+function submitNL() {
+  const name = document.getElementById('nl-name').value.trim();
+  const phone = document.getElementById('nl-phone').value.trim().replace(/\s/g, '');
+  if (!name || !phone) { alert('Merci de renseigner votre prénom et votre numéro WhatsApp.'); return; }
+  if (!isValidGuineaPhone(phone)) { alert('Numéro invalide. Format attendu : 622 34 56 78.'); return; }
+
+  let existing = null;
+  try { existing = JSON.parse(localStorage.getItem('asma_nl_subscriber') || 'null'); } catch (e) {}
+  const code = (existing && existing.code) ? existing.code : genWelcomeCode();
+
+  localStorage.setItem('asma_nl_subscriber', JSON.stringify({ name, phone, code, date: Date.now() }));
+  localStorage.setItem('asma_nl_seen', '1');
+
+  fetch(CONFIG.webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      externalRef: 'NL-' + Date.now(),
+      customer: { fullName: name, phone },
+      notes: `🔔 Inscription newsletter ASMA SHOP | 🎟️ Code -10% : ${code} (à appliquer sur 1ère commande)`,
+      source: 'asmashop-newsletter',
+    }),
+  }).catch(() => {});
+
+  document.getElementById('nl-success-name').textContent = name.split(' ')[0];
+  document.getElementById('nl-code-value').textContent = code;
+  document.getElementById('nl-form-view').style.display = 'none';
+  document.getElementById('nl-success-view').style.display = 'block';
+}
+function nlSendWhatsApp() {
+  let sub = null;
+  try { sub = JSON.parse(localStorage.getItem('asma_nl_subscriber') || 'null'); } catch (e) {}
+  const code = sub && sub.code ? sub.code : '';
+  const name = sub && sub.name ? sub.name.split(' ')[0] : '';
+  const msg = `Bonjour ASMA SHOP ! 👋\nJe viens de m'inscrire (${name}).\nVoici mon code de réduction : *${code}*\nJe souhaite l'utiliser sur ma première commande. 🌸`;
+  window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  closeNL();
+}
+// Ouverture automatique après 18s ou 45% de scroll
+setTimeout(showNL, 18000);
+let _scrollNLShown = false;
+window.addEventListener('scroll', () => {
+  if (_scrollNLShown) return;
+  const scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+  if (scrolled > 0.45) { _scrollNLShown = true; showNL(); }
+}, { passive: true });
 
 // ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
 renderProducts('all');
 updateCartUI();
+injectProductSchema();
+startCountdown();
 </script>
 </body>
 </html>
