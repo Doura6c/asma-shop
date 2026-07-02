@@ -596,6 +596,49 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
   .hero-btns{flex-direction:column;align-items:stretch;}
   .hero-btns .btn-rose,.hero-btns .btn-wa{width:100%;justify-content:center;}
 }
+/* ══ Réassurance formulaire ══ */
+.pd-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem;}
+.pd-trust-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.6rem .4rem;text-align:center;font-size:.64rem;font-weight:700;color:var(--text-2);display:flex;flex-direction:column;align-items:center;gap:.25rem;line-height:1.3;}
+.pd-trust-item span{font-size:1.15rem;}
+/* ══ Résumé produit dans le formulaire ══ */
+.pd-summary{display:flex;align-items:center;gap:.8rem;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.8rem;margin-bottom:1rem;box-shadow:0 2px 10px rgba(168,116,32,.08);}
+.pd-sum-img{width:56px;height:56px;border-radius:8px;overflow:hidden;background:#F5E8D0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;}
+.pd-sum-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.pd-sum-info{flex:1;min-width:0;}
+.pd-sum-name{font-size:.8rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pd-sum-stock{font-size:.68rem;color:#1A8A4A;font-weight:600;margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+@media(max-width:480px){.pd-sum-total strong{font-size:1.05rem;}.pd-sum-img{width:48px;height:48px;}}
+.pd-sum-total{text-align:right;flex-shrink:0;}
+.pd-sum-total span{display:block;font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);}
+.pd-sum-total strong{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--or);}
+/* ══ Quantité − / + ══ */
+.qty-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;background:#fff;border:1px solid var(--border);border-radius:8px;padding:.6rem 1rem;}
+.qty-row .qty-label{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);}
+.qty-box{display:flex;align-items:center;gap:.9rem;}
+.qty-box .qty-btn{width:34px;height:34px;font-size:1rem;}
+.qty-val{font-weight:800;font-size:1.05rem;min-width:24px;text-align:center;color:var(--text);}
+.fg-hint{font-size:.7rem;color:var(--text-3);margin:-.4rem 0 1rem;line-height:1.5;}
+/* ══ Barre sticky mobile — fiche produit ══ */
+.pd-sticky-cta{display:none;}
+.pd-sticky-info{display:flex;flex-direction:column;line-height:1.1;flex-shrink:0;}
+.pd-sticky-info span{font-size:.58rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);font-weight:700;}
+.pd-sticky-info strong{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--or);}
+.pd-sticky-btn{flex:1;min-height:48px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--or),var(--or-dk));color:var(--noir);font-family:'Raleway',sans-serif;font-size:.85rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px var(--or-glow);}
+@media(max-width:900px){
+  .pd-sticky-cta.show{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:560;align-items:center;gap:.7rem;background:#FDF8F0;border-top:1.5px solid var(--border);box-shadow:0 -6px 20px rgba(28,18,8,.12);padding:.55rem .9rem;padding-bottom:calc(.55rem + env(safe-area-inset-bottom));}
+  .pd-overlay.show .pd-box{padding-bottom:72px;}
+}
+/* ══ Toasts ══ */
+#toast-container{position:fixed;top:90px;right:16px;z-index:1200;display:flex;flex-direction:column;gap:.6rem;pointer-events:none;}
+.toast{background:#fff;border:1px solid var(--border);border-left:4px solid var(--or);border-radius:10px;padding:.8rem 1rem;box-shadow:0 10px 30px rgba(28,18,8,.15);display:flex;gap:.6rem;align-items:flex-start;min-width:230px;max-width:320px;animation:toastIn .3s ease;pointer-events:auto;transition:opacity .35s,transform .35s;}
+.toast.success{border-left-color:#2ECC71;}
+.toast.error{border-left-color:#E74C3C;}
+.toast.warning{border-left-color:#F5A800;}
+.toast-ico{font-size:1rem;flex-shrink:0;}
+.toast-title{font-size:.8rem;font-weight:800;color:var(--text);}
+.toast-msg{font-size:.72rem;color:var(--text-2);margin-top:.15rem;}
+.toast.out{opacity:0;transform:translateX(20px);}
+@keyframes toastIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
 /* ══ Preuve sociale ══ */
 .pd-social{display:flex;align-items:center;gap:.5rem;background:var(--rose-bg);border:1px solid var(--rose-lt);border-radius:8px;padding:.6rem .9rem;margin-bottom:1rem;font-size:.74rem;color:var(--rose-dk);font-weight:600;}
 .pd-social-dot{width:7px;height:7px;border-radius:50%;background:#2ECC71;box-shadow:0 0 6px rgba(46,204,113,.7);flex-shrink:0;animation:pulseDot 1.6s ease-in-out infinite;}
@@ -1027,24 +1070,59 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <!-- Formulaire commande directe -->
       <div class="pd-form-sep">ou commander directement</div>
       <div class="pd-form-section">
-        <div class="pd-form-title">Commander ce produit</div>
-        <form id="order-form" onsubmit="submitOrder(event)">
+        <div class="pd-form-title">📦 Passer ma commande</div>
+
+        <!-- Réassurance COD -->
+        <div class="pd-trust">
+          <div class="pd-trust-item"><span>🚚</span>Livraison 24–48h</div>
+          <div class="pd-trust-item"><span>💰</span>Paiement à la réception</div>
+          <div class="pd-trust-item"><span>🔄</span>Retour facile si problème</div>
+        </div>
+
+        <form id="order-form" onsubmit="event.preventDefault();openProductRecap()">
           <input type="hidden" id="f-product-id">
           <input type="hidden" id="f-product-name">
           <input type="hidden" id="f-product-price">
           <!-- Honeypot anti-bot : invisible pour l'humain, rempli par les bots -->
           <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" placeholder="Laisser vide">
 
-          <!-- 3 champs essentiels -->
-          <div class="fg">
-            <label for="f-fname">Prénom *</label>
-            <input type="text" id="f-fname" placeholder="Votre prénom" required autocomplete="given-name" oninput="clearFieldError('f-fname')">
-            <small class="field-error" id="err-f-fname"></small>
+          <!-- Résumé produit : photo + nom + total en direct -->
+          <div class="pd-summary">
+            <div class="pd-sum-img" id="pd-sum-img">💄</div>
+            <div class="pd-sum-info">
+              <div class="pd-sum-name" id="pd-sum-name">Produit</div>
+              <div class="pd-sum-stock" id="pd-sum-stock">✅ En stock — 24–48h</div>
+            </div>
+            <div class="pd-sum-total"><span>Total</span><strong id="pd-total">0 GNF</strong></div>
           </div>
+
+          <!-- Quantité − / + -->
+          <div class="qty-row">
+            <span class="qty-label">Quantité</span>
+            <div class="qty-box">
+              <button class="qty-btn" type="button" onclick="updateQty(-1)" aria-label="Diminuer">−</button>
+              <span class="qty-val" id="pd-qty">1</span>
+              <button class="qty-btn" type="button" onclick="updateQty(1)" aria-label="Augmenter">+</button>
+            </div>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label for="f-fname">Prénom &amp; Nom *</label>
+              <input type="text" id="f-fname" placeholder="Ex: Fatoumata Diallo" required autocomplete="name" oninput="clearFieldError('f-fname')">
+              <small class="field-error" id="err-f-fname"></small>
+            </div>
+            <div class="fg">
+              <label for="f-phone">📞 Téléphone WhatsApp *</label>
+              <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel" oninput="clearFieldError('f-phone')">
+              <small class="field-error" id="err-f-phone"></small>
+            </div>
+          </div>
+          <div class="fg-hint">📞 Nous vous appelons pour confirmer avant la livraison — <strong>aucun paiement en ligne</strong>.</div>
           <div class="fg">
-            <label for="f-phone">📞 Téléphone WhatsApp *</label>
-            <input type="tel" id="f-phone" placeholder="ex: 622 34 56 78" required autocomplete="tel" inputmode="tel" oninput="clearFieldError('f-phone')">
-            <small class="field-error" id="err-f-phone"></small>
+            <label for="f-address">🏠 Adresse de livraison *</label>
+            <input type="text" id="f-address" placeholder="Ex: Ratoma, près du marché — quartier, rue, repère" required autocomplete="street-address" oninput="clearFieldError('f-address')">
+            <small class="field-error" id="err-f-address"></small>
           </div>
           <div class="fg">
             <label for="f-city">📍 Ville de livraison *</label>
@@ -1098,39 +1176,20 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
           <!-- Info livraison dynamique -->
           <div id="delivery-info-box" class="delivery-info-box" style="display:none;"></div>
 
-          <!-- Détails optionnels -->
-          <div class="details-toggle" onclick="toggleDetails()" id="details-toggle">
-            <span id="details-toggle-label">+ Ajouter adresse, nom, note (optionnel)</span>
+          <!-- Note livreur (repliable) -->
+          <div class="details-toggle" onclick="togglePdNote()" id="note-toggle">
+            <span id="note-toggle-label">+ Ajouter une note pour le livreur (optionnel)</span>
           </div>
-          <div id="details-extra" style="display:none;">
-            <div class="fg">
-              <label for="f-lname">Nom de famille</label>
-              <input type="text" id="f-lname" placeholder="Votre nom" autocomplete="family-name">
-            </div>
-            <div class="fg">
-              <label for="f-address">Adresse / Quartier</label>
-              <input type="text" id="f-address" placeholder="Quartier, rue, repère..." autocomplete="street-address">
-            </div>
-            <div class="fg">
-              <label for="f-note">Note pour le livreur</label>
-              <input type="text" id="f-note" placeholder="Ex: appeler avant de livrer, point de repère..." autocomplete="off">
-            </div>
+          <div class="fg" id="note-field" style="display:none;">
+            <label for="f-note">Note pour le livreur</label>
+            <input type="text" id="f-note" placeholder="Ex: appeler avant de livrer, point de repère..." autocomplete="off">
           </div>
-          <div class="fg">
-            <label for="f-qty">Quantité</label>
-            <select id="f-qty" onchange="updateOrderSummary()">
-              <option value="1">1 unité</option>
-              <option value="2">2 unités</option>
-              <option value="3">3 unités</option>
-              <option value="4">4 unités</option>
-              <option value="5">5 unités</option>
-            </select>
-          </div>
+
           <div class="fg">
             <label>Mode de paiement *</label>
             <div class="pay-opts" id="pay-opts" style="grid-template-columns:1fr 1fr;">
               <div class="pay-opt on" onclick="selectPay(this,'Paiement à la livraison')">
-                <span class="pay-icon">💵</span>À la livraison
+                <span class="pay-icon">💵</span>Cash à la livraison
               </div>
               <div class="pay-opt" onclick="selectPay(this,'Orange Money')">
                 <span class="pay-icon">🟠</span>Orange Money
@@ -1142,7 +1201,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
               <p>📲 <strong>Comment payer :</strong></p>
               <p>1. Composez <strong>#144#</strong> sur votre téléphone Orange<br>
                  2. Envoyer de l'argent → numéro marchand :</p>
-              <p class="om-number">+224 621 88 12 10 <span>(ASMA SHOP)</span></p>
+              <p class="om-number" onclick="copyOM(this)" title="Cliquez pour copier" style="cursor:pointer;">+224 621 88 12 10 <span>(cliquez pour copier)</span></p>
               <p>3. Copiez l'<strong>ID de transaction</strong> reçu par SMS<br>
                  4. Collez-le ci-dessous puis confirmez votre commande.</p>
               <div class="fg" style="margin-top:.6rem;margin-bottom:0;">
@@ -1153,11 +1212,6 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             </div>
           </div>
 
-          <div class="mandatory-check">
-            <span style="font-size:1.1rem;">⚠️</span>
-            <p><strong>Commande à paiement à la livraison.</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception. Un colis refusé mobilise inutilement notre équipe de livraison — nous vous en remercions par avance.</p>
-          </div>
-
           <div class="order-summary" id="order-summary">
             <div class="order-summary-row"><span>Produit</span><span id="os-product">—</span></div>
             <div class="order-summary-row"><span>Quantité</span><span id="os-qty">1</span></div>
@@ -1165,20 +1219,33 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             <div class="order-summary-row total"><span>TOTAL</span><span id="os-total">—</span></div>
           </div>
 
+          <p class="pd-urgency" id="pd-urgency-form" style="margin-bottom:1rem;">⚡ Plus que <b id="pd-stock-left" style="margin:0 .25em;">5</b> en stock — commandez vite !</p>
+
           <!-- Bouton de commande -->
           <div class="order-actions">
             <button type="button" class="submit-btn" id="submit-btn" onclick="openProductRecap()" style="width:100%;">
-              <span id="submit-label">📋 Vérifier ma commande</span>
+              <span id="submit-label">🛒 Commander maintenant</span>
               <span id="submit-spin" class="hidden"><span class="spinner"></span></span>
             </button>
           </div>
           <p style="font-size:.68rem;color:var(--text-3);text-align:center;margin-top:.6rem;">
-            Notre équipe vous rappelle sous 2h pour confirmer la livraison.
+            🔒 Données confidentielles · Sans paiement en ligne · Notre équipe vous rappelle sous 2h.
           </p>
+
+          <div class="mandatory-check">
+            <span style="font-size:1.1rem;">⚠️</span>
+            <p><strong>Commande à paiement à la livraison (COD).</strong> Merci de ne commander que si vous êtes disponible pour régler le montant total à la réception. Un colis refusé mobilise inutilement notre équipe de livraison — merci de votre compréhension.</p>
+          </div>
         </form>
       </div>
     </div>
   </div>
+</div>
+
+<!-- CTA STICKY MOBILE — fiche produit (hors overlay pour un position:fixed fiable) -->
+<div class="pd-sticky-cta" id="pd-sticky-cta">
+  <div class="pd-sticky-info"><span>Total à payer</span><strong id="pd-sticky-total">0 GNF</strong></div>
+  <button type="button" class="pd-sticky-btn" onclick="openProductRecap()">🛒 Commander</button>
 </div>
 
 <!-- ══════════════ COMMENT COMMANDER ══════════════ -->
@@ -1624,7 +1691,7 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
         <p>📲 <strong>Comment payer :</strong></p>
         <p>1. Composez <strong>#144#</strong> sur votre téléphone Orange<br>
            2. Envoyer de l'argent → numéro marchand :</p>
-        <p class="om-number">+224 621 88 12 10 <span>(ASMA SHOP)</span></p>
+        <p class="om-number" onclick="copyOM(this)" title="Cliquez pour copier" style="cursor:pointer;">+224 621 88 12 10 <span>(cliquez pour copier)</span></p>
         <p>3. Copiez l'<strong>ID de transaction</strong> reçu par SMS<br>
            4. Collez-le ci-dessous puis confirmez votre commande.</p>
         <div class="fg" style="margin-top:.6rem;margin-bottom:0;">
@@ -1724,6 +1791,9 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     </div>
   </div>
 </div>
+
+<!-- ══════════════ TOASTS ══════════════ -->
+<div id="toast-container" aria-live="polite"></div>
 
 <!-- ══════════════ LOADING ══════════════ -->
 <div class="loading-overlay" id="loading-overlay">
@@ -2052,6 +2122,68 @@ function escapeHtml(s) {
 }
 
 
+// ═══════════════════════════════════════════
+// TOASTS
+// ═══════════════════════════════════════════
+function toast(title, msg = '', type = 'success') {
+  const c = document.getElementById('toast-container');
+  if (!c) return;
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  const ico = { success: '✅', error: '❌', warning: '⚠️' }[type] || 'ℹ️';
+  t.innerHTML = `<div class="toast-ico">${ico}</div><div><div class="toast-title">${escapeHtml(title)}</div>${msg ? `<div class="toast-msg">${escapeHtml(msg)}</div>` : ''}</div>`;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, 3500);
+}
+
+// Copie le numéro Orange Money dans le presse-papiers.
+function copyOM(el) {
+  const num = '+224621881210';
+  navigator.clipboard?.writeText(num).then(() => {
+    toast('Numéro copié !', 'Collez-le dans Orange Money');
+    el.style.background = 'rgba(255,94,20,.15)';
+    setTimeout(() => el.style.background = '', 500);
+  }).catch(() => toast('Numéro : +224 621 88 12 10', '', 'warning'));
+}
+
+// ═══════════════════════════════════════════
+// QUANTITÉ − / + (fiche produit)
+// ═══════════════════════════════════════════
+let currentQty = 1;
+function updateQty(delta) {
+  currentQty = Math.max(1, Math.min(10, currentQty + delta));
+  document.getElementById('pd-qty').textContent = currentQty;
+  updateOrderSummary();
+}
+
+// ═══════════════════════════════════════════
+// MÉMORISATION CLIENT (localStorage, 30 jours)
+// ═══════════════════════════════════════════
+const CUSTOMER_KEY = 'asma_customer';
+function saveCustomer() {
+  try {
+    localStorage.setItem(CUSTOMER_KEY, JSON.stringify({
+      nom: document.getElementById('f-fname').value,
+      tel: document.getElementById('f-phone').value,
+      adresse: document.getElementById('f-address').value,
+      ville: document.getElementById('f-city').value,
+      savedAt: Date.now(),
+    }));
+  } catch (e) {}
+}
+function restoreCustomer() {
+  try {
+    const raw = localStorage.getItem(CUSTOMER_KEY);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (Date.now() - (d.savedAt || 0) > 30 * 24 * 3600 * 1000) return;
+    if (d.nom) document.getElementById('f-fname').value = d.nom;
+    if (d.tel) document.getElementById('f-phone').value = d.tel;
+    if (d.adresse) document.getElementById('f-address').value = d.adresse;
+    if (d.ville) document.getElementById('f-city').value = d.ville;
+  } catch (e) {}
+}
+
 // Galerie — change l'image principale en cliquant sur une vignette.
 function switchGalleryThumb(el, url) {
   document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
@@ -2062,19 +2194,20 @@ function switchGalleryThumb(el, url) {
   setTimeout(() => { img.src = url; img.style.opacity = '1'; }, 200);
 }
 
-// Ajoute le produit actuellement ouvert en fiche au panier, ferme la fiche et ouvre le panier.
+// Ajoute le produit ouvert au panier avec la quantité choisie.
+// La fiche reste ouverte (toast de confirmation) — la cliente peut
+// continuer à lire ou commander directement.
 function addPdToCart() {
   const p = currentPdProduct;
   if (!p) return;
   const existing = cart.find(x => x.id === p.id);
   if (existing) {
-    existing.qty++;
+    existing.qty += currentQty;
   } else {
-    cart.push({ ...p, qty: 1 });
+    cart.push({ ...p, qty: currentQty });
   }
   updateCartUI();
-  closePD();
-  setTimeout(() => toggleCart(), 180);
+  toast('Ajouté au panier !', `${p.name} × ${currentQty}`);
 }
 
 function addToCart(productId) {
@@ -2525,12 +2658,7 @@ function openPD(productId) {
     videoBlock.style.display = 'none';
   }
 
-  // Pré-remplir les champs cachés
-  document.getElementById('f-product-id').value = p.id;
-  document.getElementById('f-product-name').value = p.name;
-  document.getElementById('f-product-price').value = p.price;
-
-  // Reset form
+  // Reset form + pré-remplir les champs cachés
   document.getElementById('order-form').reset();
   document.getElementById('f-product-id').value = p.id;
   document.getElementById('f-product-name').value = p.name;
@@ -2539,33 +2667,53 @@ function openPD(productId) {
   document.querySelectorAll('.pay-opt').forEach((o, i) => {
     o.classList.toggle('on', i === 0);
   });
+  document.getElementById('om-instructions').style.display = 'none';
+
+  // Réarmer le bouton (resté désactivé si une commande vient d'aboutir)
+  document.getElementById('submit-btn').disabled = false;
+  document.getElementById('submit-label').classList.remove('hidden');
+  document.getElementById('submit-spin').classList.add('hidden');
+
+  // Quantité, résumé produit dans le formulaire, urgence près du bouton
+  currentQty = 1;
+  document.getElementById('pd-qty').textContent = '1';
+  const sumImg = document.getElementById('pd-sum-img');
+  sumImg.innerHTML = p.image ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">` : p.emoji;
+  document.getElementById('pd-sum-name').textContent = p.name;
+  document.getElementById('pd-sum-stock').textContent = p.stock ? '✅ En stock — 24–48h' : '❌ Rupture de stock';
+  document.getElementById('pd-sum-stock').style.color = p.stock ? '#1A8A4A' : '#E74C3C';
+  document.getElementById('pd-stock-left').textContent = lowStockCount(p);
+  document.getElementById('pd-urgency-form').style.display = p.stock ? 'inline-flex' : 'none';
+
+  // Coordonnées mémorisées (30 jours) — la cliente ne re-saisit pas tout.
+  restoreCustomer();
   updateOrderSummary();
 
   document.getElementById('pd-overlay').classList.add('show');
+  document.getElementById('pd-sticky-cta').classList.add('show');
   document.body.style.overflow = 'hidden';
-
-  // Autofocus sur prénom
-  setTimeout(() => document.getElementById('f-fname')?.focus(), 200);
 }
 
 function closePD() {
   document.getElementById('pd-overlay').classList.remove('show');
+  document.getElementById('pd-sticky-cta').classList.remove('show');
   document.body.style.overflow = '';
   const video = document.getElementById('pd-video');
   if (video) video.pause();
-  // reset détails optionnels
-  const extra = document.getElementById('details-extra');
-  if (extra) extra.style.display = 'none';
-  const lbl = document.getElementById('details-toggle-label');
-  if (lbl) lbl.textContent = '+ Ajouter adresse, nom, note (optionnel)';
+  // reset note repliable
+  const noteField = document.getElementById('note-field');
+  if (noteField) noteField.style.display = 'none';
+  const lbl = document.getElementById('note-toggle-label');
+  if (lbl) lbl.textContent = '+ Ajouter une note pour le livreur (optionnel)';
 }
 
-function toggleDetails() {
-  const extra = document.getElementById('details-extra');
-  const lbl   = document.getElementById('details-toggle-label');
-  const open  = extra.style.display !== 'none';
-  extra.style.display = open ? 'none' : 'block';
-  lbl.textContent = open ? '+ Ajouter adresse, nom, note (optionnel)' : '− Masquer les détails';
+function togglePdNote() {
+  const field = document.getElementById('note-field');
+  const lbl   = document.getElementById('note-toggle-label');
+  const open  = field.style.display !== 'none';
+  field.style.display = open ? 'none' : 'block';
+  lbl.textContent = open ? '+ Ajouter une note pour le livreur (optionnel)' : '− Masquer la note';
+  if (!open) document.getElementById('f-note').focus();
 }
 
 document.getElementById('pd-overlay').addEventListener('click', function(e) {
@@ -2610,11 +2758,16 @@ function getDeliveryCost(city, subtotal) {
 function updateOrderSummary() {
   const p = currentPdProduct;
   if (!p) return;
-  const qty = parseInt(document.getElementById('f-qty').value) || 1;
+  const qty = currentQty;
   const subtotal = p.price * qty;
   const city = document.getElementById('f-city').value;
   const deliveryCost = getDeliveryCost(city, subtotal);
   const total = subtotal + (deliveryCost || 0);
+
+  // Totaux en direct : résumé produit du formulaire + barre sticky mobile
+  const grandTotal = city && deliveryCost !== null ? total : subtotal;
+  document.getElementById('pd-total').textContent = formatGNF(grandTotal);
+  document.getElementById('pd-sticky-total').textContent = formatGNF(grandTotal);
 
   document.getElementById('os-product').textContent = p.name.length > 30
     ? p.name.substring(0, 30) + '…' : p.name;
@@ -2702,18 +2855,27 @@ function closeRecap() {
 function openProductRecap() {
   const p = currentPdProduct;
   if (!p) return;
+  if (!p.stock) { toast('Rupture de stock', 'Ce produit n\'est plus disponible', 'warning'); return; }
   // Honeypot : si le champ leurre est rempli, c'est un bot -> on ignore.
   if (document.getElementById('f-website')?.value) return;
 
   const fname  = document.getElementById('f-fname').value.trim();
   const phone  = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
+  const addr   = document.getElementById('f-address').value.trim();
   const city   = document.getElementById('f-city').value;
-  const qty    = parseInt(document.getElementById('f-qty').value) || 1;
+  const qty    = currentQty;
   const payment= document.getElementById('f-payment').value;
   const total  = p.price * qty;
 
   // Validation inline (le bouton est type="button" -> le required HTML5 ne se déclenche pas).
   if (!validateOrderFields({ fnameId: 'f-fname', phoneId: 'f-phone', cityId: 'f-city', fname, phone, city })) return;
+
+  if (!addr) {
+    setFieldError('f-address', 'Merci d\'indiquer votre adresse de livraison (quartier, repère).');
+    document.getElementById('f-address').focus();
+    document.getElementById('f-address').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
 
   if (payment === 'Orange Money' && !document.getElementById('f-om-id').value.trim()) {
     setFieldError('f-om-id', 'Merci de renseigner l\'ID de transaction reçu par SMS.');
@@ -2738,6 +2900,7 @@ function openProductRecap() {
       <div class="recap-section-title">📍 Livraison</div>
       <div class="recap-row"><span>Nom</span><span>${escapeHtml(fname)}</span></div>
       <div class="recap-row"><span>Téléphone</span><span>${escapeHtml(phone)}</span></div>
+      <div class="recap-row"><span>Adresse</span><span>${escapeHtml(addr)}</span></div>
       <div class="recap-row"><span>Ville</span><span>${escapeHtml(city)}</span></div>
       <div class="recap-row"><span>Frais de livraison</span><span>${deliveryFee === 0 ? 'OFFERTE 🎁' : formatGNF(deliveryFee)}</span></div>
     </div>
@@ -2759,17 +2922,17 @@ async function doSubmitProductOrder() {
   if (!p) return;
 
   const fname  = document.getElementById('f-fname').value.trim();
-  const lname  = document.getElementById('f-lname').value.trim();
   const phone  = document.getElementById('f-phone').value.trim().replace(/\s/g, '');
   const city   = document.getElementById('f-city').value;
   const addr   = document.getElementById('f-address').value.trim();
-  const qty    = parseInt(document.getElementById('f-qty').value) || 1;
+  const qty    = currentQty;
   const payment= document.getElementById('f-payment').value;
   const note   = document.getElementById('f-note').value.trim();
   const omId   = document.getElementById('f-om-id').value.trim();
   const total  = p.price * qty;
 
   closeRecap();
+  saveCustomer();
 
   // Afficher loading
   document.getElementById('loading-overlay').classList.add('show');
@@ -2780,7 +2943,7 @@ async function doSubmitProductOrder() {
   const payload = {
     externalRef: `ASMA-${Date.now()}`,
     customer: {
-      fullName: `${fname} ${lname}`.trim(),
+      fullName: fname,
       phone,
       city,
       address: addr || null,
@@ -2827,8 +2990,9 @@ async function doSubmitProductOrder() {
 
     // Fallback WhatsApp
     const msg = `🌸 *NOUVELLE COMMANDE — ASMA SHOP*\n\n` +
-      `👤 Client: ${fname} ${lname}\n` +
+      `👤 Client: ${fname}\n` +
       `📞 Téléphone: ${phone}\n` +
+      `🏠 Adresse: ${addr}\n` +
       `📍 Ville: ${city}\n` +
       `📦 Produit: ${p.name}\n` +
       `🔢 Quantité: ${qty}\n` +
