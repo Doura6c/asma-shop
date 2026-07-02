@@ -306,6 +306,39 @@ section{padding:6rem 6%;}
 .pd-delivery{background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:.8rem 1rem;font-size:.78rem;color:#6EE89A;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
 .pd-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
 .pd-feat{background:var(--or-bg);color:var(--or);font-size:.62rem;font-weight:600;padding:4px 10px;border-radius:3px;border:1px solid rgba(201,168,76,.2);}
+/* ===== GALERIE MÉDIA (structure HPSHOP, palette Asma) ===== */
+.pd-visual{display:flex;flex-direction:column;}
+.pd-media-img{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center;cursor:zoom-in;z-index:1;}
+.pd-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:2;}
+.pd-zoom-btn{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:none;background:rgba(253,248,240,.88);box-shadow:0 2px 8px rgba(28,18,8,.18);font-size:1rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;}
+.pd-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:3;}
+.pd-dot{width:7px;height:7px;border-radius:50%;background:rgba(28,18,8,.22);cursor:pointer;transition:all .25s;}
+.pd-dot.active{background:var(--or);width:20px;border-radius:4px;}
+.pd-thumbs{display:flex;gap:.5rem;padding:.7rem 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;background:linear-gradient(135deg,#FDF4E8,#F5E6CC);}
+.pd-thumbs::-webkit-scrollbar{height:5px;}
+.pd-thumb{flex:0 0 auto;width:56px;height:56px;border-radius:8px;border:2px solid rgba(168,116,32,.25);background:#fff center/contain no-repeat;cursor:pointer;position:relative;padding:0;transition:border-color .2s,transform .2s;}
+.pd-thumb.active{border-color:var(--or);box-shadow:0 3px 12px rgba(168,116,32,.35);}
+.pd-thumb-badge{position:absolute;bottom:-1px;right:-1px;font-size:.6rem;line-height:1;padding:2px 4px;border-radius:6px 0 6px 0;color:#fff;}
+.pd-thumb-badge.vid{background:var(--or);}
+.pd-thumb-badge.pub{background:var(--or-lt);}
+.pd-zoom{position:fixed;inset:0;background:rgba(28,18,8,.92);z-index:1200;display:none;align-items:center;justify-content:center;padding:1rem;cursor:zoom-out;}
+.pd-zoom.show{display:flex;}
+.pd-zoom img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
+.pd-zoom-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:none;background:rgba(253,248,240,.15);color:#fff;font-size:1.2rem;cursor:pointer;}
+/* Vidéo « en action » + photos pub + mode d'emploi (après le formulaire) */
+.pd-video-block,.pd-more-images,.pd-usage-block{padding:0 2.5rem 1.3rem;background:#F7EFE1;}
+.pd-usage-block{padding-bottom:2rem;}
+.pd-more-images{display:flex;flex-direction:column;gap:.7rem;}
+.pd-video-label{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem;}
+.pd-form-video{width:100%;max-height:440px;border-radius:12px;background:#000;display:block;object-fit:contain;box-shadow:0 8px 28px rgba(28,18,8,.14);}
+.pd-more-label{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.1rem;display:flex;align-items:center;gap:.4rem;}
+.pd-more-images img{width:100%;border-radius:12px;display:block;border:1px solid rgba(168,116,32,.2);}
+.pd-usage{margin:0;padding:.2rem 0 0;list-style:none;counter-reset:step;}
+.pd-usage li{position:relative;counter-increment:step;margin-left:1.05rem;padding:0 0 1.25rem 2.5rem;border-left:2px dashed rgba(201,168,76,.5);}
+.pd-usage li:last-child{border-left-color:transparent;padding-bottom:0;}
+.pd-usage li::before{content:counter(step);position:absolute;left:-1.06rem;top:-.2rem;width:2.1rem;height:2.1rem;background:linear-gradient(135deg,var(--or),var(--or-lt));color:#FDF8F0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.92rem;box-shadow:0 4px 12px rgba(168,116,32,.35);border:3px solid #FDF8F0;z-index:1;}
+.pd-usage li span{display:block;background:#FDF8F0;border:1.5px solid rgba(168,116,32,.25);border-radius:14px;padding:.8rem 1rem;font-size:.94rem;line-height:1.5;color:var(--text);box-shadow:0 3px 12px rgba(28,18,8,.05);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+.pd-usage li:hover span{transform:translateX(4px);box-shadow:0 6px 20px rgba(201,168,76,.18);border-color:var(--or-lt);}
 .pd-form-section{background:#F7EFE1;border-top:1px solid rgba(168,116,32,.15);padding:2.5rem;}
 .pd-form-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
 .fg{margin-bottom:1rem;}
@@ -772,8 +805,16 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
     <button class="pd-close" onclick="closePD()" aria-label="Fermer">✕</button>
     <div class="pd-box">
       <div class="pd-top">
-        <div class="pd-media">
-          <div class="pd-emoji" id="pd-emoji">💄</div>
+        <!-- ===== GALERIE MÉDIA UNIFIÉE (image + vues, swipe + dots + zoom) ===== -->
+        <div class="pd-visual">
+          <div class="pd-media" id="pd-stage">
+            <video id="pd-video" class="pd-video" muted loop playsinline preload="none" style="display:none"></video>
+            <div class="pd-emoji" id="pd-emoji">💄</div>
+            <button type="button" class="pd-zoom-btn" id="pd-zoom-btn" onclick="openPdZoom()" aria-label="Agrandir l'image">🔍</button>
+            <div class="pd-dots" id="pd-dots"></div>
+          </div>
+          <!-- MINIATURES (générées dynamiquement, scroll horizontal mobile) -->
+          <div class="pd-thumbs" id="pd-thumbs"></div>
         </div>
         <div class="pd-info">
           <div class="pd-cat-tag" id="pd-cat">Maquillage</div>
@@ -926,6 +967,19 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
             WhatsApp = réponse immédiate · Enregistrer = confirmation par appel sous 2h
           </p>
         </form>
+
+        <!-- VIDÉO PUB (1 seule par produit) — APRÈS le formulaire -->
+        <div class="pd-video-block" id="pd-video-block" style="display:none">
+          <div class="pd-video-label">🎬 Voir le produit en action</div>
+          <video id="pd-form-video" class="pd-form-video" muted loop playsinline controls preload="none"></video>
+        </div>
+        <!-- Le reste des photos (au-delà des 3 miniatures) -->
+        <div class="pd-more-images" id="pd-more-images" style="display:none"></div>
+        <!-- Mode d'emploi (étapes numérotées) -->
+        <div class="pd-usage-block" id="pd-usage-block" style="display:none">
+          <div class="pd-video-label">📋 Comment utiliser ce produit</div>
+          <ol class="pd-usage" id="pd-usage"></ol>
+        </div>
       </div>
     </div>
   </div>
@@ -1251,6 +1305,7 @@ const PRODUCTS = [
     price: 85000, oldPrice: 120000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Longue tenue 12h', 'Non desséchant', '8 teintes', 'Sans paraben'],
+    video: '',
   },
   {
     id: 'maq-002', emoji: '🎨', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
@@ -1259,6 +1314,7 @@ const PRODUCTS = [
     price: 130000, oldPrice: 180000,
     badge: 'new', stock: true, stars: 5,
     features: ['Spécial peau noire', 'Anti-oxydation', 'SPF 20', 'Fini naturel'],
+    video: '',
   },
   {
     id: 'maq-003', emoji: '👁️', image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
@@ -1267,6 +1323,7 @@ const PRODUCTS = [
     price: 95000, oldPrice: 140000,
     badge: 'top', stock: true, stars: 4,
     features: ['18 teintes', 'Ultra-pigmentée', 'Longue tenue', 'Usage pro'],
+    video: '',
   },
   {
     id: 'maq-004', emoji: '😍', image: 'https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=400&q=80', cat: 'maquillage', catLabel: 'Maquillage',
@@ -1275,6 +1332,7 @@ const PRODUCTS = [
     price: 70000, oldPrice: null,
     badge: null, stock: true, stars: 5,
     features: ['Waterproof', 'Volume × 3', 'Anti-grumeaux', 'Résistant chaleur'],
+    video: '',
   },
 
   // 🌸 SOINS VISAGE
@@ -1285,6 +1343,7 @@ const PRODUCTS = [
     price: 150000, oldPrice: 200000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Sans mercure', 'Sans hydroquinone', 'Vitamine C', 'Résultats 2 semaines'],
+    video: '',
   },
   {
     id: 'vis-002', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80', emoji: '🌿', cat: 'soins-visage', catLabel: 'Soins Visage',
@@ -1293,6 +1352,7 @@ const PRODUCTS = [
     price: 190000, oldPrice: 260000,
     badge: 'new', stock: true, stars: 5,
     features: ['Vitamine C 20%', 'Anti-taches', 'Anti-âge', 'Absorption rapide'],
+    video: '',
   },
   {
     id: 'vis-003', image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80', emoji: '🧴', cat: 'soins-visage', catLabel: 'Soins Visage',
@@ -1301,6 +1361,7 @@ const PRODUCTS = [
     price: 65000, oldPrice: null,
     badge: null, stock: true, stars: 4,
     features: ['Argile blanche', 'Charbon actif', 'Pores resserrés', 'Effet mat'],
+    video: '',
   },
   {
     id: 'vis-004', image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80', emoji: '💧', cat: 'soins-visage', catLabel: 'Soins Visage',
@@ -1309,6 +1370,31 @@ const PRODUCTS = [
     price: 160000, oldPrice: 210000,
     badge: 'top', stock: true, stars: 5,
     features: ['100% pure', 'Certifiée bio', 'Multi-usage', 'Sans conservateur'],
+    video: '',
+  },
+  {
+    id: 'vis-005', image: 'assets/products/p02-kojic-lotion.jpg', emoji: '✨', cat: 'soins-visage', catLabel: 'Soins Visage',
+    name: 'Soin Kojic Acid Anti-Taches & Anti-Acné',
+    desc: 'Gamme à l\'acide kojique (lotion + crème) qui estompe taches brunes, boutons et cicatrices pour un teint clair et uniforme. Appliquez matin et soir sur peau propre, avec une protection solaire le jour. Résultats visibles en 14 jours.',
+    price: 165000, oldPrice: 250000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['Acide kojique', 'Anti-taches & anti-acné', 'Lotion + crème', 'Résultats en 14 jours'],
+    imgs: ['assets/products/p02-kojic-cream.jpg'],
+    pub: ['assets/products/p02-pub-modele.jpg', 'assets/products/p02b-avant-apres.jpg'],
+    video: 'assets/videos/p02-kojic.mp4',
+    usage: ['Nettoyez et séchez votre peau matin et soir.', 'Appliquez une fine couche sur les zones à traiter.', 'Massez délicatement jusqu\'à absorption, en évitant le contour des yeux.', 'Le jour, appliquez une protection solaire pour de meilleurs résultats.'],
+  },
+  {
+    id: 'vis-006', image: 'assets/products/p03d-aqa-box.jpg', emoji: '🦷', cat: 'soins-visage', catLabel: 'Soins Visage',
+    name: 'Poudre Minérale AQA — Restauration de l\'Émail',
+    desc: 'Reminéralise et blanchit les dents en comblant les micro-fissures de l\'émail. Brossez doucement 2 minutes matin et soir avec la poudre : un sourire éclatant à la maison, sans dentiste, dès les premiers jours.',
+    price: 185000, oldPrice: 280000,
+    badge: 'top', stock: true, stars: 5,
+    features: ['Reminéralise l\'émail', 'Effet blanchissant', '2 min matin & soir', 'Sans dentiste'],
+    imgs: ['assets/products/p03b-benefices.jpg'],
+    pub: ['assets/products/p03-pub-avantapres.jpg', 'assets/products/p03-pub-shield.jpg', 'assets/products/aqa-oyikey.jpg'],
+    video: '',
+    usage: ['Humidifiez votre brosse à dents.', 'Trempez-la dans la poudre minérale AQA.', 'Brossez doucement 2 minutes, matin et soir.', 'Rincez à l\'eau : un sourire plus blanc dès les premiers jours.'],
   },
 
   // 💆 SOINS CORPS
@@ -1319,6 +1405,7 @@ const PRODUCTS = [
     price: 120000, oldPrice: 155000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Beurre de karité', 'Hydratation 24h', 'Peau lumineuse', 'Parfum rose'],
+    video: '',
   },
   {
     id: 'cor-002', image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80', emoji: '🥥', cat: 'soins-corps', catLabel: 'Soins Corps',
@@ -1327,6 +1414,7 @@ const PRODUCTS = [
     price: 85000, oldPrice: null,
     badge: null, stock: true, stars: 5,
     features: ['Pressée à froid', 'Multi-usage', '100% naturelle', 'Peau & cheveux'],
+    video: '',
   },
   {
     id: 'cor-003', image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&q=80', emoji: '✨', cat: 'soins-corps', catLabel: 'Soins Corps',
@@ -1335,6 +1423,31 @@ const PRODUCTS = [
     price: 110000, oldPrice: 145000,
     badge: 'new', stock: true, stars: 4,
     features: ['Exfoliant naturel', 'Anti-cellulite', 'Peau lumineuse', 'Parfum café'],
+    video: '',
+  },
+  {
+    id: 'cor-004', image: 'assets/products/p01-shilajit.jpg', emoji: '🍯', cat: 'soins-corps', catLabel: 'Soins Corps',
+    name: 'Shilajit Gummies Himalayen — Énergie & Vitalité',
+    desc: 'Cure de minéraux purs de l\'Himalaya pour booster énergie, endurance et immunité. 1 à 2 gommes par jour, de préférence le matin, à bien mâcher — effet ressenti dès la première semaine.',
+    price: 245000, oldPrice: 360000,
+    badge: 'hot', stock: true, stars: 5,
+    features: ['Minéraux purs Himalaya', '1 gomme par jour', 'Énergie & endurance', 'Effet dès la 1ʳᵉ semaine'],
+    imgs: ['assets/products/p01-shilajit-natural.jpg'],
+    pub: ['assets/products/p01-pub-strength.jpg'],
+    video: 'assets/videos/p01-shilajit.mp4',
+    usage: ['Prenez 1 à 2 gommes par jour, de préférence le matin.', 'Mâchez bien avant d\'avaler — inutile de prendre avec de l\'eau.', 'Faites une cure régulière pour une énergie et une vitalité durables.'],
+  },
+  {
+    id: 'cor-005', image: 'assets/products/p11-coupe-ongles-electrique.jpg', emoji: '💅', cat: 'soins-corps', catLabel: 'Soins Corps',
+    name: 'Coupe-Ongles & Polisseur Électrique 2-en-1',
+    desc: 'Coupe et polit les ongles sans effort, mains comme pieds, pour une manucure parfaite à la maison. Lumière LED intégrée, 2 vitesses, rechargeable et sûr pour toute la famille, même les bébés.',
+    price: 175000, oldPrice: 260000,
+    badge: 'new', stock: true, stars: 5,
+    features: ['2-en-1 : coupe & polit', 'Lumière LED', '2 vitesses', 'Rechargeable'],
+    imgs: ['assets/products/p11-clipper2.jpg'],
+    pub: ['assets/products/p11-pub-bebe.jpg'],
+    video: 'assets/videos/p11-coupe-ongles.mp4',
+    usage: ['Rechargez l\'appareil avant la première utilisation.', 'Choisissez l\'embout adapté (coupe ou polissage).', 'Passez doucement sur l\'ongle, sans appuyer.', 'Nettoyez l\'embout après usage. Idéal bébés, adultes et seniors.'],
   },
 
   // 🌺 PARFUMS
@@ -1345,6 +1458,7 @@ const PRODUCTS = [
     price: 260000, oldPrice: 350000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Tenue 24h', 'Notes d\'oud', 'Sillage intense', 'Formule concentrée'],
+    video: '',
   },
   {
     id: 'par-002', image: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=400&q=80', emoji: '🌸', cat: 'parfums', catLabel: 'Parfums',
@@ -1353,6 +1467,7 @@ const PRODUCTS = [
     price: 210000, oldPrice: 280000,
     badge: 'new', stock: true, stars: 5,
     features: ['Floral oriental', 'Tenue 12h', 'Hibiscus & jasmin', 'Fabriqué en Guinée'],
+    video: '',
   },
   {
     id: 'par-003', image: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&q=80', emoji: '✨', cat: 'parfums', catLabel: 'Parfums',
@@ -1361,6 +1476,7 @@ const PRODUCTS = [
     price: 90000, oldPrice: null,
     badge: null, stock: true, stars: 4,
     features: ['Corps & cheveux', 'Musc & vanille', 'Léger & frais', 'Rechargeable'],
+    video: '',
   },
 
   // 👗 MODE FEMME
@@ -1371,6 +1487,7 @@ const PRODUCTS = [
     price: 450000, oldPrice: 600000,
     badge: 'top', stock: true, stars: 5,
     features: ['Tissu africain', 'Sur mesure', 'Tailles S-XXL', 'Broderie main'],
+    video: '',
   },
   {
     id: 'mod-002', image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80', emoji: '🌈', cat: 'mode', catLabel: 'Mode Femme',
@@ -1379,6 +1496,7 @@ const PRODUCTS = [
     price: 380000, oldPrice: 480000,
     badge: 'new', stock: true, stars: 4,
     features: ['Wax authentique', 'Coupe moderne', 'Respirant', 'Pour cérémonies'],
+    video: '',
   },
 
   // 🧼 SAVONS NATURELS
@@ -1389,6 +1507,7 @@ const PRODUCTS = [
     price: 35000, oldPrice: 50000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Huile d\'argan pure', 'Visage & corps', 'Sans sulfates', 'Tous types de peau'],
+    video: '',
   },
   {
     id: 'sav-002', image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80', emoji: '🐪', cat: 'savons', catLabel: 'Savons Naturels',
@@ -1397,6 +1516,7 @@ const PRODUCTS = [
     price: 45000, oldPrice: 65000,
     badge: 'new', stock: true, stars: 5,
     features: ['Lait de chameau frais', 'Anti-âge', 'Vitamines A B C', 'Résultats 2 semaines'],
+    video: '',
   },
   {
     id: 'sav-003', image: 'https://images.unsplash.com/photo-1556760544-74068565f05c?w=400&q=80', emoji: '🌿', cat: 'savons', catLabel: 'Savons Naturels',
@@ -1405,6 +1525,7 @@ const PRODUCTS = [
     price: 30000, oldPrice: null,
     badge: 'top', stock: true, stars: 4,
     features: ['Résine naturelle', 'Anti-acné', 'Antiseptique', 'Recette ancestrale'],
+    video: '',
   },
   {
     id: 'sav-004', image: 'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=400&q=80', emoji: '🍋', cat: 'savons', catLabel: 'Savons Naturels',
@@ -1413,6 +1534,7 @@ const PRODUCTS = [
     price: 28000, oldPrice: 40000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Citron africain', 'Vitamine C naturelle', 'Anti-taches', 'Exfoliant doux'],
+    video: '',
   },
   {
     id: 'sav-005', emoji: '⚫', cat: 'savons', catLabel: 'Savons Naturels',
@@ -1421,6 +1543,7 @@ const PRODUCTS = [
     price: 32000, oldPrice: null,
     badge: 'new', stock: true, stars: 4,
     features: ['Charbon actif', 'Argile noire', 'Pores nets', 'Peaux grasses'],
+    video: '',
   },
   {
     id: 'sav-006', emoji: '🌹', cat: 'savons', catLabel: 'Savons Naturels',
@@ -1429,6 +1552,7 @@ const PRODUCTS = [
     price: 32000, oldPrice: 45000,
     badge: null, stock: true, stars: 5,
     features: ['Beurre de karité', 'Pétales de rose', 'Peaux sèches', 'Surgras'],
+    video: '',
   },
 
   // 👔 HOMME
@@ -1439,6 +1563,7 @@ const PRODUCTS = [
     price: 280000, oldPrice: 380000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Notes d\'oud', 'Tenue 24h', 'Sillage intense', 'Idéal cadeau'],
+    video: '',
   },
   {
     id: 'hom-002', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80', emoji: '💪', cat: 'homme', catLabel: 'Homme',
@@ -1447,6 +1572,7 @@ const PRODUCTS = [
     price: 95000, oldPrice: 130000,
     badge: 'new', stock: true, stars: 4,
     features: ['Non grasse', 'Absorption rapide', 'Vitamine E', 'Aloe vera'],
+    video: '',
   },
   {
     id: 'hom-003', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80', emoji: '🧔', cat: 'homme', catLabel: 'Homme',
@@ -1455,6 +1581,7 @@ const PRODUCTS = [
     price: 75000, oldPrice: null,
     badge: 'top', stock: true, stars: 5,
     features: ['Argan & jojoba', 'Anti-démangeaisons', 'Barbe brillante', 'Parfum boisé'],
+    video: '',
   },
   {
     id: 'hom-004', image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80', emoji: '✂️', cat: 'homme', catLabel: 'Homme',
@@ -1463,6 +1590,7 @@ const PRODUCTS = [
     price: 65000, oldPrice: 85000,
     badge: null, stock: true, stars: 4,
     features: ['Aloe vera', 'Anti-irritations', 'Pores resserrés', 'Parfum agrumes'],
+    video: '',
   },
   {
     id: 'hom-005', image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=400&q=80', emoji: '🧼', cat: 'homme', catLabel: 'Homme',
@@ -1471,6 +1599,7 @@ const PRODUCTS = [
     price: 35000, oldPrice: null,
     badge: 'new', stock: true, stars: 4,
     features: ['Charbon actif', 'Menthe fraîche', 'Anti-odeurs', 'Sensation fraîche'],
+    video: '',
   },
 
   // 💍 BIJOUX
@@ -1481,6 +1610,7 @@ const PRODUCTS = [
     price: 120000, oldPrice: 160000,
     badge: 'hot', stock: true, stars: 5,
     features: ['Artisanal guinéen', 'Perles naturelles', 'Collier + boucles', 'Pour cérémonies'],
+    video: '',
   },
   {
     id: 'bij-002', image: 'https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=400&q=80', emoji: '✨', cat: 'bijoux', catLabel: 'Bijoux',
@@ -1489,6 +1619,7 @@ const PRODUCTS = [
     price: 75000, oldPrice: 100000,
     badge: 'new', stock: true, stars: 4,
     features: ['Set de 5', 'Hypoallergénique', 'Résistant eau', 'Idéal cadeau'],
+    video: '',
   },
 ];
 
@@ -1742,13 +1873,76 @@ function openPD(productId) {
   if (!p) return;
   currentPdProduct = p;
 
-  const pdMedia = document.querySelector('.pd-media');
-  if (p.image) {
-    pdMedia.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:0;">`;
-  } else {
-    pdMedia.innerHTML = `<div class="pd-emoji" id="pd-emoji">${p.emoji}</div>`;
+  // ===== GALERIE MÉDIA UNIFIÉE (packshot → vues → pub, structure HPSHOP) =====
+  const stage = document.getElementById('pd-stage');
+  let bigImg = document.getElementById('pd-big-img');
+  if (!bigImg) {
+    bigImg = document.createElement('div');
+    bigImg.id = 'pd-big-img';
+    bigImg.className = 'pd-media-img';
+    stage.insertBefore(bigImg, document.getElementById('pd-emoji'));
   }
-  document.getElementById('pd-emoji') && (document.getElementById('pd-emoji').textContent = p.emoji);
+  const emojiEl = document.getElementById('pd-emoji');
+  emojiEl.textContent = p.emoji;
+
+  // Galerie = image principale + vues supplémentaires (max 3 miniatures, jamais de doublon)
+  const GAL_MAX = 3;
+  let gal = p.image ? [{ type: 'img', src: p.image, kind: 'Produit' }] : [];
+  (p.imgs || []).forEach(s => gal.push({ type: 'img', src: s, kind: 'Vue' }));
+  const _seen = new Set();
+  gal = gal.filter(m => { if (_seen.has(m.src)) return false; _seen.add(m.src); return true; });
+  const _overflow = gal.slice(GAL_MAX).map(m => m.src); // angles au-delà de 3
+  const M = gal.slice(0, GAL_MAX);
+  window.pdMedia = M;
+
+  const hasImg = M.length > 0;
+  emojiEl.style.display = hasImg ? 'none' : '';
+  bigImg.style.display = hasImg ? '' : 'none';
+  document.getElementById('pd-zoom-btn').style.display = hasImg ? '' : 'none';
+
+  // Le RESTE des photos (pub/lifestyle + surplus) → empilées sous la vidéo, sans doublon
+  const _belowSeen = new Set(M.map(m => m.src));
+  const _belowImgs = (p.pub || []).concat(_overflow).filter(s => { if (_belowSeen.has(s)) return false; _belowSeen.add(s); return true; });
+  const moreEl = document.getElementById('pd-more-images');
+  if (_belowImgs.length) {
+    moreEl.innerHTML = '<div class="pd-more-label">📸 Le produit en images</div>' + _belowImgs.map((s, idx) => `<img src="${s}" loading="${idx < 1 ? 'eager' : 'lazy'}" alt="${p.name}">`).join('');
+    moreEl.style.display = '';
+  } else { moreEl.innerHTML = ''; moreEl.style.display = 'none'; }
+
+  // Vidéo démo : bloc dédié EN GRAND après le formulaire (pas dans la galerie)
+  const vBlock = document.getElementById('pd-video-block');
+  const vEl = document.getElementById('pd-form-video');
+  if (p.video) {
+    if (vEl.getAttribute('src') !== p.video) { vEl.setAttribute('src', p.video); vEl.setAttribute('poster', p.image || ''); vEl.load(); }
+    vBlock.style.display = '';
+    attachDetailVideoAutoplay(vEl);
+  } else {
+    vEl.pause(); vEl.removeAttribute('src');
+    vBlock.style.display = 'none';
+  }
+
+  // Mode d'emploi (étapes numérotées)
+  const uBlock = document.getElementById('pd-usage-block');
+  if (p.usage && p.usage.length) {
+    document.getElementById('pd-usage').innerHTML = p.usage.map(s => `<li><span>${s}</span></li>`).join('');
+    uBlock.style.display = '';
+  } else { uBlock.style.display = 'none'; }
+
+  // Vignettes (1re eager, reste lazy via background)
+  const thumbsEl = document.getElementById('pd-thumbs');
+  thumbsEl.innerHTML = M.map((m, i) => {
+    const bg = m.type === 'video' ? m.poster : m.src;
+    const badge = m.type === 'video' ? '<span class="pd-thumb-badge vid">▶</span>'
+                : (m.kind === 'pub' ? '<span class="pd-thumb-badge pub">★</span>' : '');
+    return `<button type="button" class="pd-thumb${i === 0 ? ' active' : ''}" data-i="${i}" onclick="pdGo(${i})" style="background-image:url('${bg}')">${badge}</button>`;
+  }).join('');
+  thumbsEl.style.display = M.length > 1 ? 'flex' : 'none';
+
+  // Dots (indicateur de position)
+  const dotsEl = document.getElementById('pd-dots');
+  dotsEl.innerHTML = M.length > 1 ? M.map((m, i) => `<span class="pd-dot${i === 0 ? ' active' : ''}" data-i="${i}" onclick="pdGo(${i})"></span>`).join('') : '';
+
+  if (hasImg) pdGo(0); // afficher le 1er média
   document.getElementById('pd-cat').textContent = p.catLabel;
   document.getElementById('pd-name').textContent = p.name;
   document.getElementById('pd-desc').textContent = p.desc;
@@ -1802,7 +1996,87 @@ function openPD(productId) {
   setTimeout(() => document.getElementById('f-fname')?.focus(), 200);
 }
 
+// ===== GALERIE MÉDIA : navigation, swipe, zoom (structure HPSHOP) =====
+function pdGo(i) {
+  const M = window.pdMedia || []; if (!M[i]) return;
+  window.pdIdx = i;
+  const m = M[i];
+  const big = document.getElementById('pd-big-img');
+  const vid = document.getElementById('pd-video');
+  const zoomBtn = document.getElementById('pd-zoom-btn');
+  if (m.type === 'video') {
+    if (big) big.style.display = 'none';
+    if (vid) {
+      vid.style.display = '';
+      if (vid.getAttribute('src') !== m.src) { vid.setAttribute('src', m.src); }
+      vid.play().catch(() => {});
+    }
+    if (zoomBtn) zoomBtn.style.display = 'none';
+  } else {
+    if (vid) { vid.pause(); vid.style.display = 'none'; }
+    if (big) {
+      big.style.display = '';
+      big.style.backgroundImage = `url('${m.src}'),linear-gradient(135deg,#FDF4E8,#F5E6CC)`;
+    }
+    if (zoomBtn) zoomBtn.style.display = '';
+  }
+  document.querySelectorAll('#pd-thumbs .pd-thumb').forEach(t => t.classList.toggle('active', +t.dataset.i === i));
+  document.querySelectorAll('#pd-dots .pd-dot').forEach(d => d.classList.toggle('active', +d.dataset.i === i));
+}
+function pdShift(d) {
+  const M = window.pdMedia || []; if (!M.length) return;
+  let i = (window.pdIdx || 0) + d;
+  if (i < 0) i = M.length - 1;
+  if (i >= M.length) i = 0;
+  pdGo(i);
+}
+// Swipe gauche/droite sur mobile
+(function initPdSwipe() {
+  const st = document.getElementById('pd-stage'); if (!st) return;
+  let x0 = null;
+  st.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  st.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) pdShift(dx < 0 ? 1 : -1);
+    x0 = null;
+  });
+})();
+// Zoom sur tap/clic (image uniquement)
+function openPdZoom() {
+  const m = (window.pdMedia || [])[window.pdIdx || 0]; if (!m || m.type !== 'img') return;
+  let z = document.getElementById('pd-zoom');
+  if (!z) {
+    z = document.createElement('div'); z.id = 'pd-zoom'; z.className = 'pd-zoom';
+    z.onclick = closePdZoom;
+    z.innerHTML = '<img id="pd-zoom-img" alt=""><button class="pd-zoom-close" type="button" aria-label="Fermer">✕</button>';
+    document.body.appendChild(z);
+  }
+  document.getElementById('pd-zoom-img').src = m.src;
+  z.classList.add('show');
+}
+function closePdZoom() { const z = document.getElementById('pd-zoom'); if (z) z.classList.remove('show'); }
+
+// Lecture auto de la vidéo détail quand elle entre dans la vue (root = modal défilant)
+let _detailVidObs = null;
+function attachDetailVideoAutoplay(v) {
+  if (!_detailVidObs) {
+    _detailVidObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.play().catch(() => {});
+        else e.target.pause();
+      });
+    }, { root: document.getElementById('pd-overlay'), threshold: 0.35 });
+  }
+  _detailVidObs.observe(v);
+}
+
 function closePD() {
+  // Stopper toutes les vidéos (galerie + bloc démo) et libérer le téléchargement (data)
+  const pdVideo = document.getElementById('pd-video');
+  if (pdVideo) { pdVideo.pause(); pdVideo.removeAttribute('src'); pdVideo.load(); }
+  const formVid = document.getElementById('pd-form-video');
+  if (formVid) { formVid.pause(); }
   document.getElementById('pd-overlay').classList.remove('show');
   document.body.style.overflow = '';
   // reset détails optionnels
