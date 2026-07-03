@@ -1845,6 +1845,18 @@ const CONFIG = {
   trackingUrl: 'https://cod-crm-zeta.vercel.app/suivi',
 };
 
+// Journal commande → Google Sheets (best-effort, en parallèle du CRM, ne le bloque jamais)
+function logToSheets(row){
+  try {
+    fetch('/api/log-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(row),
+      keepalive: true
+    }).catch(function(){});
+  } catch(e){}
+}
+
 // ═══════════════════════════════════════════
 // CATALOGUE PRODUITS
 // ═══════════════════════════════════════════
@@ -2560,6 +2572,14 @@ async function doSubmitCartOrder() {
       document.getElementById('success-message').textContent =
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
+      // Journal Google Sheets (en parallèle, best-effort)
+      logToSheets({
+        code: data.order.code, externalRef: payload.externalRef,
+        nom: `${fname} ${lname}`.trim(), telephone: phone, adresse: addr, ville: city,
+        produits: items.map(function(i){ return i.name + ' ×' + i.quantity; }).join(', '),
+        quantite: items.reduce(function(s,i){ return s + i.quantity; }, 0),
+        total: subtotal, paiement: payment, statut: 'NOUVEAU'
+      });
     } else {
       throw new Error(data.error || 'Erreur serveur');
     }
@@ -3083,6 +3103,13 @@ async function doSubmitProductOrder() {
         `Merci ${fname} ! Votre commande a bien été enregistrée. Notre équipe vous contactera sous peu sur WhatsApp au ${phone} pour confirmer la livraison. 🌸`;
       document.getElementById('success-modal').classList.add('show');
       trackOrder(p, qty, total, phone);
+      // Journal Google Sheets (en parallèle, best-effort)
+      logToSheets({
+        code: data.order.code, externalRef: payload.externalRef,
+        nom: fname, telephone: phone, adresse: addr, ville: city,
+        produits: p.name, quantite: qty, total: total,
+        paiement: payment, statut: 'NOUVEAU'
+      });
     } else {
       throw new Error(data.error || 'Erreur serveur');
     }
