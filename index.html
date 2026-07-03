@@ -998,6 +998,10 @@ footer .footer-badge{background:rgba(168,116,32,.15);border-color:rgba(168,116,3
       <span class="cat-emoji">💆</span>
       <div class="cat-name">Soins Corps</div>
     </div>
+    <div class="cat-card" onclick="filterCat('cheveux')" role="tab">
+      <span class="cat-emoji">💇</span>
+      <div class="cat-name">Cheveux</div>
+    </div>
     <div class="cat-card" onclick="filterCat('parfums')" role="tab">
       <span class="cat-emoji">🌺</span>
       <div class="cat-name">Parfums</div>
@@ -1894,6 +1898,17 @@ const PRODUCTS = [
     badge: null, stock: true, stars: 5,
     features: ['Waterproof', 'Volume × 3', 'Anti-grumeaux', 'Résistant chaleur'],
   },
+  {
+    id: 'maq-005', emoji: '🪞', image: 'assets/products/miroir-led.webp', cat: 'maquillage', catLabel: 'Maquillage',
+    name: 'Miroir de Maquillage LED Rechargeable — 3 Modes de Lumière',
+    desc: 'Un miroir lumineux digne des instituts, pour un maquillage parfait à toute heure. Éclairage LED doux et réglable sur 3 intensités, commande tactile, rechargeable par USB — sans fil ni pile. Sa base élégante range aussi tes bijoux et cosmétiques. Féminin, chic, et l\'idée cadeau parfaite. 💕',
+    price: 200000, oldPrice: null,
+    badge: 'new', stock: true, stars: 5,
+    features: ['Éclairage LED 3 intensités', 'Commande tactile', 'Rechargeable USB', 'Base range-bijoux'],
+    images: ['assets/products/miroir-led-2.webp', 'assets/products/miroir-led-3.webp'],
+    video: 'assets/videos/miroir-led.mp4',
+    usage: ['Rechargez le miroir via le câble USB avant utilisation.', 'Touchez le bouton tactile pour l\'allumer.', 'Appuyez à nouveau pour régler l\'intensité (3 modes).', 'Posez vos bijoux et cosmétiques sur la base.'],
+  },
 
   // 🌸 SOINS VISAGE
   {
@@ -2003,7 +2018,7 @@ const PRODUCTS = [
     usage: ['Rechargez l\'appareil avant la première utilisation.', 'Choisissez l\'embout adapté (coupe ou polissage).', 'Passez doucement sur l\'ongle, sans appuyer.', 'Nettoyez l\'embout après usage. Idéal bébés, adultes et seniors.'],
   },
   {
-    id: 'cor-006', image: 'assets/products/lisseur-usb.webp', emoji: '💇', cat: 'soins-corps', catLabel: 'Soins Corps',
+    id: 'cor-006', image: 'assets/products/lisseur-usb.webp', emoji: '💇', cat: 'cheveux', catLabel: 'Cheveux',
     name: 'Brosse Lissante Chauffante Sans Fil — Rechargeable USB',
     desc: 'Des cheveux lisses et brillants en quelques minutes, sans fil et sans effort. Cette brosse chauffante démêle et lisse d\'un seul geste, chauffe jusqu\'à 200°C avec écran digital, et se recharge par USB — glisse-la dans ton sac pour des cheveux parfaits partout, à la maison comme en voyage.',
     price: 280000, oldPrice: null,
@@ -2652,7 +2667,7 @@ function filterCat(cat) {
   // Update active state
   document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
   const cards = document.querySelectorAll('.cat-card');
-  const idx = ['all','maquillage','soins-visage','soins-corps','parfums','mode','bijoux','savons','homme','coffrets'].indexOf(cat);
+  const idx = ['all','maquillage','soins-visage','soins-corps','cheveux','parfums','mode','bijoux','savons','homme','coffrets'].indexOf(cat);
   if (idx >= 0) cards[idx]?.classList.add('active');
 }
 
