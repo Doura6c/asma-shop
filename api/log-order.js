@@ -50,8 +50,8 @@ export default async function handler(req, res) {
     return res.status(413).json({ error: "Requête trop volumineuse" });
   }
 
-  // URL Apps Script (Web App) propre à ASMA SHOP. À remplir après création du script.
-  const SHEETS_URL_DEFAULT = "";
+  // URL Apps Script (Web App) propre à ASMA SHOP.
+  const SHEETS_URL_DEFAULT = "https://script.google.com/macros/s/AKfycbw_F8CwXeaHD8aki0FWO99aaQvT2ouqC7khMhWqLfcDjSr2UJ4JZNQHjYsha-KJ8cygfQ/exec";
   const sheetUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || SHEETS_URL_DEFAULT;
   if (!sheetUrl) {
     return res.status(200).json({ ok: true, skipped: "Sheets non configuré" });
